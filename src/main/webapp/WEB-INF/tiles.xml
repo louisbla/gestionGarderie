@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC 
+"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+  <definition name="baseLayout" template="/jsp/tiles/baseLayout.jsp">
+      <put-attribute name="title"  value="Template"/>
+      <put-attribute name="header" value="/jsp/tiles/header.jsp"/>
+      <put-attribute name="menu"   value="/jsp/tiles/menu.jsp"/>
+      <put-attribute name="body"   value="/jsp/tiles/body.jsp"/>
+      <put-attribute name="footer"   value="/jsp/tiles/footer.jsp"/>
+  </definition>
+  
+  <definition name="welcome" extends="baseLayout">
+      <put-attribute name="title"  value="Welcome"/>
+      <put-attribute name="body"   value="/jsp/welcome.jsp"/>      
+  </definition>
+  
+  <definition name="inventaire" extends="baseLayout">
+      <put-attribute name="title"  value="Inventaire"/>
+      <put-attribute name="body"   value="/jsp/inventaire.jsp"/>      
+  </definition>
+  
+  <definition name="facturation" extends="baseLayout">
+      <put-attribute name="title"  value="Facturation"/>
+      <put-attribute name="body"   value="/jsp/facturation.jsp"/>      
+  </definition>
+  
+  <definition name="planning" extends="baseLayout">
+      <put-attribute name="title"  value="Planning"/>
+      <put-attribute name="body"   value="/jsp/planning.jsp"/>      
+  </definition>
+  
+  <definition name="inscription" extends="baseLayout">
+      <put-attribute name="title"  value="Inscription"/>
+      <put-attribute name="body"   value="/jsp/inscription.jsp"/>      
+  </definition>
+  
+</tiles-definitions>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.devMode" value="true"/>
+    
+
+    <include file="example.xml"/>
+
+    <package name="default"  namespace="/"  extends="struts-default">
+        <result-types>
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+	</result-types>
+        
+        <action name="welcomeLink" class="garderie.action.LinkAction" method="welcome" >
+            <result name="welcome" type="tiles">welcome</result>
+	</action>
+        <action name="inventaireLink" class="garderie.action.LinkAction" method="inventaire" >
+            <result name="inventaire" type="tiles">inventaire</result>
+	</action>
+        <action name="facturationLink" class="garderie.action.LinkAction" method="facturation" >
+            <result name="facturation" type="tiles">facturation</result>
+	</action>
+        <action name="planningLink" class="garderie.action.LinkAction" method="planning" >
+            <result name="planning" type="tiles">planning</result>
+	</action>
+        <action name="inscriptionLink" class="garderie.action.LinkAction" method="inscription" >
+            <result name="inscription" type="tiles">inscription</result>
+	</action>
+    </package>
+
+    <!-- Add addition packages and configuration here. -->
+</struts>
