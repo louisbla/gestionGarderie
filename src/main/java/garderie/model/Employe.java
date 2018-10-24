@@ -21,6 +21,7 @@ public class Employe extends Personne {
         private Date dateEntree; 
         private double nbMoisAnciennete; 
         private double nbHeuresReel;
+        private ArrayList<Conge> listeConge;
 
     public Employe(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, CompteUser compteUser, String numTel, double salaireNet, double nbHeuresPrevues, double tauxHoraireBrut, String poste, double tauxHoraireNet, boolean externe, Date dateEntree, double nbMoisAnciennete) {
         super(Nom, Prenom, Sexe, DateNaissance, numSecu, adresses, compteUser);
@@ -34,6 +35,7 @@ public class Employe extends Personne {
         this.dateEntree = dateEntree;
         this.nbMoisAnciennete = nbMoisAnciennete;
         this.nbHeuresReel = 0;
+        this.listeConge = new ArrayList();
     }
 
     public int getIdEmploye() {
@@ -120,6 +122,17 @@ public class Employe extends Personne {
     public void setNbHeuresReel(double nbHeuresReel) {
         this.nbHeuresReel = nbHeuresReel;
     }
+
+    public ArrayList<Conge> getListeConge() {
+        return listeConge;
+    }
+
+    public void setListeConge(ArrayList<Conge> listeConge) {
+        this.listeConge = listeConge;
+    }
         
-        
+    public void ajouterConge(Date dateDebut, int duree, TypeConge typeConge){
+        Conge c = new Conge(duree,dateDebut,typeConge);
+        this.listeConge.add(c);
+    }
 }

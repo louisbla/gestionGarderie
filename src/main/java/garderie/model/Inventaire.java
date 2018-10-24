@@ -13,7 +13,8 @@ public class Inventaire {
 
     public Inventaire(int stockMax, int stockActuel) {
         this.stockMax = stockMax;
-        this.stockActuel = stockActuel;
+        this.stockActuel = 0;
+        this.listeArticle = new ArrayList<Article>();
     }
 
     public int getIdInventaire() {

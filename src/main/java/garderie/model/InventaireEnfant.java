@@ -15,6 +15,12 @@ public class InventaireEnfant {
     private int stockActuel;
     private ArrayList<Article> listeArticleEnfant;
 
+    public InventaireEnfant(int stockMax, int stockActuel) {
+        this.stockMax = stockMax;
+        this.stockActuel = 0;
+        this.listeArticleEnfant = new ArrayList<Article>();
+    }
+
     public InventaireEnfant(int stockMax, int stockActuel, ArrayList<Article> listeArticleEnfant) {
         this.stockMax = stockMax;
         this.stockActuel = stockActuel;
