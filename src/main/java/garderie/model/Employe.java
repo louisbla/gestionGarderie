@@ -35,6 +35,91 @@ public class Employe extends Personne {
         this.nbMoisAnciennete = nbMoisAnciennete;
         this.nbHeuresReel = 0;
     }
+
+    public int getIdEmploye() {
+        return idEmploye;
+    }
+
+
+    public String getNumTel() {
+        return numTel;
+    }
+
+    public void setNumTel(String numTel) {
+        this.numTel = numTel;
+    }
+
+    public double getSalaireNet() {
+        return salaireNet;
+    }
+
+    public void setSalaireNet(double salaireNet) {
+        this.salaireNet = salaireNet;
+    }
+
+    public double getNbHeuresPrevues() {
+        return nbHeuresPrevues;
+    }
+
+    public void setNbHeuresPrevues(double nbHeuresPrevues) {
+        this.nbHeuresPrevues = nbHeuresPrevues;
+    }
+
+    public double getTauxHoraireBrut() {
+        return tauxHoraireBrut;
+    }
+
+    public void setTauxHoraireBrut(double tauxHoraireBrut) {
+        this.tauxHoraireBrut = tauxHoraireBrut;
+    }
+
+    public String getPoste() {
+        return poste;
+    }
+
+    public void setPoste(String poste) {
+        this.poste = poste;
+    }
+
+    public double getTauxHoraireNet() {
+        return tauxHoraireNet;
+    }
+
+    public void setTauxHoraireNet(double tauxHoraireNet) {
+        this.tauxHoraireNet = tauxHoraireNet;
+    }
+
+    public boolean isExterne() {
+        return externe;
+    }
+
+    public void setExterne(boolean externe) {
+        this.externe = externe;
+    }
+
+    public Date getDateEntree() {
+        return dateEntree;
+    }
+
+    public void setDateEntree(Date dateEntree) {
+        this.dateEntree = dateEntree;
+    }
+
+    public double getNbMoisAnciennete() {
+        return nbMoisAnciennete;
+    }
+
+    public void setNbMoisAnciennete(double nbMoisAnciennete) {
+        this.nbMoisAnciennete = nbMoisAnciennete;
+    }
+
+    public double getNbHeuresReel() {
+        return nbHeuresReel;
+    }
+
+    public void setNbHeuresReel(double nbHeuresReel) {
+        this.nbHeuresReel = nbHeuresReel;
+    }
         
         
 }
