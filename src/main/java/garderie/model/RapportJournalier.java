@@ -19,7 +19,7 @@ public class RapportJournalier {
     private Enfant enfant;
     private ArrayList<Employe> referants;
 
-    public RapportJournalier(Date dateRapport, boolean present, String resumeJournee, Enfant enfant, <any> referants) {
+    public RapportJournalier(Date dateRapport, boolean present, String resumeJournee, Enfant enfant, ArrayList<Employe> referants) {
         this.dateRapport = dateRapport;
         this.present = present;
         this.resumeJournee = resumeJournee;

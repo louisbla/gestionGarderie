@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package garderie.model;
-
+import java.util.*;
 /**
  *
  * @author Katsuo
