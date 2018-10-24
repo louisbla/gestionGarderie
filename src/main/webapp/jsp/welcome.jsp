@@ -1,3 +1,5 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="garderie.db.DBManager"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@taglib prefix="sj" uri="/struts-jquery-tags" %>
@@ -31,5 +33,13 @@
             </div>
         </s:form>
 
+        <% 
+            Connection connection = DBManager.getInstance();
+            
+            if (connection == null)
+                out.println("connection failed");
+            else
+                out.println("connection succeded");
+        %>
     </body>
 </html>
