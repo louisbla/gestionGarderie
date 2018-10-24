@@ -5,7 +5,7 @@
  */
 package garderie.model;
 
-import java.util.*
+import java.util.*;
 
 /**
  *

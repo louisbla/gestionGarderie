@@ -4,13 +4,8 @@
  * and open the template in the editor.
  */
 package garderie.model;
-<<<<<<< Updated upstream
-import java.util.*;
-=======
-
 import java.util.*;
 
->>>>>>> Stashed changes
 /**
  *
  * @author Katsuo
