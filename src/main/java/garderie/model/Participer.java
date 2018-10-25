@@ -5,17 +5,21 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  *
  * @author Katsuo
  */
-public class Participer {
+public class Participer implements Serializable {
     private Groupe groupe;
     private Salle salle;
     private Activite activite;
     private Date date;
+
+    public Participer() {
+    }
 
     public Participer(Groupe groupe, Salle salle, Activite activite, Date date) {
         this.groupe = groupe;

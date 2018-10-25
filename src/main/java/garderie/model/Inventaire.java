@@ -1,15 +1,19 @@
 package garderie.model;
 import java.util.*;
 import garderie.model.*;
+import java.io.Serializable;
 /**
  *
  * @author Maryline
  */
-public class Inventaire {
+public class Inventaire implements Serializable {
     private int idInventaire;
     private int stockMax;
     private int stockActuel;
     private ArrayList<Article> listeArticle;
+
+    public Inventaire() {
+    }
 
     public Inventaire(int stockMax, int stockActuel) {
         this.stockMax = stockMax;

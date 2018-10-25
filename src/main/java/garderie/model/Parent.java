@@ -5,14 +5,18 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 
-public class Parent extends Personne {
+public class Parent extends Personne implements Serializable {
     private int nbEnfantsInscrits; 
     private String numTel;
     private String lienParente;
+
+    public Parent() {
+    }
 
     //Constructeur
     public Parent(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, CompteUser compteUser, int nbEnfantsInscrits, String numTel, String lienParente) {

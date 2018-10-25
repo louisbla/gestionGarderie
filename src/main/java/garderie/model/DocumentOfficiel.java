@@ -5,16 +5,21 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Maryline
  */
-public class DocumentOfficiel {
+public class DocumentOfficiel implements Serializable {
     
     private int idDocument;
     private String nom;
     private String url;
 
+    public DocumentOfficiel() {
+    }
+    
     public DocumentOfficiel(String nom, String url) {
         this.nom = nom;
         this.url = url;

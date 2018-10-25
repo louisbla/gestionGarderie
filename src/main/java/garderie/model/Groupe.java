@@ -5,17 +5,21 @@
  */
 package garderie.model;
 import garderie.model.*;
+import java.io.Serializable;
 /**
  *
  * @author Maryline
  */
-public class Groupe {
+public class Groupe implements Serializable {
     private int idGroupe; 
     private NomGroupe nom;
     private int nbEnfant;
     private String descriptif;
     private Employe referant;
 
+    public Groupe() {
+    }
+    
     public Groupe(NomGroupe nom, int nbEnfant, String descriptif, Employe referant) {
         this.nom = nom;
         this.nbEnfant = nbEnfant;

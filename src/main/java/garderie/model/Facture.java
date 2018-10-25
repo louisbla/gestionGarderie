@@ -5,13 +5,14 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  *
  * @author Katsuo
  */
-public class Facture {
+public class Facture implements Serializable {
     private int idFacture;
     private Date dateEmission;
     private double montantTTC;
@@ -21,6 +22,9 @@ public class Facture {
     private int nbEnfant;
     private ArrayList<LigneFacture> lignesFactures;
 
+    public Facture() {
+    }
+    
     public Facture(Date dateEmission, double montantTTC, double montantHT, Date datePaiement, boolean paye, int nbEnfant) {
         this.dateEmission = dateEmission;
         this.montantTTC = montantTTC;

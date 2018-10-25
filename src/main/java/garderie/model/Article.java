@@ -1,18 +1,23 @@
 package garderie.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Maryline
  */
-public class Article {
+public class Article implements Serializable{
     
     private int idArticle;
     private String nom;
     private int quantite;
     private String  photo;
     private boolean visible;
-    public String description;
-    public CategorieArticle categorie;
+    private String description;
+    private CategorieArticle categorie;
+
+    public Article() {
+    }
 
     public Article(String nom, int quantite, String photo, String description, CategorieArticle c ) {
         this.nom = nom;

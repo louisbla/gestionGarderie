@@ -4,19 +4,23 @@
  * and open the template in the editor.
  */
 package garderie.model;
+import java.io.Serializable;
 import java.util.*;
 
 /**
  *
  * @author Katsuo
  */
-public class LigneFacture {
+public class LigneFacture implements Serializable {
     private int idLigneFacture;
     private double totalTTC;
     private double totalHT;
     private int quantite;
     private Facture facture;
     private ArrayList<ObjetFacturable> objetsFacturables;
+
+    public LigneFacture() {
+    }
 
     public LigneFacture(double totalTTC, double totalHT, int quantite,
             Facture facture) {

@@ -5,14 +5,19 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Maryline
  */
-public class TypeConge {
+public class TypeConge implements Serializable {
     
     private int idTypeConge;
     private String descriptif;
+
+    public TypeConge() {
+    }
 
     public TypeConge(String descriptif) {
         this.descriptif = descriptif;

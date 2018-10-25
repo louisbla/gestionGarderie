@@ -5,14 +5,19 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Katsuo
  */
-public class Maladie {
+public class Maladie implements Serializable {
     private int idMaladie;
     private String nom;
     private String descriptif;
+
+    public Maladie() {
+    }
 
     public Maladie(String nom, String descriptif) {
         this.nom = nom;

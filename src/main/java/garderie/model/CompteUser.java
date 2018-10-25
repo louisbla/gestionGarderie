@@ -5,13 +5,19 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
 
-public class CompteUser {
+
+public class CompteUser implements Serializable {
     private int idUser;
     private String login;
     private String mdp;
     private boolean privilege;
 
+    public CompteUser() {
+    }
+
+    
     public CompteUser(String login, String mdp, boolean privilege) {
         this.login = login;
         this.mdp = mdp;

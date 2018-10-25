@@ -5,19 +5,23 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  *
  * @author Katsuo
  */
-public class RapportJournalier {
+public class RapportJournalier implements Serializable {
     private int idRapportJournalier;
     private Date dateRapport;
     private boolean present;
     private String resumeJournee;
     private Enfant enfant;
     private ArrayList<Employe> referants;
+
+    public RapportJournalier() {
+    }
 
     public RapportJournalier(Date dateRapport, boolean present, String resumeJournee, Enfant enfant, ArrayList<Employe> referants) {
         this.dateRapport = dateRapport;

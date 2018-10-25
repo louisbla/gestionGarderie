@@ -5,12 +5,13 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
 import java.util.*;
 /**
  *
  * @author Katsuo
  */
-public class DossierInscription {
+public class DossierInscription implements Serializable {
     private int idDossier;
     private Date dateInscription;
     private int nbDemiJourneeInscrit;
@@ -19,6 +20,9 @@ public class DossierInscription {
     private Enfant enfant;
     private ArrayList<ContactUrgence> contactsUrgences;
     private ArrayList<DocumentOfficiel> documentsOfficiels;
+
+    public DossierInscription() {
+    }
 
     public DossierInscription(Date dateInscription, int nbDemiJourneeInscrit, int nbDemiJourneeAbsent, String medecinTraitant) {
         this.dateInscription = dateInscription;

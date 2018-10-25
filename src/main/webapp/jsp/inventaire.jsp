@@ -37,6 +37,12 @@
             </div>
         </s:form>
 
+        <s:bean name="garderie.model.Article" var="article">
+            <s:param name="idArticle" value="'1'"/>
+            <s:param name="nom" value="'Mickey'"/>
+            <s:param name="quantite" value="'2'"/>
+        </s:bean>
+
         <div class="row">
             <div class="table-responsive">
                 <table class="table table-striped table-bordered">
@@ -47,6 +53,13 @@
                         <th>Quantite</th>
                         <th>Image</th>
                         <th>Editer</th>
+                    </tr>
+                    <tr>
+                        <td><s:property value="#article.idArticle" /></td>
+                        <td><s:property value="#article.nom" /></td>
+                        <td><s:property value="#article.quantite" /></td>
+                        <td>Ok</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>1</td>

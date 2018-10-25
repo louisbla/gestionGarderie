@@ -5,11 +5,13 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Katsuo
  */
-public class ObjetFacturable {
+public class ObjetFacturable implements Serializable {
     private int idObjectFacturable;
     private String reference;
     private double prixTTC;
@@ -17,6 +19,9 @@ public class ObjetFacturable {
     private String type;
     private TVA tva;
 
+    public ObjetFacturable() {
+    }
+    
     public ObjetFacturable(String reference, double prixTTC, String nom, String type, TVA tva) {
         this.reference = reference;
         this.prixTTC = prixTTC;

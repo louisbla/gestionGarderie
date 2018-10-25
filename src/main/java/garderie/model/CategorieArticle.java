@@ -4,16 +4,20 @@
  * and open the template in the editor.
  */
 package garderie.model;
+import java.io.Serializable;
 import java.util.*;
 /**
  *
  * @author Maryline
  */
-public class CategorieArticle {
+public class CategorieArticle implements Serializable {
     
-    public int idCategorie;
-    public ArrayList<Article> listeArticle;
-    public String nom;
+    private int idCategorie;
+    private ArrayList<Article> listeArticle;
+    private String nom;
+
+    public CategorieArticle() {
+    }    
 
     public CategorieArticle(ArrayList<Article> listeArticle, String nom) {
         this.listeArticle = listeArticle;

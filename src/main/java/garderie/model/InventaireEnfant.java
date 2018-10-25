@@ -4,16 +4,20 @@
  * and open the template in the editor.
  */
 package garderie.model;
+import java.io.Serializable;
 import java.util.*;
 /**
  *
  * @author Maryline
  */
-public class InventaireEnfant {
+public class InventaireEnfant implements Serializable {
     private int idInventaire;
     private int stockMax;
     private int stockActuel;
     private ArrayList<Article> listeArticleEnfant;
+
+    public InventaireEnfant() {
+    }
 
     public InventaireEnfant(int stockMax, int stockActuel) {
         this.stockMax = stockMax;

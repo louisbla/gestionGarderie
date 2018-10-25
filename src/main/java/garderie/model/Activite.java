@@ -5,13 +5,14 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Katsuo
  */
-public class Activite {
+public class Activite implements Serializable{
     private int idActivite;
     private String nom;
     private Date date;
@@ -19,6 +20,9 @@ public class Activite {
     private int nbEnfantMax;
     private String lieu;
     private double prix;
+
+    public Activite() {
+    }
 
     public Activite(String nom, Date date, String description, int nbEnfantMax, String lieu, double prix) {
         this.nom = nom;

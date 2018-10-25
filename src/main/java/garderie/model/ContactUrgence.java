@@ -5,6 +5,7 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,10 +13,13 @@ import java.util.Date;
  *
  * @author Maryline
  */
-public class ContactUrgence extends Personne {
+public class ContactUrgence extends Personne implements Serializable {
     private String numTel;
     private String lien;
 
+    public ContactUrgence() {
+    }
+    
     public ContactUrgence(String numTel, String lien, String nom, String prenom, String sexe, Date dateNaissance, String numSecu, ArrayList<Adresse> adresses) {
         super(nom, prenom, sexe, dateNaissance, numSecu, adresses);
         this.numTel = numTel;

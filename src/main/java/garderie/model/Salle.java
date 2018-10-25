@@ -5,17 +5,21 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Katsuo
  */
-public class Salle {
+public class Salle implements Serializable {
     private int idSalle;
     private String libelleSalle;
     private int capaciteMax;
     private boolean occupe;
+
+    public Salle() {
+    }
 
     public Salle(String libelleSalle, int capaciteMax, boolean occupe, ArrayList<Activite> activites) {
         this.libelleSalle = libelleSalle;

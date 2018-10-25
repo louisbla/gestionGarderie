@@ -5,15 +5,18 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 
-public class Enfant extends Personne{
+public class Enfant extends Personne implements Serializable {
     private boolean visible;
     private String photo;   //url
 
-    
+    public Enfant() {
+    }
+
     //Constructeur
     public Enfant(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, String photo) {
         super(Nom, Prenom, Sexe, DateNaissance, numSecu, adresses);

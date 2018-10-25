@@ -17,7 +17,10 @@ public abstract class Personne {
     private Date dateNaissance; 
     private String numSecu; 
     private ArrayList<Adresse> adresses;
-    private CompteUser compteUser;        
+    private CompteUser compteUser;
+
+    public Personne() {
+    }
   
     //Constructeur
     public Personne(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, CompteUser compteUser) {
@@ -89,6 +92,14 @@ public abstract class Personne {
 
     public void setAdresses(ArrayList<Adresse> adresses) {
         this.adresses = adresses;
+    }
+    
+    public CompteUser getCompteUser() {
+        return compteUser;
+    }
+
+    public void setCompteUser(CompteUser compteUser) {
+        this.compteUser = compteUser;
     }
         
 }

@@ -5,14 +5,19 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Katsuo
  */
-public class TVA {
+public class TVA implements Serializable {
     private int idTVA;
     private String nom;
     private double montant;
+
+    public TVA() {
+    }
 
     public TVA(String nom, double montant) {
         this.nom = nom;

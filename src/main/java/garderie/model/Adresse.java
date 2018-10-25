@@ -5,8 +5,10 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
 
-public class Adresse {
+
+public class Adresse implements Serializable {
     private int idAdresse;
     private boolean facturation; 
     private boolean domicile;
@@ -17,6 +19,8 @@ public class Adresse {
     private String codePostale;
     private String pays;
 
+    public Adresse() {
+    }
     
     //Constructeur 
     public Adresse(boolean facturation, boolean domicile, String ligne1, String ligne2, String ligne3, String ville, String codePostale, String pays) {

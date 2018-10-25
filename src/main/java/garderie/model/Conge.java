@@ -4,17 +4,21 @@
  * and open the template in the editor.
  */
 package garderie.model;
+import java.io.Serializable;
 import java.util.*;
 /**
  *
  * @author Maryline
  */
-public class Conge {
+public class Conge implements Serializable {
     
     private int idConge;
     private int dureeCongeJour;
     private Date dateretour;
     private TypeConge typeConge;
+
+    public Conge() {
+    }
 
     public Conge(int dureeCongeJour, Date dateretour, TypeConge typeConge) {
         this.dureeCongeJour = dureeCongeJour;

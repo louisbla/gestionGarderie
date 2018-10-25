@@ -5,11 +5,12 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 
-public class Employe extends Personne {
+public class Employe extends Personne implements Serializable {
         private int idEmploye;
         private String numTel;
         private double salaireNet;
@@ -22,6 +23,9 @@ public class Employe extends Personne {
         private double nbMoisAnciennete; 
         private double nbHeuresReel;
         private ArrayList<Conge> listeConge;
+
+    public Employe() {
+    }
 
     public Employe(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, CompteUser compteUser, String numTel, double salaireNet, double nbHeuresPrevues, double tauxHoraireBrut, String poste, double tauxHoraireNet, boolean externe, Date dateEntree, double nbMoisAnciennete) {
         super(Nom, Prenom, Sexe, DateNaissance, numSecu, adresses, compteUser);

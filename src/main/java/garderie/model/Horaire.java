@@ -5,17 +5,21 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  *
  * @author Katsuo
  */
-public class Horaire {
+public class Horaire implements Serializable {
     private int idHoraire;
     private Date date;
     private double heureDebut;
     private double heureFin;
+
+    public Horaire() {
+    }
 
     public Horaire(Date date, double heureDebut, double heureFin) {
         this.date = date;

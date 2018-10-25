@@ -5,17 +5,21 @@
  */
 package garderie.model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  *
  * @author Katsuo
  */
-public class Calendrier {
+public class Calendrier implements Serializable{
     private int idCalendrier;
     private int anneeDebut;
     private int anneeFin;
     private ArrayList<Horaire> horaires;
+
+    public Calendrier() {
+    }
 
     public Calendrier(int anneeDebut, int anneeFin) {
         this.anneeDebut = anneeDebut;
