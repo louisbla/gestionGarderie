@@ -9,6 +9,7 @@
         <tiles:insertAttribute name="header" />
     </head>
     <body>
+        <tiles:insertAttribute name="topbar" />
         <div id="wrapper">
             <div class="overlay"></div>
 

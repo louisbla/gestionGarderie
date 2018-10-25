@@ -16,30 +16,20 @@
         <sb:head includeScripts="true" includeScriptsValidation="false"/>
     </head>
     <body>
-        <h1 class="text-center">Bienvenue</h1>
-        <s:form theme="bootstrap" cssClass="well form-signin">
-            <s:textfield placeholder="Email"
-                         name="email"
-                         type="email"
-                         cssClass="input-sm" />
+        <div class="jumbotron">
+            <h1 class="text-center">Bienvenue !</h1>
+            <img alt="garderie" class="img-responsive" src="<s:url value='/images/garderie.jpg' />">
+            <p class="lead text-center p-5">Veuillez-vous connecter pour accéder aux fonctionnalités de l'application.</p>
+        </div>
 
-            <s:password placeholder="Mot de passe"
-                        name="password"
-                        cssClass="input-sm" />
-            <div class="form-group">
-                <div class="text-center">
-                    <s:submit cssClass="btn btn-primary"/>
-                </div>
-            </div>
-        </s:form>
-
-        <% 
+        <%
             Connection connection = DBManager.getInstance();
-            
-            if (connection == null)
+
+            if (connection == null) {
                 out.println("connection failed");
-            else
+            } else {
                 out.println("connection succeded");
+            }
         %>
     </body>
 </html>

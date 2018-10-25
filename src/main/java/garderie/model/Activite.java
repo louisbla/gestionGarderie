@@ -19,7 +19,6 @@ public class Activite {
     private int nbEnfantMax;
     private String lieu;
     private double prix;
-    private Salle salle;
 
     public Activite(String nom, Date date, String description, int nbEnfantMax, String lieu, double prix) {
         this.nom = nom;
@@ -81,14 +80,5 @@ public class Activite {
     public void setPrix(double prix) {
         this.prix = prix;
     }
-    
-    public Salle getSalle() {
-        return salle;
-    }
-
-    public void setSalle(Salle salle) {
-        this.salle = salle;
-    }
-    
     
 }
