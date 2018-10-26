@@ -21,7 +21,7 @@ public class Salle implements Serializable {
     public Salle() {
     }
 
-    public Salle(String libelleSalle, int capaciteMax, boolean occupe, ArrayList<Activite> activites) {
+    public Salle(String libelleSalle, int capaciteMax, boolean occupe) {
         this.libelleSalle = libelleSalle;
         this.capaciteMax = capaciteMax;
         this.occupe = occupe;

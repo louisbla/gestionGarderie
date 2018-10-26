@@ -14,6 +14,7 @@ public class Parent extends Personne implements Serializable {
     private int nbEnfantsInscrits; 
     private String numTel;
     private String lienParente;
+    private ArrayList<Facture> factures;
 
     public Parent() {
     }
@@ -50,6 +51,16 @@ public class Parent extends Personne implements Serializable {
     public void setLienParente(String lienParente) {
         this.lienParente = lienParente;
     }
+
+    public ArrayList<Facture> getFactures() {
+        return factures;
+    }
+
+    public void setFactures(ArrayList<Facture> factures) {
+        this.factures = factures;
+    }
+    
+    
     
     
 }

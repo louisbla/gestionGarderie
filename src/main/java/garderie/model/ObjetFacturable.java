@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class ObjetFacturable implements Serializable {
     private int idObjectFacturable;
     private String reference;
-    private double prixTTC;
+    private double prixHT;
     private String nom;
     private String type;
     private TVA tva;
@@ -22,9 +22,9 @@ public class ObjetFacturable implements Serializable {
     public ObjetFacturable() {
     }
     
-    public ObjetFacturable(String reference, double prixTTC, String nom, String type, TVA tva) {
+    public ObjetFacturable(String reference, double prixHT, String nom, String type, TVA tva) {
         this.reference = reference;
-        this.prixTTC = prixTTC;
+        this.prixHT = prixHT;
         this.nom = nom;
         this.type = type;
         this.tva = tva;
@@ -42,12 +42,12 @@ public class ObjetFacturable implements Serializable {
         this.reference = reference;
     }
 
-    public double getPrixTTC() {
-        return prixTTC;
+    public double getPrixHT() {
+        return prixHT;
     }
 
-    public void setPrixTTC(double prixTTC) {
-        this.prixTTC = prixTTC;
+    public void setPrixHT(double prixHT) {
+        this.prixHT = prixHT;
     }
 
     public String getNom() {
