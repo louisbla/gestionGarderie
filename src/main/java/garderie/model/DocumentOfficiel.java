@@ -29,6 +29,10 @@ public class DocumentOfficiel implements Serializable {
         return this.idDocument;
     }
 
+    public void setIdDocument(int idDocument) {
+        this.idDocument = idDocument;
+    }
+
 
     public String getNom() {
         return this.nom;

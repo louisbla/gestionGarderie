@@ -46,6 +46,10 @@ public abstract class Personne {
         return idPersonne;
     }
 
+    public void setIdPersonne(int idPersonne) {
+        this.idPersonne = idPersonne;
+    }
+
     public String getNom() {
         return nom;
     }

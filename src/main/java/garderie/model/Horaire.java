@@ -31,6 +31,10 @@ public class Horaire implements Serializable {
         return idHoraire;
     }
 
+    public void setIdHoraire(int idHoraire) {
+        this.idHoraire = idHoraire;
+    }
+
     public Date getDate() {
         return date;
     }

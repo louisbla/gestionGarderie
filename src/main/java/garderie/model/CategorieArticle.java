@@ -28,6 +28,10 @@ public class CategorieArticle implements Serializable {
         return idCategorie;
     }
 
+    public void setIdCategorie(int idCategorie) {
+        this.idCategorie = idCategorie;
+    }
+
     public ArrayList<Article> getListeArticle() {
         return listeArticle;
     }

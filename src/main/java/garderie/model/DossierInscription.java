@@ -35,6 +35,10 @@ public class DossierInscription implements Serializable {
         return idDossier;
     }
 
+    public void setIdDossier(int idDossier) {
+        this.idDossier = idDossier;
+    }
+
     public Date getDateInscription() {
         return dateInscription;
     }
@@ -65,6 +69,14 @@ public class DossierInscription implements Serializable {
 
     public void setMedecinTraitant(String medecinTraitant) {
         this.medecinTraitant = medecinTraitant;
+    }
+
+    public Enfant getEnfant() {
+        return enfant;
+    }
+
+    public void setEnfant(Enfant enfant) {
+        this.enfant = enfant;
     }
     
 }

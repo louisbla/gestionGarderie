@@ -28,6 +28,10 @@ public class Maladie implements Serializable {
         return idMaladie;
     }
 
+    public void setIdMaladie(int idMaladie) {
+        this.idMaladie = idMaladie;
+    }
+
     public String getNom() {
         return nom;
     }

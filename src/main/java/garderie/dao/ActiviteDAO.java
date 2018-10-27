@@ -93,12 +93,12 @@ public class ActiviteDAO extends CommonDAO<Activite>{
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_ACTIVITE_BY_ID);
             
             //Insert parameter at the location of the question mark in the SQL Query
-            preparedStatement.setInt(1, activite.getIdActivite());
+            preparedStatement.setInt(1, id);
             
             //Recupere les resultats de la requete
             ResultSet result = preparedStatement.executeQuery();
             if (result.first()) {
-                activite = new Activite(result.getString("nom"), 
+                activite = new Activite(id, result.getString("nom"), 
                         result.getDate("date"), result.getString("description"),
                         result.getInt("nb_enfants_max"), result.getString("lieu"),
                         result.getDouble("prix"));
@@ -123,6 +123,7 @@ public class ActiviteDAO extends CommonDAO<Activite>{
             //tant qu'il y a une activite dans les resultats
             while (result.next()) {
                 activite = new Activite();
+                activite.setIdActivite(result.getInt("activiteId"));
                 activite.setNom(result.getString("nom"));
                 activite.setDate(result.getDate("date"));
                 activite.setDescription(result.getString("description"));

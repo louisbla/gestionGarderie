@@ -34,6 +34,10 @@ public class ObjetFacturable implements Serializable {
         return idObjectFacturable;
     }
 
+    public void setIdObjectFacturable(int idObjectFacturable) {
+        this.idObjectFacturable = idObjectFacturable;
+    }
+
     public String getReference() {
         return reference;
     }

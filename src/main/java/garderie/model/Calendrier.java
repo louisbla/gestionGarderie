@@ -38,6 +38,10 @@ public class Calendrier implements Serializable{
         return idCalendrier;
     }
 
+    public void setIdCalendrier(int idCalendrier) {
+        this.idCalendrier = idCalendrier;
+    }
+
     public int getAnneeDebut() {
         return anneeDebut;
     }

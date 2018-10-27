@@ -38,6 +38,11 @@ public class Adresse implements Serializable {
         return idAdresse;
     }
 
+    public void setIdAdresse(int idAdresse) {
+        this.idAdresse = idAdresse;
+    }
+    
+
     public boolean isFacturation() {
         return facturation;
     }

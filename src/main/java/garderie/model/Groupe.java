@@ -32,6 +32,10 @@ public class Groupe implements Serializable {
         return idGroupe;
     }
 
+    public void setIdGroupe(int idGroupe) {
+        this.idGroupe = idGroupe;
+    }
+
     public NomGroupe getNom() {
         return nom;
     }

@@ -6,7 +6,6 @@
 package garderie.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  *
@@ -26,6 +25,40 @@ public class Salle implements Serializable {
         this.capaciteMax = capaciteMax;
         this.occupe = occupe;
     }
+
+    public int getIdSalle() {
+        return idSalle;
+    }
+
+    public void setIdSalle(int idSalle) {
+        this.idSalle = idSalle;
+    }
+
+    public String getLibelleSalle() {
+        return libelleSalle;
+    }
+
+    public void setLibelleSalle(String libelleSalle) {
+        this.libelleSalle = libelleSalle;
+    }
+
+    public int getCapaciteMax() {
+        return capaciteMax;
+    }
+
+    public void setCapaciteMax(int capaciteMax) {
+        this.capaciteMax = capaciteMax;
+    }
+
+    public boolean isOccupe() {
+        return occupe;
+    }
+
+    public void setOccupe(boolean occupe) {
+        this.occupe = occupe;
+    }
+    
+    
     
     
     

@@ -28,6 +28,10 @@ public class CompteUser implements Serializable {
         return idUser;
     }
 
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
     public String getLogin() {
         return login;
     }

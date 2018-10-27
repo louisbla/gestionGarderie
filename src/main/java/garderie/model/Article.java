@@ -27,20 +27,15 @@ public class Article implements Serializable{
         this.description = description;
         this.categorie = c; 
     }
-
-    public Article(Article a){
-        this.idArticle = a.getIdArticle();
-        this.nom = a.getNom();
-        this.quantite = a.getQuantite();
-        this.photo = a.getPhoto();
-        this.visible = true;
-        this.description = a.getDescription();
-        this.categorie = a.getCategorie();
-    }
     
     public int getIdArticle() {
         return this.idArticle;
     }
+
+    public void setIdArticle(int idArticle) {
+        this.idArticle = idArticle;
+    }
+    
 
     public String getNom() {
         return this.nom;

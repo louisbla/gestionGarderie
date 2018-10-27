@@ -30,6 +30,10 @@ public class Conge implements Serializable {
         return this.idConge;
     }
 
+    public void setIdConge(int idConge) {
+        this.idConge = idConge;
+    }
+
     public int getDureeCongeJour() {
         return this.dureeCongeJour;
     }

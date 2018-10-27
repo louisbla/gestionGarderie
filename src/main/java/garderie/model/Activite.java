@@ -24,7 +24,8 @@ public class Activite implements Serializable{
     public Activite() {
     }
 
-    public Activite(String nom, Date date, String description, int nbEnfantMax, String lieu, double prix) {
+    public Activite(int idActivite, String nom, Date date, String description, int nbEnfantMax, String lieu, double prix) {
+        this.idActivite = idActivite;
         this.nom = nom;
         this.date = date;
         this.description = description;
@@ -35,6 +36,10 @@ public class Activite implements Serializable{
 
     public int getIdActivite() {
         return idActivite;
+    }
+
+    public void setIdActivite(int idActivite) {
+        this.idActivite = idActivite;
     }
 
     public String getNom() {

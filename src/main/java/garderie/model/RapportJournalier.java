@@ -35,6 +35,10 @@ public class RapportJournalier implements Serializable {
         return idRapportJournalier;
     }
 
+    public void setIdRapportJournalier(int idRapportJournalier) {
+        this.idRapportJournalier = idRapportJournalier;
+    }
+
     public Date getDateRapport() {
         return dateRapport;
     }

@@ -28,6 +28,10 @@ public class TVA implements Serializable {
         return idTVA;
     }
 
+    public void setIdTVA(int idTVA) {
+        this.idTVA = idTVA;
+    }
+
     public String getNom() {
         return nom;
     }

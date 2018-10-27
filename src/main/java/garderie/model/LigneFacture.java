@@ -35,6 +35,10 @@ public class LigneFacture implements Serializable {
         return idLigneFacture;
     }
 
+    public void setIdLigneFacture(int idLigneFacture) {
+        this.idLigneFacture = idLigneFacture;
+    }
+
     public double getTotalTTC() {
         return totalTTC;
     }

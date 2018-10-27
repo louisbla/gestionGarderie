@@ -6,6 +6,7 @@
 package garderie.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +16,7 @@ public class TypeConge implements Serializable {
     
     private int idTypeConge;
     private String descriptif;
+    private ArrayList<Conge> conges;
 
     public TypeConge() {
     }
@@ -27,6 +29,10 @@ public class TypeConge implements Serializable {
         return this.idTypeConge;
     }
 
+    public void setIdTypeConge(int idTypeConge) {
+        this.idTypeConge = idTypeConge;
+    }
+
     public String getDescriptif() {
         return this.descriptif;
     }
@@ -34,7 +40,12 @@ public class TypeConge implements Serializable {
     public void setDescriptif(String descriptif) {
         this.descriptif = descriptif;
     }
-    
-    
-    
+
+    public ArrayList<Conge> getConges() {
+        return conges;
+    }
+
+    public void setConges(ArrayList<Conge> conges) {
+        this.conges = conges;
+    }
 }

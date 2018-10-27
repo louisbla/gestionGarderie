@@ -22,7 +22,7 @@ public class InventaireEnfant implements Serializable {
     public InventaireEnfant(int stockMax, int stockActuel) {
         this.stockMax = stockMax;
         this.stockActuel = 0;
-        this.listeArticleEnfant = new ArrayList<Article>();
+        this.listeArticleEnfant = new ArrayList<>();
     }
 
     public InventaireEnfant(int stockMax, int stockActuel, ArrayList<Article> listeArticleEnfant) {
@@ -33,6 +33,10 @@ public class InventaireEnfant implements Serializable {
 
     public int getIdInventaire() {
         return this.idInventaire;
+    }
+
+    public void setIdInventaire(int idInventaire) {
+        this.idInventaire = idInventaire;
     }
     
     public int getStockMax() {
@@ -59,9 +63,8 @@ public class InventaireEnfant implements Serializable {
         this.listeArticleEnfant = listeArticleEnfant;
     }
     
-    public void ajoutArticle(Article a){
-        Article art = new Article(a);
-        this.listeArticleEnfant.add(art);
+    public void ajoutArticle(Article article){
+        this.listeArticleEnfant.add(article);
     }
     
     public void ajoutArticle(String nom, int quantite, String photo, String descrip, CategorieArticle c){

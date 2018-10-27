@@ -37,6 +37,10 @@ public class Facture implements Serializable {
         return this.idFacture;
     }
 
+    public void setIdFacture(int idFacture) {
+        this.idFacture = idFacture;
+    }
+
     public Date getDateEmission() {
         return this.dateEmission;
     }
