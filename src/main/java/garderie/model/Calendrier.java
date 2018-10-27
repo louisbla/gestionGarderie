@@ -17,6 +17,7 @@ public class Calendrier implements Serializable{
     private int anneeDebut;
     private int anneeFin;
     private ArrayList<Horaire> horaires;
+    private boolean visible;
 
     public Calendrier() {
     }
@@ -25,6 +26,7 @@ public class Calendrier implements Serializable{
         this.anneeDebut = anneeDebut;
         this.anneeFin = anneeFin;
         this.horaires = new ArrayList<>();
+        this.visible = true;
     }
     
 
@@ -32,6 +34,7 @@ public class Calendrier implements Serializable{
         this.anneeDebut = anneeDebut;
         this.anneeFin = anneeFin;
         this.horaires = horaires;
+        this.visible = true;
     }
 
     public int getIdCalendrier() {
@@ -60,6 +63,14 @@ public class Calendrier implements Serializable{
 
     public void setHoraires(ArrayList<Horaire> horaires) {
         this.horaires = horaires;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
     
     

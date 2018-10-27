@@ -15,6 +15,7 @@ public class Maladie implements Serializable {
     private int idMaladie;
     private String nom;
     private String descriptif;
+    private boolean visible;
 
     public Maladie() {
     }
@@ -22,6 +23,7 @@ public class Maladie implements Serializable {
     public Maladie(String nom, String descriptif) {
         this.nom = nom;
         this.descriptif = descriptif;
+        this.visible = true;
     }
 
     public int getIdMaladie() {
@@ -42,6 +44,14 @@ public class Maladie implements Serializable {
 
     public void setDescriptif(String descriptif) {
         this.descriptif = descriptif;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
     
     

@@ -15,12 +15,14 @@ public class TypeConge implements Serializable {
     
     private int idTypeConge;
     private String descriptif;
+    private boolean visible;
 
     public TypeConge() {
     }
 
     public TypeConge(String descriptif) {
         this.descriptif = descriptif;
+        this.visible = true;
     }
 
     public int getIdTypeConge() {
@@ -34,7 +36,13 @@ public class TypeConge implements Serializable {
     public void setDescriptif(String descriptif) {
         this.descriptif = descriptif;
     }
-    
-    
-    
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+     
 }

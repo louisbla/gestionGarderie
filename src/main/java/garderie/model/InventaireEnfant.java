@@ -15,20 +15,23 @@ public class InventaireEnfant implements Serializable {
     private int stockMax;
     private int stockActuel;
     private ArrayList<Article> listeArticleEnfant;
+    private boolean visible;
 
     public InventaireEnfant() {
     }
 
-    public InventaireEnfant(int stockMax, int stockActuel) {
+    public InventaireEnfant(int stockMax) {
         this.stockMax = stockMax;
         this.stockActuel = 0;
         this.listeArticleEnfant = new ArrayList<Article>();
+        this.visible = true;
     }
 
-    public InventaireEnfant(int stockMax, int stockActuel, ArrayList<Article> listeArticleEnfant) {
+    public InventaireEnfant(int stockMax, ArrayList<Article> listeArticleEnfant) {
         this.stockMax = stockMax;
-        this.stockActuel = stockActuel;
         this.listeArticleEnfant = listeArticleEnfant;
+        this.stockActuel = this.listeArticleEnfant.size();
+        this.visible = true;
     }
 
     public int getIdInventaire() {
@@ -58,23 +61,25 @@ public class InventaireEnfant implements Serializable {
     public void setListeArticleEnfant(ArrayList<Article> listeArticleEnfant) {
         this.listeArticleEnfant = listeArticleEnfant;
     }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+    
     
     public void ajoutArticle(Article a){
-        Article art = new Article(a);
-        this.listeArticleEnfant.add(art);
+        this.listeArticleEnfant.add(a);
     }
     
-    public void ajoutArticle(String nom, int quantite, String photo, String descrip, CategorieArticle c){
-        Article art = new Article(nom,quantite,photo,descrip, c);
-        this.listeArticleEnfant.add(art);
-    
-    }
+
     public void supprimerArtcile(Article a){
-        a.setVisible(false);
+        this.listeArticleEnfant.remove(a);
     }
    
-    public void modifierArticle(Article a){
-    }
-    
+ 
     
 }

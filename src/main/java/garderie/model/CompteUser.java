@@ -13,6 +13,7 @@ public class CompteUser implements Serializable {
     private String login;
     private String mdp;
     private boolean privilege;
+    private boolean visible;
 
     public CompteUser() {
     }
@@ -22,6 +23,7 @@ public class CompteUser implements Serializable {
         this.login = login;
         this.mdp = mdp;
         this.privilege = privilege;
+        this.visible = true;
     }
 
     public int getIdUser() {
@@ -51,6 +53,13 @@ public class CompteUser implements Serializable {
     public void setPrivilege(boolean privilege) {
         this.privilege = privilege;
     }
-    
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
     
 }

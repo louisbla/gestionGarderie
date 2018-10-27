@@ -10,17 +10,26 @@ public class Inventaire implements Serializable {
     private int idInventaire;
     private int stockMax;
     private int stockActuel;
-    private ArrayList<Article> listeArticle;
+    private ArrayList<Article> listeArticles;
+    private boolean visible;
 
     public Inventaire() {
     }
 
-    public Inventaire(int stockMax, int stockActuel) {
+    public Inventaire(int stockMax) {
         this.stockMax = stockMax;
         this.stockActuel = 0;
-        this.listeArticle = new ArrayList<Article>();
+        this.listeArticles = new ArrayList<Article>();
+        this.visible = true;
     }
-
+    
+      public Inventaire(int stockMax, ArrayList<Article> listeArticle) {
+        this.stockMax = stockMax;
+        this.listeArticles = listeArticle;
+        this.stockActuel = this.listeArticles.size();
+        this.visible = true;
+    }
+    
     public int getIdInventaire() {
         return this.idInventaire;
     }
@@ -40,22 +49,30 @@ public class Inventaire implements Serializable {
     public void setStockActuel(int stockActuel) {
         this.stockActuel = stockActuel;
     }
-    
-    public void ajoutArticle(Article a){
-        Article art = new Article(a);
-        this.listeArticle.add(art);
+
+
+    public ArrayList<Article> getListeArticle() {
+        return listeArticles;
     }
-    
-    public void ajoutArticle(String nom, int quantite, String photo, String descrip, CategorieArticle c){
-        Article art = new Article(nom,quantite,photo,descrip, c);
-        this.listeArticle.add(art);
-    
+
+    public void setListeArticle(ArrayList<Article> listeArticle) {
+        this.listeArticles = listeArticle;
     }
-    public void supprimerArtcile(Article a){
-        a.setVisible(false);
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
    
-    public void modifierArticle(Article a){
+    
+    public void ajoutArticle(Article art){
+        this.listeArticles.add(art);
     }
     
+    public void supprimerArtcile(Article a){
+        this.listeArticles.remove(a);
+    }
 }

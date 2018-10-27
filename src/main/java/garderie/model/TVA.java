@@ -15,6 +15,7 @@ public class TVA implements Serializable {
     private int idTVA;
     private String nom;
     private double montant;
+    private boolean visible;
 
     public TVA() {
     }
@@ -22,6 +23,7 @@ public class TVA implements Serializable {
     public TVA(String nom, double montant) {
         this.nom = nom;
         this.montant = montant;
+        this.visible = true;
     }
 
     public int getIdTVA() {
@@ -43,5 +45,14 @@ public class TVA implements Serializable {
     public void setMontant(double montant) {
         this.montant = montant;
     }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+    
     
 }

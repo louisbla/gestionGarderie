@@ -17,14 +17,53 @@ public class Salle implements Serializable {
     private String libelleSalle;
     private int capaciteMax;
     private boolean occupe;
+    private boolean visible;
 
     public Salle() {
     }
 
-    public Salle(String libelleSalle, int capaciteMax, boolean occupe, ArrayList<Activite> activites) {
+    public Salle(String libelleSalle, int capaciteMax, boolean occupe) {
         this.libelleSalle = libelleSalle;
         this.capaciteMax = capaciteMax;
         this.occupe = occupe;
+        this.visible = true;
+    }
+
+    public int getIdSalle() {
+        return idSalle;
+    }
+
+
+    public String getLibelleSalle() {
+        return libelleSalle;
+    }
+
+    public void setLibelleSalle(String libelleSalle) {
+        this.libelleSalle = libelleSalle;
+    }
+
+    public int getCapaciteMax() {
+        return capaciteMax;
+    }
+
+    public void setCapaciteMax(int capaciteMax) {
+        this.capaciteMax = capaciteMax;
+    }
+
+    public boolean isOccupe() {
+        return occupe;
+    }
+
+    public void setOccupe(boolean occupe) {
+        this.occupe = occupe;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
     
     
