@@ -25,4 +25,19 @@ public class SQLConstant {
             + "WHERE activiteId = ?";
     
     protected static final String SELECT_ACTIVITES = "SELECT * FROM activites";
+    
+    protected static final String INSERT_ADRESSE = "INSERT INTO adresses("
+            + "facturation, domicile, ligne_1, ligne_2, ligne_3, ville, code_postal, pays) "
+            + "VALUES ?,?,?,?,?,?,?,? ";
+    
+    protected static final String UPDATE_ADRESSE = "UPDATE adresses SET "
+            + "facturation = ?, domicile = ?, ligne_1 = ?, ligne_2 = ? ligne_3 = ?,"
+            + "ville = ?, code_postal = ?, pays = ? ";
+    
+    //protected static final String DELETE_ADRESSE = "UPDATE adresses SET deleted = 1 WHERE adresseId = ?";
+    
+    protected static final String SELECT_ADRESSE_BY_ID = "SELECT * FROM adresses"
+            + "WHERE adresseId = ?";
+    
+    protected static final String SELECT_ADRESSES = "SELECT * FROM adresses";
 }

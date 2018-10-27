@@ -16,7 +16,7 @@ public class Adresse implements Serializable {
     private String ligne2;
     private String ligne3;
     private String ville;
-    private String codePostale;
+    private String codePostal;
     private String pays;
 
     public Adresse() {
@@ -30,7 +30,7 @@ public class Adresse implements Serializable {
         this.ligne2 = ligne2;
         this.ligne3 = ligne3;
         this.ville = ville;
-        this.codePostale = codePostale;
+        this.codePostal = codePostale;
         this.pays = pays;
     }
 
@@ -68,7 +68,7 @@ public class Adresse implements Serializable {
     }
 
     public String getCodePostale() {
-        return codePostale;
+        return codePostal;
     }
 
     public String getPays() {
@@ -100,7 +100,7 @@ public class Adresse implements Serializable {
     }
 
     public void setCodePostale(String codePostale) {
-        this.codePostale = codePostale;
+        this.codePostal = codePostale;
     }
 
     public void setPays(String pays) {
