@@ -31,6 +31,10 @@ public class Salle implements Serializable {
     public int getIdSalle() {
         return idSalle;
     }
+    
+    public void setIdSalle(int idSalle) {
+        this.idSalle = idSalle;
+    }
 
 
     public String getLibelleSalle() {
@@ -64,41 +68,4 @@ public class Salle implements Serializable {
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
-
-    public int getIdSalle() {
-        return idSalle;
-    }
-
-    public void setIdSalle(int idSalle) {
-        this.idSalle = idSalle;
-    }
-
-    public String getLibelleSalle() {
-        return libelleSalle;
-    }
-
-    public void setLibelleSalle(String libelleSalle) {
-        this.libelleSalle = libelleSalle;
-    }
-
-    public int getCapaciteMax() {
-        return capaciteMax;
-    }
-
-    public void setCapaciteMax(int capaciteMax) {
-        this.capaciteMax = capaciteMax;
-    }
-
-    public boolean isOccupe() {
-        return occupe;
-    }
-
-    public void setOccupe(boolean occupe) {
-        this.occupe = occupe;
-    }
-    
-    
-    
-    
-    
 }

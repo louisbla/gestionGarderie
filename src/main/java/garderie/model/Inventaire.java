@@ -55,11 +55,12 @@ public class Inventaire implements Serializable {
     }
 
 
-    public ArrayList<Article> getListeArticle() {
+    public ArrayList<Article> getListeArticles() {
         return listeArticles;
+    }
 
-    public void setListeArticle(ArrayList<Article> listeArticle) {
-        this.listeArticles = listeArticle;
+    public void setListeArticles(ArrayList<Article> listeArticles) {
+        this.listeArticles = listeArticles;
     }
 
     public boolean isVisible() {
