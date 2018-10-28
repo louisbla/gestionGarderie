@@ -1,3 +1,6 @@
+<%@page import="garderie.db.BDDManagerMySQL"%>
+<%@page import="garderie.db.FactoryBDDManagerInstance"%>
+<%@page import="garderie.db.FactoryBDDManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="garderie.db.DBManager"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -23,7 +26,15 @@
         </div>
 
         <%
-            Connection connection = DBManager.getInstance();
+            /*Connection connection = DBManager.getInstance();
+
+            if (connection == null) {
+                out.println("connection failed");
+            } else {
+                out.println("connection succeded");
+            }*/
+
+            Connection connection = FactoryBDDManagerInstance.getInstance(new BDDManagerMySQL()).connect();
 
             if (connection == null) {
                 out.println("connection failed");
