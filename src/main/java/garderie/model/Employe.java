@@ -7,7 +7,7 @@ package garderie.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 
 public class Employe extends Personne implements Serializable {

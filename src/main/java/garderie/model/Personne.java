@@ -6,10 +6,10 @@
 package garderie.model;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 
-public abstract class Personne {
+public class Personne {
     private int idPersonne; 
     private String nom;
     private String prenom;
