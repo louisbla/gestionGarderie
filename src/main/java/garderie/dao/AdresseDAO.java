@@ -25,14 +25,12 @@ public class AdresseDAO extends CommonDAO<Adresse>{
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.INSERT_ADRESSE);
             
             //Insert parameter at the location of the question mark in the SQL Query
-            //facturation
-            //domicile
-            //ligne1
-            //ligne2
-            //ligne3
-            //ville
-            //codepostal
-            //pays
+            preparedStatement.setString(1, "ligne_1");
+            preparedStatement.setString(2, "ligne_2");
+            preparedStatement.setString(3, "ligne_3");
+            preparedStatement.setString(4, "ville");
+            preparedStatement.setString(5, "code_postal");
+            preparedStatement.setString(6, "pays");
             
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
@@ -42,15 +40,27 @@ public class AdresseDAO extends CommonDAO<Adresse>{
             Logger.getLogger(AdresseDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        //return adresse;
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
+        return adresse;
     }
 
     @Override
-    public Adresse update(Adresse obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Adresse update(Adresse adresse) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.UPDATE_ADRESSE);
+            
+            preparedStatement.setString(1, adresse.getLigne1());
+            preparedStatement.setString(2, adresse.getLigne2());
+            preparedStatement.setString(3, adresse.getLigne3());
+            preparedStatement.setString(4, adresse.getVille());
+            preparedStatement.setString(5, adresse.getCodePostal());
+            preparedStatement.setString(6, adresse.getPays());
+            
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            
+        } catch (SQLException e) {
+            
+        }
     }
 
     @Override

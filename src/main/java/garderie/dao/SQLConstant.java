@@ -10,6 +10,10 @@ package garderie.dao;
  * @author Katsuo
  */
 public class SQLConstant {
+    protected static final String VISIBLE = "visible = 1";
+    
+    protected static final String NOT_VISIBLE = "visible = 0";
+    
     
     protected static final String INSERT_ACTIVITE = "INSERT INTO activites("
             + "nom, date, description, nb_enfant_max, lieu, prix) VALUES ?,?,?,?,?,? ";
@@ -18,26 +22,34 @@ public class SQLConstant {
             + "nom = ?, date = ?, description = ?, nb_enfant_max = ?, lieu = ?,"
             + " prix = ? WHERE activiteId = ?";
     
-    protected static final String DELETE_ACTIVITE = "DELETE activites WHERE "
-            + "activiteId = ?" ;
+    protected static final String DELETE_ACTIVITE = "UPDATE activites SET " 
+            + NOT_VISIBLE + " WHERE activiteId = ?" ;
     
     protected static final String SELECT_ACTIVITE_BY_ID = "SELECT * FROM activites"
-            + "WHERE activiteId = ?";
+            + "WHERE activiteId = ? AND" + VISIBLE;
     
-    protected static final String SELECT_ACTIVITES = "SELECT * FROM activites";
+    protected static final String SELECT_ACTIVITES = "SELECT * FROM activites WHERE" 
+            + VISIBLE;
+    
+    
     
     protected static final String INSERT_ADRESSE = "INSERT INTO adresses("
-            + "facturation, domicile, ligne_1, ligne_2, ligne_3, ville, code_postal, pays) "
+            + "ligne_1, ligne_2, ligne_3, ville, code_postal, pays) "
             + "VALUES ?,?,?,?,?,?,?,? ";
     
     protected static final String UPDATE_ADRESSE = "UPDATE adresses SET "
-            + "facturation = ?, domicile = ?, ligne_1 = ?, ligne_2 = ? ligne_3 = ?,"
-            + "ville = ?, code_postal = ?, pays = ? ";
+            + "ligne_1 = ?, ligne_2 = ? ligne_3 = ?,"
+            + "ville = ?, code_postal = ?, pays = ? WHERE adresseId = ?";
     
-    //protected static final String DELETE_ADRESSE = "UPDATE adresses SET deleted = 1 WHERE adresseId = ?";
+    protected static final String DELETE_ADRESSE = "UPDATE adresses SET " + 
+            NOT_VISIBLE + " WHERE adresseId = ?";
     
     protected static final String SELECT_ADRESSE_BY_ID = "SELECT * FROM adresses"
-            + "WHERE adresseId = ?";
+            + "WHERE adresseId = ? AND " + VISIBLE;
     
-    protected static final String SELECT_ADRESSES = "SELECT * FROM adresses";
+    protected static final String SELECT_ADRESSES = "SELECT * FROM adresses WHERE " + VISIBLE;
+    
+    
+    
+    
 }

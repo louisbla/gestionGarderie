@@ -16,7 +16,6 @@ public class Facture implements Serializable {
     private int idFacture;
     private Date dateEmission;
     private double montantTTC;
-    private double montantHT;
     private Date datePaiement;
     private int nbEnfant;
     private ArrayList<LigneFacture> lignesFactures;
@@ -60,14 +59,6 @@ public class Facture implements Serializable {
 
     public void setMontantTTC(double montantTTC) {
         this.montantTTC = montantTTC;
-    }
-
-    public double getMontantHT() {
-        return montantHT;
-    }
-
-    public void setMontantHT(double montantHT) {
-        this.montantHT = montantHT;
     }
 
     public Date getDatePaiement() {
