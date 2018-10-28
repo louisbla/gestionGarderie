@@ -14,16 +14,18 @@ public class CompteUser implements Serializable {
     private String mdp;
     private boolean privilege;
     private boolean visible;
+    private Personne personne;
 
     public CompteUser() {
     }
 
     
-    public CompteUser(String login, String mdp, boolean privilege) {
+    public CompteUser(String login, String mdp, boolean privilege, Personne p) {
         this.login = login;
         this.mdp = mdp;
         this.privilege = privilege;
         this.visible = true;
+        this.personne = p;
     }
 
     public int getIdUser() {
@@ -67,6 +69,14 @@ public class CompteUser implements Serializable {
     }
     
     
+    public Personne getPersonne() {
+        return personne;
+    }
+
+    public void setPersonne(Personne personne) {
+        this.personne = personne;
+    }
+    
     /*
     
     public void seConnecter(){
@@ -75,5 +85,5 @@ public class CompteUser implements Serializable {
     public void seDeconnecter(){
     }
     */
-    
+  
 }

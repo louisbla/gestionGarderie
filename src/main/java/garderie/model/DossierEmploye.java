@@ -20,25 +20,24 @@ public class DossierEmploye implements Serializable{
         private double nbMoisAnciennete;
         private TypeContrat typeContrat;
         private double tauxHoraireBrut;
-        private double tauxHoraireNet;
         private boolean visible;
         private ArrayList<Conge> listeConge;
+        private ArrayList<FichePaye> listeFichePaye;
                 
     public DossierEmploye(){
         
     }
 
     public DossierEmploye(Employe em, Date dateEntree, double nbMoisAnciennete,
-            TypeContrat typeContrat,double tauxHoraireBrut,
-            double tauxHoraireNet) {
+            TypeContrat typeContrat,double tauxHoraireBrut) {
         this.employe = em;
         this.dateEntree = dateEntree;
         this.nbMoisAnciennete = nbMoisAnciennete;
         this.typeContrat = typeContrat;
         this.tauxHoraireBrut = tauxHoraireBrut;
-        this.tauxHoraireNet = tauxHoraireNet;
         this.visible = true;
         this.listeConge = new ArrayList();
+        this.listeFichePaye = new ArrayList();
     }
 
     public int getIdDossierEmploye() {
@@ -91,13 +90,6 @@ public class DossierEmploye implements Serializable{
         this.tauxHoraireBrut = tauxHoraireBrut;
     }
     
-    public double getTauxHoraireNet() {
-        return tauxHoraireNet;
-    }
-
-    public void setTauxHoraireNet(double tauxHoraireNet) {
-        this.tauxHoraireNet = tauxHoraireNet;
-    }
 
     public boolean isVisible() {
         return visible;
@@ -120,5 +112,13 @@ public class DossierEmploye implements Serializable{
         Conge c = new Conge(duree,dateDebut,typeConge);
         this.listeConge.add(c);
     }
-    
+
+    public ArrayList<FichePaye> getListeFichePaye() {
+        return listeFichePaye;
+    }
+
+    public void setListeFichePaye(ArrayList<FichePaye> listeFichePaye) {
+        this.listeFichePaye = listeFichePaye;
+    }
+
 }

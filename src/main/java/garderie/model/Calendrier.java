@@ -14,25 +14,25 @@ import java.util.*;
  */
 public class Calendrier implements Serializable{
     private int idCalendrier;
-    private int anneeDebut;
-    private int anneeFin;
+    private int dateDebut;
+    private int dateFin;
     private ArrayList<Horaire> horaires;
     private boolean visible;
 
     public Calendrier() {
     }
 
-    public Calendrier(int anneeDebut, int anneeFin) {
-        this.anneeDebut = anneeDebut;
-        this.anneeFin = anneeFin;
+    public Calendrier(int debut, int fin) {
+        this.dateDebut = debut;
+        this.dateFin = fin;
         this.horaires = new ArrayList<>();
         this.visible = true;
     }
     
 
-    public Calendrier(int anneeDebut, int anneeFin, ArrayList<Horaire> horaires) {
-        this.anneeDebut = anneeDebut;
-        this.anneeFin = anneeFin;
+    public Calendrier(int debut, int fin, ArrayList<Horaire> horaires) {
+        this.dateDebut = debut;
+        this.dateFin = fin;
         this.horaires = horaires;
         this.visible = true;
     }
@@ -45,20 +45,20 @@ public class Calendrier implements Serializable{
         this.idCalendrier = idCalendrier;
     }
 
-    public int getAnneeDebut() {
-        return anneeDebut;
+    public int getDateDebut() {
+        return dateDebut;
     }
 
-    public void setAnneeDebut(int anneeDebut) {
-        this.anneeDebut = anneeDebut;
+    public void setDateDebut(int Debut) {
+        this.dateDebut = Debut;
     }
 
-    public int getAnneeFin() {
-        return anneeFin;
+    public int getDateFin() {
+        return dateFin;
     }
 
-    public void setAnneeFin(int anneeFin) {
-        this.anneeFin = anneeFin;
+    public void setDateFin(int dateFin) {
+        this.dateFin = dateFin;
     }
 
     public ArrayList<Horaire> getHoraires() {

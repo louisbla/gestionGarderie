@@ -21,6 +21,7 @@ public class DossierInscription implements Serializable {
     private ArrayList<DossierContactUrgence> contactsUrgences;
     private ArrayList<DocumentOfficiel> documentsOfficiels;
     private boolean visible;
+    private ArrayList<RapportJournalier> listeRapports;
 
     public DossierInscription() {
     }
@@ -34,9 +35,10 @@ public class DossierInscription implements Serializable {
         this.contactsUrgences = contactsUrgences;
         this.documentsOfficiels = documentsOfficiels;
         this.visible = true;
+        this.listeRapports = new ArrayList();
     }
 
-
+    
 
     public int getIdDossier() {
         return idDossier;
@@ -109,6 +111,12 @@ public class DossierInscription implements Serializable {
     public void setDocumentsOfficiels(ArrayList<DocumentOfficiel> documentsOfficiels) {
         this.documentsOfficiels = documentsOfficiels;
     }
-    
-    
+
+    public ArrayList<RapportJournalier> getListeRapports() {
+        return listeRapports;
+    }
+
+    public void setListeRapports(ArrayList<RapportJournalier> listeRapports) {
+        this.listeRapports = listeRapports;
+    } 
 }

@@ -17,31 +17,21 @@ public abstract class Personne {
     private Date dateNaissance; 
     private String numSecu; 
     private ArrayList<PersonneAdresse> adresses;
-    private CompteUser compteUser;
     private boolean visible = true;
 
     public Personne() {
     }
   
     //Constructeur
-    public Personne(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<PersonneAdresse> adresses, CompteUser compteUser) {
+    public Personne(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<PersonneAdresse> adresses) {
         this.nom = Nom;
         this.prenom = Prenom;
         this.sexe = Sexe;
         this.dateNaissance = DateNaissance;
         this.numSecu = numSecu;
         this.adresses = adresses;
-        this.compteUser = compteUser;
     }
 
-    public Personne(String nom, String prenom, String sexe, Date dateNaissance, String numSecu, ArrayList<PersonneAdresse> adresses) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.sexe = sexe;
-        this.dateNaissance = dateNaissance;
-        this.numSecu = numSecu;
-        this.adresses = adresses;
-    }
 
     public int getIdPersonne() {
         return idPersonne;
@@ -99,14 +89,6 @@ public abstract class Personne {
         this.adresses = adresses;
     }
     
-    public CompteUser getCompteUser() {
-        return compteUser;
-    }
-
-    public void setCompteUser(CompteUser compteUser) {
-        this.compteUser = compteUser;
-    }
-
     public boolean isVisible() {
         return visible;
     }

@@ -21,8 +21,8 @@ public class Parent extends Personne implements Serializable {
     }
 
     //Constructeur
-    public Parent(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<PersonneAdresse> adresses, CompteUser compteUser, ArrayList<Filiation> listeEnf, String numTel, String lienParente, ArrayList<ParentFacture> fact) {
-        super(Nom, Prenom, Sexe, DateNaissance, numSecu, adresses, compteUser);
+    public Parent(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<PersonneAdresse> adresses, ArrayList<Filiation> listeEnf, String numTel, String lienParente, ArrayList<ParentFacture> fact) {
+        super(Nom, Prenom, Sexe, DateNaissance, numSecu, adresses);
         this.listeEnfants = listeEnf;
         this.nbEnfantsInscrits = this.listeEnfants.size();
         this.numTel = numTel;
