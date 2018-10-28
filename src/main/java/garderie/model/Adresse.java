@@ -23,7 +23,7 @@ public class Adresse implements Serializable {
     }
     
     //Constructeur 
-    public Adresse(String ligne1, String ligne2, String ligne3, String ville, String codePostale, String pays, ArrayList<PersonneAdresse> personne) {
+    public Adresse(String ligne1, String ligne2, String ligne3, String ville, String codePostal, String pays, ArrayList<PersonneAdresse> personne) {
         this.ligne1 = ligne1;
         this.ligne2 = ligne2;
         this.ligne3 = ligne3;
@@ -83,10 +83,6 @@ public class Adresse implements Serializable {
 
     public void setVille(String ville) {
         this.ville = ville;
-    }
-
-    public void setCodePostale(String codePostale) {
-        this.codePostal = codePostale;
     }
 
     public void setPays(String pays) {
