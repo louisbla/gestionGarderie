@@ -15,6 +15,8 @@ import java.util.ArrayList;
 public abstract class CommonDAO<T> {
 
     protected Connection connection;
+    
+    
 
     public CommonDAO(Connection connection) {
         this.connection = connection;

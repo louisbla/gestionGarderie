@@ -22,6 +22,7 @@ public class ActiviteDAO extends CommonDAO<Activite>{
 
     public ActiviteDAO(Connection connection) {
         super(connection);
+        
     }
 
     @Override
