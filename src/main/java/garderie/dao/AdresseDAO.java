@@ -16,7 +16,11 @@ import java.util.logging.Logger;
  *
  * @author HP_LOUIS
  */
-public class AdresseDAO extends CommonDAO<Adresse>{
+public class AdresseDAO extends CommonDAO<Adresse> {
+
+    public AdresseDAO() {
+        super(null);
+    }
 
     @Override
     public Adresse create(Adresse adresse) {
