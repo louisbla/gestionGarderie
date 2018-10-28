@@ -18,6 +18,7 @@ public abstract class Personne {
     private String numSecu; 
     private ArrayList<Adresse> adresses;
     private CompteUser compteUser;
+    private boolean visible = true;
 
     public Personne() {
     }
@@ -104,6 +105,14 @@ public abstract class Personne {
 
     public void setCompteUser(CompteUser compteUser) {
         this.compteUser = compteUser;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
         
 }

@@ -16,6 +16,7 @@ public class Facture implements Serializable {
     private int idFacture;
     private Date dateEmission;
     private double montantTTC;
+    private double montantHT;
     private Date datePaiement;
     private int nbEnfant;
     private ArrayList<LigneFacture> lignesFactures;
@@ -57,6 +58,14 @@ public class Facture implements Serializable {
 
     public void setMontantTTC(double montantTTC) {
         this.montantTTC = montantTTC;
+    }
+
+    public double getMontantHT() {
+        return montantHT;
+    }
+
+    public void setMontantHT(double montantHT) {
+        this.montantHT = montantHT;
     }
 
     public Date getDatePaiement() {
@@ -105,12 +114,15 @@ public class Facture implements Serializable {
         this.visible = visible;
     }
     
-      
     public void calculerTotalTTC() {
-        int nbLigne = this.lignesFactures.size();
-        
-        for (int i = 0;i<nbLigne;i++){
-            this.montantTTC = this.montantTTC + this.lignesFactures.get(i).getTotalTTC();
+        for (LigneFacture ligneFacture : lignesFactures) {
+            this.montantTTC = this.montantTTC + ligneFacture.getTotalTTC();
+        }
+    }
+    
+    public void calculerTotalHT() {
+        for (LigneFacture ligneFacture : lignesFactures) {
+            this.montantHT = this.montantHT + ligneFacture.getTotalHT();
         }
     }
    

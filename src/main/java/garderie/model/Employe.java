@@ -18,7 +18,6 @@ public class Employe extends Personne implements Serializable {
         private boolean externe;
         private double nbHeuresReel;
         private ArrayList<Conge> listeConge;
-        private boolean visible;
         private DossierEmploye dossier;
 
     public Employe() {
@@ -33,7 +32,6 @@ public class Employe extends Personne implements Serializable {
         this.nbHeuresReel = 0;
         this.listeConge = new ArrayList();
         this.dossier = dossier;
-        this.visible = true;
     }
 
     public int getIdEmploye() {
@@ -97,15 +95,7 @@ public class Employe extends Personne implements Serializable {
         Conge c = new Conge(duree,dateDebut,typeConge);
         this.listeConge.add(c);
     }
-
-    public boolean isVisible() {
-        return visible;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
+    
     public DossierEmploye getDossier() {
         return dossier;
     }

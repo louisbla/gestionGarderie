@@ -44,12 +44,12 @@ public class Conge implements Serializable {
         this.dureeCongeJour = dureeCongeJour;
     }
 
-    public Date getDateretour() {
-        return this.debutConge;
+    public Date getDebutConge() {
+        return debutConge;
     }
 
-    public void setDateretour(Date dateretour) {
-        this.debutConge = dateretour;
+    public void setDebutConge(Date debutConge) {
+        this.debutConge = debutConge;
     }
 
     public TypeConge getTypeConge() {

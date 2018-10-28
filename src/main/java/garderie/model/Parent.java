@@ -14,7 +14,6 @@ public class Parent extends Personne implements Serializable {
     private int nbEnfantsInscrits; 
     private String numTel;
     private String lienParente;
-    private boolean visible;
     private ArrayList<Enfant> listeEnfants;
     private ArrayList<Facture> factures;
 
@@ -28,7 +27,6 @@ public class Parent extends Personne implements Serializable {
         this.nbEnfantsInscrits = this.listeEnfants.size();
         this.numTel = numTel;
         this.lienParente = lienParente;
-        this.visible = true;
     }
   
     
@@ -55,15 +53,7 @@ public class Parent extends Personne implements Serializable {
     public void setLienParente(String lienParente) {
         this.lienParente = lienParente;
     }
-
-    public boolean isVisible() {
-        return visible;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
+    
     public ArrayList<Enfant> getListeEnfants() {
         return listeEnfants;
     }

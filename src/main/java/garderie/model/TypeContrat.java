@@ -7,16 +7,15 @@ package garderie.model;
 
 /**
  *
- * @author Maryline
+ * @author Katsuo
  */
-public enum NomGroupe {
-    Trotteur ("Trotteur"),
-    Bebe ("Bebe"),
-    Moyen ("Moyen");
+public enum TypeContrat {
+    TempsComplet ("Temps complet"),
+    TempsPartiel ("Temps partiel");
     
     private String libelle = "";
 
-    NomGroupe(String libelle) {
+    private TypeContrat(String libelle) {
         this.libelle = libelle;
     }
 
@@ -24,7 +23,6 @@ public enum NomGroupe {
     public String toString() {
         return libelle;
     }
-    
     
     
 }

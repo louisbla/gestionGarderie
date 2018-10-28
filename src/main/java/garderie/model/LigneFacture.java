@@ -13,7 +13,7 @@ public class LigneFacture implements Serializable {
     private double totalHT;
     private int quantite;
     private Facture facture;
-    private ObjetFacturable objetsFacturable;
+    private ObjetFacturable objetFacturable;
     private boolean visible;
 
     public LigneFacture() {
@@ -23,10 +23,10 @@ public class LigneFacture implements Serializable {
             Facture facture, ObjetFacturable obj) {
         this.quantite = quantite;
         this.facture = facture;
-        this.objetsFacturable = obj;
+        this.objetFacturable = obj;
         this.visible = true;
-        this.totalHT = this.objetsFacturable.getPrixHT() * this.quantite;
-        this.totalTTC = calculTotalTTC();
+        this.totalHT = this.objetFacturable.getPrixHT() * this.quantite;
+        this.totalTTC = this.totalHT * this.objetFacturable.getTva().getMontant();
     }
 
     public int getIdLigneFacture() {
@@ -70,11 +70,11 @@ public class LigneFacture implements Serializable {
     }
 
     public ObjetFacturable getObjetsFacturable() {
-        return objetsFacturable;
+        return objetFacturable;
     }
 
-    public void setObjetsFacturable(ObjetFacturable objetsFacturable) {
-        this.objetsFacturable = objetsFacturable;
+    public void setObjetsFacturable(ObjetFacturable objetFacturable) {
+        this.objetFacturable = objetFacturable;
     }
 
     public boolean isVisible() {
@@ -86,6 +86,6 @@ public class LigneFacture implements Serializable {
     }
     
     public double calculTotalTTC(){
-        return this.totalTTC = this.totalHT * this.objetsFacturable.getTva().getMontant();      
+        return this.totalTTC = this.totalHT * this.objetFacturable.getTva().getMontant();      
     }
 }

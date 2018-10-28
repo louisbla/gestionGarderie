@@ -6,7 +6,6 @@
 package garderie.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -18,7 +17,7 @@ public class DossierEmploye implements Serializable{
         private Employe employe;
         private Date dateEntree; 
         private double nbMoisAnciennete;
-        private String typeContrat;
+        private TypeContrat typeContrat;
         private double salaireNet;
         private double tauxHoraireBrut;
         private double tauxHoraireNet;
@@ -28,7 +27,9 @@ public class DossierEmploye implements Serializable{
         
     }
 
-    public DossierEmploye(Employe em, Date dateEntree, double nbMoisAnciennete, String typeContrat, double salaireNet, double tauxHoraireBrut, double tauxHoraireNet) {
+    public DossierEmploye(Employe em, Date dateEntree, double nbMoisAnciennete,
+            TypeContrat typeContrat, double salaireNet, double tauxHoraireBrut,
+            double tauxHoraireNet) {
         this.employe = em;
         this.dateEntree = dateEntree;
         this.nbMoisAnciennete = nbMoisAnciennete;
@@ -41,6 +42,10 @@ public class DossierEmploye implements Serializable{
 
     public int getIdDossierEmploye() {
         return idDossierEmploye;
+    }
+
+    public void setIdDossierEmploye(int idDossierEmploye) {
+        this.idDossierEmploye = idDossierEmploye;
     }
     
     public Employe getEmploye() {
@@ -68,11 +73,11 @@ public class DossierEmploye implements Serializable{
         this.nbMoisAnciennete = nbMoisAnciennete;
     }
 
-    public String getTypeContrat() {
+    public TypeContrat getTypeContrat() {
         return typeContrat;
     }
 
-    public void setTypeContrat(String typeContrat) {
+    public void setTypeContrat(TypeContrat typeContrat) {
         this.typeContrat = typeContrat;
     }
     

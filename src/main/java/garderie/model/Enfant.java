@@ -11,7 +11,6 @@ import java.util.Date;
 
 
 public class Enfant extends Personne implements Serializable {
-    private boolean visible;
     private String photo;   //url
     private DossierInscription dossier;
     private ArrayList<Parent> listeParents;
@@ -23,23 +22,14 @@ public class Enfant extends Personne implements Serializable {
     //Constructeur
     public Enfant(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, String photo,DossierInscription d, ArrayList<Parent> parents, InventaireEnfant i) {
         super(Nom, Prenom, Sexe, DateNaissance, numSecu, adresses);
-        this.visible = true;
         this.photo = photo;
         this.dossier = d; 
         this.listeParents = parents;
         this.inventaire = i;
     }
-        
-    public boolean isVisible() {
-        return visible;
-    }
 
     public String getPhoto() {
         return photo;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
     }
 
     public void setPhoto(String photo) {
