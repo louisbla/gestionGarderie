@@ -1,3 +1,6 @@
+<%@page import="garderie.db.HibernateTest"%>
+<%@page import="org.hibernate.Hibernate"%>
+<%@page import="garderie.dao.ActiviteDAO"%>
 <%@page import="garderie.db.BDDManagerMySQL"%>
 <%@page import="garderie.db.FactoryBDDManagerInstance"%>
 <%@page import="garderie.db.FactoryBDDManager"%>
@@ -34,13 +37,14 @@
                 out.println("connection succeded");
             }*/
 
+            // test
             Connection connection = FactoryBDDManagerInstance.getInstance(new BDDManagerMySQL()).connect();
-
             if (connection == null) {
                 out.println("connection failed");
             } else {
                 out.println("connection succeded");
             }
+            
         %>
     </body>
 </html>

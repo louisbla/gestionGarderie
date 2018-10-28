@@ -6,6 +6,7 @@
 package garderie.dao;
 
 import garderie.model.Activite;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +19,11 @@ import java.util.logging.Logger;
  * @author Katsuo
  */
 public class ActiviteDAO extends CommonDAO<Activite>{
+
+    public ActiviteDAO(Connection connection) {
+        super(connection);
+        
+    }
 
     @Override
     public Activite create(Activite activite) {
