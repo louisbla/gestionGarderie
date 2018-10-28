@@ -18,20 +18,25 @@ public class DossierInscription implements Serializable {
     private int nbDemiJourneeAbsent;
     private String medecinTraitant;
     private Enfant enfant;
-    private ArrayList<ContactUrgence> contactsUrgences;
+    private ArrayList<DossierContactUrgence> contactsUrgences;
     private ArrayList<DocumentOfficiel> documentsOfficiels;
     private boolean visible;
 
     public DossierInscription() {
     }
 
-    public DossierInscription(Date dateInscription, int nbDemiJourneeInscrit, int nbDemiJourneeAbsent, String medecinTraitant) {
+    public DossierInscription(Date dateInscription, int nbDemiJourneeInscrit, int nbDemiJourneeAbsent, String medecinTraitant, Enfant enfant, ArrayList<DossierContactUrgence> contactsUrgences, ArrayList<DocumentOfficiel> documentsOfficiels) {
         this.dateInscription = dateInscription;
         this.nbDemiJourneeInscrit = nbDemiJourneeInscrit;
         this.nbDemiJourneeAbsent = nbDemiJourneeAbsent;
         this.medecinTraitant = medecinTraitant;
+        this.enfant = enfant;
+        this.contactsUrgences = contactsUrgences;
+        this.documentsOfficiels = documentsOfficiels;
         this.visible = true;
     }
+
+
 
     public int getIdDossier() {
         return idDossier;
@@ -81,11 +86,11 @@ public class DossierInscription implements Serializable {
         this.enfant = enfant;
     }
 
-    public ArrayList<ContactUrgence> getContactsUrgences() {
+    public ArrayList<DossierContactUrgence> getContactsUrgences() {
         return contactsUrgences;
     }
 
-    public void setContactsUrgences(ArrayList<ContactUrgence> contactsUrgences) {
+    public void setContactsUrgences(ArrayList<DossierContactUrgence> contactsUrgences) {
         this.contactsUrgences = contactsUrgences;
     }
 
@@ -95,6 +100,14 @@ public class DossierInscription implements Serializable {
 
     public void setVisible(boolean visible) {
         this.visible = visible;
+    }
+
+    public ArrayList<DocumentOfficiel> getDocumentsOfficiels() {
+        return documentsOfficiels;
+    }
+
+    public void setDocumentsOfficiels(ArrayList<DocumentOfficiel> documentsOfficiels) {
+        this.documentsOfficiels = documentsOfficiels;
     }
     
     

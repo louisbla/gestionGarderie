@@ -6,12 +6,10 @@
 package garderie.model;
 
 import java.io.Serializable;
-
+import java.util.*;
 
 public class Adresse implements Serializable {
     private int idAdresse;
-    private boolean facturation; 
-    private boolean domicile;
     private String ligne1;
     private String ligne2;
     private String ligne3;
@@ -19,14 +17,13 @@ public class Adresse implements Serializable {
     private String codePostal;
     private String pays;
     private boolean visible;
+    private ArrayList<PersonneAdresse> listPersonne;
 
     public Adresse() {
     }
     
     //Constructeur 
-    public Adresse(boolean facturation, boolean domicile, String ligne1, String ligne2, String ligne3, String ville, String codePostale, String pays) {
-        this.facturation = facturation;
-        this.domicile = domicile;
+    public Adresse(String ligne1, String ligne2, String ligne3, String ville, String codePostale, String pays, ArrayList<PersonneAdresse> personne) {
         this.ligne1 = ligne1;
         this.ligne2 = ligne2;
         this.ligne3 = ligne3;
@@ -34,6 +31,7 @@ public class Adresse implements Serializable {
         this.codePostal = codePostale;
         this.pays = pays;
         this.visible = true;
+        this.listPersonne = personne;
     }
 
     public int getIdAdresse() {
@@ -45,13 +43,6 @@ public class Adresse implements Serializable {
     }
     
 
-    public boolean isFacturation() {
-        return facturation;
-    }
-
-    public boolean isDomicile() {
-        return domicile;
-    }
 
     public String getLigne1() {
         return ligne1;
@@ -69,21 +60,10 @@ public class Adresse implements Serializable {
         return ville;
     }
 
-    public String getCodePostale() {
-        return codePostal;
-    }
-
     public String getPays() {
         return pays;
     }
 
-    public void setFacturation(boolean facturation) {
-        this.facturation = facturation;
-    }
-
-    public void setDomicile(boolean domicile) {
-        this.domicile = domicile;
-    }
 
     public void setLigne1(String ligne1) {
         this.ligne1 = ligne1;
@@ -101,10 +81,6 @@ public class Adresse implements Serializable {
         this.ville = ville;
     }
 
-    public void setCodePostale(String codePostale) {
-        this.codePostal = codePostale;
-    }
-
     public void setPays(String pays) {
         this.pays = pays;
     }
@@ -115,6 +91,22 @@ public class Adresse implements Serializable {
 
     public void setVisible(boolean visible) {
         this.visible = visible;
+    }
+
+    public String getCodePostal() {
+        return codePostal;
+    }
+
+    public void setCodePostal(String codePostal) {
+        this.codePostal = codePostal;
+    }
+
+    public ArrayList<PersonneAdresse> getListPersonne() {
+        return listPersonne;
+    }
+
+    public void setListPersonne(ArrayList<PersonneAdresse> listPersonne) {
+        this.listPersonne = listPersonne;
     }
     
     

@@ -16,7 +16,7 @@ public abstract class Personne {
     private String sexe; 
     private Date dateNaissance; 
     private String numSecu; 
-    private ArrayList<Adresse> adresses;
+    private ArrayList<PersonneAdresse> adresses;
     private CompteUser compteUser;
     private boolean visible = true;
 
@@ -24,7 +24,7 @@ public abstract class Personne {
     }
   
     //Constructeur
-    public Personne(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, CompteUser compteUser) {
+    public Personne(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<PersonneAdresse> adresses, CompteUser compteUser) {
         this.nom = Nom;
         this.prenom = Prenom;
         this.sexe = Sexe;
@@ -34,7 +34,7 @@ public abstract class Personne {
         this.compteUser = compteUser;
     }
 
-    public Personne(String nom, String prenom, String sexe, Date dateNaissance, String numSecu, ArrayList<Adresse> adresses) {
+    public Personne(String nom, String prenom, String sexe, Date dateNaissance, String numSecu, ArrayList<PersonneAdresse> adresses) {
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
@@ -71,7 +71,7 @@ public abstract class Personne {
         return numSecu;
     }
 
-    public ArrayList<Adresse> getAdresses() {
+    public ArrayList<PersonneAdresse> getAdresses() {
         return adresses;
     }
        
@@ -95,7 +95,7 @@ public abstract class Personne {
         this.numSecu = numSecu;
     }
 
-    public void setAdresses(ArrayList<Adresse> adresses) {
+    public void setAdresses(ArrayList<PersonneAdresse> adresses) {
         this.adresses = adresses;
     }
     
