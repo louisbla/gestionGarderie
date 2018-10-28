@@ -14,7 +14,6 @@ import java.util.*;
 public class Groupe implements Serializable {
     private int idGroupe; 
     private NomGroupe nom;
-    private int nbEnfant;
     private String descriptif;
     private Employe referant;
     private ArrayList<Enfant> listeEnfants;
@@ -28,7 +27,6 @@ public class Groupe implements Serializable {
         this.descriptif = descriptif;
         this.referant = referant;
         this.listeEnfants = liste;
-        this.nbEnfant = this.listeEnfants.size();
         this.visible = true;
     }
  
@@ -49,13 +47,6 @@ public class Groupe implements Serializable {
         this.nom = nom;
     }
 
-    public int getNbEnfant() {
-        return nbEnfant;
-    }
-
-    public void setNbEnfant(int nbEnfant) {
-        this.nbEnfant = nbEnfant;
-    }
 
     public String getDescriptif() {
         return descriptif;
