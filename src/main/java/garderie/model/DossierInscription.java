@@ -20,6 +20,7 @@ public class DossierInscription implements Serializable {
     private Enfant enfant;
     private ArrayList<ContactUrgence> contactsUrgences;
     private ArrayList<DocumentOfficiel> documentsOfficiels;
+    private boolean visible;
 
     public DossierInscription() {
     }
@@ -29,6 +30,7 @@ public class DossierInscription implements Serializable {
         this.nbDemiJourneeInscrit = nbDemiJourneeInscrit;
         this.nbDemiJourneeAbsent = nbDemiJourneeAbsent;
         this.medecinTraitant = medecinTraitant;
+        this.visible = true;
     }
 
     public int getIdDossier() {
@@ -78,5 +80,22 @@ public class DossierInscription implements Serializable {
     public void setEnfant(Enfant enfant) {
         this.enfant = enfant;
     }
+
+    public ArrayList<ContactUrgence> getContactsUrgences() {
+        return contactsUrgences;
+    }
+
+    public void setContactsUrgences(ArrayList<ContactUrgence> contactsUrgences) {
+        this.contactsUrgences = contactsUrgences;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+    
     
 }

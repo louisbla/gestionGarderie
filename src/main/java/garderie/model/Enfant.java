@@ -13,15 +13,19 @@ import java.util.Date;
 public class Enfant extends Personne implements Serializable {
     private boolean visible;
     private String photo;   //url
-
+    private DossierInscription dossier;
+    private ArrayList<Parent> listeParents;
+    
     public Enfant() {
     }
 
     //Constructeur
-    public Enfant(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, String photo) {
+    public Enfant(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, String photo,DossierInscription d, ArrayList<Parent> parents) {
         super(Nom, Prenom, Sexe, DateNaissance, numSecu, adresses);
         this.visible = true;
         this.photo = photo;
+        this.dossier = d; 
+        this.listeParents = parents;
     }
         
     public boolean isVisible() {
@@ -39,6 +43,22 @@ public class Enfant extends Personne implements Serializable {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-    
+
+    public DossierInscription getDossier() {
+        return dossier;
+    }
+
+    public void setDossier(DossierInscription dossier) {
+        this.dossier = dossier;
+    }
+
+    public ArrayList<Parent> getListeParents() {
+        return listeParents;
+    }
+
+    public void setListeParents(ArrayList<Parent> listeParents) {
+        this.listeParents = listeParents;
+    }
+  
     
 }

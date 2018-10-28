@@ -14,17 +14,21 @@ public class Parent extends Personne implements Serializable {
     private int nbEnfantsInscrits; 
     private String numTel;
     private String lienParente;
+    private boolean visible;
+    private ArrayList<Enfant> listeEnfants;
     private ArrayList<Facture> factures;
 
     public Parent() {
     }
 
     //Constructeur
-    public Parent(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, CompteUser compteUser, int nbEnfantsInscrits, String numTel, String lienParente) {
+    public Parent(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, CompteUser compteUser, ArrayList<Enfant> listeEnf, String numTel, String lienParente) {
         super(Nom, Prenom, Sexe, DateNaissance, numSecu, adresses, compteUser);
-        this.nbEnfantsInscrits = nbEnfantsInscrits;
+        this.listeEnfants = listeEnf;
+        this.nbEnfantsInscrits = this.listeEnfants.size();
         this.numTel = numTel;
         this.lienParente = lienParente;
+        this.visible = true;
     }
   
     
@@ -50,6 +54,22 @@ public class Parent extends Personne implements Serializable {
 
     public void setLienParente(String lienParente) {
         this.lienParente = lienParente;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+
+    public ArrayList<Enfant> getListeEnfants() {
+        return listeEnfants;
+    }
+
+    public void setListeEnfants(ArrayList<Enfant> listeEnfants) {
+        this.listeEnfants = listeEnfants;
     }
 
     public ArrayList<Facture> getFactures() {

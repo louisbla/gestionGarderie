@@ -18,7 +18,8 @@ public class ObjetFacturable implements Serializable {
     private String nom;
     private String type;
     private TVA tva;
-
+    private boolean visible;
+    
     public ObjetFacturable() {
     }
     
@@ -28,6 +29,7 @@ public class ObjetFacturable implements Serializable {
         this.nom = nom;
         this.type = type;
         this.tva = tva;
+        this.visible = true;
     }
 
     public int getIdObjectFacturable() {
@@ -50,7 +52,7 @@ public class ObjetFacturable implements Serializable {
         return prixHT;
     }
 
-    public void setPrixHT(double prixHT) {
+    public void setPrixHT (double prixHT) {
         this.prixHT = prixHT;
     }
 
@@ -77,4 +79,14 @@ public class ObjetFacturable implements Serializable {
     public void setTva(TVA tva) {
         this.tva = tva;
     }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+ 
+    
 }

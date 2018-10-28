@@ -19,6 +19,7 @@ public class RapportJournalier implements Serializable {
     private String resumeJournee;
     private Enfant enfant;
     private ArrayList<Employe> referants;
+    private boolean visible;
 
     public RapportJournalier() {
     }
@@ -29,6 +30,7 @@ public class RapportJournalier implements Serializable {
         this.resumeJournee = resumeJournee;
         this.enfant = enfant;
         this.referants = referants;
+        this.visible = true;
     }
 
     public int getIdRapportJournalier() {
@@ -78,7 +80,13 @@ public class RapportJournalier implements Serializable {
     public void setReferants(ArrayList<Employe> referants) {
         this.referants = referants;
     }
-    
-    
-    
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+     
 }

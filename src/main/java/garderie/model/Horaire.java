@@ -17,6 +17,7 @@ public class Horaire implements Serializable {
     private Date date;
     private double heureDebut;
     private double heureFin;
+    private boolean visible;
 
     public Horaire() {
     }
@@ -25,6 +26,7 @@ public class Horaire implements Serializable {
         this.date = date;
         this.heureDebut = heureDebut;
         this.heureFin = heureFin;
+        this.visible = true;
     }
 
     public int getIdHoraire() {
@@ -57,6 +59,14 @@ public class Horaire implements Serializable {
 
     public void setHeureFin(double heureFin) {
         this.heureFin = heureFin;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
     
     

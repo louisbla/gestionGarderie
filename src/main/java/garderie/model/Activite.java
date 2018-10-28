@@ -20,6 +20,7 @@ public class Activite implements Serializable{
     private int nbEnfantMax;
     private String lieu;
     private double prix;
+    private boolean visible;
 
     public Activite() {
     }
@@ -32,6 +33,7 @@ public class Activite implements Serializable{
         this.nbEnfantMax = nbEnfantMax;
         this.lieu = lieu;
         this.prix = prix;
+        this.visible = true;
     }
 
     public int getIdActivite() {
@@ -88,6 +90,14 @@ public class Activite implements Serializable{
 
     public void setPrix(double prix) {
         this.prix = prix;
+    }
+
+    public boolean isVisible() {
+        return this.visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
     
 }

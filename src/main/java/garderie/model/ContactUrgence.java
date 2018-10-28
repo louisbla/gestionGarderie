@@ -16,6 +16,7 @@ import java.util.Date;
 public class ContactUrgence extends Personne implements Serializable {
     private String numTel;
     private String lien;
+    private boolean visible;
 
     public ContactUrgence() {
     }
@@ -24,6 +25,7 @@ public class ContactUrgence extends Personne implements Serializable {
         super(nom, prenom, sexe, dateNaissance, numSecu, adresses);
         this.numTel = numTel;
         this.lien = lien;
+        this.visible = true;
     }
 
     public String getNumTel() {
@@ -40,6 +42,14 @@ public class ContactUrgence extends Personne implements Serializable {
 
     public void setLien(String lien) {
         this.lien = lien;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
     
     

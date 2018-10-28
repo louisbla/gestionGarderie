@@ -6,6 +6,7 @@
 package garderie.model;
 import garderie.model.*;
 import java.io.Serializable;
+import java.util.*;
 /**
  *
  * @author Maryline
@@ -16,15 +17,19 @@ public class Groupe implements Serializable {
     private int nbEnfant;
     private String descriptif;
     private Employe referant;
+    private ArrayList<Enfant> listeEnfants;
+    private boolean visible;
 
     public Groupe() {
     }
     
-    public Groupe(NomGroupe nom, int nbEnfant, String descriptif, Employe referant) {
+    public Groupe(NomGroupe nom, String descriptif, Employe referant,ArrayList<Enfant> liste) {
         this.nom = nom;
-        this.nbEnfant = nbEnfant;
         this.descriptif = descriptif;
         this.referant = referant;
+        this.listeEnfants = liste;
+        this.nbEnfant = this.listeEnfants.size();
+        this.visible = true;
     }
  
     
@@ -67,7 +72,28 @@ public class Groupe implements Serializable {
     public void setReferant(Employe referant) {
         this.referant = referant;
     }
-    
-    
 
+    public ArrayList<Enfant> getListeEnfants() {
+        return listeEnfants;
+    }
+
+    public void setListeEnfants(ArrayList<Enfant> listeEnfants) {
+        this.listeEnfants = listeEnfants;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+    
+    public void ajouterEnfant(Enfant e){
+        this.listeEnfants.add(e);
+    }
+
+    public void supprimerEnfant(Enfant e){
+        this.listeEnfants.remove(e);
+    }
 }

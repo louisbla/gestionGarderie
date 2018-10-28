@@ -13,33 +13,27 @@ import java.util.Date;
 public class Employe extends Personne implements Serializable {
         private int idEmploye;
         private String numTel;
-        private double salaireNet;
         private double nbHeuresPrevues;
-        private double tauxHoraireBrut;
         private String poste;
-        private double tauxHoraireNet;
         private boolean externe;
-        private Date dateEntree; 
-        private double nbMoisAnciennete; 
         private double nbHeuresReel;
         private ArrayList<Conge> listeConge;
+        private boolean visible;
+        private DossierEmploye dossier;
 
     public Employe() {
     }
 
-    public Employe(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, CompteUser compteUser, String numTel, double salaireNet, double nbHeuresPrevues, double tauxHoraireBrut, String poste, double tauxHoraireNet, boolean externe, Date dateEntree, double nbMoisAnciennete) {
+    public Employe(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, CompteUser compteUser, String numTel, double nbHeuresPrevues,  String poste,  boolean externe, DossierEmploye dossier) {
         super(Nom, Prenom, Sexe, DateNaissance, numSecu, adresses, compteUser);
         this.numTel = numTel;
-        this.salaireNet = salaireNet;
         this.nbHeuresPrevues = nbHeuresPrevues;
-        this.tauxHoraireBrut = tauxHoraireBrut;
         this.poste = poste;
-        this.tauxHoraireNet = tauxHoraireNet;
         this.externe = externe;
-        this.dateEntree = dateEntree;
-        this.nbMoisAnciennete = nbMoisAnciennete;
         this.nbHeuresReel = 0;
         this.listeConge = new ArrayList();
+        this.dossier = dossier;
+        this.visible = true;
     }
 
     public int getIdEmploye() {
@@ -55,13 +49,7 @@ public class Employe extends Personne implements Serializable {
         this.numTel = numTel;
     }
 
-    public double getSalaireNet() {
-        return salaireNet;
-    }
 
-    public void setSalaireNet(double salaireNet) {
-        this.salaireNet = salaireNet;
-    }
 
     public double getNbHeuresPrevues() {
         return nbHeuresPrevues;
@@ -71,13 +59,6 @@ public class Employe extends Personne implements Serializable {
         this.nbHeuresPrevues = nbHeuresPrevues;
     }
 
-    public double getTauxHoraireBrut() {
-        return tauxHoraireBrut;
-    }
-
-    public void setTauxHoraireBrut(double tauxHoraireBrut) {
-        this.tauxHoraireBrut = tauxHoraireBrut;
-    }
 
     public String getPoste() {
         return poste;
@@ -85,14 +66,6 @@ public class Employe extends Personne implements Serializable {
 
     public void setPoste(String poste) {
         this.poste = poste;
-    }
-
-    public double getTauxHoraireNet() {
-        return tauxHoraireNet;
-    }
-
-    public void setTauxHoraireNet(double tauxHoraireNet) {
-        this.tauxHoraireNet = tauxHoraireNet;
     }
 
     public boolean isExterne() {
@@ -103,21 +76,6 @@ public class Employe extends Personne implements Serializable {
         this.externe = externe;
     }
 
-    public Date getDateEntree() {
-        return dateEntree;
-    }
-
-    public void setDateEntree(Date dateEntree) {
-        this.dateEntree = dateEntree;
-    }
-
-    public double getNbMoisAnciennete() {
-        return nbMoisAnciennete;
-    }
-
-    public void setNbMoisAnciennete(double nbMoisAnciennete) {
-        this.nbMoisAnciennete = nbMoisAnciennete;
-    }
 
     public double getNbHeuresReel() {
         return nbHeuresReel;
@@ -139,4 +97,23 @@ public class Employe extends Personne implements Serializable {
         Conge c = new Conge(duree,dateDebut,typeConge);
         this.listeConge.add(c);
     }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+
+    public DossierEmploye getDossier() {
+        return dossier;
+    }
+
+    public void setDossier(DossierEmploye dossier) {
+        this.dossier = dossier;
+    }
+ 
+    
+    
 }
