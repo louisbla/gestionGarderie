@@ -77,8 +77,12 @@ public class Calendrier implements Serializable{
         this.visible = visible;
     }
     
+    public void ajouterHoraire(Horaire h){
+        this.horaires.add(h);
+    }
     
-    
-    
+    public void supprimerHoraire(Horaire h){
+        this.horaires.remove(h);
+    }
     
 }

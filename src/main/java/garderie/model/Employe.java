@@ -114,6 +114,19 @@ public class Employe extends Personne implements Serializable {
         this.dossier = dossier;
     }
  
+    /*
+    public void modifierInventaire(){
+    }
     
+    public void modifierCalendrier(){
+    }
+    
+    public void accesDosier(){
+    }
+    
+    public void editerRapportJournalier(){
+    }
+    
+    */
     
 }
