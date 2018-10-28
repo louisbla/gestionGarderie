@@ -26,21 +26,17 @@ public class Article implements Serializable{
         this.visible = true;
         this.description = description;
         this.categorie = c; 
-    }
-
-    public Article(Article a){
-        this.idArticle = a.getIdArticle();
-        this.nom = a.getNom();
-        this.quantite = a.getQuantite();
-        this.photo = a.getPhoto();
-        this.visible = true;
-        this.description = a.getDescription();
-        this.categorie = a.getCategorie();
+        this.categorie.getListeArticle().add(this);
     }
     
     public int getIdArticle() {
         return this.idArticle;
     }
+
+    public void setIdArticle(int idArticle) {
+        this.idArticle = idArticle;
+    }
+    
 
     public String getNom() {
         return this.nom;
@@ -88,7 +84,9 @@ public class Article implements Serializable{
     }
 
     public void setCategorie(CategorieArticle categorie) {
+        this.categorie.getListeArticle().remove(this);
         this.categorie = categorie;
+        this.categorie.getListeArticle().add(this);
     }
     
 }

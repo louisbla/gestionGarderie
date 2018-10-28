@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package garderie.model;
 import java.io.Serializable;
-import java.util.*;
 
 /**
  *
@@ -17,22 +12,28 @@ public class LigneFacture implements Serializable {
     private double totalHT;
     private int quantite;
     private Facture facture;
-    private ArrayList<ObjetFacturable> objetsFacturables;
+    private ObjetFacturable objetFacturable;
+    private boolean visible;
 
     public LigneFacture() {
     }
 
-    public LigneFacture(double totalTTC, double totalHT, int quantite,
-            Facture facture) {
-        this.totalTTC = totalTTC;
-        this.totalHT = totalHT;
+    public LigneFacture( int quantite,
+            Facture facture, ObjetFacturable obj) {
         this.quantite = quantite;
         this.facture = facture;
-        this.objetsFacturables = new ArrayList<>();
+        this.objetFacturable = obj;
+        this.visible = true;
+        this.totalHT = this.objetFacturable.getPrixHT() * this.quantite;
+        this.totalTTC = this.totalHT * this.objetFacturable.getTva().getMontant();
     }
 
     public int getIdLigneFacture() {
         return idLigneFacture;
+    }
+
+    public void setIdLigneFacture(int idLigneFacture) {
+        this.idLigneFacture = idLigneFacture;
     }
 
     public double getTotalTTC() {
@@ -59,18 +60,6 @@ public class LigneFacture implements Serializable {
         this.quantite = quantite;
     }
 
-    public ArrayList<ObjetFacturable> getObjetsFacturables() {
-        return objetsFacturables;
-    }
-
-    public void setObjetsFacturables(ArrayList<ObjetFacturable> objetsFacturables) {
-        this.objetsFacturables = objetsFacturables;
-    }
-    
-    private void ajouterObjetFacturable(ObjetFacturable objetFacturable) {
-        this.objetsFacturables.add(objetFacturable);
-    }
-
     public Facture getFacture() {
         return facture;
     }
@@ -78,6 +67,24 @@ public class LigneFacture implements Serializable {
     public void setFacture(Facture facture) {
         this.facture = facture;
     }
+
+    public ObjetFacturable getObjetsFacturable() {
+        return objetFacturable;
+    }
+
+    public void setObjetsFacturable(ObjetFacturable objetFacturable) {
+        this.objetFacturable = objetFacturable;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
     
-    
+    public double calculTotalTTC(){
+        return this.totalTTC = this.totalHT * this.objetFacturable.getTva().getMontant();      
+    }
 }

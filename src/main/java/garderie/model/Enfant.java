@@ -11,34 +11,62 @@ import java.util.Date;
 
 
 public class Enfant extends Personne implements Serializable {
-    private boolean visible;
     private String photo;   //url
-
+    private DossierInscription dossier;
+    private ArrayList<Filiation> listeParents;
+    private InventaireEnfant inventaire;
+    private ArrayList<Traitement> traitement;
+    
     public Enfant() {
     }
 
     //Constructeur
-    public Enfant(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, String photo) {
+    public Enfant(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<PersonneAdresse> adresses, String photo,DossierInscription d, ArrayList<Filiation> parents, InventaireEnfant i, ArrayList<Traitement> t) {
         super(Nom, Prenom, Sexe, DateNaissance, numSecu, adresses);
-        this.visible = true;
         this.photo = photo;
-    }
-        
-    public boolean isVisible() {
-        return visible;
+        this.dossier = d; 
+        this.listeParents = parents;
+        this.inventaire = i;
+        this.traitement = t;      
     }
 
     public String getPhoto() {
         return photo;
     }
 
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-    
-    
+
+    public DossierInscription getDossier() {
+        return dossier;
+    }
+
+    public void setDossier(DossierInscription dossier) {
+        this.dossier = dossier;
+    }
+
+    public ArrayList<Filiation> getListeParents() {
+        return listeParents;
+    }
+
+    public void setListeParents(ArrayList<Filiation> listeParents) {
+        this.listeParents = listeParents;
+    }
+
+    public InventaireEnfant getInventaire() {
+        return inventaire;
+    }
+
+    public void setInventaire(InventaireEnfant inventaire) {
+        this.inventaire = inventaire;
+    }
+
+    public ArrayList<Traitement> getTraitement() {
+        return traitement;
+    }
+
+    public void setTraitement(ArrayList<Traitement> traitement) {
+        this.traitement = traitement;
+    }
 }

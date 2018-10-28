@@ -14,16 +14,20 @@ public class Parent extends Personne implements Serializable {
     private int nbEnfantsInscrits; 
     private String numTel;
     private String lienParente;
+    private ArrayList<Filiation> listeEnfants;
+    private ArrayList<ParentFacture> factures;
 
     public Parent() {
     }
 
     //Constructeur
-    public Parent(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, CompteUser compteUser, int nbEnfantsInscrits, String numTel, String lienParente) {
+    public Parent(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<PersonneAdresse> adresses, CompteUser compteUser, ArrayList<Filiation> listeEnf, String numTel, String lienParente, ArrayList<ParentFacture> fact) {
         super(Nom, Prenom, Sexe, DateNaissance, numSecu, adresses, compteUser);
-        this.nbEnfantsInscrits = nbEnfantsInscrits;
+        this.listeEnfants = listeEnf;
+        this.nbEnfantsInscrits = this.listeEnfants.size();
         this.numTel = numTel;
         this.lienParente = lienParente;
+        this.factures = fact;
     }
   
     
@@ -50,6 +54,24 @@ public class Parent extends Personne implements Serializable {
     public void setLienParente(String lienParente) {
         this.lienParente = lienParente;
     }
+    
+    public ArrayList<Filiation> getListeEnfants() {
+        return listeEnfants;
+    }
+
+    public void setListeEnfants(ArrayList<Filiation> listeEnfants) {
+        this.listeEnfants = listeEnfants;
+    }
+
+    public ArrayList<ParentFacture> getFactures() {
+        return factures;
+    }
+
+    public void setFactures(ArrayList<ParentFacture> factures) {
+        this.factures = factures;
+    }
+    
+    
     
     
 }

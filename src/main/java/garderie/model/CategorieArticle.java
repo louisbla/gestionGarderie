@@ -15,6 +15,7 @@ public class CategorieArticle implements Serializable {
     private int idCategorie;
     private ArrayList<Article> listeArticle;
     private String nom;
+    private boolean visible;
 
     public CategorieArticle() {
     }    
@@ -22,10 +23,15 @@ public class CategorieArticle implements Serializable {
     public CategorieArticle(ArrayList<Article> listeArticle, String nom) {
         this.listeArticle = listeArticle;
         this.nom = nom;
+        this.visible = true;
     }
 
     public int getIdCategorie() {
         return idCategorie;
+    }
+
+    public void setIdCategorie(int idCategorie) {
+        this.idCategorie = idCategorie;
     }
 
     public ArrayList<Article> getListeArticle() {
@@ -42,6 +48,14 @@ public class CategorieArticle implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
     
     

@@ -6,7 +6,7 @@
 package garderie.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -20,21 +20,28 @@ public class Activite implements Serializable{
     private int nbEnfantMax;
     private String lieu;
     private double prix;
+    private boolean visible;
 
     public Activite() {
     }
 
-    public Activite(String nom, Date date, String description, int nbEnfantMax, String lieu, double prix) {
+    public Activite(int idActivite, String nom, Date date, String description, int nbEnfantMax, String lieu, double prix) {
+        this.idActivite = idActivite;
         this.nom = nom;
         this.date = date;
         this.description = description;
         this.nbEnfantMax = nbEnfantMax;
         this.lieu = lieu;
         this.prix = prix;
+        this.visible = true;
     }
 
     public int getIdActivite() {
         return idActivite;
+    }
+
+    public void setIdActivite(int idActivite) {
+        this.idActivite = idActivite;
     }
 
     public String getNom() {
@@ -83,6 +90,14 @@ public class Activite implements Serializable{
 
     public void setPrix(double prix) {
         this.prix = prix;
+    }
+
+    public boolean isVisible() {
+        return this.visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
     
 }

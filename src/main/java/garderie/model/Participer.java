@@ -17,6 +17,7 @@ public class Participer implements Serializable {
     private Salle salle;
     private Activite activite;
     private Date date;
+    private boolean visible;
 
     public Participer() {
     }
@@ -26,6 +27,7 @@ public class Participer implements Serializable {
         this.salle = salle;
         this.activite = activite;
         this.date = date;
+        this.visible = true;
     }
 
     public Groupe getGroupe() {
@@ -59,5 +61,13 @@ public class Participer implements Serializable {
     public void setDate(Date date) {
         this.date = date;
     }
-    
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+ 
 }

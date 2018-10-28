@@ -18,25 +18,32 @@ public class Facture implements Serializable {
     private double montantTTC;
     private double montantHT;
     private Date datePaiement;
-    private boolean paye;
     private int nbEnfant;
     private ArrayList<LigneFacture> lignesFactures;
+    private StatutFacture statut;
+    private boolean visible;
+    private ArrayList<ParentFacture> parent;
 
     public Facture() {
     }
     
-    public Facture(Date dateEmission, double montantTTC, double montantHT, Date datePaiement, boolean paye, int nbEnfant) {
+    public Facture(Date dateEmission, double montantTTC, Date datePaiement, int nbEnfant, StatutFacture statut,ArrayList<ParentFacture> p) {
         this.dateEmission = dateEmission;
         this.montantTTC = montantTTC;
-        this.montantHT = montantHT;
         this.datePaiement = datePaiement;
-        this.paye = paye;
         this.nbEnfant = nbEnfant;
         this.lignesFactures = new ArrayList<>();
+        this.statut = statut;
+        this.visible = true;
+        this.parent = p;
     }
 
     public int getIdFacture() {
         return this.idFacture;
+    }
+
+    public void setIdFacture(int idFacture) {
+        this.idFacture = idFacture;
     }
 
     public Date getDateEmission() {
@@ -55,14 +62,6 @@ public class Facture implements Serializable {
         this.montantTTC = montantTTC;
     }
 
-    public double getMontantHT() {
-        return this.montantHT;
-    }
-
-    public void setMontantHT(double montantHT) {
-        this.montantHT = montantHT;
-    }
-
     public Date getDatePaiement() {
         return this.datePaiement;
     }
@@ -71,13 +70,6 @@ public class Facture implements Serializable {
         this.datePaiement = datePaiement;
     }
 
-    public boolean isPaye() {
-        return this.paye;
-    }
-
-    public void setPaye(boolean paye) {
-        this.paye = paye;
-    }
 
     public int getNbEnfant() {
         return this.nbEnfant;
@@ -86,10 +78,7 @@ public class Facture implements Serializable {
     public void setNbEnfant(int nbEnfant) {
         this.nbEnfant = nbEnfant;
     }
-    
-    public void calculerTotalTTC() {
-        
-    }
+
 
     public ArrayList<LigneFacture> getLignesFactures() {
         return lignesFactures;
@@ -102,5 +91,42 @@ public class Facture implements Serializable {
     public void ajouterLigneFacture(LigneFacture ligneFacture) {
         this.lignesFactures.add(ligneFacture);
     }
+
+    public StatutFacture getStatut() {
+        return statut;
+    }
+
+    public void setStatut(StatutFacture statut) {
+        this.statut = statut;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+    
+    public void calculerTotalTTC() {
+        for (LigneFacture ligneFacture : lignesFactures) {
+            this.montantTTC = this.montantTTC + ligneFacture.getTotalTTC();
+        }
+    }
+    
+    public void calculerTotalHT() {
+        for (LigneFacture ligneFacture : lignesFactures) {
+            this.montantHT = this.montantHT + ligneFacture.getTotalHT();
+        }
+    }
+
+    public ArrayList<ParentFacture> getParent() {
+        return parent;
+    }
+
+    public void setParent(ArrayList<ParentFacture> parent) {
+        this.parent = parent;
+    }
+   
     
 }

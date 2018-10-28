@@ -19,6 +19,7 @@ public class Traitement implements Serializable {
     private String type;
     private double quantite;
     private int frequence;
+    private boolean visible;
 
     public Traitement() {
     }
@@ -31,6 +32,7 @@ public class Traitement implements Serializable {
         this.type = type;
         this.quantite = quantite;
         this.frequence = frequence;
+        this.visible = true;
     }
 
     public Maladie getMaladie() {
@@ -87,6 +89,14 @@ public class Traitement implements Serializable {
 
     public void setFrequence(int frequence) {
         this.frequence = frequence;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
     
     

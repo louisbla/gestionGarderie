@@ -4,19 +4,18 @@
  * and open the template in the editor.
  */
 package garderie.model;
-
 /**
  *
  * @author Maryline
  */
-public enum NomGroupe {
-    Trotteur ("Trotteur"),
-    Bebe ("Bebe"),
-    Moyen ("Moyen");
+public enum StatutFacture{
+    EnAttenteDePaiement ("en attente de paiement"),
+    Payée ("payée"),
+    EnRetard ("en retard");
     
     private String libelle = "";
 
-    NomGroupe(String libelle) {
+    private StatutFacture(String libelle) {
         this.libelle = libelle;
     }
 
@@ -24,6 +23,7 @@ public enum NomGroupe {
     public String toString() {
         return libelle;
     }
+    
     
     
     

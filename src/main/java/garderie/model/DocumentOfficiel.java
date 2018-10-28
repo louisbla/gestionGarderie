@@ -16,6 +16,8 @@ public class DocumentOfficiel implements Serializable {
     private int idDocument;
     private String nom;
     private String url;
+    private boolean visible;
+    
 
     public DocumentOfficiel() {
     }
@@ -23,10 +25,15 @@ public class DocumentOfficiel implements Serializable {
     public DocumentOfficiel(String nom, String url) {
         this.nom = nom;
         this.url = url;
+        this.visible = true;
     }
 
     public int getIdDocument() {
         return this.idDocument;
+    }
+
+    public void setIdDocument(int idDocument) {
+        this.idDocument = idDocument;
     }
 
 
@@ -44,6 +51,14 @@ public class DocumentOfficiel implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
     
     

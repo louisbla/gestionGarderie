@@ -16,14 +16,16 @@ import java.util.Date;
 public class ContactUrgence extends Personne implements Serializable {
     private String numTel;
     private String lien;
+    private ArrayList<DossierContactUrgence> dossier;
 
     public ContactUrgence() {
     }
     
-    public ContactUrgence(String numTel, String lien, String nom, String prenom, String sexe, Date dateNaissance, String numSecu, ArrayList<Adresse> adresses) {
+    public ContactUrgence(String numTel, String lien, String nom, String prenom, String sexe, Date dateNaissance, String numSecu, ArrayList<PersonneAdresse> adresses, ArrayList<DossierContactUrgence> d) {
         super(nom, prenom, sexe, dateNaissance, numSecu, adresses);
         this.numTel = numTel;
         this.lien = lien;
+        this.dossier = d;
     }
 
     public String getNumTel() {
@@ -41,6 +43,15 @@ public class ContactUrgence extends Personne implements Serializable {
     public void setLien(String lien) {
         this.lien = lien;
     }
+
+    public ArrayList<DossierContactUrgence> getDossier() {
+        return dossier;
+    }
+
+    public void setDossier(ArrayList<DossierContactUrgence> dossier) {
+        this.dossier = dossier;
+    }
+    
     
     
 }
