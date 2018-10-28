@@ -14,16 +14,16 @@ public class Conge implements Serializable {
     
     private int idConge;
     private int dureeCongeJour;
-    private Date dateretour;
+    private Date debutConge;
     private TypeConge typeConge;
     private boolean visible;
 
     public Conge() {
     }
 
-    public Conge(int dureeCongeJour, Date dateretour, TypeConge typeConge) {
+    public Conge(int dureeCongeJour, Date dateDebut, TypeConge typeConge) {
         this.dureeCongeJour = dureeCongeJour;
-        this.dateretour = dateretour;
+        this.debutConge = dateDebut;
         this.typeConge = typeConge;
         this.visible = true;
     }
@@ -41,11 +41,11 @@ public class Conge implements Serializable {
     }
 
     public Date getDateretour() {
-        return this.dateretour;
+        return this.debutConge;
     }
 
     public void setDateretour(Date dateretour) {
-        this.dateretour = dateretour;
+        this.debutConge = dateretour;
     }
 
     public TypeConge getTypeConge() {

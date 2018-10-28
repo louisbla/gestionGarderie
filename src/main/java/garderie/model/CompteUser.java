@@ -62,4 +62,14 @@ public class CompteUser implements Serializable {
         this.visible = visible;
     }
     
+    
+    /*
+    
+    public void seConnecter(){
+    }
+    
+    public void seDeconnecter(){
+    }
+    */
+    
 }

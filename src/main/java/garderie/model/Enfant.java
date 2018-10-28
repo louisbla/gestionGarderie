@@ -15,17 +15,19 @@ public class Enfant extends Personne implements Serializable {
     private String photo;   //url
     private DossierInscription dossier;
     private ArrayList<Parent> listeParents;
+    private InventaireEnfant inventaire;
     
     public Enfant() {
     }
 
     //Constructeur
-    public Enfant(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, String photo,DossierInscription d, ArrayList<Parent> parents) {
+    public Enfant(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, String photo,DossierInscription d, ArrayList<Parent> parents, InventaireEnfant i) {
         super(Nom, Prenom, Sexe, DateNaissance, numSecu, adresses);
         this.visible = true;
         this.photo = photo;
         this.dossier = d; 
         this.listeParents = parents;
+        this.inventaire = i;
     }
         
     public boolean isVisible() {
@@ -59,6 +61,13 @@ public class Enfant extends Personne implements Serializable {
     public void setListeParents(ArrayList<Parent> listeParents) {
         this.listeParents = listeParents;
     }
-  
-    
+
+    public InventaireEnfant getInventaire() {
+        return inventaire;
+    }
+
+    public void setInventaire(InventaireEnfant inventaire) {
+        this.inventaire = inventaire;
+    }
+ 
 }
