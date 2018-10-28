@@ -13,19 +13,21 @@ import java.util.Date;
 public class Enfant extends Personne implements Serializable {
     private String photo;   //url
     private DossierInscription dossier;
-    private ArrayList<Parent> listeParents;
+    private ArrayList<Filiation> listeParents;
     private InventaireEnfant inventaire;
+    private ArrayList<Traitement> traitement;
     
     public Enfant() {
     }
 
     //Constructeur
-    public Enfant(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<Adresse> adresses, String photo,DossierInscription d, ArrayList<Parent> parents, InventaireEnfant i) {
+    public Enfant(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<PersonneAdresse> adresses, String photo,DossierInscription d, ArrayList<Filiation> parents, InventaireEnfant i, ArrayList<Traitement> t) {
         super(Nom, Prenom, Sexe, DateNaissance, numSecu, adresses);
         this.photo = photo;
         this.dossier = d; 
         this.listeParents = parents;
         this.inventaire = i;
+        this.traitement = t;      
     }
 
     public String getPhoto() {
@@ -44,11 +46,11 @@ public class Enfant extends Personne implements Serializable {
         this.dossier = dossier;
     }
 
-    public ArrayList<Parent> getListeParents() {
+    public ArrayList<Filiation> getListeParents() {
         return listeParents;
     }
 
-    public void setListeParents(ArrayList<Parent> listeParents) {
+    public void setListeParents(ArrayList<Filiation> listeParents) {
         this.listeParents = listeParents;
     }
 
@@ -59,5 +61,12 @@ public class Enfant extends Personne implements Serializable {
     public void setInventaire(InventaireEnfant inventaire) {
         this.inventaire = inventaire;
     }
- 
+
+    public ArrayList<Traitement> getTraitement() {
+        return traitement;
+    }
+
+    public void setTraitement(ArrayList<Traitement> traitement) {
+        this.traitement = traitement;
+    }
 }

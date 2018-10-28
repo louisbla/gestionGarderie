@@ -26,6 +26,7 @@ public class Article implements Serializable{
         this.visible = true;
         this.description = description;
         this.categorie = c; 
+        this.categorie.getListeArticle().add(this);
     }
     
     public int getIdArticle() {
@@ -83,7 +84,9 @@ public class Article implements Serializable{
     }
 
     public void setCategorie(CategorieArticle categorie) {
+        this.categorie.getListeArticle().remove(this);
         this.categorie = categorie;
+        this.categorie.getListeArticle().add(this);
     }
     
 }

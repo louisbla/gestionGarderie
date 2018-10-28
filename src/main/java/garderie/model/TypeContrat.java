@@ -10,8 +10,9 @@ package garderie.model;
  * @author Katsuo
  */
 public enum TypeContrat {
-    TempsComplet ("Temps complet"),
-    TempsPartiel ("Temps partiel");
+    CDD ("CDD"),
+    interim ("interim"),
+    CDI ("CDI");
     
     private String libelle = "";
 
