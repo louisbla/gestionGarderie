@@ -59,8 +59,9 @@ public class AdresseDAO extends CommonDAO<Adresse>{
             preparedStatement.close();
             
         } catch (SQLException e) {
-            
+            Logger.getLogger(AdresseDAO.class.getName()).log(Level.SEVERE, null, e);
         }
+        return adresse;
     }
 
     @Override
