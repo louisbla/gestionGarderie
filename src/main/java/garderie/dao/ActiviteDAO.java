@@ -33,11 +33,11 @@ public class ActiviteDAO extends CommonDAO<Activite>{
             
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setString(1, activite.getNom());
-            preparedStatement.setDate(2, activite.getDate());
-            preparedStatement.setString(3, activite.getDescription());
-            preparedStatement.setInt(4, activite.getNbEnfantMax());
-            preparedStatement.setString(5, activite.getLieu());
-            preparedStatement.setDouble(6, activite.getPrix());
+            //preparedStatement.setDate(2, activite.);
+            preparedStatement.setString(2, activite.getDescription());
+            preparedStatement.setInt(3, activite.getNbEnfantMax());
+            preparedStatement.setString(4, activite.getLieu());
+            //preparedStatement.setDouble(6, activite.getPrix());
             
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
@@ -55,13 +55,13 @@ public class ActiviteDAO extends CommonDAO<Activite>{
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.UPDATE_ACTIVITE);
             
             //Insert parameter at the location of the question mark in the SQL Query
-            preparedStatement.setString(1, activite.getNom());
-            preparedStatement.setDate(2, activite.getDate());
-            preparedStatement.setString(3, activite.getDescription());
-            preparedStatement.setInt(4, activite.getNbEnfantMax());
-            preparedStatement.setString(5, activite.getLieu());
-            preparedStatement.setDouble(6, activite.getPrix());
-            preparedStatement.setInt(7, activite.getIdActivite());
+          preparedStatement.setString(1, activite.getNom());
+            //preparedStatement.setDate(2, activite.);
+            preparedStatement.setString(2, activite.getDescription());
+            preparedStatement.setInt(3, activite.getNbEnfantMax());
+            preparedStatement.setString(4, activite.getLieu());
+            //preparedStatement.setDouble(6, activite.getPrix());
+            preparedStatement.setInt(5, activite.getIdActivite());
             
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
@@ -105,9 +105,8 @@ public class ActiviteDAO extends CommonDAO<Activite>{
             ResultSet result = preparedStatement.executeQuery();
             if (result.first()) {
                 activite = new Activite(id, result.getString("nom"), 
-                        result.getDate("date"), result.getString("description"),
-                        result.getInt("nb_enfants_max"), result.getString("lieu"),
-                        result.getDouble("prix"));
+                        result.getString("description"),
+                        result.getInt("nb_enfants_max"), result.getString("lieu"));
             }
         } catch (SQLException e) {
             Logger.getLogger(ActiviteDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -129,13 +128,14 @@ public class ActiviteDAO extends CommonDAO<Activite>{
             //tant qu'il y a une activite dans les resultats
             while (result.next()) {
                 activite = new Activite();
+                
                 activite.setIdActivite(result.getInt("activiteId"));
                 activite.setNom(result.getString("nom"));
-                activite.setDate(result.getDate("date"));
+                //activite.setDate(result.getDate("date"));
                 activite.setDescription(result.getString("description"));
                 activite.setNbEnfantMax(result.getInt("nb_enfants_max"));
                 activite.setLieu(result.getString("lieu"));
-                activite.setPrix(result.getDouble("prix"));
+                //activite.setPrix(result.getDouble("prix"));
                 activites.add(activite);
             }
         } catch (SQLException e) {
