@@ -14,7 +14,6 @@ import java.io.Serializable;
 public class Lieux implements Serializable {
     private int idLieux;
     private String libelle;
-    private int capaciteMax;
     private boolean occupe;
     private boolean visible;
 
