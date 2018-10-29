@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -29,7 +30,7 @@ public class PersonneDAO extends CommonDAO<Personne> {
     public Personne create(Personne obj) {
         try {
             //Creation of the PreparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.INSERT_PERSONNE);
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.INSERT_PERSONNE, Statement.RETURN_GENERATED_KEYS);
 
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setString(1, obj.getNom());
@@ -37,13 +38,22 @@ public class PersonneDAO extends CommonDAO<Personne> {
             preparedStatement.setString(3, obj.getSexe());
             preparedStatement.setDate(4, obj.getDateNaissance());
             preparedStatement.setString(5, obj.getNumSecu());
-            
-            System.out.println(preparedStatement.toString());
 
+            System.out.println(preparedStatement.toString());
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
+
+            ResultSet resultKeys = preparedStatement.getGeneratedKeys();
+
+            int idPersonne;
+
+            if (resultKeys.next()) {
+                idPersonne = resultKeys.getInt(1);
+                obj.setIdPersonne(idPersonne);
+            }
+
             preparedStatement.close();
-            
+
         } catch (SQLException e) {
             Logger.getLogger(PersonneDAO.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -99,14 +109,14 @@ public class PersonneDAO extends CommonDAO<Personne> {
 
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setInt(1, id);
-            
+
             System.out.println(preparedStatement.toString());
 
             ResultSet result = preparedStatement.executeQuery();
 
             if (result.first()) {
                 personne = new Personne();
-                
+
                 personne.setIdPersonne(result.getInt("personneId"));
                 personne.setNom(result.getString("nom"));
                 personne.setPrenom(result.getString("prenom"));
