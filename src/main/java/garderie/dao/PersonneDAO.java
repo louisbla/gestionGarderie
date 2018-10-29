@@ -44,7 +44,6 @@ public class PersonneDAO extends CommonDAO<Personne> {
             preparedStatement.executeUpdate();
 
             ResultSet resultKeys = preparedStatement.getGeneratedKeys();
-
             int idPersonne;
 
             if (resultKeys.next()) {

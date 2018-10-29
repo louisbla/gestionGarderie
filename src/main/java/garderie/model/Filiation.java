@@ -5,23 +5,23 @@
  */
 package garderie.model;
 
-
 public class Filiation {
 
     private Enfant e;
     private Parent p;
     private boolean visible;
+    private String lien;
 
-    public Filiation(){
-        
+    public Filiation() {
+
     }
-    
-    public Filiation(Enfant e, Parent p){
+
+    public Filiation(Enfant e, Parent p) {
         this.e = e;
         this.p = p;
         this.visible = true;
     }
-    
+
     public Enfant getE() {
         return e;
     }
@@ -45,6 +45,13 @@ public class Filiation {
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
-  
-    
+
+    public String getLien() {
+        return lien;
+    }
+
+    public void setLien(String lien) {
+        this.lien = lien;
+    }
+
 }
