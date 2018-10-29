@@ -15,8 +15,9 @@ public class SQLConstant {
 
     protected static final String NOT_VISIBLE = "visible = 0";
 
+    // ************* ACTIVITE *****************
     protected static final String INSERT_ACTIVITE = "INSERT INTO activites("
-            + "nom, date, description, nb_enfant_max, lieu, prix) VALUES ?,?,?,?,?,? ";
+            + "nom, date, description, nb_enfant_max, lieu, prix) VALUES (?,?,?,?,?,?) ";
 
     protected static final String UPDATE_ACTIVITE = "UPDATE activites SET "
             + "nom = ?, date = ?, description = ?, nb_enfant_max = ?, lieu = ?,"
@@ -31,9 +32,10 @@ public class SQLConstant {
     protected static final String SELECT_ACTIVITES = "SELECT * FROM activites WHERE"
             + VISIBLE;
 
+    // ************* ADRESSE *****************
     protected static final String INSERT_ADRESSE = "INSERT INTO adresses("
             + "ligne_1, ligne_2, ligne_3, ville, code_postal, pays) "
-            + "VALUES ?,?,?,?,?,?,?,? ";
+            + "VALUES (?,?,?,?,?,?) ";
 
     protected static final String UPDATE_ADRESSE = "UPDATE adresses SET "
             + "ligne_1 = ?, ligne_2 = ? ligne_3 = ?,"
@@ -42,24 +44,41 @@ public class SQLConstant {
     protected static final String DELETE_ADRESSE = "UPDATE adresses SET "
             + NOT_VISIBLE + " WHERE adresseId = ?";
 
-    protected static final String SELECT_ADRESSE_BY_ID = "SELECT * FROM adresses"
+    protected static final String SELECT_ADRESSE_BY_ID = "SELECT * FROM adresses "
             + "WHERE adresseId = ? AND " + VISIBLE;
 
     protected static final String SELECT_ADRESSES = "SELECT * FROM adresses WHERE " + VISIBLE;
 
+    // ************* PERSONNE *****************
     protected static final String INSERT_PERSONNE = "INSERT INTO personnes "
-            + "(nom, prenom, sexe, date_naissance, numSecu) VALUES ?,?,?,?,?";
+            + "(nom, prenom, sexe, date_naissance, numSecu) VALUES (?,?,?,?,?)";
 
     protected static final String SELECT_PERSONNE = "SELECT * FROM personnes WHERE " + VISIBLE;
 
     protected static final String UPDATE_PERSONNE = "UPDATE personnes SET "
-            + "nom = ?, prenom = ? sexe = ?,"
+            + "nom = ?, prenom = ?, sexe = ?,"
             + "date_naissance = ?, numSecu = ? WHERE personneId = ?";
 
     protected static final String DELETE_PERSONNE = "UPDATE personnes SET "
-            + NOT_VISIBLE + "WHERE personneId = ?";
+            + NOT_VISIBLE + " WHERE personneId = ?";
 
-    protected static final String SELECT_PERSONNE_BY_ID = "SELECT * FROM personnes"
+    protected static final String SELECT_PERSONNE_BY_ID = "SELECT * FROM personnes "
             + "WHERE personneId = ? AND " + VISIBLE;
 
+    // ************* PERSONNE ADRESSE *****************
+    
+    protected static final String INSERT_PERSONNE_ADRESSE = "INSERT INTO personnes_adresses "
+            + "(adresseId, personneId, domicile, facturation) VALUES (?,?,?,?)";
+
+    protected static final String SELECT_PERSONNE_ADRESSE = "SELECT * FROM personnes WHERE " + VISIBLE;
+
+    protected static final String UPDATE_PERSONNE_ADRESSE = "UPDATE personnes_adresses SET "
+            + "adresseId = ?, domicile = ? facture = ?,"
+            + "WHERE personneId = ?";
+
+    protected static final String DELETE_PERSONNE_ADRESSE = "UPDATE personnes_adresses SET "
+            + NOT_VISIBLE + "WHERE adresseId = ? AND personneId = ?";
+
+    protected static final String SELECT_PERSONNE_ADRESSE_BY_PERSONNE_ID = "SELECT * FROM personnes_adresses "
+            + "WHERE personneId = ?";
 }

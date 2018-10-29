@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,10 +37,13 @@ public class PersonneDAO extends CommonDAO<Personne> {
             preparedStatement.setString(3, obj.getSexe());
             preparedStatement.setDate(4, obj.getDateNaissance());
             preparedStatement.setString(5, obj.getNumSecu());
+            
+            System.out.println(preparedStatement.toString());
 
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
             preparedStatement.close();
+            
         } catch (SQLException e) {
             Logger.getLogger(PersonneDAO.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -91,27 +95,24 @@ public class PersonneDAO extends CommonDAO<Personne> {
         Personne personne = null;
         try {
             //Creation of the PreparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.DELETE_PERSONNE);
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_PERSONNE_BY_ID);
 
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setInt(1, id);
-
-            //Executing the preparedStatement
-            preparedStatement.executeUpdate();
-            preparedStatement.close();
+            
+            System.out.println(preparedStatement.toString());
 
             ResultSet result = preparedStatement.executeQuery();
 
             if (result.first()) {
                 personne = new Personne();
-
-                personne.setNom(result.getString(1));
-                personne.setPrenom(result.getString(2));
-                personne.setSexe(result.getString(3));
-                personne.setDateNaissance(result.getDate(4));
-                personne.setNumSecu(result.getString(5));
-                // set adresses
-                // set compte user
+                
+                personne.setIdPersonne(result.getInt("personneId"));
+                personne.setNom(result.getString("nom"));
+                personne.setPrenom(result.getString("prenom"));
+                personne.setSexe(result.getString("sexe"));
+                personne.setDateNaissance(result.getDate("date_naissance"));
+                personne.setNumSecu(result.getString("numSecu"));
             }
         } catch (SQLException e) {
             Logger.getLogger(PersonneDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -122,9 +123,29 @@ public class PersonneDAO extends CommonDAO<Personne> {
 
     @Override
     public ArrayList<Personne> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Personne> personnes = new ArrayList<>();
+        try {
+            //Creation of the PreparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_PERSONNE);
+
+            ResultSet result = preparedStatement.executeQuery();
+
+            while (result.next()) {
+                Personne personne = new Personne();
+                personne.setIdPersonne(result.getInt("personneId"));
+                personne.setNom(result.getString("nom"));
+                personne.setPrenom(result.getString("prenom"));
+                personne.setSexe(result.getString("sexe"));
+                personne.setDateNaissance(result.getDate("date_naissance"));
+                personne.setNumSecu(result.getString("numSecu"));
+
+                personnes.add(personne);
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(PersonneDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        return personnes;
     }
-    
-    
 
 }
