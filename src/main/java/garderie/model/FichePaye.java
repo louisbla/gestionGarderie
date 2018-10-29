@@ -15,6 +15,7 @@ public class FichePaye implements Serializable{
     private double nbHeurePrevu;
     private double nbHeureReel;
     private DossierEmploye dossier;
+    private boolean visible;
 
     public FichePaye() {
     }
@@ -24,6 +25,7 @@ public class FichePaye implements Serializable{
         this.nbHeurePrevu = nbHeurePrevu;
         this.nbHeureReel = nbHeureReel;
         this.dossier = dossier;
+        this.visible = true;
     }
 
     public int getIdFichePaye() {
@@ -32,14 +34,6 @@ public class FichePaye implements Serializable{
 
     public void setIdFichePaye(int idFichePaye) {
         this.idFichePaye = idFichePaye;
-    }
-
-    public double getSalaireNet() {
-        return salaireBrut;
-    }
-
-    public void setSalaireNet(double salaireNet) {
-        this.salaireBrut = salaireNet;
     }
 
     public double getNbHeurePrevu() {
@@ -64,6 +58,22 @@ public class FichePaye implements Serializable{
 
     public void setDossier(DossierEmploye dossier) {
         this.dossier = dossier;
+    }
+
+    public double getSalaireBrut() {
+        return salaireBrut;
+    }
+
+    public void setSalaireBrut(double salaireBrut) {
+        this.salaireBrut = salaireBrut;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
     
     public void calculSalaireBrut(){
