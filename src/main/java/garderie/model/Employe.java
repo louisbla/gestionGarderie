@@ -20,8 +20,8 @@ public class Employe extends Personne implements Serializable {
     public Employe() {
     }
 
-    public Employe(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<PersonneAdresse> adresses, CompteUser compteUser, String numTel,   String poste,  boolean externe, DossierEmploye dossier) {
-        super(Nom, Prenom, Sexe, DateNaissance, numSecu, adresses, compteUser);
+    public Employe(String Nom, String Prenom, String Sexe, Date DateNaissance, String numSecu, ArrayList<PersonneAdresse> adresses, String numTel,   String poste,  boolean externe, DossierEmploye dossier) {
+        super(Nom, Prenom, Sexe, DateNaissance, numSecu, adresses);
         this.numTel = numTel;
         this.poste = poste;
         this.externe = externe;

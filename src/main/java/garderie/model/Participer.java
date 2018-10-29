@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class Participer implements Serializable {
     private Groupe groupe;
-    private Salle salle;
+    private Lieux salle;
     private Activite activite;
     private Date date;
     private boolean visible;
@@ -22,7 +22,7 @@ public class Participer implements Serializable {
     public Participer() {
     }
 
-    public Participer(Groupe groupe, Salle salle, Activite activite, Date date) {
+    public Participer(Groupe groupe, Lieux salle, Activite activite, Date date) {
         this.groupe = groupe;
         this.salle = salle;
         this.activite = activite;
@@ -38,11 +38,11 @@ public class Participer implements Serializable {
         this.groupe = groupe;
     }
 
-    public Salle getSalle() {
+    public Lieux getSalle() {
         return salle;
     }
 
-    public void setSalle(Salle salle) {
+    public void setSalle(Lieux salle) {
         this.salle = salle;
     }
 

@@ -18,18 +18,16 @@ public class RapportJournalier implements Serializable {
     private boolean present;
     private String resumeJournee;
     private Enfant enfant;
-    private ArrayList<Employe> referants;
     private boolean visible;
 
     public RapportJournalier() {
     }
 
-    public RapportJournalier(Date dateRapport, boolean present, String resumeJournee, Enfant enfant, ArrayList<Employe> referants) {
+    public RapportJournalier(Date dateRapport, boolean present, String resumeJournee, Enfant enfant) {
         this.dateRapport = dateRapport;
         this.present = present;
         this.resumeJournee = resumeJournee;
         this.enfant = enfant;
-        this.referants = referants;
         this.visible = true;
     }
 
@@ -73,13 +71,6 @@ public class RapportJournalier implements Serializable {
         this.enfant = enfant;
     }
 
-    public ArrayList<Employe> getReferants() {
-        return referants;
-    }
-
-    public void setReferants(ArrayList<Employe> referants) {
-        this.referants = referants;
-    }
 
     public boolean isVisible() {
         return visible;

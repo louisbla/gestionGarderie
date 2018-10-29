@@ -11,38 +11,38 @@ import java.io.Serializable;
  *
  * @author Katsuo
  */
-public class Salle implements Serializable {
-    private int idSalle;
-    private String libelleSalle;
+public class Lieux implements Serializable {
+    private int idLieux;
+    private String libelle;
     private int capaciteMax;
     private boolean occupe;
     private boolean visible;
 
-    public Salle() {
+    public Lieux() {
     }
 
-    public Salle(String libelleSalle, int capaciteMax, boolean occupe) {
-        this.libelleSalle = libelleSalle;
+    public Lieux(String libelleSalle, int capaciteMax, boolean occupe) {
+        this.libelle = libelleSalle;
         this.capaciteMax = capaciteMax;
         this.occupe = occupe;
         this.visible = true;
     }
 
-    public int getIdSalle() {
-        return idSalle;
+    public int getIdLieux() {
+        return idLieux;
     }
     
-    public void setIdSalle(int idSalle) {
-        this.idSalle = idSalle;
+    public void setIdLieux(int idLieux) {
+        this.idLieux = idLieux;
     }
 
 
-    public String getLibelleSalle() {
-        return libelleSalle;
+    public String getLibelle() {
+        return libelle;
     }
 
-    public void setLibelleSalle(String libelleSalle) {
-        this.libelleSalle = libelleSalle;
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 
     public int getCapaciteMax() {

@@ -13,6 +13,7 @@ public class DossierContactUrgence {
     private ContactUrgence contactUrgence;
     private DossierInscription dossierInscription;
     private String lienParente;
+    private boolean visible;
 
     public DossierContactUrgence() {
     }
@@ -21,6 +22,7 @@ public class DossierContactUrgence {
         this.contactUrgence = contactUrgence;
         this.dossierInscription = dossierInscription;
         this.lienParente = lienParente;
+        this.visible = true;
     }
 
  
@@ -39,6 +41,22 @@ public class DossierContactUrgence {
 
     public void setLienParente(String lienParente) {
         this.lienParente = lienParente;
+    }
+
+    public DossierInscription getDossierInscription() {
+        return dossierInscription;
+    }
+
+    public void setDossierInscription(DossierInscription dossierInscription) {
+        this.dossierInscription = dossierInscription;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
     
     
