@@ -15,24 +15,20 @@ import java.sql.Date;
 public class Activite implements Serializable{
     private int idActivite;
     private String nom;
-    private Date date;
     private String description;
     private int nbEnfantMax;
     private String lieu;
-    private double prix;
     private boolean visible;
 
     public Activite() {
     }
 
-    public Activite(int idActivite, String nom, Date date, String description, int nbEnfantMax, String lieu, double prix) {
+    public Activite(int idActivite, String nom, String description, int nbEnfantMax, String lieu) {
         this.idActivite = idActivite;
         this.nom = nom;
-        this.date = date;
         this.description = description;
         this.nbEnfantMax = nbEnfantMax;
         this.lieu = lieu;
-        this.prix = prix;
         this.visible = true;
     }
 
@@ -52,13 +48,6 @@ public class Activite implements Serializable{
         this.nom = nom;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
     public String getDescription() {
         return description;
@@ -82,14 +71,6 @@ public class Activite implements Serializable{
 
     public void setLieu(String lieu) {
         this.lieu = lieu;
-    }
-
-    public double getPrix() {
-        return prix;
-    }
-
-    public void setPrix(double prix) {
-        this.prix = prix;
     }
 
     public boolean isVisible() {

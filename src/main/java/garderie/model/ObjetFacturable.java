@@ -17,6 +17,7 @@ public class ObjetFacturable implements Serializable {
     private String nom;
     private TVA tva;
     private boolean visible;
+    private Activite activite;
     
     public ObjetFacturable() {
     }
@@ -26,6 +27,7 @@ public class ObjetFacturable implements Serializable {
         this.nom = nom;
         this.tva = tva;
         this.visible = true;
+        this.activite = null;
     }
 
     public int getIdObjectFacturable() {
@@ -54,8 +56,6 @@ public class ObjetFacturable implements Serializable {
         this.nom = nom;
     }
 
-
-
     public TVA getTva() {
         return tva;
     }
@@ -71,6 +71,12 @@ public class ObjetFacturable implements Serializable {
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
- 
-    
+
+    public Activite getActivite() {
+        return activite;
+    }
+
+    public void setActivite(Activite activite) {
+        this.activite = activite;
+    }
 }
