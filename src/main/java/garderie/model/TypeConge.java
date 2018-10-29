@@ -5,58 +5,31 @@
  */
 package garderie.model;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-
 /**
  *
  * @author Maryline
  */
-public class TypeConge implements Serializable {
+public enum TypeConge {
+    Individuel_de_formation ("Individuel de formation"),
+    Paye ("Paye"),
+    Maternite ("Maternite"),
+    Paternite ("Paternite"),
+    Sabbatique ("Sabbatique"),
+    Raison_familiale ("Raison familiale"),
+    Parental_education ("Parental education"),
+    Reclassement ("Reclassement"),
+    Adoption ("Adoption"),
+    Longue_Maladie ("Longue Maladie"),
+    Engagement_associatif ("Engagement associatif");
     
-    private int idTypeConge;
-    private String descriptif;
-    private boolean visible;
-    private ArrayList<Conge> conges;
+    private String libelle = "";
 
-    public TypeConge() {
+    private TypeConge(String libelle) {
+        this.libelle = libelle;
     }
 
-    public TypeConge(String descriptif) {
-        this.descriptif = descriptif;
-        this.visible = true;
-    }
-
-    public int getIdTypeConge() {
-        return this.idTypeConge;
-    }
-
-    public void setIdTypeConge(int idTypeConge) {
-        this.idTypeConge = idTypeConge;
-    }
-
-    public String getDescriptif() {
-        return this.descriptif;
-    }
-
-    public void setDescriptif(String descriptif) {
-        this.descriptif = descriptif;
-    }
-
-    public boolean isVisible() {
-        return visible;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-     
-
-    public ArrayList<Conge> getConges() {
-        return conges;
-    }
-
-    public void setConges(ArrayList<Conge> conges) {
-        this.conges = conges;
+    @Override
+    public String toString() {
+        return libelle;
     }
 }
