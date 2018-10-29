@@ -9,25 +9,21 @@ import java.io.Serializable;
 public class Inventaire implements Serializable {
     private int idInventaire;
     private int stockMax;
-    private int stockActuel;
-    private ArrayList<Article> listeArticles;
-    private boolean visible;
+    private int stockActuel = 0;
+    private ArrayList<Article> listeArticles = new ArrayList<>();
+    private boolean visible = true;
 
     public Inventaire() {
     }
 
     public Inventaire(int stockMax) {
         this.stockMax = stockMax;
-        this.stockActuel = 0;
-        this.listeArticles = new ArrayList<>();
-        this.visible = true;
     }
     
       public Inventaire(int stockMax, ArrayList<Article> listeArticle) {
         this.stockMax = stockMax;
         this.listeArticles = listeArticle;
         this.stockActuel = this.listeArticles.size();
-        this.visible = true;
     }
     
     public int getIdInventaire() {
