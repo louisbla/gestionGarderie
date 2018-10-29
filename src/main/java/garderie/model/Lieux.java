@@ -20,9 +20,8 @@ public class Lieux implements Serializable {
     public Lieux() {
     }
 
-    public Lieux(String libelleSalle, int capaciteMax, boolean occupe) {
+    public Lieux(String libelleSalle, boolean occupe) {
         this.libelle = libelleSalle;
-        this.capaciteMax = capaciteMax;
         this.occupe = occupe;
         this.visible = true;
     }
@@ -42,14 +41,6 @@ public class Lieux implements Serializable {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
-    }
-
-    public int getCapaciteMax() {
-        return capaciteMax;
-    }
-
-    public void setCapaciteMax(int capaciteMax) {
-        this.capaciteMax = capaciteMax;
     }
 
     public boolean isOccupe() {

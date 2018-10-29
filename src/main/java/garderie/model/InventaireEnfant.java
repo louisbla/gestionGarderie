@@ -12,25 +12,14 @@ import java.util.*;
  */
 public class InventaireEnfant implements Serializable {
     private int idInventaire;
-    private int stockMax;
-    private int stockActuel;
-    private ArrayList<Article> listeArticleEnfant;
-    private boolean visible;
+    private ArrayList<Article> listeArticleEnfant = new ArrayList<> ();
+    private boolean visible = true;
 
     public InventaireEnfant() {
     }
 
-    public InventaireEnfant(int stockMax) {
-        this.stockMax = stockMax;
-        this.stockActuel = 0;
-        this.listeArticleEnfant = new ArrayList<Article>();
-        this.visible = true;
-    }
-
-    public InventaireEnfant(int stockMax, ArrayList<Article> listeArticleEnfant) {
-        this.stockMax = stockMax;
+    public InventaireEnfant(ArrayList<Article> listeArticleEnfant) {
         this.listeArticleEnfant = listeArticleEnfant;
-        this.stockActuel = this.listeArticleEnfant.size();
         this.visible = true;
     }
 
@@ -40,22 +29,6 @@ public class InventaireEnfant implements Serializable {
 
     public void setIdInventaire(int idInventaire) {
         this.idInventaire = idInventaire;
-    }
-    
-    public int getStockMax() {
-        return this.stockMax;
-    }
-
-    public void setStockMax(int stockMax) {
-        this.stockMax = stockMax;
-    }
-
-    public int getStockActuel() {
-        return this.stockActuel;
-    }
-
-    public void setStockActuel(int stockActuel) {
-        this.stockActuel = stockActuel;
     }
 
     public ArrayList<Article> getListeArticleEnfant() {

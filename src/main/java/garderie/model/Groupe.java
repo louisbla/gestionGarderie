@@ -12,12 +12,12 @@ import java.util.*;
  * @author Maryline
  */
 public class Groupe implements Serializable {
-    private int idGroupe; 
+    private int idGroupe;
     private NomGroupe nom;
     private String descriptif;
     private Employe referant;
-    private ArrayList<Enfant> listeEnfants;
-    private boolean visible;
+    private ArrayList<Enfant> listeEnfants = new ArrayList<>();
+    private boolean visible = true;
 
     public Groupe() {
     }
@@ -27,7 +27,6 @@ public class Groupe implements Serializable {
         this.descriptif = descriptif;
         this.referant = referant;
         this.listeEnfants = liste;
-        this.visible = true;
     }
  
     
