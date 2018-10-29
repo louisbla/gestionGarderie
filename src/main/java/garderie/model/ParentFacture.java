@@ -13,6 +13,7 @@ public class ParentFacture {
     
     private Parent parent;
     private Facture facture;
+    private boolean visible;
 
     public ParentFacture() {
     }
@@ -20,6 +21,7 @@ public class ParentFacture {
     public ParentFacture(Parent parent, Facture facture) {
         this.parent = parent;
         this.facture = facture;
+        this.visible = true;
     }
 
     public Parent getParent() {
@@ -37,5 +39,14 @@ public class ParentFacture {
     public void setFacture(Facture facture) {
         this.facture = facture;
     }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
   
+    
 }

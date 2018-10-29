@@ -15,6 +15,7 @@ public class PersonneAdresse {
     private boolean domicile;
     private Adresse adresse;
     private Personne personne;
+    private boolean visible;
 
     public PersonneAdresse() {
     }
@@ -24,6 +25,7 @@ public class PersonneAdresse {
         this.domicile = domicile;
         this.adresse = adresse;
         this.personne = personne;
+        this.visible = true;
     }
 
     public boolean isFacturation() {
@@ -57,5 +59,12 @@ public class PersonneAdresse {
     public void setPersonne(Personne personne) {
         this.personne = personne;
     }
-  
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
 }

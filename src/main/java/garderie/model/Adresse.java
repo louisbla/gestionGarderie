@@ -17,13 +17,12 @@ public class Adresse implements Serializable {
     private String codePostal;
     private String pays;
     private boolean visible;
-    private ArrayList<PersonneAdresse> listPersonne;
 
     public Adresse() {
     }
     
     //Constructeur 
-    public Adresse(String ligne1, String ligne2, String ligne3, String ville, String codePostal, String pays, ArrayList<PersonneAdresse> personne) {
+    public Adresse(String ligne1, String ligne2, String ligne3, String ville, String codePostal, String pays) {
         this.ligne1 = ligne1;
         this.ligne2 = ligne2;
         this.ligne3 = ligne3;
@@ -31,7 +30,6 @@ public class Adresse implements Serializable {
         this.codePostal = codePostal;
         this.pays = pays;
         this.visible = true;
-        this.listPersonne = personne;
     }
 
     public int getIdAdresse() {
@@ -103,14 +101,6 @@ public class Adresse implements Serializable {
 
     public void setCodePostal(String codePostal) {
         this.codePostal = codePostal;
-    }
-
-    public ArrayList<PersonneAdresse> getListPersonne() {
-        return listPersonne;
-    }
-
-    public void setListPersonne(ArrayList<PersonneAdresse> listPersonne) {
-        this.listPersonne = listPersonne;
     }
     
     
