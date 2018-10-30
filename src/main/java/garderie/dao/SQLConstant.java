@@ -176,11 +176,11 @@ public class SQLConstant {
     
   //*************************** ARTICLE************************
     protected static final String INSERT_ARTICLE = "INSERT INTO articles (nom, quantite,"
-            + " photo, description, categorieId) VALUES"
+            + " photo, description, inventaireId, categorieId) VALUES"
             + " (?,?,?,?,?,?,?)";
     
     protected static final String UPDATE_ARTICLE = "UPDATE articles SET nom = ?, quantite = ?,"
-            + " photo = ?, description = ?, categorieId = ? WHERE articleId = ?";
+            + " photo = ?, description = ?, inventaireId = ?, categorieId = ? WHERE articleId = ?";
     
     protected static final String DELETE_ARTICLE = "UPDATE articles SET "
             + NOT_VISIBLE + " WHERE articleId = ?";
@@ -190,6 +190,9 @@ public class SQLConstant {
     
     protected static final String SELECT_ARTICLE_BY_ID = "SELECT * FROM articles"
             + " WHERE articleId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_CATEGORIE_FOR_ARTICLE = "SELECT * FROM" 
+            + " articles WHERE catgeorieId = ? AND " + VISIBLE;
     
     
 }
