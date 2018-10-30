@@ -146,8 +146,8 @@ public class InventaireDAO extends CommonDAO<Inventaire>{
     
     public ArrayList<Article> getArticlesForInventaire(int id) {
         ArrayList<Article> articles = new ArrayList<>();
-        Article article = new Article();
-        
+        Article article;
+        ArticleDAO articleDAO = new ArticleDAO(connection);
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_ARTICLES_FOR_INVENTAIRE);
             preparedStatement.setInt(1, id);
@@ -155,14 +155,8 @@ public class InventaireDAO extends CommonDAO<Inventaire>{
             
             ResultSet result = preparedStatement.executeQuery();
             
-            while (result.next()) {                
-                article.setIdArticle(result.getInt("articleId"));
-                article.setNom(result.getString("nom"));
-                article.setQuantite(result.getInt("quantite"));
-                article.setPhoto(result.getString("photo"));
-                article.setDescription(result.getString("description"));
-                //Categorie
-                
+            while (result.next()) {
+                article = articleDAO.findById(result.getInt("articleId"));
                 articles.add(article);
             }
         } catch (SQLException e) {
