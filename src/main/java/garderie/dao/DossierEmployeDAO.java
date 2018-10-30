@@ -136,11 +136,10 @@ public class DossierEmployeDAO extends CommonDAO<DossierEmploye>{
             ResultSet result = preparedStatement.executeQuery();
             
             while (result.next()) {
-                Employe employe = new Employe();
                 EmployeDAO employeDAO = new EmployeDAO(connection);
                 DossierEmploye dossierEmploye = new DossierEmploye();
                 
-                employe = employeDAO.findById(result.getInt("employe_id"));
+                Employe employe = employeDAO.findById(result.getInt("employe_id"));
                 dossierEmploye.setIdDossierEmploye(result.getInt("dossierId"));
                 dossierEmploye.setEmploye(employe);
                 dossierEmploye.setDateEntree(result.getDate("date_entree"));

@@ -128,8 +128,30 @@ public class SQLConstant {
     protected static final String SELECT_DOSSIER_EMPLOYE_BY_EMPLOYE_ID = ""
             + "SELECT * FROM dossiers_employe WHERE employe_id = ?";
     
-    // ************* DOSSIER EMPLOYE *****************
+    // ************* GROUPE *****************
     
+    protected static final String INSERT_GROUPE = "INSERT INTO groupes (descriptif,"
+            + " referant, nom_groupe) VALUES (?,?,?)";
     
+    protected static final String UPDATE_GROUPE = "UPDATE groupes SET descriptif = ?, "
+            + "referant = ?, nom_groupe = ? WHERE groupeId = ?";
+    
+    protected static final String DELETE_GROUPE = "UPDATE groupes SET " + NOT_VISIBLE +
+            " WHERE groupeId = ?";
+    
+    protected static final String SELECT_GROUPE_BY_ID = "SELECT * FROM groupes WHERE"
+            + " groupeId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_GROUPES = "SELECT * FROM groupes WHERE " 
+            + VISIBLE;
+    
+    protected static final String SELECT_REFERANT_GROUPE = "SELECT referant FROM groupes "
+            + "WHERE groupeId = ?";
+    
+    protected static final String SELECT_ENFANTS_FOR_GROUPE = "SELECT * FROM enfants"
+            + " WHERE groupeId = ?";
+    
+    protected static final String SELECT_EMPLOYES_FOR_GROUPE = "SELECT employeId FROM "
+            + "gerer WHERE groupeId = ?";
          
 }
