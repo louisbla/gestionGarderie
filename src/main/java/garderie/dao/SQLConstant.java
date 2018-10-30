@@ -211,4 +211,43 @@ public class SQLConstant {
             + " articles WHERE catgeorieId = ? AND " + VISIBLE;
     
     
+    //*************************** COMPTEUSERDAO **********************
+    
+     protected static final String INSERT_COMPTE_USER = "INSERT INTO comptes_user (login,"
+             + " password, privilege, personneId) VALUES (?,?,DEFAULT,?)";
+     
+     protected static final String UPDATE_COMPTE_USER = "UPDATE comptes_user SET "
+             + " login = ?, password = ?, privilege = ?, personneId = ? WHERE userId = ?";
+     
+     protected static final String DELETE_COMPTE_USER = "UPDATE comptes_user SET "
+             + NOT_VISIBLE + " WHERE userId = ?";
+     
+     protected static final String SELECT_COMPTE_USER = "SELECT * FROM comptes_user"
+             + " WHERE " + VISIBLE;
+     
+     protected static final String SELECT_COMPTE_USER_BY_ID = "SELECT * FROM comptes_user"
+              + " WHERE userId = ? AND " + VISIBLE;
+     
+     
+    //**************************** PARENT ***************************************
+     
+     
+      protected static final String INSERT_PARENT = "INSERT INTO parents (parentId,"
+            + " nb_enfants_inscrits, telephone) VALUES (?,?,?)";
+    
+    protected static final String SELECT_PARENT = "SELECT * FROM personnes, parents "
+            + "WHERE personneId = parentId AND " + VISIBLE;
+    
+    protected static final String SELECT_PARENT_BY_ID = "SELECT * FROM personnes,"
+            + " parents WHERE personneId = parentId AND personneId = ? AND " + VISIBLE;
+    
+    protected static final String UPDATE_PARENT = "UPDATE parents SET "
+            + "nb_enfants_inscrits = ?, telephone = ? WHERE parentId = ?";
+    
+    protected static final String DELETE_PARENT = "UPDATE personnes SET "
+            + NOT_VISIBLE + " WHERE personneId = ?";
+     
+    
+    
+    
 }

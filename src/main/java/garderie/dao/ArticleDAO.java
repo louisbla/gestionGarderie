@@ -119,12 +119,19 @@ public class ArticleDAO extends CommonDAO<Article>{
             ResultSet result = preparedStatement.executeQuery();
             
              if (result.first()){
+                 InventaireDAO inventaireDAO = new InventaireDAO(connection);
+                 Inventaire inventaire  = inventaireDAO.findById(result.getInt("invenatireId"));
+                 
+                 //CategorieDAO categorieDAO = new CategorieDAO(connection);
+                 //CategorieArticle categorie = categorieDAO.findById(result.getInt("categorieId"));
+                         
                  article.setIdArticle(id);
                  article.setNom(result.getString("nom"));
                  article.setQuantite(result.getInt("quantite"));
                  article.setPhoto(result.getString("photo"));
                  article.setDescription(result.getString("description"));
-                 /// CATEGORIE + INVENTAIRE
+                 article.setInventaire(inventaire);
+                 //article.setCategorie(categorie);
              }
             
         } catch (SQLException e) {
@@ -151,16 +158,29 @@ public class ArticleDAO extends CommonDAO<Article>{
             while (result.next()){
                 Article article = new Article();
                 
+                InventaireDAO inventaireDAO = new InventaireDAO(connection);
+                Inventaire inventaire  = inventaireDAO.findById(result.getInt("invenatireId"));
+                 
+                //CategorieDAO categorieDAO = new CategorieDAO(connection);
+                //CategorieArticle categorie = categorieDAO.findById(result.getInt("categorieId"));
                 
+                article.setIdArticle(result.getInt("articleId"));
+                article.setNom(result.getString("nom"));
+                article.setQuantite(result.getInt("quantite"));
+                article.setPhoto(result.getString("photo"));
+                article.setDescription(result.getString("description"));
+                article.setInventaire(inventaire);
+                //article.setCategorie(categorie);
+                
+                listearticle.add(article);
             }
-            
         }catch (SQLException e) {
             Logger.getLogger(ArticleDAO.class.getName()).log(Level.SEVERE, null, e);
         }
 
-        return listearticle; 
-    
+        return listearticle;  
     }
+    
     
     public ArrayList<Article> getArticlesForCategorie(int id){
         ArrayList<Article> listeArticle = new ArrayList<>();
@@ -174,12 +194,19 @@ public class ArticleDAO extends CommonDAO<Article>{
             ResultSet result = preparedStatement.executeQuery();
             
             while(result.next()){
+                InventaireDAO inventaireDAO = new InventaireDAO(connection);
+                Inventaire inventaire  = inventaireDAO.findById(result.getInt("invenatireId"));
+                 
+                //CategorieDAO categorieDAO = new CategorieDAO(connection);
+                //CategorieArticle categorie = categorieDAO.findById(result.getInt("categorieId"));
+                
                 article.setIdArticle(result.getInt("articleId"));
                 article.setNom(result.getString("nom"));
                 article.setQuantite(result.getInt("quantite"));
                 article.setPhoto(result.getString("photo"));
                 article.setDescription(result.getString("description"));
-                //AJOUTER POUR CATEGORIE
+                article.setInventaire(inventaire);
+                //article.setCategorie(categorie);
             
                 listeArticle.add(article);
             }
