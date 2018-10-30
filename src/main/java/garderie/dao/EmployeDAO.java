@@ -43,7 +43,6 @@ public class EmployeDAO extends CommonDAO<Employe> {
             preparedStatement.setString(2, employe.getPoste());
             preparedStatement.setBoolean(3, employe.isExterne());
             preparedStatement.setString(4, employe.getNumTel());
-//            preparedStatement.setInt(5, employe.getDossier().getIdDossierEmploye());
             
             System.out.println(preparedStatement.toString());
 

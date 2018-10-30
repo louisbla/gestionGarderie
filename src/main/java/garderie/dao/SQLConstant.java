@@ -128,8 +128,50 @@ public class SQLConstant {
     protected static final String SELECT_DOSSIER_EMPLOYE_BY_EMPLOYE_ID = ""
             + "SELECT * FROM dossiers_employe WHERE employe_id = ?";
     
-    // ************* DOSSIER EMPLOYE *****************
+    // ************* GROUPE *****************
     
+    protected static final String INSERT_GROUPE = "INSERT INTO groupes (descriptif,"
+            + " referant, nom_groupe) VALUES (?,?,?)";
+    
+    protected static final String UPDATE_GROUPE = "UPDATE groupes SET descriptif = ?, "
+            + "referant = ?, nom_groupe = ? WHERE groupeId = ?";
+    
+    protected static final String DELETE_GROUPE = "UPDATE groupes SET " + NOT_VISIBLE +
+            " WHERE groupeId = ?";
+    
+    protected static final String SELECT_GROUPE_BY_ID = "SELECT * FROM groupes WHERE"
+            + " groupeId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_GROUPES = "SELECT * FROM groupes WHERE " 
+            + VISIBLE;
+    
+    protected static final String SELECT_REFERANT_GROUPE = "SELECT referant FROM groupes "
+            + "WHERE groupeId = ?";
+    
+    protected static final String SELECT_ENFANTS_FOR_GROUPE = "SELECT * FROM enfants"
+            + " WHERE groupeId = ?";
+    
+    protected static final String SELECT_EMPLOYES_FOR_GROUPE = "SELECT employeId FROM "
+            + "gerer WHERE groupeId = ?";
+    
+     // ************* INVENTAIRE *****************
+    
+    protected static final String INSERT_INVENTAIRE = "INSERT INTO inventaires (stock_max,"
+            + " stock_actuel, employeId) VALUES (?,?,?)";
+    
+    protected static final String UPDATE_INVENTAIRE = "UPDATE inventaires SET stock_max = ?,"
+            + " stock_actuel = ?, employeId = ? WHERE inventaireId = ?";
+    
+    protected static final String DELETE_INVENTAIRE = "UPDATE inventaires SET " 
+            + NOT_VISIBLE + " WHERE inventaireId = ?";
+    
+    protected static final String SELECT_INVENTAIRE_BY_ID = "SELECT * FROM inventaires"
+            + " WHERE inventaireId = ?";
+    
+    protected static final String SELECT_INVENTAIRES = "SELECT * FROM inventaires";
+    
+    protected static final String SELECT_ARTICLES_FOR_INVENTAIRE = "SELECT * FROM"
+            + " articles WHERE inventaireId = ?";
     
          
 }
