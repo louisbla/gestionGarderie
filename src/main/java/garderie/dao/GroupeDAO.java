@@ -45,8 +45,11 @@ public class GroupeDAO extends CommonDAO<Groupe>{
             preparedStatement.executeUpdate();
             
             ResultSet resultKeys = preparedStatement.getGeneratedKeys();
-            int idGroupe = resultKeys.getInt(1);
-            groupe.setIdGroupe(idGroupe);
+            if (resultKeys.next()) {
+                int idGroupe = resultKeys.getInt(1);
+                groupe.setIdGroupe(idGroupe);
+            }
+            
             
             preparedStatement.close();
             
@@ -65,6 +68,9 @@ public class GroupeDAO extends CommonDAO<Groupe>{
             preparedStatement.setInt(2, groupe.getReferant().getIdPersonne());
             preparedStatement.setInt(3, groupe.getNom().getId());
             preparedStatement.setInt(4, groupe.getIdGroupe());
+            
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
             
         } catch (SQLException e) {
             Logger.getLogger(GroupeDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -187,8 +193,6 @@ public class GroupeDAO extends CommonDAO<Groupe>{
             while (result.next()) {
                 EnfantDAO enfantDAO = new EnfantDAO(connection);
                 Enfant enfant = enfantDAO.findById(result.getInt("enfantId"));
-                
-                
                 enfants.add(enfant);
             }
         } catch (SQLException e) {

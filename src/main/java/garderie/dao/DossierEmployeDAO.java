@@ -9,10 +9,10 @@ import garderie.model.DossierEmploye;
 import garderie.model.Employe;
 import garderie.model.TypeContrat;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,7 +31,7 @@ public class DossierEmployeDAO extends CommonDAO<DossierEmploye>{
         try {            
             //Creation of the PreparedStatement
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    SQLConstant.INSERT_DOSSIER_EMPLOYE);
+                    SQLConstant.INSERT_DOSSIER_EMPLOYE, Statement.RETURN_GENERATED_KEYS);
 
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setDate(1, dossierEmploye.getDateEntree());
@@ -44,6 +44,15 @@ public class DossierEmployeDAO extends CommonDAO<DossierEmploye>{
 
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
+            
+            ResultSet resultKeys = preparedStatement.getGeneratedKeys();
+            int idDossierEmploye;
+
+            if (resultKeys.next()) {
+                idDossierEmploye = resultKeys.getInt(1);
+                dossierEmploye.setIdDossierEmploye(idDossierEmploye);
+            }
+
             preparedStatement.close();
             
         } catch (SQLException e) {

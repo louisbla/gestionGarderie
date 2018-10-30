@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +29,7 @@ public class AdresseDAO extends CommonDAO<Adresse> {
     public Adresse create(Adresse adresse) {
         try {
             //Creation of the PreparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.INSERT_ADRESSE);
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.INSERT_ADRESSE, Statement.RETURN_GENERATED_KEYS);
 
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setString(1, "ligne_1");
@@ -40,6 +41,15 @@ public class AdresseDAO extends CommonDAO<Adresse> {
 
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
+            
+            ResultSet resultKeys = preparedStatement.getGeneratedKeys();
+            int idAdresse;
+
+            if (resultKeys.next()) {
+                idAdresse = resultKeys.getInt(1);
+                adresse.setIdAdresse(idAdresse);
+            }
+
             preparedStatement.close();
 
         } catch (SQLException ex) {

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,7 +30,7 @@ public class ActiviteDAO extends CommonDAO<Activite>{
     public Activite create(Activite activite) {
         try {
             //Creation of the PreparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.INSERT_ACTIVITE);
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.INSERT_ACTIVITE, Statement.RETURN_GENERATED_KEYS);
             
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setString(1, activite.getNom());
@@ -41,6 +42,15 @@ public class ActiviteDAO extends CommonDAO<Activite>{
             
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
+            
+            ResultSet resultKeys = preparedStatement.getGeneratedKeys();
+            int idActivite;
+
+            if (resultKeys.next()) {
+                idActivite = resultKeys.getInt(1);
+                activite.setIdActivite(idActivite);
+            }
+
             preparedStatement.close();
         } catch (SQLException e) {
             Logger.getLogger(ActiviteDAO.class.getName()).log(Level.SEVERE, null, e);

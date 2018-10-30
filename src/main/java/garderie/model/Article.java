@@ -14,6 +14,7 @@ public class Article implements Serializable{
     private String  photo;
     private boolean visible = true;
     private String description;
+    private Inventaire inventaire;
     private CategorieArticle categorie;
 
     public Article() {
@@ -75,6 +76,14 @@ public class Article implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Inventaire getInventaire() {
+        return inventaire;
+    }
+
+    public void setInventaire(Inventaire inventaire) {
+        this.inventaire = inventaire;
     }
     
     

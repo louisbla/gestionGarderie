@@ -166,12 +166,13 @@ public class SQLConstant {
             + NOT_VISIBLE + " WHERE inventaireId = ?";
     
     protected static final String SELECT_INVENTAIRE_BY_ID = "SELECT * FROM inventaires"
-            + " WHERE inventaireId = ?";
+            + " WHERE inventaireId = ? AND " + VISIBLE;
     
-    protected static final String SELECT_INVENTAIRES = "SELECT * FROM inventaires";
+    protected static final String SELECT_INVENTAIRES = "SELECT * FROM inventaires"
+            + " WHERE " + VISIBLE;
     
     protected static final String SELECT_ARTICLES_FOR_INVENTAIRE = "SELECT * FROM"
-            + " articles WHERE inventaireId = ?";
-    
-         
+            + " articles WHERE inventaireId = ? AND " + VISIBLE;
+
+
 }
