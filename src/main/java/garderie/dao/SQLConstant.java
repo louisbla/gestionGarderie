@@ -189,6 +189,26 @@ public class SQLConstant {
     
     protected static final String SELECT_ARTICLES_FOR_INVENTAIRE = "SELECT * FROM"
             + " articles WHERE inventaireId = ? AND " + VISIBLE;
-
-
+    
+  //*************************** ARTICLE************************
+    protected static final String INSERT_ARTICLE = "INSERT INTO articles (nom, quantite,"
+            + " photo, description, inventaireId, categorieId) VALUES"
+            + " (?,?,?,?,?,?,?)";
+    
+    protected static final String UPDATE_ARTICLE = "UPDATE articles SET nom = ?, quantite = ?,"
+            + " photo = ?, description = ?, inventaireId = ?, categorieId = ? WHERE articleId = ?";
+    
+    protected static final String DELETE_ARTICLE = "UPDATE articles SET "
+            + NOT_VISIBLE + " WHERE articleId = ?";
+    
+    protected static final String SELECT_ARTICLE = "SELECT * FROM articles WHERE "
+            + VISIBLE;
+    
+    protected static final String SELECT_ARTICLE_BY_ID = "SELECT * FROM articles"
+            + " WHERE articleId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_CATEGORIE_FOR_ARTICLE = "SELECT * FROM" 
+            + " articles WHERE catgeorieId = ? AND " + VISIBLE;
+    
+    
 }
