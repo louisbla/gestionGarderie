@@ -15,7 +15,7 @@ public class FichePaye implements Serializable{
     private double nbHeurePrevu;
     private double nbHeureReel;
     private DossierEmploye dossier;
-    private boolean visible;
+    private boolean visible = true;
 
     public FichePaye() {
     }
@@ -25,7 +25,6 @@ public class FichePaye implements Serializable{
         this.nbHeurePrevu = nbHeurePrevu;
         this.nbHeureReel = nbHeureReel;
         this.dossier = dossier;
-        this.visible = true;
     }
 
     public int getIdFichePaye() {

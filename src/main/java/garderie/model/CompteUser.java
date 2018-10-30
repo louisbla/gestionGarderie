@@ -13,7 +13,7 @@ public class CompteUser implements Serializable {
     private String login;
     private String mdp;
     private boolean privilege;
-    private boolean visible;
+    private boolean visible = true;
     private Personne personne;
 
     public CompteUser() {
@@ -24,7 +24,6 @@ public class CompteUser implements Serializable {
         this.login = login;
         this.mdp = mdp;
         this.privilege = privilege;
-        this.visible = true;
         this.personne = p;
     }
 

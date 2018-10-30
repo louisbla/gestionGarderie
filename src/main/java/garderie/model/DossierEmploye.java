@@ -6,7 +6,7 @@
 package garderie.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.*;
 
 /**
@@ -20,9 +20,9 @@ public class DossierEmploye implements Serializable{
         private double nbMoisAnciennete;
         private TypeContrat typeContrat;
         private double tauxHoraireBrut;
-        private boolean visible;
-        private ArrayList<Conge> listeConge;
-        private ArrayList<FichePaye> listeFichePaye;
+        private boolean visible = true;
+        private ArrayList<Conge> listeConge = new ArrayList();
+        private ArrayList<FichePaye> listeFichePaye = new ArrayList();
                 
     public DossierEmploye(){
         
@@ -35,9 +35,6 @@ public class DossierEmploye implements Serializable{
         this.nbMoisAnciennete = nbMoisAnciennete;
         this.typeContrat = typeContrat;
         this.tauxHoraireBrut = tauxHoraireBrut;
-        this.visible = true;
-        this.listeConge = new ArrayList();
-        this.listeFichePaye = new ArrayList();
     }
 
     public int getIdDossierEmploye() {

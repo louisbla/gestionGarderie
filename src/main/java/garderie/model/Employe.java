@@ -11,7 +11,6 @@ import java.sql.Date;
 
 
 public class Employe extends Personne implements Serializable {
-        private int idEmploye;
         private String numTel;
         private String poste;
         private boolean externe;
@@ -28,11 +27,6 @@ public class Employe extends Personne implements Serializable {
         this.dossier = dossier;
     }
 
-    public int getIdEmploye() {
-        return idEmploye;
-    }
-
-
     public String getNumTel() {
         return numTel;
     }
@@ -40,9 +34,6 @@ public class Employe extends Personne implements Serializable {
     public void setNumTel(String numTel) {
         this.numTel = numTel;
     }
-
-
-
 
     public String getPoste() {
         return poste;
@@ -59,8 +50,6 @@ public class Employe extends Personne implements Serializable {
     public void setExterne(boolean externe) {
         this.externe = externe;
     }
-
-
     
     public DossierEmploye getDossier() {
         return dossier;

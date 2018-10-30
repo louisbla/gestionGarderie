@@ -18,10 +18,10 @@ public class DossierInscription implements Serializable {
     private int nbDemiJourneeAbsent;
     private String medecinTraitant;
     private Enfant enfant;
-    private ArrayList<DossierContactUrgence> contactsUrgences;
-    private ArrayList<DocumentOfficiel> documentsOfficiels;
-    private boolean visible;
-    private ArrayList<RapportJournalier> listeRapports;
+    private ArrayList<DossierContactUrgence> contactsUrgences = new ArrayList();
+    private ArrayList<DocumentOfficiel> documentsOfficiels = new ArrayList();
+    private boolean visible = true;
+    private ArrayList<RapportJournalier> listeRapports = new ArrayList();
 
     public DossierInscription() {
     }
@@ -34,8 +34,6 @@ public class DossierInscription implements Serializable {
         this.enfant = enfant;
         this.contactsUrgences = contactsUrgences;
         this.documentsOfficiels = documentsOfficiels;
-        this.visible = true;
-        this.listeRapports = new ArrayList();
     }
 
     

@@ -16,7 +16,7 @@ public class Adresse implements Serializable {
     private String ville;
     private String codePostal;
     private String pays;
-    private boolean visible;
+    private boolean visible = true;
 
     public Adresse() {
     }
@@ -29,7 +29,6 @@ public class Adresse implements Serializable {
         this.ville = ville;
         this.codePostal = codePostal;
         this.pays = pays;
-        this.visible = true;
     }
 
     public int getIdAdresse() {

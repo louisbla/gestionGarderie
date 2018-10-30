@@ -5,25 +5,47 @@
  */
 package garderie.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author Maryline
  */
 public enum NomGroupe {
-    Trotteur ("Trotteur"),
-    Bebe ("Bebe"),
-    Moyen ("Moyen");
+    Trotteur (1, "Trotteur"),
+    Bebe (2, "Bebe"),
+    Moyen (3, "Moyen");
     
+    private int id;
     private String libelle = "";
+    private static Map map = new HashMap<>();
 
-    NomGroupe(String libelle) {
+    private NomGroupe(int id, String libelle) {
+        this.id = id;
         this.libelle = libelle;
+    }
+    
+    static {
+        for (NomGroupe nomGroupe : NomGroupe.values()) {
+            map.put(nomGroupe.id, nomGroupe);
+        }
+    }
+    
+    public static NomGroupe valueOf(int nomGroupe) {
+        return (NomGroupe) map.get(nomGroupe);
     }
 
     @Override
     public String toString() {
         return libelle;
     }
+    
+    public int getId() {
+        return id;
+    }
+    
+    
     
     
     

@@ -97,4 +97,95 @@ public class SQLConstant {
     // ************* INVENTAIRE ENFANT *****************
     protected static final String SELECT_INVENTAIRE_ENFANT_BY_ID = "SELECT * FROM inventaires_enfant "
             + " WHERE inventaireId = ?";
+    
+    // ************* EMPLOYE *****************
+    
+//    protected static final String INSERT_EMPLOYE = "INSERT INTO employes (employeId, poste, "
+//            + "externe, telephone, dossierId) VALUES (?,?,?,?,?)";
+    
+    protected static final String INSERT_EMPLOYE = "INSERT INTO employes (employeId, poste, "
+            + "externe, telephone) VALUES (?,?,?,?)";
+    
+    protected static final String SELECT_EMPLOYES = "SELECT * FROM personnes, employes "
+            + "WHERE personneId = employeId AND " + VISIBLE;
+    
+    protected static final String SELECT_EMPLOYE_BY_ID = "SELECT * FROM personnes,"
+            + " employes WHERE personneId = employeId AND personneId = ? AND " + VISIBLE;
+    
+//    protected static final String UPDATE_EMPLOYE = "UPDATE employes SET "
+//            + "poste = ?, externe = ?, telephone = ?, dossierId = ? "
+//            + "WHERE employeId = ?";
+    
+    protected static final String UPDATE_EMPLOYE = "UPDATE employes SET "
+            + "poste = ?, externe = ?, telephone = ? "
+            + "WHERE employeId = ?";
+    
+    protected static final String DELETE_EMPLOYE = "UPDATE personnes SET "
+            + NOT_VISIBLE + " WHERE personneId = ?";
+    
+    // ************* DOSSIER EMPLOYE *****************
+    
+    protected static final String INSERT_DOSSIER_EMPLOYE = "INSERT INTO dossiers_employe "
+            + "(date_entree, nb_mois_anciennete, taux_horaire_brut, type_contrat, employe_id) "
+            + "VALUES (?,?,?,?,?)";
+    
+    protected static final String SELECT_DOSSIERS_EMPLOYE = "SELECT * FROM dossiers_employe "
+            + "WHERE " + VISIBLE;
+    
+    protected static final String SELECT_DOSSIER_EMPLOYE_ID = "SELECT * FROM dossiers_employe "
+            + "WHERE dossierId = ? AND " + VISIBLE;
+    
+    protected static final String UPDATE_DOSSIER_EMPLOYE = "UPDATE dossiers_employe SET "
+            + "taux_horaire_brut = ?, type_contrat = ? WHERE dossierId = ?";
+    
+    protected static final String DELETE_DOSSIER_EMPLOYE = "UPDATE dossiers_employe SET "
+            + NOT_VISIBLE + " WHERE dossierId = ?";
+    
+    protected static final String SELECT_DOSSIER_EMPLOYE_BY_EMPLOYE_ID = ""
+            + "SELECT * FROM dossiers_employe WHERE employe_id = ?";
+    
+    // ************* GROUPE *****************
+    
+    protected static final String INSERT_GROUPE = "INSERT INTO groupes (descriptif,"
+            + " referant, nom_groupe) VALUES (?,?,?)";
+    
+    protected static final String UPDATE_GROUPE = "UPDATE groupes SET descriptif = ?, "
+            + "referant = ?, nom_groupe = ? WHERE groupeId = ?";
+    
+    protected static final String DELETE_GROUPE = "UPDATE groupes SET " + NOT_VISIBLE +
+            " WHERE groupeId = ?";
+    
+    protected static final String SELECT_GROUPE_BY_ID = "SELECT * FROM groupes WHERE"
+            + " groupeId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_GROUPES = "SELECT * FROM groupes WHERE " 
+            + VISIBLE;
+    
+    protected static final String SELECT_REFERANT_GROUPE = "SELECT referant FROM groupes "
+            + "WHERE groupeId = ?";
+    
+    protected static final String SELECT_ENFANTS_FOR_GROUPE = "SELECT * FROM enfants"
+            + " WHERE groupeId = ?";
+    
+    protected static final String SELECT_EMPLOYES_FOR_GROUPE = "SELECT employeId FROM "
+            + "gerer WHERE groupeId = ?";
+    
+     // ************* INVENTAIRE *****************
+    
+    protected static final String INSERT_INVENTAIRE = "INSERT INTO inventaires (stock_max,"
+            + " stock_actuel, employeId) VALUES (?,?,?)";
+    
+    protected static final String UPDATE_INVENTAIRE = "UPDATE inventaires SET stock_max = ?,"
+            + " stock_actuel = ?, employeId = ? WHERE inventaireId = ?";
+    
+    protected static final String DELETE_INVENTAIRE = "UPDATE inventaires SET " 
+            + NOT_VISIBLE + " WHERE inventaireId = ?";
+    
+    protected static final String SELECT_INVENTAIRE_BY_ID = "SELECT * FROM inventaires"
+            + " WHERE inventaireId = ?";
+    
+    protected static final String SELECT_INVENTAIRES = "SELECT * FROM inventaires";
+    
+    protected static final String SELECT_ARTICLES_FOR_INVENTAIRE = "SELECT * FROM"
+            + " articles WHERE inventaireId = ?";
 }
