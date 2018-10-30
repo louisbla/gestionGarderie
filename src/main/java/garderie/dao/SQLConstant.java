@@ -213,6 +213,23 @@ public class SQLConstant {
               + " WHERE userId = ? AND " + VISIBLE;
      
      
+    //**************************** PARENT ***************************************
+     
+     
+      protected static final String INSERT_PARENT = "INSERT INTO parents (parentId,"
+            + " nb_enfants_inscrits, telephone) VALUES (?,?,?)";
+    
+    protected static final String SELECT_PARENT = "SELECT * FROM personnes, parents "
+            + "WHERE personneId = parentId AND " + VISIBLE;
+    
+    protected static final String SELECT_PARENT_BY_ID = "SELECT * FROM personnes,"
+            + " parents WHERE personneId = parentId AND personneId = ? AND " + VISIBLE;
+    
+    protected static final String UPDATE_PARENT = "UPDATE parents SET "
+            + "nb_enfants_inscrits = ?, telephone = ? WHERE parentId = ?";
+    
+    protected static final String DELETE_PARENT = "UPDATE personnes SET "
+            + NOT_VISIBLE + " WHERE personneId = ?";
      
     
     
