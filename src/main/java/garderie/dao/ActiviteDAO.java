@@ -55,7 +55,7 @@ public class ActiviteDAO extends CommonDAO<Activite>{
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.UPDATE_ACTIVITE);
             
             //Insert parameter at the location of the question mark in the SQL Query
-          preparedStatement.setString(1, activite.getNom());
+            preparedStatement.setString(1, activite.getNom());
             //preparedStatement.setDate(2, activite.);
             preparedStatement.setString(2, activite.getDescription());
             preparedStatement.setInt(3, activite.getNbEnfantMax());

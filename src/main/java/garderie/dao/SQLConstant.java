@@ -73,7 +73,7 @@ public class SQLConstant {
     protected static final String SELECT_PERSONNE_ADRESSE = "SELECT * FROM personnes WHERE " + VISIBLE;
 
     protected static final String UPDATE_PERSONNE_ADRESSE = "UPDATE personnes_adresses SET "
-            + "adresseId = ?, domicile = ? facture = ?,"
+            + "adresseId = ?, domicile = ?, facture = ?,"
             + "WHERE personneId = ?";
 
     protected static final String DELETE_PERSONNE_ADRESSE = "UPDATE personnes_adresses SET "
@@ -81,4 +81,55 @@ public class SQLConstant {
 
     protected static final String SELECT_PERSONNE_ADRESSE_BY_PERSONNE_ID = "SELECT * FROM personnes_adresses "
             + "WHERE personneId = ?";
+    
+    // ************* EMPLOYE *****************
+    
+//    protected static final String INSERT_EMPLOYE = "INSERT INTO employes (employeId, poste, "
+//            + "externe, telephone, dossierId) VALUES (?,?,?,?,?)";
+    
+    protected static final String INSERT_EMPLOYE = "INSERT INTO employes (employeId, poste, "
+            + "externe, telephone) VALUES (?,?,?,?)";
+    
+    protected static final String SELECT_EMPLOYES = "SELECT * FROM personnes, employes "
+            + "WHERE personneId = employeId AND " + VISIBLE;
+    
+    protected static final String SELECT_EMPLOYE_BY_ID = "SELECT * FROM personnes,"
+            + " employes WHERE personneId = employeId AND personneId = ? AND " + VISIBLE;
+    
+//    protected static final String UPDATE_EMPLOYE = "UPDATE employes SET "
+//            + "poste = ?, externe = ?, telephone = ?, dossierId = ? "
+//            + "WHERE employeId = ?";
+    
+    protected static final String UPDATE_EMPLOYE = "UPDATE employes SET "
+            + "poste = ?, externe = ?, telephone = ? "
+            + "WHERE employeId = ?";
+    
+    protected static final String DELETE_EMPLOYE = "UPDATE personnes SET "
+            + NOT_VISIBLE + " WHERE personneId = ?";
+    
+    // ************* DOSSIER EMPLOYE *****************
+    
+    protected static final String INSERT_DOSSIER_EMPLOYE = "INSERT INTO dossiers_employe "
+            + "(date_entree, nb_mois_anciennete, taux_horaire_brut, type_contrat, employe_id) "
+            + "VALUES (?,?,?,?,?)";
+    
+    protected static final String SELECT_DOSSIERS_EMPLOYE = "SELECT * FROM dossiers_employe "
+            + "WHERE " + VISIBLE;
+    
+    protected static final String SELECT_DOSSIER_EMPLOYE_ID = "SELECT * FROM dossiers_employe "
+            + "WHERE dossierId = ? AND " + VISIBLE;
+    
+    protected static final String UPDATE_DOSSIER_EMPLOYE = "UPDATE dossiers_employe SET "
+            + "taux_horaire_brut = ?, type_contrat = ? WHERE dossierId = ?";
+    
+    protected static final String DELETE_DOSSIER_EMPLOYE = "UPDATE dossiers_employe SET "
+            + NOT_VISIBLE + " WHERE dossierId = ?";
+    
+    protected static final String SELECT_DOSSIER_EMPLOYE_BY_EMPLOYE_ID = ""
+            + "SELECT * FROM dossiers_employe WHERE employe_id = ?";
+    
+    // ************* DOSSIER EMPLOYE *****************
+    
+    
+         
 }

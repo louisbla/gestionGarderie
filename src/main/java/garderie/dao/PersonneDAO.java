@@ -101,7 +101,7 @@ public class PersonneDAO extends CommonDAO<Personne> {
 
     @Override
     public Personne findById(int id) {
-        Personne personne = null;
+        Personne personne = new Personne();
         try {
             //Creation of the PreparedStatement
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_PERSONNE_BY_ID);
@@ -114,8 +114,6 @@ public class PersonneDAO extends CommonDAO<Personne> {
             ResultSet result = preparedStatement.executeQuery();
 
             if (result.first()) {
-                personne = new Personne();
-
                 personne.setIdPersonne(result.getInt("personneId"));
                 personne.setNom(result.getString("nom"));
                 personne.setPrenom(result.getString("prenom"));
