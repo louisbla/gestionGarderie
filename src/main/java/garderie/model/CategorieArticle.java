@@ -13,9 +13,9 @@ import java.util.*;
 public class CategorieArticle implements Serializable {
     
     private int idCategorie;
-    private ArrayList<Article> listeArticle;
+    private ArrayList<Article> listeArticle = new ArrayList();
     private String nom;
-    private boolean visible;
+    private boolean visible = true;
 
     public CategorieArticle() {
     }    
@@ -23,7 +23,6 @@ public class CategorieArticle implements Serializable {
     public CategorieArticle(ArrayList<Article> listeArticle, String nom) {
         this.listeArticle = listeArticle;
         this.nom = nom;
-        this.visible = true;
     }
 
     public int getIdCategorie() {

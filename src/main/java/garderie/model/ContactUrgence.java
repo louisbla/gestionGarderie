@@ -15,16 +15,14 @@ import java.sql.Date;
  */
 public class ContactUrgence extends Personne implements Serializable {
     private String numTel;
-    private String lien;
-    private ArrayList<DossierContactUrgence> dossier;
+    private ArrayList<DossierContactUrgence> dossier = new ArrayList();
 
     public ContactUrgence() {
     }
     
-    public ContactUrgence(String numTel, String lien, String nom, String prenom, String sexe, Date dateNaissance, String numSecu, ArrayList<PersonneAdresse> adresses, ArrayList<DossierContactUrgence> d) {
+    public ContactUrgence(String numTel, String nom, String prenom, String sexe, Date dateNaissance, String numSecu, ArrayList<PersonneAdresse> adresses, ArrayList<DossierContactUrgence> d) {
         super(nom, prenom, sexe, dateNaissance, numSecu, adresses);
         this.numTel = numTel;
-        this.lien = lien;
         this.dossier = d;
     }
 
@@ -34,14 +32,6 @@ public class ContactUrgence extends Personne implements Serializable {
 
     public void setNumTel(String numTel) {
         this.numTel = numTel;
-    }
-
-    public String getLien() {
-        return this.lien;
-    }
-
-    public void setLien(String lien) {
-        this.lien = lien;
     }
 
     public ArrayList<DossierContactUrgence> getDossier() {

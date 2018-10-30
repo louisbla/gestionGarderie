@@ -16,8 +16,8 @@ public class Calendrier implements Serializable{
     private int idCalendrier;
     private int dateDebut;
     private int dateFin;
-    private ArrayList<Horaire> horaires;
-    private boolean visible;
+    private ArrayList<Horaire> horaires = new ArrayList();
+    private boolean visible = true;
 
     public Calendrier() {
     }
@@ -25,8 +25,6 @@ public class Calendrier implements Serializable{
     public Calendrier(int debut, int fin) {
         this.dateDebut = debut;
         this.dateFin = fin;
-        this.horaires = new ArrayList<>();
-        this.visible = true;
     }
     
 

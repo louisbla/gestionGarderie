@@ -13,9 +13,9 @@ public class Enfant extends Personne implements Serializable {
 
     private String photo;   //url
     private DossierInscription dossier;
-    private ArrayList<Filiation> listeParents;
+    private ArrayList<Filiation> listeParents = new ArrayList();
     private InventaireEnfant inventaire;
-    private ArrayList<Traitement> traitement;
+    private ArrayList<Traitement> traitement = new ArrayList();
     private Groupe groupe;
 
     public Enfant() {

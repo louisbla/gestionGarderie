@@ -18,7 +18,7 @@ public class Activite implements Serializable{
     private String description;
     private int nbEnfantMax;
     private String lieu;
-    private boolean visible;
+    private boolean visible = true;
 
     public Activite() {
     }

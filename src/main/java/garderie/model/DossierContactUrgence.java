@@ -13,7 +13,7 @@ public class DossierContactUrgence {
     private ContactUrgence contactUrgence;
     private DossierInscription dossierInscription;
     private String lienParente;
-    private boolean visible;
+    private boolean visible = true;
 
     public DossierContactUrgence() {
     }
@@ -22,7 +22,6 @@ public class DossierContactUrgence {
         this.contactUrgence = contactUrgence;
         this.dossierInscription = dossierInscription;
         this.lienParente = lienParente;
-        this.visible = true;
     }
 
  

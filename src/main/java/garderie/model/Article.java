@@ -12,7 +12,7 @@ public class Article implements Serializable{
     private String nom;
     private int quantite;
     private String  photo;
-    private boolean visible;
+    private boolean visible = true;
     private String description;
     private CategorieArticle categorie;
 
@@ -23,7 +23,6 @@ public class Article implements Serializable{
         this.nom = nom;
         this.quantite = quantite;
         this.photo = photo;
-        this.visible = true;
         this.description = description;
         this.categorie = c; 
         this.categorie.getListeArticle().add(this);

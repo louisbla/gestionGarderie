@@ -16,7 +16,7 @@ public class Conge implements Serializable {
     private int dureeCongeJour;
     private Date debutConge;
     private TypeConge typeConge;
-    private boolean visible;
+    private boolean visible = true;
 
     public Conge() {
     }
@@ -25,7 +25,6 @@ public class Conge implements Serializable {
         this.dureeCongeJour = dureeCongeJour;
         this.debutConge = dateDebut;
         this.typeConge = typeConge;
-        this.visible = true;
     }
 
     public int getIdConge() {
