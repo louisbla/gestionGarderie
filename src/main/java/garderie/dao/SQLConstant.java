@@ -190,10 +190,11 @@ public class SQLConstant {
     protected static final String SELECT_ARTICLES_FOR_INVENTAIRE = "SELECT * FROM"
             + " articles WHERE inventaireId = ? AND " + VISIBLE;
     
-  //*************************** ARTICLE************************
+    //*************************** ARTICLE************************
+    
     protected static final String INSERT_ARTICLE = "INSERT INTO articles (nom, quantite,"
             + " photo, description, inventaireId, categorieId) VALUES"
-            + " (?,?,?,?,?,?,?)";
+            + " (?,?,?,?,?,?)";
     
     protected static final String UPDATE_ARTICLE = "UPDATE articles SET nom = ?, quantite = ?,"
             + " photo = ?, description = ?, inventaireId = ?, categorieId = ? WHERE articleId = ?";
@@ -210,6 +211,25 @@ public class SQLConstant {
     protected static final String SELECT_CATEGORIE_FOR_ARTICLE = "SELECT * FROM" 
             + " articles WHERE catgeorieId = ? AND " + VISIBLE;
     
+    // ************* CATEGRORIE ARTICLE *****************
+    
+    protected static final String INSERT_CATEGORIE_ARTICLE = "INSERT INTO categories_article"
+            + " (nom) VALUES (?)";
+    
+    protected static final String UPDATE_CATEGORIE_ARTICLE = "UPDATE categories_article SET"
+            + " nom = ? WHERE categorieId = ?";
+    
+    protected static final String DELETE_CATEGORIE_ARTICLE = "UPDATE categories_article SET "
+            + NOT_VISIBLE + " WHERE categorieId = ?";
+    
+    protected static final String SELECT_CATEGORIE_ARTICLE_BY_ID = "SELECT * FROM categories_article"
+            + " WHERE categorieId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_CATEGORIES_ARTICLE = "SELECT * FROM categories_article"
+            + " WHERE " + VISIBLE;
+    
+    protected static final String SELECT_ARTICLES_FOR_CATEGORIE = "SELECT * FROM articles"
+            + " WHERE categorieId = ? AND " + VISIBLE;
     
     //*************************** COMPTEUSERDAO **********************
     

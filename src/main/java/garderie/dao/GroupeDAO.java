@@ -146,7 +146,7 @@ public class GroupeDAO extends CommonDAO<Groupe>{
         Employe employe = new Employe();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_REFERANT_GROUPE);
-            
+            preparedStatement.setInt(1, id);
             ResultSet result = preparedStatement.executeQuery();
             
             if (result.first()) {

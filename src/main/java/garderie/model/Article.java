@@ -25,8 +25,7 @@ public class Article implements Serializable{
         this.quantite = quantite;
         this.photo = photo;
         this.description = description;
-        this.categorie = c; 
-        this.categorie.getListeArticle().add(this);
+        this.categorie = c;
     }
     
     public int getIdArticle() {
@@ -92,9 +91,7 @@ public class Article implements Serializable{
     }
 
     public void setCategorie(CategorieArticle categorie) {
-        this.categorie.getListeArticle().remove(this);
         this.categorie = categorie;
-        this.categorie.getListeArticle().add(this);
     }
     
 }

@@ -1,6 +1,5 @@
 package garderie.model;
 import java.util.*;
-import garderie.model.*;
 import java.io.Serializable;
 /**
  *
@@ -10,6 +9,7 @@ public class Inventaire implements Serializable {
     private int idInventaire;
     private int stockMax;
     private int stockActuel = 0;
+    private Employe employe;
     private ArrayList<Article> listeArticles = new ArrayList<>();
     private boolean visible = true;
 
@@ -48,6 +48,14 @@ public class Inventaire implements Serializable {
 
     public void setStockActuel(int stockActuel) {
         this.stockActuel = stockActuel;
+    }
+
+    public Employe getEmploye() {
+        return employe;
+    }
+
+    public void setEmploye(Employe employe) {
+        this.employe = employe;
     }
 
 
