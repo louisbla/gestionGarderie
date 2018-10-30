@@ -202,6 +202,4 @@ public class GroupeDAO extends CommonDAO<Groupe>{
         return enfants;
         
     }
-    
-    
 }

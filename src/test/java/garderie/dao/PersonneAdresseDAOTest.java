@@ -48,6 +48,6 @@ public class PersonneAdresseDAOTest {
         Adresse adresse = adresseDAO.findById(1);
 
         PersonneAdresse pa = new PersonneAdresse(true, true, adresse, jose);
-        paDAO.create(pa);
+        //paDAO.create(pa);
     }
 }

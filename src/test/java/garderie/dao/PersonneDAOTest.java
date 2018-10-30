@@ -80,17 +80,17 @@ public class PersonneDAOTest {
 
     @Test
     public void updatePersonneJoseDeLaNoche() {
-//        PersonneDAO personneDAO = new PersonneDAO(connection);
-//        Personne jose = personneDAO.findById(21);
-//        if (jose != null) {
-//            jose.setNom("De La Noche");
-//            jose.setNumSecu("");
-//        }
-//
-//        //personneDAO.update(jose);
-//        List<Personne> personnes = personneDAO.findAll();
-//
-//        assertEquals(21, personnes.size());
+        PersonneDAO personneDAO = new PersonneDAO(connection);
+        Personne jose = personneDAO.findById(21);
+        if (jose != null) {
+            jose.setNom("De La Noche");
+            jose.setNumSecu("");
+        }
+
+        //personneDAO.update(jose);
+        List<Personne> personnes = personneDAO.findAll();
+
+        //assertEquals(21, personnes.size());
 
     }
 

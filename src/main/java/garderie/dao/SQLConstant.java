@@ -17,11 +17,11 @@ public class SQLConstant {
 
     // ************* ACTIVITE *****************
     protected static final String INSERT_ACTIVITE = "INSERT INTO activites("
-            + "nom, date, description, nb_enfant_max, lieu, prix) VALUES (?,?,?,?,?,?) ";
+            + "nom, description, nb_enfant_max, lieu) VALUES (?,?,?,?) ";
 
     protected static final String UPDATE_ACTIVITE = "UPDATE activites SET "
-            + "nom = ?, date = ?, description = ?, nb_enfant_max = ?, lieu = ?,"
-            + " prix = ? WHERE activiteId = ?";
+            + "nom = ?, description = ?, nb_enfant_max = ?, lieu = ?,"
+            + " WHERE activiteId = ?";
 
     protected static final String DELETE_ACTIVITE = "UPDATE activites SET "
             + NOT_VISIBLE + " WHERE activiteId = ?";
@@ -66,7 +66,6 @@ public class SQLConstant {
             + "WHERE personneId = ? AND " + VISIBLE;
 
     // ************* PERSONNE ADRESSE *****************
-    
     protected static final String INSERT_PERSONNE_ADRESSE = "INSERT INTO personnes_adresses "
             + "(adresseId, personneId, domicile, facturation) VALUES (?,?,?,?)";
 
@@ -81,6 +80,23 @@ public class SQLConstant {
 
     protected static final String SELECT_PERSONNE_ADRESSE_BY_PERSONNE_ID = "SELECT * FROM personnes_adresses "
             + "WHERE personneId = ?";
+
+    // ************* ENFANT *****************
+    protected static final String INSERT_ENFANT = "INSERT INTO enfants "
+            + "(enfantId, photo, groupeId, inventaire_enfantId) VALUES (?,?,?,?)";
+
+    protected static final String SELECT_ENFANT = "SELECT * FROM enfants ";
+
+    protected static final String SELECT_ENFANT_BY_ID = "SELECT * FROM enfants "
+            + " WHERE enfantId = ?";
+
+    protected static final String UPDATE_ENFANT = "UPDATE enfants SET "
+            + "photo = ?, groupeId = ?, inventaireEnfantId = ?"
+            + " WHERE enfantId = ?";
+
+    // ************* INVENTAIRE ENFANT *****************
+    protected static final String SELECT_INVENTAIRE_ENFANT_BY_ID = "SELECT * FROM inventaires_enfant "
+            + " WHERE inventaireId = ?";
     
     // ************* EMPLOYE *****************
     

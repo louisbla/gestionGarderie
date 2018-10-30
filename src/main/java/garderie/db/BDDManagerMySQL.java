@@ -21,7 +21,7 @@ public class BDDManagerMySQL implements Manager {
     private static final String USER = "sql9262676";
     private static final String PASSWORD = "5D8CqKGLXb";
     private static Connection connection = null;
-    
+
     public Connection connect() {
         if (connection == null) {
             try {

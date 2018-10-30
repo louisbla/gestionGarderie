@@ -46,7 +46,7 @@ public class PersonneAdresseDAO extends CommonDAO<PersonneAdresse> {
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException e) {
-            Logger.getLogger(ActiviteDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(PersonneAdresseDAO.class.getName()).log(Level.SEVERE, null, e);
         }
 
         return obj;
