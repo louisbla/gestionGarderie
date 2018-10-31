@@ -17,14 +17,16 @@ public class DocumentOfficiel implements Serializable {
     private String nom;
     private String url;
     private boolean visible = true;
+    private DossierInscription dossier;
     
 
     public DocumentOfficiel() {
     }
     
-    public DocumentOfficiel(String nom, String url) {
+    public DocumentOfficiel(String nom, String url, DossierInscription d) {
         this.nom = nom;
         this.url = url;
+        this.dossier = d;
     }
 
     public int getIdDocument() {
@@ -46,6 +48,14 @@ public class DocumentOfficiel implements Serializable {
 
     public String getUrl() {
         return this.url;
+    }
+
+    public DossierInscription getDossier() {
+        return dossier;
+    }
+
+    public void setDossier(DossierInscription dossier) {
+        this.dossier = dossier;
     }
 
     public void setUrl(String url) {
