@@ -95,8 +95,23 @@ public class SQLConstant {
             + " WHERE enfantId = ?";
 
     // ************* INVENTAIRE ENFANT *****************
+    protected static final String INSERT_INVENTAIRE_ENFANT = "INSERT INTO inventaires_enfants VALUES()";
+        
+    protected static final String SELECT_INVENTAIRE_ENFANT = "SELECT * FROM inventaires_enfant "
+            + " WHERE " + VISIBLE;
+        
     protected static final String SELECT_INVENTAIRE_ENFANT_BY_ID = "SELECT * FROM inventaires_enfant "
             + " WHERE inventaireId = ?";
+    
+    protected static final String SELECT_ARTICLES_BY_ENFANTID = "SELECT * FROM" 
+            + " articles WHERE enfantId = ? AND " + VISIBLE;
+    
+    protected static final String UPDATE_INVENTAIRE_ENFANT = "UPDATE inventaires_enfant SET "
+            + "photo = ?, groupeId = ?, inventaireEnfantId = ?"
+            + " WHERE enfantId = ?";
+    
+    protected static final String DELETE_INVENTAIRE_ENFANT = "UPDATE inventaires_enfant SET "
+            + NOT_VISIBLE + "WHERE inventaireId = ?";
     
     // ************* EMPLOYE *****************
     
