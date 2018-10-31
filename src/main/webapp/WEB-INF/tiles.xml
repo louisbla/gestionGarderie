@@ -39,4 +39,9 @@
       <put-attribute name="body"   value="/jsp/inscription.jsp"/>      
   </definition>
   
+  <definition name="categorie" extends="baseLayout">
+      <put-attribute name="title"  value="Categories"/>
+      <put-attribute name="body"   value="/jsp/categorie.jsp"/>      
+  </definition>
+  
 </tiles-definitions>

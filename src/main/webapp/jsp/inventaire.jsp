@@ -48,9 +48,11 @@
                 <table class="table table-striped table-bordered">
                     <tr>
                         <th>#</th>
+                        <th>Inventaire</th>
                         <th>Categorie</th>
                         <th>Libelle</th>
                         <th>Quantite</th>
+                        <th>Description</th>
                         <th>Image</th>
                         <th>Editer</th>
                     </tr>
@@ -131,11 +133,154 @@
                             </button>
                         </td>
                     </tr>
+                    <s:if test="%{articles.size()>0}">
+                        <s:iterator value="articles">
+                            <tr>
+                                <td><s:property value="idArticle" /></td>
+                                <td><s:property value="inventaire.idInventaire" /></td>
+                                <td><s:property value="categorie.nom" /></td>
+                                <td><s:property value="nom" /></td>
+                                <td><s:property value="quantite" /></td>
+                                <td><s:property value="description" /></td>
+                                <td>
+                                    <img alt="" src="<s:property value="photo" />"
+                                         class="img-thumbnail img-responsive center-block"
+                                         style="width:204px;height:auto;">
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary"
+                                            data-toggle="modal" data-id="<s:property value="idArticle" />"
+                                            data-categorie="<s:property value="categorie.idCategorie" />"
+                                            data-img="<s:property value="photo" />"
+                                            data-nom="<s:property value="nom" />"
+                                            data-description="<s:property value="description" />"
+                                            data-quantite="<s:property value="quantite" />"
+                                            data-inventaire="<s:property value="inventaire.idInventaire" />"
+                                            data-target="#modalArticle">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </s:iterator>
+                    </s:if>
+                    <s:else>
+                        Aucun article dans la liste.
+                    </s:else>
                 </table>
             </div>
         </div>
 
 
+        <!-- Modal -->
+        <div class="modal fade" id="modalArticle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Edition de l'article</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row text-center">
+                            <h3></h3>
+                            <div class="col-md-6 col-md-offset-3">
+                                <img id="article-img" src="" class="img-thumbnail center-block" alt="Responsive image">
+                            </div>
+                        </div>
+
+                        <s:form theme="bootstrap" cssClass="form-vertical" action="updatearticle.action">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <s:textfield
+                                        label="Nom"
+                                        name="article.name"
+                                        id="article-nom"
+                                        cssClass="input-sm"
+                                        elementCssClass=""
+                                        labelCssClass=""/>
+                                </div>
+                                <div class="col-md-3">
+                                    <s:select
+                                        label="Categorie"
+                                        name="article.categorie"
+                                        list="categories"
+                                        listKey="idCategorie"
+                                        listValue="nom"
+                                        id="categorie"
+                                        cssClass="input-sm"
+                                        elementCssClass=""
+                                        labelCssClass=""/>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <s:textfield type="number"
+                                                 label="Quantite"
+                                                 name="article.quantite"
+                                                 id="quantite"
+                                                 min="0" max="100"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <s:textarea
+                                        label="Description"
+                                        name="article.description"
+                                        id="description"
+                                        cols="20"
+                                        rows="3"
+                                        cssClass="noresize"
+                                        />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <s:file name="article.photo" label="Photo"/>
+                                </div>
+                                <div class="col-md-3">
+                                    <s:select
+                                        label="Inventaire"
+                                        name="article.inventaire"
+                                        list="inventaires"
+                                        listKey="idInventaire"
+                                        listValue="idInventaire"
+                                        id="inventaire"
+                                        cssClass="input-sm"
+                                        elementCssClass=""
+                                        labelCssClass=""/>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </s:form>
+                </div>
+            </div>
+        </div>
 
     </body>
+    <script>
+        $('#modalArticle').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var categorie = button.data('categorie');
+            var img = button.data('img');
+            var nom = button.data('nom');
+            var description = button.data('description');
+            var id = button.data('id');
+            var quantite = button.data('quantite');
+            var inventaire = button.data('inventaire');
+            var modal = $(this);
+            modal.find('.modal-body h3').text(nom);
+            $(".modal-body #article-nom").val(nom);
+            $(".modal-body #description").val(description);
+            $(".modal-body #quantite").val(quantite);
+            $(".modal-body #categorie").val(categorie);
+            $(".modal-body #inventaire").val(inventaire);
+            $(".modal-body #article-img").attr("src", img);
+
+        })
+    </script>
 </html>

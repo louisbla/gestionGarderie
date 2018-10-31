@@ -120,7 +120,7 @@ public class InventaireDAO extends CommonDAO<Inventaire>{
 
     @Override
     public ArrayList<Inventaire> findAll() {
-        Inventaire inventaire = new Inventaire();
+        
         ArrayList<Inventaire> inventaires = new ArrayList<>();
         
         try {
@@ -129,6 +129,7 @@ public class InventaireDAO extends CommonDAO<Inventaire>{
             ResultSet result = preparedStatement.executeQuery();
             
             while (result.next()) {
+                Inventaire inventaire = new Inventaire();
                 EmployeDAO employeDAO = new EmployeDAO(connection);
                 Employe employe = employeDAO.findById(result.getInt("employeId"));
                 inventaire.setIdInventaire(result.getInt("inventaireId"));

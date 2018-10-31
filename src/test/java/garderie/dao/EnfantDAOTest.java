@@ -44,14 +44,12 @@ public class EnfantDAOTest {
      */
     @Test
     public void testCreate() {
-        System.out.println("create");
-        Enfant obj = null;
-        EnfantDAO instance = null;
-        Enfant expResult = null;
-        Enfant result = instance.create(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        System.out.println("create");
+//        Enfant obj = null;
+//        EnfantDAO instance = null;
+//        Enfant expResult = null;
+//        Enfant result = instance.create(obj);
+//        assertEquals(expResult, result);
     }
 
     /**
@@ -59,14 +57,12 @@ public class EnfantDAOTest {
      */
     @Test
     public void testUpdate() {
-        System.out.println("update");
-        Enfant obj = null;
-        EnfantDAO instance = null;
-        Enfant expResult = null;
-        Enfant result = instance.update(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        System.out.println("update");
+//        Enfant obj = null;
+//        EnfantDAO instance = null;
+//        Enfant expResult = null;
+//        Enfant result = instance.update(obj);
+//        assertEquals(expResult, result);
     }
 
     /**
@@ -74,12 +70,10 @@ public class EnfantDAOTest {
      */
     @Test
     public void testDelete() {
-        System.out.println("delete");
-        Enfant obj = null;
-        EnfantDAO instance = null;
-        instance.delete(obj);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        System.out.println("delete");
+//        Enfant obj = null;
+//        EnfantDAO instance = null;
+//        instance.delete(obj);
     }
 
     /**
@@ -87,14 +81,12 @@ public class EnfantDAOTest {
      */
     @Test
     public void testFindById() {
-        System.out.println("findById");
-        int id = 0;
-        EnfantDAO instance = null;
-        Enfant expResult = null;
-        Enfant result = instance.findById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        System.out.println("findById");
+//        int id = 0;
+//        EnfantDAO instance = null;
+//        Enfant expResult = null;
+//        Enfant result = instance.findById(id);
+//        assertEquals(expResult, result);
     }
 
     /**
@@ -102,13 +94,11 @@ public class EnfantDAOTest {
      */
     @Test
     public void testFindAll() {
-        System.out.println("findAll");
-        EnfantDAO instance = null;
-        ArrayList<Enfant> expResult = null;
-        ArrayList<Enfant> result = instance.findAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        System.out.println("findAll");
+//        EnfantDAO instance = null;
+//        ArrayList<Enfant> expResult = null;
+//        ArrayList<Enfant> result = instance.findAll();
+//        assertEquals(expResult, result);
     }
     
 }

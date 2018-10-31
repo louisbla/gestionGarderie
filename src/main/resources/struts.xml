@@ -17,8 +17,8 @@
         <action name="welcomeLink" class="garderie.action.LinkAction" method="welcome" >
             <result name="welcome" type="tiles">welcome</result>
 	</action>
-        <action name="inventaireLink" class="garderie.action.LinkAction" method="inventaire" >
-            <result name="inventaire" type="tiles">inventaire</result>
+        <action name="inventaireLink" class="garderie.action.ArticleAction" >
+            <result name="success" type="tiles">inventaire</result>
 	</action>
         <action name="facturationLink" class="garderie.action.LinkAction" method="facturation" >
             <result name="facturation" type="tiles">facturation</result>
@@ -29,6 +29,31 @@
         <action name="inscriptionLink" class="garderie.action.LinkAction" method="inscription" >
             <result name="inscription" type="tiles">inscription</result>
 	</action>
+        <action name="afficherCategories" class="garderie.action.AfficherCategorieAction">
+            <result name="success" type="tiles">categorie</result>
+	</action>
+        
+        <action name="editercategorie" class="garderie.action.UpdateCategorieAction">
+            <result type="redirectAction">
+                <param name="actionName">afficherCategories</param>
+            </result>
+	</action>
+        
+        <action name="deletecategorie" class="garderie.action.DeleteCategorieAction">
+            <result type="redirectAction">
+                <param name="actionName">afficherCategories</param>
+            </result>
+	</action>
+        
+        <action name="createcategorie" class="garderie.action.CreateCategorieAction">
+            <result type="redirectAction">
+                <param name="actionName">afficherCategories</param>
+            </result>
+	</action>
+        
+        <action name="updatearticle" class="garderie.action.UpdateArticleAction">
+            <result name="update" type="tiles">inventaire</result>
+        </action>
     </package>
 
     <!-- Add addition packages and configuration here. -->

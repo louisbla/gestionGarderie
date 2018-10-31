@@ -331,6 +331,10 @@ html {
   -webkit-transition: all .35s ease-in-out;
 }
 
+.noresize {
+  resize: none; 
+}
+
 /*-------------------------------*/
 /*            Overlay            */
 /*-------------------------------*/

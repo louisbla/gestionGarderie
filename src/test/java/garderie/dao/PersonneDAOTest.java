@@ -80,15 +80,15 @@ public class PersonneDAOTest {
 
     @Test
     public void updatePersonneJoseDeLaNoche() {
-        PersonneDAO personneDAO = new PersonneDAO(connection);
-        Personne jose = personneDAO.findById(21);
-        if (jose != null) {
-            jose.setNom("De La Noche");
-            jose.setNumSecu("");
-        }
-
-        //personneDAO.update(jose);
-        List<Personne> personnes = personneDAO.findAll();
+//        PersonneDAO personneDAO = new PersonneDAO(connection);
+//        Personne jose = personneDAO.findById(21);
+//        if (jose != null) {
+//            jose.setNom("De La Noche");
+//            jose.setNumSecu("");
+//        }
+//
+//        personneDAO.update(jose);
+//        List<Personne> personnes = personneDAO.findAll();
 
         //assertEquals(21, personnes.size());
 
@@ -109,19 +109,19 @@ public class PersonneDAOTest {
     
     @Test
     public void testFindById() {
-        System.out.println("findById");
-        int id = 1;
-        Personne expResult = new Personne();
-        expResult.setIdPersonne(id);
-        expResult.setNom("Doe");
-        expResult.setPrenom("John");
-        expResult.setSexe("masculin");
-        LocalDate localDate = LocalDate.of(1985, 10, 3);
-        Date date = Date.valueOf(localDate);
-        expResult.setDateNaissance(date);
-        expResult.setNumSecu("DOEJ97441816");
-        
-        Personne result = personneDAO.findById(id);
-        System.out.println(result.getPrenom());
+//        System.out.println("findById");
+//        int id = 1;
+//        Personne expResult = new Personne();
+//        expResult.setIdPersonne(id);
+//        expResult.setNom("Doe");
+//        expResult.setPrenom("John");
+//        expResult.setSexe("masculin");
+//        LocalDate localDate = LocalDate.of(1985, 10, 3);
+//        Date date = Date.valueOf(localDate);
+//        expResult.setDateNaissance(date);
+//        expResult.setNumSecu("DOEJ97441816");
+//        
+//        Personne result = personneDAO.findById(id);
+//        System.out.println(result.getPrenom());
     }
 }

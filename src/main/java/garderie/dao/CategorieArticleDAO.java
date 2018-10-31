@@ -112,7 +112,7 @@ public class CategorieArticleDAO extends CommonDAO<CategorieArticle> {
     @Override
     public ArrayList<CategorieArticle> findAll() {
         ArrayList<CategorieArticle> categoriesArticle = new ArrayList<>();
-        CategorieArticle categorieArticle = new CategorieArticle();
+        
         
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_CATEGORIES_ARTICLE);
@@ -120,6 +120,7 @@ public class CategorieArticleDAO extends CommonDAO<CategorieArticle> {
             ResultSet result = preparedStatement.executeQuery();
             
             while (result.next()) {
+                CategorieArticle categorieArticle = new CategorieArticle();
                 categorieArticle.setIdCategorie(result.getInt("categorieId"));
                 categorieArticle.setNom(result.getString("nom"));
                 categoriesArticle.add(categorieArticle);
