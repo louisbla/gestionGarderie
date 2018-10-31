@@ -400,4 +400,24 @@ public class SQLConstant {
 
     protected static final String SELECT_DOSSIER_CONTACT_URGENCE = "SELECT * FROM dossier_contact_urgence WHERE "
             + VISIBLE;     
+    
+    
+    
+    //****************************** MALADIE*************************************
+    
+    protected static final String INSERT_MALADIE = "INSERT INTO maladies ("
+            + " nom, descriptif) VALUES (?,?)";
+    
+    protected static final String UPDATE_MALADIE = "UPDATE maladies SET"
+            + " nom = ?, descriptif = ? WHERE maladieId = ?";
+    
+    protected static final String DELETE_MALADIE = "UPDATE maladies SET "
+            + NOT_VISIBLE + " WHERE maladieId = ?";
+    
+    protected static final String SELECT_MALADIE = "SELECT * FROM maladies"
+            + " WHERE " + VISIBLE;
+    
+    protected static final String SELECT_MALADIE_BY_ID = "SELECT * FROM maladies"
+            + " WHERE maladieId = ? AND " + VISIBLE;
+    
 }
