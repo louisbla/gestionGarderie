@@ -6,6 +6,7 @@
 package garderie.dao;
 
 import garderie.model.ContactUrgence;
+import garderie.model.DossierContactUrgence;
 import garderie.model.Personne;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -100,9 +101,10 @@ public class ContactUrgenceDAO extends CommonDAO<ContactUrgence> {
     public ContactUrgence findById(int id) {
         ContactUrgence contactUrgence = new ContactUrgence();
         
-        //Creation of the PreparedStatement
-            PreparedStatement preparedStatement;
+        
         try {
+            //Creation of the PreparedStatement
+            PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(SQLConstant.SELECT_CONTACT_URGENCE_BY_ID);
         
 
@@ -116,6 +118,13 @@ public class ContactUrgenceDAO extends CommonDAO<ContactUrgence> {
             if (result.first()) {
                 contactUrgence.setIdPersonne(id);
                 contactUrgence.setNumTel(result.getString("telephone"));
+                
+                //Liste de DossierContactUrgence
+                DossierContactUrgenceDAO dossierContactUrgenceDAO = new DossierContactUrgenceDAO(connection);
+                ArrayList<DossierContactUrgence> dossiers = new ArrayList<>();
+                dossiers = dossierContactUrgenceDAO.findByContactId(result.getInt("contactId"));
+                
+                contactUrgence.setDossier(dossiers);
             }
             
         } catch (SQLException ex) {
@@ -126,7 +135,27 @@ public class ContactUrgenceDAO extends CommonDAO<ContactUrgence> {
 
     @Override
     public ArrayList<ContactUrgence> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<ContactUrgence> contacts = new ArrayList<>();
+        
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_CONTACT_URGENCE);
+            ResultSet result = preparedStatement.executeQuery();
+
+            while (result.next()) {
+                ContactUrgence contact = new ContactUrgence();
+
+                contact = this.findById(result.getInt("contactId"));
+
+                contacts.add(contact);
+            }
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(ContactUrgenceDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        
+        return contacts;
+             
+        
     }
     
 }

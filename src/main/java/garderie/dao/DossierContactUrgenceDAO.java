@@ -155,4 +155,40 @@ public class DossierContactUrgenceDAO extends CommonDAO<DossierContactUrgence>{
         return dossiers;
     }
     
+    public ArrayList<DossierContactUrgence> findByContactId(int contactId){
+        ArrayList<DossierContactUrgence> dossiers = new ArrayList<>();
+        
+        try {
+            //Creation of the PreparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_DOSSIER_CONTACT_URGENCE_BY_CONTACT_ID);
+            preparedStatement.setInt(1, contactId);
+            System.out.println(preparedStatement.toString());
+
+            ResultSet result = preparedStatement.executeQuery();
+            
+            while (result.next()) {
+                DossierContactUrgence dossier = new DossierContactUrgence();
+                dossier.setDossierContactUrgenceId(result.getInt("dossierContactUrgenceId"));
+                dossier.setLienParente(result.getString("lien_parente"));
+                
+                //Dossier d'inscription
+                DossierInscriptionDAO dossierDAO = new DossierInscriptionDAO(connection);
+                DossierInscription dossierInscription = dossierDAO.findById(result.getInt("dossier_inscription_id"));
+                dossier.setDossierInscription(dossierInscription);
+                
+                //Contact d'urgence
+                ContactUrgenceDAO contactUrgenceDAO = new ContactUrgenceDAO(connection);
+                ContactUrgence contact = contactUrgenceDAO.findById(contactId);
+                dossier.setContactUrgence(contact);
+                
+                dossiers.add(dossier);
+            }
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(DossierContactUrgenceDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return dossiers;
+    }
+    
 }

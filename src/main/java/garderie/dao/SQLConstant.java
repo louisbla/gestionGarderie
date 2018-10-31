@@ -391,7 +391,8 @@ public class SQLConstant {
     protected static final String SELECT_CONTACT_URGENCE_BY_ID = "SELECT * FROM personnes,"
             + " contacts_urgence WHERE personneId = contactId AND personneId = ? AND " + VISIBLE;
 
-    
+    protected static final String SELECT_CONTACT_URGENCE = "SELECT * FROM personnes, contacts_urgence "
+            + "WHERE personneId = contactId AND " + VISIBLE;    
     
     //*********************** DOSSIER CONTACT URGENCE ********************************
 
@@ -406,7 +407,30 @@ public class SQLConstant {
     
     protected static final String SELECT_DOSSIER_CONTACT_URGENCE_BY_ID = "SELECT * FROM dossier_contact_urgence"
             + " WHERE dossierContactUrgenceId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_DOSSIER_CONTACT_URGENCE_BY_CONTACT_ID = "SELECT * FROM dossier_contact_urgence"
+            + " WHERE contactId = ? AND " + VISIBLE;
 
     protected static final String SELECT_DOSSIER_CONTACT_URGENCE = "SELECT * FROM dossier_contact_urgence WHERE "
             + VISIBLE;     
+    
+    
+    
+    //****************************** MALADIE*************************************
+    
+    protected static final String INSERT_MALADIE = "INSERT INTO maladies ("
+            + " nom, descriptif) VALUES (?,?)";
+    
+    protected static final String UPDATE_MALADIE = "UPDATE maladies SET"
+            + " nom = ?, descriptif = ? WHERE maladieId = ?";
+    
+    protected static final String DELETE_MALADIE = "UPDATE maladies SET "
+            + NOT_VISIBLE + " WHERE maladieId = ?";
+    
+    protected static final String SELECT_MALADIE = "SELECT * FROM maladies"
+            + " WHERE " + VISIBLE;
+    
+    protected static final String SELECT_MALADIE_BY_ID = "SELECT * FROM maladies"
+            + " WHERE maladieId = ? AND " + VISIBLE;
+    
 }
