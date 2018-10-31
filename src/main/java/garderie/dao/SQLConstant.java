@@ -231,6 +231,7 @@ public class SQLConstant {
     protected static final String SELECT_ARTICLES_FOR_CATEGORIE = "SELECT * FROM articles"
             + " WHERE categorieId = ? AND " + VISIBLE;
     
+    
     //*************************** COMPTEUSERDAO **********************
     
      protected static final String INSERT_COMPTE_USER = "INSERT INTO comptes_user (login,"
@@ -252,7 +253,7 @@ public class SQLConstant {
     //**************************** PARENT ***************************************
      
      
-      protected static final String INSERT_PARENT = "INSERT INTO parents (parentId,"
+    protected static final String INSERT_PARENT = "INSERT INTO parents (parentId,"
             + " nb_enfants_inscrits, telephone) VALUES (?,?,?)";
     
     protected static final String SELECT_PARENT = "SELECT * FROM personnes, parents "
@@ -267,7 +268,31 @@ public class SQLConstant {
     protected static final String DELETE_PARENT = "UPDATE personnes SET "
             + NOT_VISIBLE + " WHERE personneId = ?";
      
+    protected static final String SELECT_FACTURE_FOR_PARENT = "SELECT factureId FROM"
+            + " parents_factures WHERE personneId = ?";
     
     
     
+    //***************************** FILIATION ************************************
+    protected static final String INSERT_FILIATION = "INSERT INTO filiation ("
+            + " personneId, enfantId, lien_parente) VALUES (?,?,?)";
+    
+    protected static final String UPDATE_FILIATION = "UPDATE filiation SET "
+            + "personneId = ?, lien_parent = ? WHERE enfantId = ?";
+    
+    protected static final String DELETE_FILIATION = "UPDATE filiation SET "
+            + NOT_VISIBLE + " WHERE personneId = ? and enfantId = ?";
+    
+    protected static final String SELECT_FILIATION = "SELECT * FROM filiation"
+            + " WHERE " + VISIBLE;
+    
+    protected static final String SELECT_FILIATION_BY_PARENT_ID = "SELECT * FROM filiation"
+            + " WHERE personneId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_FILIATION_ALL_ENFANT_FOR_PARENT = "SELECT * FROM filiation"
+            + " WHERE personneId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_FILIATION_ALL_PARENT_FOR_ENFANT = "SELECT * FROM filiation"
+            + " WHERE enfantId = ? AND " + VISIBLE;
+            
 }
