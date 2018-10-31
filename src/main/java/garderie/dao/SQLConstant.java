@@ -334,7 +334,9 @@ public class SQLConstant {
     protected static final String SELECT_PARENT_FACTURE_BY_PERSONNE_ID = "SELECT * FROM "
             + " parents_fatures  WHERE personneId = ?";
 
-    
+    protected static final String SELECT_FACTURE_FOR_PARENT_BY_ID = "SELECT * FROM parents_factures"
+            + " WHERE personneId = ?";
+
     
     //*********************** DOCUMENT OFFICIEL ********************************
     
@@ -346,4 +348,6 @@ public class SQLConstant {
     
     protected static final String UPDATE_DOCUMENT_OFFICIEL = "UPDATE documents_officiels SET nom = ?,"
             + " url = ?, dossierId = ? WHERE documentId = ?";
+    
+    
 }
