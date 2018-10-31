@@ -29,7 +29,7 @@ public class CompteUserDAO extends CommonDAO<CompteUser>{
         try{
             //Creation of the PreparedStatement
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    SQLConstant.INSERT_COMPTE_USER);
+                    SQLConstant.INSERT_COMPTE_USER, Statement.RETURN_GENERATED_KEYS);
             
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setString(1, compte.getLogin());
@@ -41,6 +41,15 @@ public class CompteUserDAO extends CommonDAO<CompteUser>{
 
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
+            
+            
+            //Recupere l'id genere par la BDD
+            ResultSet resultKeys = preparedStatement.getGeneratedKeys();
+            if (resultKeys.next()) {
+                int idUser = resultKeys.getInt(1);
+                compte.setIdUser(idUser);
+            }
+            
             preparedStatement.close();
 
         }catch (SQLException e) {
