@@ -196,4 +196,42 @@ public class FiliationDAO extends CommonDAO<Filiation> {
         return filiations;
     }
 
+    
+    public ArrayList<Filiation> getAllByParentId(int parentId) {
+        ArrayList<Filiation> filiations = new ArrayList<>();
+        
+        try {
+            //Creation of the PreparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_FILIATION_ALL_ENFANT_FOR_PARENT);
+
+            //Insert parameter at the location of the question mark in the SQL Query
+            preparedStatement.setInt(1, parentId);
+            
+            //Recupere les resultats de la requete
+            ResultSet result = preparedStatement.executeQuery();
+
+            while (result.next()) {
+                Filiation filiation = new Filiation();
+
+                EnfantDAO enfantDAO = new EnfantDAO(connection);
+                Enfant enfant = enfantDAO.findById(result.getInt("enfantId"));
+
+                ParentDAO parentDAO = new ParentDAO(connection);
+                Parent parent = parentDAO.findById(parentId);
+
+                filiation.setE(enfant);
+                filiation.setP(parent);
+                filiation.setLien(result.getString("lien_parente"));
+
+                filiations.add(filiation);
+            }
+            
+            
+        } catch (SQLException e) {
+            Logger.getLogger(FiliationDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
+        return filiations;
+    }
+
 }

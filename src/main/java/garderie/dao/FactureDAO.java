@@ -8,6 +8,7 @@ import com.mysql.jdbc.Statement;
 import garderie.model.ParentFacture;
 import garderie.model.Facture;
 import garderie.model.LigneFacture;
+import garderie.model.StatutFacture;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -125,9 +126,11 @@ public class FactureDAO extends CommonDAO<Facture>{
                 facture.setDateEmission(result.getDate("date_emission"));
                 facture.setDatePaiement(result.getDate("date_paiement"));
                 facture.setMontantTTC(result.getDouble("montant_ttc"));
-                //facture.setStatut(result.getString("statut"));
+                facture.setStatut(StatutFacture.valueOf(result.getString("statut")));
                 //facture.setLignesFactures(lignesFactures);
-                //facture.setParent(parent);    
+                
+                ParentFactureDAO parentfactureDAO = new ParentFactureDAO(connection);
+                facture.setParent(parentfactureDAO.getAllParentByIdFacture(id));
             }
             
             preparedStatement.close();
@@ -158,9 +161,11 @@ public class FactureDAO extends CommonDAO<Facture>{
                 facture.setDateEmission(result.getDate("date_emission"));
                 facture.setDatePaiement(result.getDate("date_paiement"));
                 facture.setMontantTTC(result.getDouble("montant_ttc"));
-                //facture.setStatut(result.getString("statut"));
+                facture.setStatut(StatutFacture.valueOf(result.getString("statut")));
                 //facture.setLignesFactures(lignesFactures);
-                //facture.setParent(parent);    
+                
+                ParentFactureDAO parentfactureDAO = new ParentFactureDAO(connection);
+                facture.setParent(parentfactureDAO.getAllParentByIdFacture(facture.getIdFacture()));   
                 
                 listefacture.add(facture);
             }

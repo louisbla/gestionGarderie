@@ -8,7 +8,7 @@ import com.mysql.jdbc.Statement;
 import garderie.model.Parent;
 import garderie.model.Personne;
 import garderie.model.Facture;
-import garderie.model.Enfant;
+import garderie.model.Filiation;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -140,7 +140,11 @@ public class ParentDAO extends CommonDAO<Parent>{
                  parent.setNbEnfantsInscrits(result.getInt("nb_enfants_inscrits"));
                  parent.setNumTel(result.getString("telephone"));
                  
-                //parent.setListeEnfants(listeEnfants);
+                 
+                // Recuperation de ses filiations
+                FiliationDAO filiationDAO = new FiliationDAO(connection);
+                ArrayList<Filiation> filiations = filiationDAO.getAllByParentId(id);
+                parent.setListeEnfants(filiations);
                 
                 ParentFactureDAO parentfactureDAO = new ParentFactureDAO(connection);             
                 parent.setFactures(parentfactureDAO.getAllFactureByIdParent(id));
@@ -180,7 +184,10 @@ public class ParentDAO extends CommonDAO<Parent>{
                 parent.setNbEnfantsInscrits(result.getInt("nb_enfants_inscrits"));
                 parent.setNumTel(result.getString("telephone"));
                 
-                //parent.setListeEnfants(listeEnfants);
+                 // Recuperation de ses filiations
+                FiliationDAO filiationDAO = new FiliationDAO(connection);
+                ArrayList<Filiation> filiations = filiationDAO.getAllByParentId(parent.getIdPersonne());
+                parent.setListeEnfants(filiations);
                 
                 ParentFactureDAO parentfactureDAO = new ParentFactureDAO(connection);             
                 parent.setFactures(parentfactureDAO.getAllFactureByIdParent(parent.getIdPersonne()));
