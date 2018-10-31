@@ -8,7 +8,6 @@ package garderie.dao;
 import garderie.model.DossierInscription;
 import garderie.model.Enfant;
 import garderie.model.Groupe;
-import garderie.model.Inventaire;
 import garderie.model.InventaireEnfant;
 import garderie.model.Personne;
 import garderie.model.Traitement;
@@ -17,7 +16,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
