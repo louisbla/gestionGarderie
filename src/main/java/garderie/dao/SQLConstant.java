@@ -296,7 +296,7 @@ public class SQLConstant {
             + " personneId = ?, lien_parente = ? WHERE enfantId = ?";
     
     protected static final String DELETE_FILIATION = "UPDATE filiation SET "
-            + NOT_VISIBLE + " WHERE personneId = ? and enfantId = ?";
+            + NOT_VISIBLE + " WHERE personneId = ? AND enfantId = ?";
     
     protected static final String SELECT_FILIATION = "SELECT * FROM filiation"
             + " WHERE " + VISIBLE;
@@ -346,8 +346,8 @@ public class SQLConstant {
             + " WHERE " + VISIBLE;
 
 
-    protected static final String SELECT_PARENT_FACTURE_BY_PERSONNE_ID = "SELECT * FROM "
-            + " parents_fatures  WHERE personneId = ?";
+    protected static final String SELECT_PARENT_FOR_FACTURE_BY_ID = "SELECT * FROM "
+            + " parents_fatures  WHERE factureId = ?";
 
     protected static final String SELECT_FACTURE_FOR_PARENT_BY_ID = "SELECT * FROM parents_factures"
             + " WHERE personneId = ?";

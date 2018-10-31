@@ -34,7 +34,7 @@ public class DocumentOfficielDAO extends CommonDAO<DocumentOfficiel> {
             
             preparedStatement.setString(1, documentOfficiel.getNom());
             preparedStatement.setString(2, documentOfficiel.getUrl());
-            //preparedStatement.setInt(3, documentOfficiel.getPersonne().getId()); Comment faire ?
+            preparedStatement.setInt(3, documentOfficiel.getDossier().getIdDossier()); 
             
             System.out.println(preparedStatement.toString());
             
