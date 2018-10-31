@@ -42,8 +42,7 @@ public class ParentDAO extends CommonDAO<Parent>{
             preparedStatement.setInt(1, personne.getIdPersonne());
             preparedStatement.setInt(2, parent.getNbEnfantsInscrits());
             preparedStatement.setString(3, parent.getNumTel());
-            //get ArrayList<Filiation> listeEnfants;
-            //get ArrayList<ParentFacture> factures;
+            
             
             System.out.println(preparedStatement.toString());
 
@@ -81,9 +80,7 @@ public class ParentDAO extends CommonDAO<Parent>{
             preparedStatement.setInt(1, parent.getNbEnfantsInscrits());
             preparedStatement.setString(2, parent.getNumTel());
             preparedStatement.setInt(3, personne.getIdPersonne());
-            //parent.setListeEnfants(listeEnfants);
-            //parent.setFactures(factures);
-                
+
             System.out.println(preparedStatement.toString());
 
             //Executing the preparedStatement
@@ -144,7 +141,9 @@ public class ParentDAO extends CommonDAO<Parent>{
                  parent.setNumTel(result.getString("telephone"));
                  
                 //parent.setListeEnfants(listeEnfants);
-                //parent.setFactures(factures);
+                
+                ParentFactureDAO parentfactureDAO = new ParentFactureDAO(connection);             
+                parent.setFactures(parentfactureDAO.getAllFactureByIdParent(id));
                 
                 
              }
@@ -182,7 +181,9 @@ public class ParentDAO extends CommonDAO<Parent>{
                 parent.setNumTel(result.getString("telephone"));
                 
                 //parent.setListeEnfants(listeEnfants);
-                //parent.setFactures(factures);
+                
+                ParentFactureDAO parentfactureDAO = new ParentFactureDAO(connection);             
+                parent.setFactures(parentfactureDAO.getAllFactureByIdParent(parent.getIdPersonne()));
                 
                 
                 listeparent.add(parent);
