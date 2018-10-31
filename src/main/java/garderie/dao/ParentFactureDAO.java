@@ -140,7 +140,39 @@ public class ParentFactureDAO extends CommonDAO<ParentFacture>{
         
     }
     
-    
+    public ArrayList<ParentFacture> getAllParentByIdFacture(int idFacture){
+        ArrayList<ParentFacture> liste = new ArrayList<>();
+        try{
+             //Creation of the PreparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_PARENT_FOR_FACTURE_BY_ID);
+
+            //Insert parameter at the location of the question mark in the SQL Query
+            preparedStatement.setInt(1, idFacture);
+            
+             //Recupere les resultats de la requete
+            ResultSet result = preparedStatement.executeQuery();
+   
+            while (result.next()) {
+
+                 ParentFacture parentfacture = new ParentFacture();
+                 
+                 FactureDAO factureDAO = new FactureDAO(connection);
+                 Facture facture = factureDAO.findById(idFacture);
+                 
+                 ParentDAO parentDAO = new ParentDAO(connection);
+                 Parent parent = parentDAO.findById(result.getInt("personneId"));
+                         
+                 parentfacture.setFacture(facture);
+                 parentfacture.setParent(parent);
+                  
+                 liste.add(parentfacture);
+             }
+ 
+        }catch (SQLException e) {
+            Logger.getLogger(ParentFactureDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return liste;
+    }
     
     
     public ArrayList<Facture> findAllFactureByIdPersonne(int idPersonne){
