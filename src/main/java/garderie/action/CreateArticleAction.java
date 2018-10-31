@@ -16,9 +16,9 @@ import java.sql.Connection;
  *
  * @author Katsuo
  */
-
-public class UpdateArticleAction extends ActionSupport {
-    private Article article;
+public class CreateArticleAction extends ActionSupport {
+    Article article;
+    
     Connection connection = FactoryBDDManagerInstance.getInstance(new BDDManagerMySQL()).connect();
     ArticleDAO articleDAO = new ArticleDAO(connection);
 
@@ -32,11 +32,8 @@ public class UpdateArticleAction extends ActionSupport {
     
     @Override
     public String execute() throws Exception {
-        article = articleDAO.update(article);
-        addActionMessage("Article modifie!");
+        article = articleDAO.create(article);
         return SUCCESS;
-        
     }
-    
     
 }

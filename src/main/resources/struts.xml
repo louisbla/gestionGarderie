@@ -52,8 +52,23 @@
 	</action>
         
         <action name="updatearticle" class="garderie.action.UpdateArticleAction">
-            <result name="update" type="tiles">inventaire</result>
-        </action>
+            <result type="redirectAction">
+                <param name="actionName">inventaireLink</param>
+            </result>
+	</action>
+        
+        <action name="createarticle" class="garderie.action.CreateArticleAction">
+            <result type="redirectAction">
+                <param name="actionName">inventaireLink</param>
+            </result>
+	</action>
+        
+        <action name="deletearticle" class="garderie.action.DeleteArticleAction">
+            <result type="redirectAction">
+                <param name="actionName">inventaireLink</param>
+            </result>
+	</action>
+        
     </package>
 
     <!-- Add addition packages and configuration here. -->

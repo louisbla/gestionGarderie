@@ -20,16 +20,21 @@
     </head>
     <body>
         <h1 class="text-center mb-5">Categories</h1>
-
-        <s:form theme="bootstrap" cssClass="form-horizontal">
-            <div class="row">
-                <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-primary" data-toggle="modal"
+                        data-target="#modalCreateCategorie">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Ajouter
+                </button>
+            </div>
+            <div class="col-md-6">
+                <s:form theme="bootstrap" cssClass="form-horizontal ">
                     <s:textfield placeholder="Rechercher..."
                                  inputPrependIcon="search" />
-                </div>
+                </s:form>
             </div>
-        </s:form>
-
+        </div>
         <div class="row">
             <s:if test="%{categories.size()>0}">
                 <div class="table-responsive">
@@ -62,11 +67,6 @@
                 <s:else>
                     Aucune categorie dans la liste.
                 </s:else>
-                <button class="btn btn-primary" data-toggle="modal"
-                        data-target="#modalCreateCategorie">
-                    <span class="glyphicon glyphicon-plus"></span>
-                    Ajouter
-                </button>
             </div>
         </div>
 
@@ -105,8 +105,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-danger" formaction="deletecategorie">Delete</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-danger" formaction="deletecategorie">Annuler</button>
+                            <button type="submit" class="btn btn-primary">Valider</button>
                         </div>
                     </s:form>
                 </div>

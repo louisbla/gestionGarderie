@@ -11,14 +11,13 @@ import garderie.db.BDDManagerMySQL;
 import garderie.db.FactoryBDDManagerInstance;
 import garderie.model.CategorieArticle;
 import java.sql.Connection;
-import java.util.ArrayList;
 
 /**
  *
  * @author Katsuo
  */
 public class UpdateCategorieAction extends ActionSupport {
-    CategorieArticle categorieArticle;
+    private CategorieArticle categorieArticle;
     
     Connection connection = FactoryBDDManagerInstance.getInstance(new BDDManagerMySQL()).connect();
     CategorieArticleDAO categorieArticleDAO = new CategorieArticleDAO(connection);
