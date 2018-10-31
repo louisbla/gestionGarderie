@@ -7,6 +7,7 @@ package garderie.dao;
 
 import com.mysql.jdbc.Statement;
 import garderie.model.DossierInscription;
+import garderie.model.Enfant;
 import garderie.model.Personne;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -68,17 +69,95 @@ public class DossierInscriptionDAO extends CommonDAO<DossierInscription> {
     }
 
     @Override
-    public DossierInscription findById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public DossierInscription findById(int dossierInscriptionId) {
+        DossierInscription dossierInscription = null;
+
+        try {
+            //Creation of the PreparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_DOSSIER_INSCRIPTION_BY_ID);
+
+            //Insert parameter at the location of the question mark in the SQL Query
+            preparedStatement.setInt(1, dossierInscriptionId);
+
+            //Executing the preparedStatement
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+
+            ResultSet result = preparedStatement.executeQuery();
+
+            if (result.first()) {
+                dossierInscription = new DossierInscription();
+                dossierInscription.setIdDossier(dossierInscriptionId);
+                dossierInscription.setDateInscription(result.getDate("dateInscription"));
+                dossierInscription.setNbDemiJourneeAbsent(result.getInt("nb_demi_journees_inscrit"));
+                dossierInscription.setDateInscription(result.getDate("nb_demi_journees_absent"));
+                dossierInscription.setDateInscription(result.getDate("medecin_traitant"));
+
+                EnfantDAO enfantDAO = new EnfantDAO(connection);
+                Enfant enfant = enfantDAO.findById(result.getInt("enfantId"));
+
+                dossierInscription.setEnfant(enfant);
+            }
+
+        } catch (SQLException e) {
+            Logger.getLogger(EnfantDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        return dossierInscription;
     }
 
     @Override
     public ArrayList<DossierInscription> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<DossierInscription> dossiersInscription = new ArrayList<>();
+
+        try {
+            //Creation of the PreparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_DOSSIER_INSCRIPTION);
+
+            //Executing the preparedStatement
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+
+            ResultSet result = preparedStatement.executeQuery();
+
+            if (result.first()) {
+                DossierInscription dossierInscription = this.findById(result.getInt("dossierId"));
+                dossiersInscription.add(dossierInscription);
+            }
+
+        } catch (SQLException e) {
+            Logger.getLogger(EnfantDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        return dossiersInscription;
+
     }
 
     public DossierInscription findByEnfantId(int enfantId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates. 
+        DossierInscription dossierInscription = null;
+
+        try {
+            //Creation of the PreparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_DOSSIER_INSCRIPTION_BY_ENFANTID);
+
+            //Insert parameter at the location of the question mark in the SQL Query
+            preparedStatement.setInt(1, enfantId);
+
+            //Executing the preparedStatement
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+
+            ResultSet result = preparedStatement.executeQuery();
+
+            if (result.first()) {
+                dossierInscription = this.findById(result.getInt("dossierId"));
+            }
+
+        } catch (SQLException e) {
+            Logger.getLogger(EnfantDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        return dossierInscription;
     }
 
 }

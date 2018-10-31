@@ -8,11 +8,13 @@ package garderie.model;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
+
 /**
  *
  * @author Katsuo
  */
 public class DossierInscription implements Serializable {
+
     private int idDossier;
     private Date dateInscription;
     private int nbDemiJourneeInscrit;
@@ -36,8 +38,6 @@ public class DossierInscription implements Serializable {
         this.contactsUrgences = contactsUrgences;
         this.documentsOfficiels = documentsOfficiels;
     }
-
-    
 
     public int getIdDossier() {
         return idDossier;
@@ -117,5 +117,5 @@ public class DossierInscription implements Serializable {
 
     public void setListeRapports(ArrayList<RapportJournalier> listeRapports) {
         this.listeRapports = listeRapports;
-    } 
+    }
 }

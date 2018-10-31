@@ -370,6 +370,15 @@ public class SQLConstant {
     protected static final String INSERT_DOSSIER_INSCRIPTION = "INSERT INTO dossiers_inscription"
             + " (dateInscription, nb_demi_journees_inscrit, nb_demi_journees_absent, medecin_traitant, enfantId) VALUES (?,?,?,?,?)";
     
+    protected static final String SELECT_DOSSIER_INSCRIPTION_BY_ENFANTID = "SELECT * FROM dossiers_inscription"
+            + " WHERE enfantId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_DOSSIER_INSCRIPTION_BY_ID = "SELECT * FROM dossiers_inscription"
+            + " WHERE dossierId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_DOSSIER_INSCRIPTION = "SELECT * FROM dossiers_inscription"
+            + " WHERE " + VISIBLE;
+    
     
     //*********************** CONTACT URGENCE ********************************
     
