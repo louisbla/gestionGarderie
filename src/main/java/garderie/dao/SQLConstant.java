@@ -95,8 +95,23 @@ public class SQLConstant {
             + " WHERE enfantId = ?";
 
     // ************* INVENTAIRE ENFANT *****************
+    protected static final String INSERT_INVENTAIRE_ENFANT = "INSERT INTO inventaires_enfants VALUES()";
+        
+    protected static final String SELECT_INVENTAIRE_ENFANT = "SELECT * FROM inventaires_enfant "
+            + " WHERE " + VISIBLE;
+        
     protected static final String SELECT_INVENTAIRE_ENFANT_BY_ID = "SELECT * FROM inventaires_enfant "
             + " WHERE inventaireId = ?";
+    
+    protected static final String SELECT_ARTICLES_BY_ENFANTID = "SELECT * FROM" 
+            + " articles WHERE enfantId = ? AND " + VISIBLE;
+    
+    protected static final String UPDATE_INVENTAIRE_ENFANT = "UPDATE inventaires_enfant SET "
+            + "photo = ?, groupeId = ?, inventaireEnfantId = ?"
+            + " WHERE enfantId = ?";
+    
+    protected static final String DELETE_INVENTAIRE_ENFANT = "UPDATE inventaires_enfant SET "
+            + NOT_VISIBLE + "WHERE inventaireId = ?";
     
     // ************* EMPLOYE *****************
     
@@ -317,8 +332,60 @@ public class SQLConstant {
             + " WHERE factureId = ?";
     
     
+    //**************************** PARENT_FACTURE ******************************
+    protected static final String INSERT_PARENT_FACTURE = "INSERT INTO parents_factures ("
+            + " factureId, personneId ) VALUES (?,?)";
+    
+    protected static final String UPDATE_PARENT_FACTURE = "UPDATE parents_factures SET"
+            + " factureId = ? WHERE personneId = ?";
+    
+    protected static final String DELETE_PARENT_FACTURE = "UPDATE parents_factures SET"
+            + NOT_VISIBLE + " WHERE factureId = ? AND  personneId = ? "; 
+    
+    protected static final String SELECT_PARENT_FACTURE = "SELECT * FROM parents_factures"
+            + " WHERE " + VISIBLE;
+
+
+    protected static final String SELECT_PARENT_FACTURE_BY_PERSONNE_ID = "SELECT * FROM "
+            + " parents_fatures  WHERE personneId = ?";
+
+    protected static final String SELECT_FACTURE_FOR_PARENT_BY_ID = "SELECT * FROM parents_factures"
+            + " WHERE personneId = ?";
+
+    
+    //*********************** DOCUMENT OFFICIEL ********************************
+    
+    protected static final String INSERT_DOCUMENT_OFFICIEL = "INSERT INTO documents_officiels (nom,"
+            + " url, dossierId) VALUES (?,?,?)";
+     
+    protected static final String DELETE_DOCUMENT_OFFICIEL = "UPDATE documents_officiels SET " 
+            + NOT_VISIBLE + " WHERE documentId = ?";    
+    
+    protected static final String UPDATE_DOCUMENT_OFFICIEL = "UPDATE documents_officiels SET nom = ?,"
+            + " url = ?, dossierId = ? WHERE documentId = ?";
+    
+    protected static final String SELECT_DOCUMENT_OFFICIEL_BY_ID = "SELECT * FROM documents_officiels WHERE"
+            + " documentId = ? AND " + VISIBLE;
+
+    protected static final String SELECT_DOCUMENTS = "SELECT * FROM documents_officiels WHERE " 
+            + VISIBLE;    
     
     
+    //************************** RAPPORT_JOURNALIER ******************************
+    protected static final String INSERT_RAPPORT_JOURNALIER = "INSERT INTO rapport_journalier"
+            + " (date, present, resume, dossierInscription_id) VALUES (?,?,?,?)";
+    
+    protected static final String UPDATE_RAPPORT_JOURNALIER = "UPDATE rapport_journalier SET"
+            + " date = ?, present= ?, resume = ?, dossierInscription_id = ? WHERE rapportId = ?";
+    
+    protected static final String DELETE_RAPPORT_JOURNALIER = "UPDATE rapport_journalier SET "
+            + NOT_VISIBLE + " WHERE rapportId = ?";
+    
+    protected static final String SELECT_RAPPORT_JOURNALIER = "SELECT * FROM rapport_journalier WHERE "
+            + VISIBLE; 
+    
+    protected static final String SELECT_RAPPORT_JOURNALIER_BY_ID = "SELECT * FROM rapport_journalier"
+            + " WHERE rapportId = ? AND " + VISIBLE;
     
     
 }

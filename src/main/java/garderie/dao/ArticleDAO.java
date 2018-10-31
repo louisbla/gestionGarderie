@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package garderie.dao;
+
 import garderie.model.Article;
 import garderie.model.Inventaire;
 import garderie.model.CategorieArticle;
@@ -15,23 +16,24 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
  * @author Maryline
  */
-public class ArticleDAO extends CommonDAO<Article>{
-    
-    public ArticleDAO(Connection connection){
+public class ArticleDAO extends CommonDAO<Article> {
+
+    public ArticleDAO(Connection connection) {
         super(connection);
     }
 
     @Override
     public Article create(Article article) {
-        try{
+        try {
             //Creation of the PreparedStatement
             PreparedStatement preparedStatement = connection.prepareStatement(
                     SQLConstant.INSERT_ARTICLE, Statement.RETURN_GENERATED_KEYS);
-            
+
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setString(1, article.getNom());
             preparedStatement.setInt(2, article.getQuantite());
@@ -43,22 +45,21 @@ public class ArticleDAO extends CommonDAO<Article>{
             preparedStatement.setString(4, article.getDescription());
             preparedStatement.setInt(5, article.getInventaire().getIdInventaire());
             preparedStatement.setInt(6, article.getCategorie().getIdCategorie());
-            
+
             System.out.println(preparedStatement.toString());
 
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
-            
+
             //Recupere l'id genere par la BDD
             ResultSet resultKeys = preparedStatement.getGeneratedKeys();
             if (resultKeys.next()) {
                 int idArticle = resultKeys.getInt(1);
                 article.setIdArticle(idArticle);
             }
-            
+
             preparedStatement.close();
-            
-            
+
         } catch (SQLException e) {
             Logger.getLogger(ArticleDAO.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -67,11 +68,11 @@ public class ArticleDAO extends CommonDAO<Article>{
 
     @Override
     public Article update(Article article) {
-        try{
+        try {
             //Creation of the PreparedStatement
             PreparedStatement preparedStatement = connection.prepareStatement(
                     SQLConstant.UPDATE_ARTICLE);
-            
+
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setString(1, article.getNom());
             preparedStatement.setInt(2, article.getQuantite());
@@ -86,53 +87,52 @@ public class ArticleDAO extends CommonDAO<Article>{
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
             preparedStatement.close();
-            
+
         } catch (SQLException e) {
             Logger.getLogger(ArticleDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return article;
-        
+
     }
 
     @Override
     public void delete(Article article) {
-    
-        try{
+
+        try {
             //Creation of the PreparedStatement
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.DELETE_ARTICLE);
-            
+
             //Insert parameter at the location of the question mark in the SQL Query
-             preparedStatement.setInt(1, article.getIdArticle());
-             
+            preparedStatement.setInt(1, article.getIdArticle());
+
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
             preparedStatement.close();
-             
+
         } catch (SQLException e) {
             Logger.getLogger(ArticleDAO.class.getName()).log(Level.SEVERE, null, e);
         }
-        
+
     }
-    
 
     @Override
     public Article findById(int id) {
         Article article = new Article();
-        
-        try{
+
+        try {
             //Creation of the PreparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_ARTICLE_BY_ID);
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_INVENTAIRE_ENFANT_BY_ID);
 
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setInt(1, id);
-            
+
             System.out.println(preparedStatement.toString());
 
             ResultSet result = preparedStatement.executeQuery();
-            
-            if (result.first()){
+
+            if (result.first()) {
                 InventaireDAO inventaireDAO = new InventaireDAO(connection);
-                Inventaire inventaire  = inventaireDAO.findById(result.getInt("inventaireId"));
+                Inventaire inventaire = inventaireDAO.findById(result.getInt("inventaireId"));
 
                 CategorieArticleDAO categorieArticleDAO = new CategorieArticleDAO(connection);
                 CategorieArticle categorie = categorieArticleDAO.findById(result.getInt("categorieId"));
@@ -146,76 +146,113 @@ public class ArticleDAO extends CommonDAO<Article>{
                 article.setCategorie(categorie);
             }
             preparedStatement.close();
-            
+
         } catch (SQLException e) {
             Logger.getLogger(ArticleDAO.class.getName()).log(Level.SEVERE, null, e);
         }
 
         return article;
-    
+
     }
 
     @Override
     public ArrayList<Article> findAll() {
-        
+
         ArrayList<Article> listeArticle = new ArrayList<>();
-        
-        try{
+
+        try {
             //Creation of the PreparedStatement
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_ARTICLE);
 
             System.out.println(preparedStatement.toString());
 
             ResultSet result = preparedStatement.executeQuery();
-            
-            while (result.next()){
+
+            while (result.next()) {
                 Article article = new Article();
-                
+
+                InventaireDAO inventaireDAO = new InventaireDAO(connection);
+                Inventaire inventaire = inventaireDAO.findById(result.getInt("inventaireId"));
+
+                CategorieArticleDAO categorieArticleDAO = new CategorieArticleDAO(connection);
+                CategorieArticle categorie = categorieArticleDAO.findById(result.getInt("categorieId"));
+
+                article.setIdArticle(result.getInt("articleId"));
+                article.setNom(result.getString("nom"));
+                article.setQuantite(result.getInt("quantite"));
+                article.setPhoto(result.getString("photo"));
+                article.setDescription(result.getString("description"));
+                article.setInventaire(inventaire);
+                article.setCategorie(categorie);
+
+                listeArticle.add(article);
+            }
+
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            Logger.getLogger(ArticleDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        return listeArticle;
+    }
+
+    public ArrayList<Article> getArticlesForCategorie(int id) {
+        ArrayList<Article> listeArticle = new ArrayList<>();
+        Article article = new Article();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_CATEGORIE_FOR_ARTICLE);
+            preparedStatement.setInt(1, id);
+            System.out.println(preparedStatement.toString());
+
+            ResultSet result = preparedStatement.executeQuery();
+
+            while (result.next()) {
+                InventaireDAO inventaireDAO = new InventaireDAO(connection);
+                Inventaire inventaire = inventaireDAO.findById(result.getInt("invenatireId"));
+
+                CategorieArticleDAO categorieArticleDAO = new CategorieArticleDAO(connection);
+                CategorieArticle categorie = categorieArticleDAO.findById(result.getInt("categorieId"));
+
+                article.setIdArticle(result.getInt("articleId"));
+                article.setNom(result.getString("nom"));
+                article.setQuantite(result.getInt("quantite"));
+                article.setPhoto(result.getString("photo"));
+                article.setDescription(result.getString("description"));
+                article.setInventaire(inventaire);
+                article.setCategorie(categorie);
+
+                listeArticle.add(article);
+            }
+
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            Logger.getLogger(ArticleDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return listeArticle;
+
+    }
+
+    public ArrayList<Article> getArticlesForEnfants(int idEnfant) {
+        ArrayList<Article> listeArticle = new ArrayList<>();
+        Article article = new Article();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_CATEGORIE_FOR_ARTICLE);
+            preparedStatement.setInt(1, idEnfant);
+            System.out.println(preparedStatement.toString());
+
+            ResultSet result = preparedStatement.executeQuery();
+
+            while (result.next()) {
                 InventaireDAO inventaireDAO = new InventaireDAO(connection);
                 Inventaire inventaire  = inventaireDAO.findById(result.getInt("inventaireId"));
                  
                 CategorieArticleDAO categorieArticleDAO = new CategorieArticleDAO(connection);
                 CategorieArticle categorie = categorieArticleDAO.findById(result.getInt("categorieId"));
-                
-                article.setIdArticle(result.getInt("articleId"));
-                article.setNom(result.getString("nom"));
-                article.setQuantite(result.getInt("quantite"));
-                article.setPhoto(result.getString("photo"));
-                article.setDescription(result.getString("description"));
-                article.setInventaire(inventaire);
-                article.setCategorie(categorie);
-                
-                listeArticle.add(article);
-            }
-            
-            preparedStatement.close();
-            
-        }catch (SQLException e) {
-            Logger.getLogger(ArticleDAO.class.getName()).log(Level.SEVERE, null, e);
-        }
 
-        return listeArticle;  
-    }
-    
-    
-    public ArrayList<Article> getArticlesForCategorie(int id){
-        ArrayList<Article> listeArticle = new ArrayList<>();
-        Article article = new Article();
-        
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_CATEGORIE_FOR_ARTICLE);
-            preparedStatement.setInt(1, id);
-            System.out.println(preparedStatement.toString());
-            
-            ResultSet result = preparedStatement.executeQuery();
-            
-            while(result.next()){
-                InventaireDAO inventaireDAO = new InventaireDAO(connection);
-                Inventaire inventaire  = inventaireDAO.findById(result.getInt("invenatireId"));
-                 
-                CategorieArticleDAO categorieArticleDAO = new CategorieArticleDAO(connection);
-                CategorieArticle categorie = categorieArticleDAO.findById(result.getInt("categorieId"));
-                
                 article.setIdArticle(result.getInt("articleId"));
                 article.setNom(result.getString("nom"));
                 article.setQuantite(result.getInt("quantite"));
@@ -223,18 +260,17 @@ public class ArticleDAO extends CommonDAO<Article>{
                 article.setDescription(result.getString("description"));
                 article.setInventaire(inventaire);
                 article.setCategorie(categorie);
-            
+
                 listeArticle.add(article);
             }
-            
+
             preparedStatement.close();
-            
+
         } catch (SQLException e) {
             Logger.getLogger(ArticleDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return listeArticle;
-        
+
     }
-    
-    
+
 }
