@@ -7,6 +7,7 @@ package garderie.dao;
 
 import garderie.model.DossierInscription;
 import garderie.model.Enfant;
+import garderie.model.Filiation;
 import garderie.model.Groupe;
 import garderie.model.InventaireEnfant;
 import garderie.model.Personne;
@@ -126,6 +127,11 @@ public class EnfantDAO extends CommonDAO<Enfant> {
                     DossierInscriptionDAO dossierDAO = new DossierInscriptionDAO(connection);
                     DossierInscription dossierInscription = dossierDAO.findByEnfantId(result.getInt(enfantId));
                     enfant.setDossier(dossierInscription);
+
+                    // Recuperation de ses filiations
+                    FiliationDAO filiationDAO = new FiliationDAO(connection);
+                    ArrayList<Filiation> filiations = filiationDAO.getAllByEnfantId(enfantId);
+                    enfant.setListeParents(filiations);
 
                     // Recuperation de son inventaire
                     InventaireEnfantDAO inventaireEnfantDAO = new InventaireEnfantDAO(connection);

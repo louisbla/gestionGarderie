@@ -293,7 +293,7 @@ public class SQLConstant {
             + " personneId, enfantId, lien_parente) VALUES (?,?,?)";
     
     protected static final String UPDATE_FILIATION = "UPDATE filiation SET"
-            + " personneId = ?, lien_parent = ? WHERE enfantId = ?";
+            + " personneId = ?, lien_parente = ? WHERE enfantId = ?";
     
     protected static final String DELETE_FILIATION = "UPDATE filiation SET "
             + NOT_VISIBLE + " WHERE personneId = ? and enfantId = ?";
@@ -306,10 +306,6 @@ public class SQLConstant {
     
     protected static final String SELECT_FILIATION_ALL_ENFANT_FOR_PARENT = "SELECT * FROM filiation"
             + " WHERE personneId = ? AND " + VISIBLE;
-    
-    protected static final String SELECT_FILIATION_ALL_PARENT_FOR_ENFANT = "SELECT * FROM filiation"
-            + " WHERE enfantId = ? AND " + VISIBLE;
-       
     
     //**************************** FACTURE ********************************
     protected static final String INSERT_FACTURE = "INSERT INTO factures ("
