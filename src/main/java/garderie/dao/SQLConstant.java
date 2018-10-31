@@ -317,7 +317,23 @@ public class SQLConstant {
             + " WHERE factureId = ?";
     
     
+    //**************************** PARENT_FACTURE ******************************
+    protected static final String INSERT_PARENT_FACTURE = "INSERT INTO parents_factures ("
+            + " factureId, personneId ) VALUES (?,?)";
     
+    protected static final String UPDATE_PARENT_FACTURE = "UPDATE parents_factures SET"
+            + " factureId = ? WHERE personneId = ?";
+    
+    protected static final String DELETE_PARENT_FACTURE = "UPDATE parents_factures SET"
+            + NOT_VISIBLE + " WHERE factureId = ? AND  personneId = ? "; 
+    
+    protected static final String SELECT_PARENT_FACTURE = "SELECT * FROM parents_factures"
+            + " WHERE " + VISIBLE;
+
+
+    protected static final String SELECT_PARENT_FACTURE_BY_PERSONNE_ID = "SELECT * FROM "
+            + " parents_fatures  WHERE personneId = ?";
+
     
     
     //*********************** DOCUMENT OFFICIEL ********************************
