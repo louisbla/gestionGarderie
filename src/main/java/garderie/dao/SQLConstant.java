@@ -269,5 +269,14 @@ public class SQLConstant {
      
     
     
+    //*********************** DOCUMENT OFFICIEL ********************************
     
+    protected static final String INSERT_DOCUMENT_OFFICIEL = "INSERT INTO documents_officiels (nom,"
+            + " url, dossierId) VALUES (?,?,?)";
+    
+    protected static final String DELETE_DOCUMENT_OFFICIEL = "UPDATE documents_officiels SET " 
+            + NOT_VISIBLE + " WHERE documentId = ?";    
+    
+    protected static final String UPDATE_DOCUMENT_OFFICIEL = "UPDATE documents_officiels SET nom = ?,"
+            + " url = ?, dossierId = ? WHERE documentId = ?";
 }
