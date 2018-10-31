@@ -152,5 +152,4 @@ public class MaladieDAO extends CommonDAO<Maladie>{
         return listemaladies;
     }
 
-    
 }
