@@ -36,7 +36,7 @@ public class ParentDAO extends CommonDAO<Parent>{
             
             //Creation of the PreparedStatement
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    SQLConstant.INSERT_PARENT);
+                    SQLConstant.INSERT_PARENT, Statement.RETURN_GENERATED_KEYS);
             
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setInt(1, personne.getIdPersonne());
@@ -49,6 +49,14 @@ public class ParentDAO extends CommonDAO<Parent>{
 
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
+            
+            //Recupere l'id genere par la BDD
+            ResultSet resultKeys = preparedStatement.getGeneratedKeys();
+            if (resultKeys.next()) {
+                int idParent = resultKeys.getInt(1);
+                parent.setIdPersonne(idParent);
+            }
+            
             preparedStatement.close();
             
         }catch (SQLException e) {

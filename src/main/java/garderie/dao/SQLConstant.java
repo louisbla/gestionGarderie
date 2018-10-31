@@ -311,5 +311,14 @@ public class SQLConstant {
             + VISIBLE;
     
     protected static final String SELECT_FACTURE_BY_ID = "SELECT * FROM factures"
-            +" WHERE factureId = ? AND " + VISIBLE;
+            + " WHERE factureId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_LIGNE_FOR_FACTURE = "SELECT * FROM lignes_factures"
+            + " WHERE factureId = ?";
+    
+    
+    
+    
+    
+    
 }
