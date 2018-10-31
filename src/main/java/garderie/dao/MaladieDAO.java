@@ -144,7 +144,19 @@ public class MaladieDAO extends CommonDAO<Maladie>{
 
             ResultSet result = preparedStatement.executeQuery();
             
+            while(result.next()){
+                Maladie maladie = new Maladie();
+                
+                maladie.setIdMaladie(result.getInt("maladieId"));
+                maladie.setNom(result.getString("nom"));
+                maladie.setDescriptif(result.getString("descriptif"));
+                //Traitement
+                
+                listemaladies.add(maladie);
+            }
             
+            preparedStatement.close();
+
             
         }catch (SQLException e) {
             Logger.getLogger(MaladieDAO.class.getName()).log(Level.SEVERE, null, e);
