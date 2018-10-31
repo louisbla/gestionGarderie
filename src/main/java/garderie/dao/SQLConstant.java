@@ -365,5 +365,27 @@ public class SQLConstant {
             + " url = ?, dossierId = ? WHERE documentId = ?";
     
     protected static final String SELECT_DOCUMENT_OFFICIEL_BY_ID = "SELECT * FROM documents_officiels WHERE"
-            + " documentId = ? AND " + VISIBLE;        
+            + " documentId = ? AND " + VISIBLE;
+
+    protected static final String SELECT_DOCUMENTS = "SELECT * FROM documents_officiels WHERE " 
+            + VISIBLE;    
+    
+    
+    //************************** RAPPORT_JOURNALIER ******************************
+    protected static final String INSERT_RAPPORT_JOURNALIER = "INSERT INTO rapport_journalier"
+            + " (date, present, resume, dossierInscription_id) VALUES (?,?,?,?)";
+    
+    protected static final String UPDATE_RAPPORT_JOURNALIER = "UPDATE rapport_journalier SET"
+            + " date = ?, present= ?, resume = ?, dossierInscription_id = ? WHERE rapportId = ?";
+    
+    protected static final String DELETE_RAPPORT_JOURNALIER = "UPDATE rapport_journalier SET "
+            + NOT_VISIBLE + " WHERE rapportId = ?";
+    
+    protected static final String SELECT_RAPPORT_JOURNALIER = "SELECT * FROM rapport_journalier WHERE "
+            + VISIBLE; 
+    
+    protected static final String SELECT_RAPPORT_JOURNALIER_BY_ID = "SELECT * FROM rapport_journalier"
+            + " WHERE rapportId = ? AND " + VISIBLE;
+    
+    
 }

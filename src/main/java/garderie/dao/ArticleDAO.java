@@ -244,8 +244,8 @@ public class ArticleDAO extends CommonDAO<Article> {
 
             while (result.next()) {
                 InventaireDAO inventaireDAO = new InventaireDAO(connection);
-                Inventaire inventaire = inventaireDAO.findById(result.getInt("invenatireId"));
-
+                Inventaire inventaire  = inventaireDAO.findById(result.getInt("inventaireId"));
+                 
                 CategorieArticleDAO categorieArticleDAO = new CategorieArticleDAO(connection);
                 CategorieArticle categorie = categorieArticleDAO.findById(result.getInt("categorieId"));
 

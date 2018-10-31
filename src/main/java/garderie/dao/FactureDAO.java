@@ -33,8 +33,8 @@ public class FactureDAO extends CommonDAO<Facture>{
                     SQLConstant.INSERT_FACTURE, Statement.RETURN_GENERATED_KEYS);
             
             //Insert parameter at the location of the question mark in the SQL Query
-            //preparedStatement.setDate(1, facture.getDateEmission());
-            //preparedStatement.setDate(2, facture.getDatePaiement());
+            preparedStatement.setDate(1, facture.getDateEmission());
+            preparedStatement.setDate(2, facture.getDatePaiement());
             preparedStatement.setDouble(3, facture.getMontantTTC());
             preparedStatement.setString(4, facture.getStatut().name());
             
@@ -66,8 +66,8 @@ public class FactureDAO extends CommonDAO<Facture>{
                     SQLConstant.UPDATE_FACTURE);
             
             //Insert parameter at the location of the question mark in the SQL Query
-            //preparedStatement.setDate(1, facture.getDateEmission());
-            //preparedStatement.setDate(2, facture.getDatePaiement());
+            preparedStatement.setDate(1, facture.getDateEmission());
+            preparedStatement.setDate(2, facture.getDatePaiement());
             preparedStatement.setDouble(3, facture.getMontantTTC());
             preparedStatement.setString(4, facture.getStatut().name());
             preparedStatement.setInt(5, facture.getIdFacture());
