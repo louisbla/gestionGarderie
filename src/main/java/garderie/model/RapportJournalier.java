@@ -6,7 +6,8 @@
 package garderie.model;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.sql.Date;
 
 /**
  *
@@ -17,17 +18,17 @@ public class RapportJournalier implements Serializable {
     private Date dateRapport;
     private boolean present;
     private String resumeJournee;
-    private Enfant enfant;
+    private DossierInscription dossierenfant;
     private boolean visible;
 
     public RapportJournalier() {
     }
 
-    public RapportJournalier(Date dateRapport, boolean present, String resumeJournee, Enfant enfant) {
+    public RapportJournalier(Date dateRapport, boolean present, String resumeJournee, DossierInscription enfant) {
         this.dateRapport = dateRapport;
         this.present = present;
         this.resumeJournee = resumeJournee;
-        this.enfant = enfant;
+        this.dossierenfant = enfant;
         this.visible = true;
     }
 
@@ -63,12 +64,12 @@ public class RapportJournalier implements Serializable {
         this.resumeJournee = resumeJournee;
     }
 
-    public Enfant getEnfant() {
-        return enfant;
+    public DossierInscription getDossierInscription() {
+        return dossierenfant;
     }
 
-    public void setEnfant(Enfant enfant) {
-        this.enfant = enfant;
+    public void setDossierInscription(DossierInscription enfant) {
+        this.dossierenfant = enfant;
     }
 
 
