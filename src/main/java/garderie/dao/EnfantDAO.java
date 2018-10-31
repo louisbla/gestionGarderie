@@ -7,8 +7,8 @@ package garderie.dao;
 
 import garderie.model.DossierInscription;
 import garderie.model.Enfant;
+import garderie.model.Filiation;
 import garderie.model.Groupe;
-import garderie.model.Inventaire;
 import garderie.model.InventaireEnfant;
 import garderie.model.Personne;
 import garderie.model.Traitement;
@@ -17,7 +17,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -128,6 +127,11 @@ public class EnfantDAO extends CommonDAO<Enfant> {
                     DossierInscriptionDAO dossierDAO = new DossierInscriptionDAO(connection);
                     DossierInscription dossierInscription = dossierDAO.findByEnfantId(result.getInt(enfantId));
                     enfant.setDossier(dossierInscription);
+
+                    // Recuperation de ses filiations
+                    FiliationDAO filiationDAO = new FiliationDAO(connection);
+                    ArrayList<Filiation> filiations = filiationDAO.getAllByEnfantId(enfantId);
+                    enfant.setListeParents(filiations);
 
                     // Recuperation de son inventaire
                     InventaireEnfantDAO inventaireEnfantDAO = new InventaireEnfantDAO(connection);
