@@ -31,13 +31,17 @@ public class InventaireEnfantDAO extends CommonDAO<InventaireEnfant> {
         try {
             //Creation of the PreparedStatement
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.INSERT_INVENTAIRE_ENFANT, Statement.RETURN_GENERATED_KEYS);
-
-            int objId = preparedStatement.getGeneratedKeys().getInt(0);
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
+            ResultSet resultKeys = preparedStatement.getGeneratedKeys();
+            int idInventaireEnfant;
+
+            if (resultKeys.next()) {
+                idInventaireEnfant = resultKeys.getInt(1);
+                obj.setIdInventaire(idInventaireEnfant);
+            }
             preparedStatement.close();
 
-            obj.setIdInventaire(objId);
             ArticleDAO articleDAO = new ArticleDAO(connection);
 
             for (Article article : obj.getListeArticleEnfant()) {
