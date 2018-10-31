@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author fadoua
+ * @author fadou
  */
 public class DocumentOfficielDAO extends CommonDAO<DocumentOfficiel> {
     
