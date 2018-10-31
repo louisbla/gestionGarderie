@@ -89,11 +89,30 @@ public class DocumentOfficielDAO extends CommonDAO<DocumentOfficiel> {
     public DocumentOfficiel findById(int id) {
         DocumentOfficiel documentOfficiel = new DocumentOfficiel();
         
-        retrurn documentOfficiel;
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_DOCUMENT_OFFICIEL_BY_ID);
+            preparedStatement.setInt(1, id);
+            
+            System.out.println(preparedStatement.toString());            
+            ResultSet result = preparedStatement.executeQuery();
+            
+            if (result.first()) {
+                documentOfficiel.setIdDocument(result.getInt("documentId"));
+                documentOfficiel.setNom(result.getString("nom"));
+                documentOfficiel.setUrl(result.getString("url"));
+                //Personne ? 
+            }
+        }
+        catch (SQLException e) {
+            Logger.getLogger(DocumentOfficielDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
+        return documentOfficiel;
     }
 
     @Override
     public ArrayList<DocumentOfficiel> findAll() {
+        ArrayList<DocumentOfficiel> documents = new ArrayList<>();
 
     }
     
