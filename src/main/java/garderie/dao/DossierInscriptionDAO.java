@@ -53,19 +53,49 @@ public class DossierInscriptionDAO extends CommonDAO<DossierInscription> {
             preparedStatement.close();
 
         } catch (SQLException e) {
-            Logger.getLogger(EnfantDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DossierInscriptionDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return obj;
     }
 
     @Override
     public DossierInscription update(DossierInscription obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            //Creation of the PreparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.UPDATE_ENFANT);
+
+            //Insert parameter at the location of the question mark in the SQL Query
+            preparedStatement.setDate(1, obj.getDateInscription());
+            preparedStatement.setInt(2, obj.getNbDemiJourneeInscrit());
+            preparedStatement.setInt(3, obj.getNbDemiJourneeAbsent());
+            preparedStatement.setString(4, obj.getMedecinTraitant());
+            preparedStatement.setInt(5, obj.getEnfant().getIdPersonne());
+            preparedStatement.setInt(6, obj.getIdDossier());
+
+            //Executing the preparedStatement
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            Logger.getLogger(DossierInscriptionDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return obj;
     }
 
     @Override
     public void delete(DossierInscription obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            //Creation of the PreparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.DELETE_DOSSIER_INSCRIPTION);
+
+            //Insert parameter at the location of the question mark in the SQL Query
+            preparedStatement.setInt(1, obj.getIdDossier());
+
+            //Executing the preparedStatement
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            Logger.getLogger(DossierInscriptionDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 
     @Override
@@ -100,7 +130,7 @@ public class DossierInscriptionDAO extends CommonDAO<DossierInscription> {
             }
 
         } catch (SQLException e) {
-            Logger.getLogger(EnfantDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DossierInscriptionDAO.class.getName()).log(Level.SEVERE, null, e);
         }
 
         return dossierInscription;
@@ -124,9 +154,8 @@ public class DossierInscriptionDAO extends CommonDAO<DossierInscription> {
                 DossierInscription dossierInscription = this.findById(result.getInt("dossierId"));
                 dossiersInscription.add(dossierInscription);
             }
-
         } catch (SQLException e) {
-            Logger.getLogger(EnfantDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DossierInscriptionDAO.class.getName()).log(Level.SEVERE, null, e);
         }
 
         return dossiersInscription;
@@ -154,7 +183,7 @@ public class DossierInscriptionDAO extends CommonDAO<DossierInscription> {
             }
 
         } catch (SQLException e) {
-            Logger.getLogger(EnfantDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DossierInscriptionDAO.class.getName()).log(Level.SEVERE, null, e);
         }
 
         return dossierInscription;

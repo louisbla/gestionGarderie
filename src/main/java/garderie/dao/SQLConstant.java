@@ -379,6 +379,13 @@ public class SQLConstant {
     protected static final String SELECT_DOSSIER_INSCRIPTION = "SELECT * FROM dossiers_inscription"
             + " WHERE " + VISIBLE;
     
+    protected static final String DELETE_DOSSIER_INSCRIPTION = "UPDATE dossiers_inscription SET "
+            + NOT_VISIBLE + " WHERE dossierId = ?";
+    
+    protected static final String UPDATE_DOSSIER_INSCRIPTION = "UPDATE dossiers_inscription SET "
+            + " dataInscription = ?, nb_demi_journees_inscrit = ?, nb_demi_journees_absent = ?, medecin_traitant = ?, enfantId = ?"
+            + " WHERE dossierId = ?"; 
+    
     
     //*********************** CONTACT URGENCE ********************************
     
