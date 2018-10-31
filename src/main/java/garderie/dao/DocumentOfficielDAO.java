@@ -98,6 +98,7 @@ public class DocumentOfficielDAO extends CommonDAO<DocumentOfficiel> {
             ResultSet result = preparedStatement.executeQuery();
             
             if (result.first()) {
+                //Recupere le dossier
                 DossierInscriptionDAO dossierDAO = new DossierInscriptionDAO(connection);
                 DossierInscription dossier = dossierDAO.findById(result.getInt("dossierId"));
                 
@@ -117,11 +118,28 @@ public class DocumentOfficielDAO extends CommonDAO<DocumentOfficiel> {
     @Override
     public ArrayList<DocumentOfficiel> findAll() {
         ArrayList<DocumentOfficiel> documents = new ArrayList<>();
+        DocumentOfficiel documentOfficiel = new DocumentOfficiel();
+        
         try{
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_DOCUMENTS);
             
+            ResultSet result = preparedStatement.executeQuery();
+            
+            while (result.next()) {
+                //Recupere le dossier
+                DossierInscriptionDAO dossierDAO = new DossierInscriptionDAO(connection);
+                DossierInscription dossier = dossierDAO.findById(result.getInt("dossierId"));
+                
+                documentOfficiel.setIdDocument(result.getInt("documentId"));
+                documentOfficiel.setNom(result.getString("nom"));
+                documentOfficiel.setUrl(result.getString("url"));
+                documentOfficiel.setDossier(dossier);
+                
+                documents.add(documentOfficiel);
+            }
         }
         catch (SQLException e) {
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_DOCUMENTS);
+            Logger.getLogger(DocumentOfficielDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         
         return documents;
