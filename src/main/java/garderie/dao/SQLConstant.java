@@ -399,7 +399,8 @@ public class SQLConstant {
     protected static final String SELECT_CONTACT_URGENCE_BY_ID = "SELECT * FROM personnes,"
             + " contacts_urgence WHERE personneId = contactId AND personneId = ? AND " + VISIBLE;
 
-    
+    protected static final String SELECT_CONTACT_URGENCE = "SELECT * FROM personnes, contacts_urgence "
+            + "WHERE personneId = contactId AND " + VISIBLE;    
     
     //*********************** DOSSIER CONTACT URGENCE ********************************
 
@@ -414,6 +415,9 @@ public class SQLConstant {
     
     protected static final String SELECT_DOSSIER_CONTACT_URGENCE_BY_ID = "SELECT * FROM dossier_contact_urgence"
             + " WHERE dossierContactUrgenceId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_DOSSIER_CONTACT_URGENCE_BY_CONTACT_ID = "SELECT * FROM dossier_contact_urgence"
+            + " WHERE contactId = ? AND " + VISIBLE;
 
     protected static final String SELECT_DOSSIER_CONTACT_URGENCE = "SELECT * FROM dossier_contact_urgence WHERE "
             + VISIBLE;     
