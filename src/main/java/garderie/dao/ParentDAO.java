@@ -151,6 +151,8 @@ public class ParentDAO extends CommonDAO<Parent>{
                 
                 
              }
+             
+             preparedStatement.close();
             
         }catch (SQLException e) {
             Logger.getLogger(ParentDAO.class.getName()).log(Level.SEVERE, null, e);
