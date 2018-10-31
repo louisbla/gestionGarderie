@@ -6,7 +6,8 @@
 package garderie.model;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.sql.Date;
 
 /**
  *
