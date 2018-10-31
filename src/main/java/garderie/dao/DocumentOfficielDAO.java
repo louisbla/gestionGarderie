@@ -6,6 +6,7 @@
 package garderie.dao;
 
 import garderie.model.DocumentOfficiel;
+import garderie.model.DossierInscription;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -62,7 +63,7 @@ public class DocumentOfficielDAO extends CommonDAO<DocumentOfficiel> {
             
             preparedStatement.setString(1, documentOfficiel.getNom());
             preparedStatement.setString(2, documentOfficiel.getUrl());
-            //preparedStatement.setInt(3, documentOfficiel.getPersonne().getId()); probleme retrouver personne associee
+            preparedStatement.setInt(3, documentOfficiel.getDossier().getIdDossier());
             preparedStatement.setInt(4, documentOfficiel.getIdDocument());
         }
         catch (SQLException e) {
@@ -97,10 +98,13 @@ public class DocumentOfficielDAO extends CommonDAO<DocumentOfficiel> {
             ResultSet result = preparedStatement.executeQuery();
             
             if (result.first()) {
+                DossierInscriptionDAO dossierDAO = new DossierInscriptionDAO(connection);
+                DossierInscription dossier = dossierDAO.findById(result.getInt("dossierId"));
+                
                 documentOfficiel.setIdDocument(result.getInt("documentId"));
                 documentOfficiel.setNom(result.getString("nom"));
                 documentOfficiel.setUrl(result.getString("url"));
-                //Personne ? 
+                documentOfficiel.setDossier(dossier);
             }
         }
         catch (SQLException e) {
@@ -113,7 +117,14 @@ public class DocumentOfficielDAO extends CommonDAO<DocumentOfficiel> {
     @Override
     public ArrayList<DocumentOfficiel> findAll() {
         ArrayList<DocumentOfficiel> documents = new ArrayList<>();
-
+        try{
+            
+        }
+        catch (SQLException e) {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_DOCUMENTS);
+        }
+        
+        return documents;
     }
     
     

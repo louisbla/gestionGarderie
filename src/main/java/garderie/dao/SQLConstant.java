@@ -350,5 +350,10 @@ public class SQLConstant {
             + " url = ?, dossierId = ? WHERE documentId = ?";
     
     protected static final String SELECT_DOCUMENT_OFFICIEL_BY_ID = "SELECT * FROM documents_officiels WHERE"
-            + " documentId = ? AND " + VISIBLE;        
+            + " documentId = ? AND " + VISIBLE;
+
+    protected static final String SELECT_DOCUMENTS = "SELECT * FROM documents_officiels WHERE " 
+            + VISIBLE;    
+    
+    
 }
