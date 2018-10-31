@@ -10,6 +10,7 @@ package garderie.model;
  * @author Maryline
  */
 public class DossierContactUrgence {
+    private int DossierContactUrgenceId;
     private ContactUrgence contactUrgence;
     private DossierInscription dossierInscription;
     private String lienParente;
@@ -24,8 +25,14 @@ public class DossierContactUrgence {
         this.lienParente = lienParente;
     }
 
- 
-   
+    public int getDossierContactUrgenceId() {
+        return DossierContactUrgenceId;
+    }
+
+    public void setDossierContactUrgenceId(int DossierContactUrgenceId) {
+        this.DossierContactUrgenceId = DossierContactUrgenceId;
+    }
+     
     public ContactUrgence getContactUrgence() {
         return contactUrgence;
     }

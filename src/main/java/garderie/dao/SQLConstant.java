@@ -369,4 +369,35 @@ public class SQLConstant {
     //**************************** DOSSIER_INSCRIPTION ******************************
     protected static final String INSERT_DOSSIER_INSCRIPTION = "INSERT INTO dossiers_inscription"
             + " (dateInscription, nb_demi_journees_inscrit, nb_demi_journees_absent, medecin_traitant, enfantId) VALUES (?,?,?,?,?)";
+    
+    
+    //*********************** CONTACT URGENCE ********************************
+    
+    protected static final String INSERT_CONTACT_URGENCE = "INSERT INTO contacts_urgence"
+            + " (contactId, telephone) VALUES (?,?)";
+    
+    protected static final String UPDATE_CONTACT_URGENCE = "UPDATE contacts_urgence SET "
+            + " telephone = ? WHERE contactId = ?";    
+    
+    protected static final String SELECT_CONTACT_URGENCE_BY_ID = "SELECT * FROM personnes,"
+            + " contacts_urgence WHERE personneId = contactId AND personneId = ? AND " + VISIBLE;
+
+    
+    
+    //*********************** DOSSIER CONTACT URGENCE ********************************
+
+    protected static final String INSERT_DOSSIER_CONTACT_URGENCE = "INSERT INTO dossier_contact_urgence"
+            + " (lien_parente, contactId, dossier_inscription_id) VALUES (?,?,?)";
+    
+    protected static final String UPDATE_DOSSIER_CONTACT_URGENCE = "UPDATE dossier_contact_urgence SET "
+            + " lien_parente = ?, contactId = ?, dossier_inscription_id = ?, WHERE dossierContactUrgenceId = ?";
+    
+    protected static final String DELETE_DOSSIER_CONTACT_URGENCE = "UPDATE dossier_contact_urgence SET "
+            + NOT_VISIBLE + " WHERE dossierContactUrgenceId = ?";
+    
+    protected static final String SELECT_DOSSIER_CONTACT_URGENCE_BY_ID = "SELECT * FROM dossier_contact_urgence"
+            + " WHERE dossierContactUrgenceId = ? AND " + VISIBLE;
+
+    protected static final String SELECT_DOSSIER_CONTACT_URGENCE = "SELECT * FROM dossier_contact_urgence WHERE "
+            + VISIBLE;     
 }
