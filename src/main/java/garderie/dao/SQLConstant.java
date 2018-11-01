@@ -218,6 +218,9 @@ public class SQLConstant {
 
     protected static final String SELECT_CATEGORIE_FOR_ARTICLE = "SELECT * FROM"
             + " articles WHERE catgeorieId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_ARTICLE_BY_NAME = "SELECT * FROM articles"
+            + " WHERE nom = ?";
 
     // ************* CATEGRORIE ARTICLE *****************
     protected static final String INSERT_CATEGORIE_ARTICLE = "INSERT INTO categories_article"
