@@ -15,7 +15,7 @@
     <body>
         <h1 class="text-center mb-5">Inventaire</h1>
 
-        <s:form theme="bootstrap" cssClass="form-horizontal">
+        <s:form theme="bootstrap" cssClass="form-horizontal" action="chercherarticle" method="post">
             <div class="row">
                 <div class="col-md-6">
                     <div class="btn-group btn-group-toggle" role="group" data-toggle="buttons">
@@ -31,17 +31,12 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <s:textfield placeholder="Rechercher..."
-                                 inputPrependIcon="search" />
+                    <s:textfield placeholder="Rechercher par nom..."
+                                 inputPrependIcon="search" name="motCle" />
                 </div>
+
             </div>
         </s:form>
-
-        <s:bean name="garderie.model.Article" var="article">
-            <s:param name="idArticle" value="'1'"/>
-            <s:param name="nom" value="'Mickey'"/>
-            <s:param name="quantite" value="'2'"/>
-        </s:bean>
 
         <div class="row">
             <div class="col-md-6">
@@ -58,7 +53,7 @@
                 <table class="table table-striped table-bordered">
                     <tr>
                         <th>#</th>
-                        <th>Inventaire</th>
+                        <th class="d-none">Inventaire</th>
                         <th>Categorie</th>
                         <th>Libelle</th>
                         <th>Quantite</th>
@@ -66,88 +61,12 @@
                         <th>Image</th>
                         <th>Editer</th>
                     </tr>
-                    <tr>
-                        <td><s:property value="#article.idArticle" /></td>
-                        <td><s:property value="#article.nom" /></td>
-                        <td><s:property value="#article.quantite" /></td>
-                        <td>Ok</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Peluche</td>
-                        <td>Mickey</td>
-                        <td>2</td>
-                        <td>
-                            <img alt="" src="<s:url value='/images/articles/icons8-animation.png'/>" class="img-responsive center-block">
-                        </td>
-                        <td>
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jouet</td>
-                        <td>Deadpool</td>
-                        <td>1</td>
-                        <td>
-                            <img alt="" src="<s:url value='/images/articles/icons8-deadpool.png'/>" class="img-responsive center-block">
-                        </td>
-                        <td>
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peluche</td>
-                        <td>Madagaskar</td>
-                        <td>3</td>
-                        <td>
-                            <img alt="" src="<s:url value='/images/articles/icons8-madagaskar.png'/>" class="img-responsive center-block">
-                        </td>
-                        <td>
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Jouet</td>
-                        <td>Saitama</td>
-                        <td>1</td>
-                        <td>
-                            <img alt="" src="<s:url value='/images/articles/icons8-saitama.png'/>" class="img-responsive center-block">
-                        </td>
-                        <td>
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Masque</td>
-                        <td>Walter White</td>
-                        <td>2</td>
-                        <td>
-                            <img alt="" src="<s:url value='/images/articles/icons8-walter_white.png'/>" class="img-responsive center-block">
-                        </td>
-                        <td>
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                            </button>
-                        </td>
-                    </tr>
+
                     <s:if test="%{articles.size()>0}">
                         <s:iterator value="articles">
                             <tr>
                                 <td><s:property value="idArticle" /></td>
-                                <td><s:property value="inventaire.idInventaire" /></td>
+                                <td class="d-none"><s:property value="inventaire.idInventaire" /></td>
                                 <td><s:property value="categorie.nom" /></td>
                                 <td><s:property value="nom" /></td>
                                 <td><s:property value="quantite" /></td>
@@ -172,6 +91,35 @@
                             </tr>
                         </s:iterator>
                     </s:if>
+                    <s:elseif test="%{articlesTrouves.size()>0}">
+                        <s:iterator value="articlesTrouves">
+                            <tr>
+                                <td><s:property value="idArticle" /></td>
+                                <td class="d-none"><s:property value="inventaire.idInventaire" /></td>
+                                <td><s:property value="categorie.nom" /></td>
+                                <td><s:property value="nom" /></td>
+                                <td><s:property value="quantite" /></td>
+                                <td><s:property value="description" /></td>
+                                <td>
+                                    <img alt="" src="<s:property value="photo" />"
+                                         class="img-thumbnail img-responsive center-block"
+                                         style="width:204px;height:auto;">
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary"
+                                            data-toggle="modal" data-id="<s:property value="idArticle" />"
+                                            data-categorie="<s:property value="categorie.idCategorie" />"
+                                            data-img="<s:property value="photo" />"
+                                            data-nom="<s:property value="nom" />"
+                                            data-description="<s:property value="description" />"
+                                            data-quantite="<s:property value="quantite" />"
+                                            data-inventaire="<s:property value="inventaire.idInventaire" />"
+                                            data-target="#modalArticle">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                </td>
+                            </tr>
+                        </s:iterator>
+                    </s:elseif>
                     <s:else>
                         Aucun article dans la liste.
                     </s:else>

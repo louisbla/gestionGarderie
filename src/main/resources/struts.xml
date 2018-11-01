@@ -69,6 +69,10 @@
             </result>
 	</action>
         
+        <action name="chercherarticle" class="garderie.action.ChercherArticleAction">
+            <result name="success" type="tiles">inventaire</result>
+	</action>
+        
     </package>
 
     <!-- Add addition packages and configuration here. -->
