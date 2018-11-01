@@ -38,4 +38,8 @@ public class LinkAction extends ActionSupport {
         return "facturation";
     }
     
+    public String login(){
+        return "login";
+    }
+    
 }

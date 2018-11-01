@@ -29,6 +29,17 @@
         <action name="inscriptionLink" class="garderie.action.LinkAction" method="inscription" >
             <result name="inscription" type="tiles">inscription</result>
 	</action>
+        
+        <action name="loginLink" class="garderie.action.LinkAction" method="login" >
+            <result name="login" type="tiles">inscription</result>
+	</action>
+        
+        <action name="login" class="garderie.action.LoginAction">
+                <!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+                <result name="success">/welcome.jsp</result>
+                <result name="input">/login.jsp</result>
+        </action>
+        
     </package>
 
     <!-- Add addition packages and configuration here. -->

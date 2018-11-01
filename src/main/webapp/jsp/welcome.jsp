@@ -21,7 +21,7 @@
     </head>
     <body>
         <div class="jumbotron">
-            <h1 class="text-center">Bienvenue !</h1>
+            <h1 class="text-center">Bienvenue <s:property value="login"></s:property> !</h1>
             <img alt="garderie" class="img-responsive" src="<s:url value='/images/garderie.jpg' />">
             <p class="lead text-center p-5">Veuillez-vous connecter pour accéder aux fonctionnalités de l'application.</p>
         </div>
