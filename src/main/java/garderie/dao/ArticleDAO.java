@@ -273,4 +273,37 @@ public class ArticleDAO extends CommonDAO<Article> {
 
     }
 
+    public Article findByName(String name){
+        Article article = new Article();
+        
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_ARTICLE_BY_NAME);
+            preparedStatement.setString(1, name);
+            System.out.println(preparedStatement.toString());
+
+            ResultSet result = preparedStatement.executeQuery();
+            
+            if (result.first()){
+                InventaireDAO inventaireDAO = new InventaireDAO(connection);
+                Inventaire inventaire = inventaireDAO.findById(result.getInt("inventaireId"));
+
+                CategorieArticleDAO categorieArticleDAO = new CategorieArticleDAO(connection);
+                CategorieArticle categorie = categorieArticleDAO.findById(result.getInt("categorieId"));
+
+                article.setIdArticle(result.getInt("articleId"));
+                article.setNom(result.getString(name));
+                article.setQuantite(result.getInt("quantite"));
+                article.setPhoto(result.getString("photo"));
+                article.setDescription(result.getString("description"));
+                article.setInventaire(inventaire);
+                article.setCategorie(categorie);
+            }
+
+             preparedStatement.close();
+            
+        }catch (SQLException e) {
+            Logger.getLogger(ArticleDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return article;
+    }
 }
