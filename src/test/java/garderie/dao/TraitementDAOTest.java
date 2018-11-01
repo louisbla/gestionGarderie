@@ -26,6 +26,7 @@ import static org.junit.Assert.*;
 public class TraitementDAOTest {
     private Connection connection;
     private TraitementDAO traitementDAO;
+    private Traitement traitement;
     
     public TraitementDAOTest() {
     }
@@ -60,7 +61,7 @@ public class TraitementDAOTest {
         Enfant enfant = enfantDAO.findById(5);
         
                 
-        Traitement traitement = new Traitement();
+        traitement = new Traitement();
         traitement.setMaladie(maladie);
         traitement.setEnfant(enfant);
         traitement.setNomMedicament("Nasonex");
@@ -81,14 +82,14 @@ public class TraitementDAOTest {
      */
     @Test
     public void testUpdate() {
-        System.out.println("update");
-        Traitement traitement = new Traitement();
+        System.out.println("update");        
         
         MaladieDAO maladieDAO = new MaladieDAO(connection);
         Maladie maladie = maladieDAO.findById(2);
         EnfantDAO enfantDAO = new EnfantDAO(connection);
         Enfant enfant = enfantDAO.findById(5);
         
+        traitement = new Traitement();
         traitement.setMaladie(maladie);
         traitement.setEnfant(enfant);
         traitement.setNomMedicament("Nasonex allergy");
@@ -109,12 +110,13 @@ public class TraitementDAOTest {
     @Test
     public void testDelete() {
         System.out.println("delete");
-        Traitement traitement = new Traitement();
+        
         Enfant enfant = new Enfant();
         enfant.setIdPersonne(10);
         Maladie maladie = new Maladie();
         maladie.setIdMaladie(1);
         
+        traitement = new Traitement();
         traitement.setEnfant(enfant);
         traitement.setMaladie(maladie);
         traitementDAO.delete(traitement);
