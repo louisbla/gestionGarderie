@@ -16,19 +16,25 @@ public class Conge implements Serializable {
     private int dureeCongeJour;
     private Date debutConge;
     private TypeConge typeConge;
+    private Employe employe;
     private boolean visible = true;
 
     public Conge() {
     }
 
-    public Conge(int dureeCongeJour, Date dateDebut, TypeConge typeConge) {
+    public Conge(int dureeCongeJour, Date dateDebut, TypeConge typeConge, Employe employe) {
         this.dureeCongeJour = dureeCongeJour;
         this.debutConge = dateDebut;
         this.typeConge = typeConge;
+        this.employe = employe;
     }
 
     public int getIdConge() {
         return this.idConge;
+    }
+    
+    public int getIdEmploye(){
+        return this.employe.getIdPersonne();
     }
 
     public void setIdConge(int idConge) {
