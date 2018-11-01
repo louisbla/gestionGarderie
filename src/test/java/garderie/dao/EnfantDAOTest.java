@@ -5,110 +5,125 @@
  */
 package garderie.dao;
 
+import garderie.db.BDDManagerMySQL;
+import garderie.db.FactoryBDDManagerInstance;
+import garderie.model.Adresse;
+import garderie.model.Article;
+import garderie.model.CategorieArticle;
+import garderie.model.ContactUrgence;
+import garderie.model.DossierContactUrgence;
+import garderie.model.DossierInscription;
 import garderie.model.Enfant;
+import garderie.model.Filiation;
+import garderie.model.Groupe;
+import garderie.model.InventaireEnfant;
+import garderie.model.PersonneAdresse;
+import java.sql.Connection;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
  *
- * @author Katsuo
+ * @author dendaneys
  */
 public class EnfantDAOTest {
-    
+
+    private Connection connection;
+
     public EnfantDAOTest() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+
     @Before
     public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+        connection = FactoryBDDManagerInstance.getInstance(new BDDManagerMySQL()).connect();
     }
 
-    /**
-     * Test of create method, of class EnfantDAO.
-     */
+    // TODO add test methods here.
+    // The methods must be annotated with annotation @Test. For example:
+    //
     @Test
-    public void testCreate() {
-        System.out.println("create");
-        Enfant obj = null;
-        EnfantDAO instance = null;
-        Enfant expResult = null;
-        Enfant result = instance.create(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void findById() {
+        /*EnfantDAO enfantDAO = new EnfantDAO(connection);
+        Enfant enfant = enfantDAO.findById(5);
+
+        System.out.println(enfant.getNom());
+        System.out.println(enfant.getPrenom());
+        System.out.println(enfant.getDossier().getMedecinTraitant());
+
+        for (DossierContactUrgence obj : enfant.getDossier().getContactsUrgences()) {
+            System.out.println(obj.getDossierInscription().getNbDemiJourneeInscrit());
+            System.out.println(obj.getContactUrgence().getPrenom());
+        }
+
+        for (Filiation filiation : enfant.getListeParents()) {
+            System.out.println(filiation.getP().getPrenom() + " est " + filiation.getLien());
+
+        }
+
+        for (Article article : enfant.getInventaire().getListeArticleEnfant()) {
+            System.out.println("Article : " + article.getNom());
+        }*/
     }
 
-    /**
-     * Test of update method, of class EnfantDAO.
-     */
     @Test
-    public void testUpdate() {
-        System.out.println("update");
-        Enfant obj = null;
-        EnfantDAO instance = null;
-        Enfant expResult = null;
-        Enfant result = instance.update(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    public void createEnfant() {
+        EnfantDAO enfantDAO = new EnfantDAO(connection);
+        Enfant enfant = new Enfant();
 
-    /**
-     * Test of delete method, of class EnfantDAO.
-     */
-    @Test
-    public void testDelete() {
-        System.out.println("delete");
-        Enfant obj = null;
-        EnfantDAO instance = null;
-        instance.delete(obj);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        // Informations de l'enfant
+        enfant.setNom("Baltimore");
+        enfant.setPrenom("Jefferson");
+        enfant.setDateNaissance(Date.valueOf(LocalDate.of(2018, Month.MARCH, 4)));
+        enfant.setNumSecu("JEFFB176362");
+        enfant.setSexe("masculin");
+        enfant.setPhoto("http://jeff.com");
 
-    /**
-     * Test of findById method, of class EnfantDAO.
-     */
-    @Test
-    public void testFindById() {
-        System.out.println("findById");
-        int id = 0;
-        EnfantDAO instance = null;
-        Enfant expResult = null;
-        Enfant result = instance.findById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        // Article
+        ArrayList<Article> listeArticleEnfant = new ArrayList<>();
+        Article article = new Article();
+        article.setDescription("Crosse de hockey");
+        article.setNom("Au cas ou");
+        article.setPhoto("http://ceossehockey.com");
+        article.setQuantite(2);
 
-    /**
-     * Test of findAll method, of class EnfantDAO.
-     */
-    @Test
-    public void testFindAll() {
-        System.out.println("findAll");
-        EnfantDAO instance = null;
-        ArrayList<Enfant> expResult = null;
-        ArrayList<Enfant> result = instance.findAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        listeArticleEnfant.add(article);
+
+        // Categorie d'article
+        CategorieArticle categorieArticle = new CategorieArticle();
+        categorieArticle.setIdCategorie(2);
+        article.setCategorie(categorieArticle);
+
+        // Inventaire d'enfant
+        InventaireEnfant inventaireEnfant = new InventaireEnfant();
+        inventaireEnfant.setListeArticleEnfant(listeArticleEnfant);
+        enfant.setInventaire(inventaireEnfant); // referencement
+
+        InventaireEnfantDAO inventaireEnfantDAO = new InventaireEnfantDAO(connection);
+        inventaireEnfantDAO.create(inventaireEnfant);
+
+        // Groupe
+        Groupe groupe = new Groupe();
+        groupe.setIdGroupe(2);
+        enfant.setGroupe(groupe);
+
+        // Creation DossierInscription
+        DossierInscription dossierInscription = new DossierInscription();
+        dossierInscription.setDateInscription(Date.valueOf(LocalDate.of(2018, Month.OCTOBER, 24)));
+        dossierInscription.setMedecinTraitant("Dr. DRE");
+        dossierInscription.setNbDemiJourneeInscrit(42);
+        dossierInscription.setNbDemiJourneeAbsent(0);
+
+        enfantDAO.create(enfant);
+        dossierInscription.setEnfant(enfant);
+        
+        DossierInscriptionDAO dossierInscriptionDAO = new DossierInscriptionDAO(connection);
+        dossierInscriptionDAO.create(dossierInscription);
+        enfant.setDossier(dossierInscription);
     }
-    
 }

@@ -6,9 +6,11 @@
 package garderie.dao;
 
 import com.mysql.jdbc.Statement;
+import garderie.model.Adresse;
 import garderie.model.Filiation;
 import garderie.model.Parent;
 import garderie.model.Enfant;
+import garderie.model.PersonneAdresse;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -100,12 +102,6 @@ public class FiliationDAO extends CommonDAO<Filiation> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public ArrayList<Filiation> findAllById() {
-        ArrayList<Filiation> listefiliation = new ArrayList();
-
-        return listefiliation;
-    }
-
     public ArrayList<Enfant> getAllEnfantForParent(Parent parent) {
         ArrayList<Enfant> listenfant = new ArrayList<>();
 
@@ -160,7 +156,7 @@ public class FiliationDAO extends CommonDAO<Filiation> {
         return listeparent;
     }
 
-    public ArrayList<Filiation> getAllByEnfantId(int enfantId) {
+    public ArrayList<Filiation> getAllByEnfantId(Enfant enfant) {
         ArrayList<Filiation> filiations = new ArrayList<>();
 
         try {
@@ -168,16 +164,13 @@ public class FiliationDAO extends CommonDAO<Filiation> {
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_FILIATION_ALL_PARENT_FOR_ENFANT);
 
             //Insert parameter at the location of the question mark in the SQL Query
-            preparedStatement.setInt(1, enfantId);
+            preparedStatement.setInt(1, enfant.getIdPersonne());
 
             //Recupere les resultats de la requete
             ResultSet result = preparedStatement.executeQuery();
 
             while (result.next()) {
                 Filiation filiation = new Filiation();
-
-                EnfantDAO enfantDAO = new EnfantDAO(connection);
-                Enfant enfant = enfantDAO.findById(enfantId);
 
                 ParentDAO parentDAO = new ParentDAO(connection);
                 Parent parent = parentDAO.findById(result.getInt("personneId"));
@@ -196,17 +189,17 @@ public class FiliationDAO extends CommonDAO<Filiation> {
         return filiations;
     }
 
-    
     public ArrayList<Filiation> getAllByParentId(int parentId) {
         ArrayList<Filiation> filiations = new ArrayList<>();
-        
+
         try {
             //Creation of the PreparedStatement
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_FILIATION_ALL_ENFANT_FOR_PARENT);
 
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setInt(1, parentId);
-            
+            System.out.println(preparedStatement.toString());
+
             //Recupere les resultats de la requete
             ResultSet result = preparedStatement.executeQuery();
 
@@ -225,12 +218,11 @@ public class FiliationDAO extends CommonDAO<Filiation> {
 
                 filiations.add(filiation);
             }
-            
-            
+
         } catch (SQLException e) {
             Logger.getLogger(FiliationDAO.class.getName()).log(Level.SEVERE, null, e);
         }
-        
+
         return filiations;
     }
 

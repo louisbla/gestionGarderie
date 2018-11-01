@@ -6,6 +6,7 @@
 package garderie.dao;
 
 import garderie.model.Personne;
+import garderie.model.PersonneAdresse;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -120,6 +121,7 @@ public class PersonneDAO extends CommonDAO<Personne> {
                 personne.setSexe(result.getString("sexe"));
                 personne.setDateNaissance(result.getDate("date_naissance"));
                 personne.setNumSecu(result.getString("numSecu"));
+                PersonneAdresseDAO padao = new PersonneAdresseDAO(connection);
             }
         } catch (SQLException e) {
             Logger.getLogger(PersonneDAO.class.getName()).log(Level.SEVERE, null, e);

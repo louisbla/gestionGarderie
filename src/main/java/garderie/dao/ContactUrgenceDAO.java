@@ -13,9 +13,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.springframework.format.datetime.joda.LocalDateParser;
 
 /**
  *
@@ -32,37 +34,37 @@ public class ContactUrgenceDAO extends CommonDAO<ContactUrgence> {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
                     SQLConstant.INSERT_CONTACT_URGENCE, Statement.RETURN_GENERATED_KEYS);
-            
+
             //Insertion du contact urgence dans la table personnes de la BDD
             PersonneDAO personneDAO = new PersonneDAO(connection);
             Personne personne = personneDAO.create(contactUrgence);
 
             preparedStatement.setInt(1, personne.getIdPersonne());
             preparedStatement.setString(2, contactUrgence.getNumTel());
-        
+
             System.out.println(preparedStatement.toString());
 
             preparedStatement.executeUpdate();
             preparedStatement.close();
-                    
+
         } catch (SQLException ex) {
             Logger.getLogger(ContactUrgenceDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return contactUrgence;
     }
 
     @Override
     public ContactUrgence update(ContactUrgence contactUrgence) {
-        try{
+        try {
             //Insertion du contact urgence dans la table personnes de la BDD
             PersonneDAO personneDAO = new PersonneDAO(connection);
             Personne personne = personneDAO.update(contactUrgence);
-            
+
             //Creation of the PreparedStatement
             PreparedStatement preparedStatement = connection.prepareStatement(
                     SQLConstant.UPDATE_CONTACT_URGENCE);
-            
+
             preparedStatement.setString(1, contactUrgence.getNumTel());
             preparedStatement.setInt(5, personne.getIdPersonne());
 
@@ -71,11 +73,11 @@ public class ContactUrgenceDAO extends CommonDAO<ContactUrgence> {
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
             preparedStatement.close();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ContactUrgenceDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return contactUrgence;
     }
 
@@ -83,30 +85,51 @@ public class ContactUrgenceDAO extends CommonDAO<ContactUrgence> {
     public void delete(ContactUrgence contactUrgence) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.DELETE_PERSONNE);
-            
+
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setInt(1, contactUrgence.getIdPersonne());
 
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
             preparedStatement.close();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ContactUrgenceDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
+    }
+
+    public ContactUrgence findByDossierContactUrgence(DossierContactUrgence dossier) {
+        ContactUrgence contact = null;
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_CONTACT_URGENCE_BY_DOSSIER_INSCRIPTION);
+            preparedStatement.setInt(1, dossier.getDossierContactUrgenceId());
+            
+            System.out.println(preparedStatement.toString());
+            ResultSet result = preparedStatement.executeQuery();
+
+            if (result.first()) {
+                contact = new ContactUrgence();
+                contact = findById(result.getInt("contactId"));
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ContactUrgenceDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return contact;
     }
 
     @Override
     public ContactUrgence findById(int id) {
         ContactUrgence contactUrgence = new ContactUrgence();
-        
-        
+
         try {
             //Creation of the PreparedStatement
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(SQLConstant.SELECT_CONTACT_URGENCE_BY_ID);
-        
 
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setInt(1, id);
@@ -118,15 +141,25 @@ public class ContactUrgenceDAO extends CommonDAO<ContactUrgence> {
             if (result.first()) {
                 contactUrgence.setIdPersonne(id);
                 contactUrgence.setNumTel(result.getString("telephone"));
+
+                // En tant que personne
+                PersonneDAO personneDAO = new PersonneDAO(connection);
+                Personne personne = personneDAO.findById(id);
                 
+                contactUrgence.setNom(personne.getNom());
+                contactUrgence.setPrenom(personne.getPrenom());
+                contactUrgence.setSexe(personne.getSexe());
+                contactUrgence.setDateNaissance(personne.getDateNaissance());
+                contactUrgence.setNumSecu(personne.getNumSecu());
+
                 //Liste de DossierContactUrgence
-                DossierContactUrgenceDAO dossierContactUrgenceDAO = new DossierContactUrgenceDAO(connection);
+                /*DossierContactUrgenceDAO dossierContactUrgenceDAO = new DossierContactUrgenceDAO(connection);
                 ArrayList<DossierContactUrgence> dossiers = new ArrayList<>();
                 dossiers = dossierContactUrgenceDAO.findByContactId(result.getInt("contactId"));
-                
-                contactUrgence.setDossier(dossiers);
+
+                contactUrgence.setDossier(dossiers);*/
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ContactUrgenceDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -136,7 +169,7 @@ public class ContactUrgenceDAO extends CommonDAO<ContactUrgence> {
     @Override
     public ArrayList<ContactUrgence> findAll() {
         ArrayList<ContactUrgence> contacts = new ArrayList<>();
-        
+
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_CONTACT_URGENCE);
             ResultSet result = preparedStatement.executeQuery();
@@ -148,14 +181,13 @@ public class ContactUrgenceDAO extends CommonDAO<ContactUrgence> {
 
                 contacts.add(contact);
             }
-        
+
         } catch (SQLException ex) {
             Logger.getLogger(ContactUrgenceDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }  
-        
+        }
+
         return contacts;
-             
-        
+
     }
-    
+
 }

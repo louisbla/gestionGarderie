@@ -17,9 +17,9 @@ import java.util.logging.Logger;
  */
 public class BDDManagerMySQL implements Manager {
 
-    private static final String HOST = "jdbc:mysql://sql9.freemysqlhosting.net:3306/sql9262676";
-    private static final String USER = "sql9262676";
-    private static final String PASSWORD = "5D8CqKGLXb";
+    private static final String HOST = "jdbc:mysql://sql9.freemysqlhosting.net:3306/sql9263695";
+    private static final String USER = "sql9263695";
+    private static final String PASSWORD = "tBpctVTkRE";
     private static Connection connection = null;
 
     public Connection connect() {
@@ -28,7 +28,7 @@ public class BDDManagerMySQL implements Manager {
                 Class.forName("com.mysql.jdbc.Driver");
                 connection = DriverManager.getConnection(HOST, USER, PASSWORD);
             } catch (ClassNotFoundException | SQLException ex) {
-                Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(BDDManagerMySQL.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 

@@ -107,6 +107,7 @@ public class EnfantDAO extends CommonDAO<Enfant> {
                 //Creation of the PreparedStatement
                 PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_ENFANT_BY_ID);
                 preparedStatement.setInt(1, enfantId);
+                System.out.println(preparedStatement.toString());
 
                 ResultSet result = preparedStatement.executeQuery();
 
@@ -125,30 +126,58 @@ public class EnfantDAO extends CommonDAO<Enfant> {
 
                     // Recuperation de son dossier inscription
                     DossierInscriptionDAO dossierDAO = new DossierInscriptionDAO(connection);
-                    DossierInscription dossierInscription = dossierDAO.findByEnfantId(result.getInt(enfantId));
+                    DossierInscription dossierInscription = dossierDAO.findByEnfant(enfant);
                     enfant.setDossier(dossierInscription);
 
                     // Recuperation de ses filiations
                     FiliationDAO filiationDAO = new FiliationDAO(connection);
-                    ArrayList<Filiation> filiations = filiationDAO.getAllByEnfantId(enfantId);
+                    ArrayList<Filiation> filiations = filiationDAO.getAllByEnfantId(enfant);
                     enfant.setListeParents(filiations);
 
                     // Recuperation de son inventaire
                     InventaireEnfantDAO inventaireEnfantDAO = new InventaireEnfantDAO(connection);
                     InventaireEnfant inventaireEnfant = inventaireEnfantDAO.findById(result.getInt("inventaire_enfantId"));
                     enfant.setInventaire(inventaireEnfant);
+                    
 
                     // Recuperation de son traitement
-                    TraitementDAO traitementDAO = new TraitementDAO(connection);
+                    /*TraitementDAO traitementDAO = new TraitementDAO(connection);
                     ArrayList<Traitement> traitements = traitementDAO.findByEnfantId(enfantId);
-                    enfant.setTraitement(traitements);
-
+                    enfant.setTraitement(traitements);*/
                     // Recuperation de son groupe
                     GroupeDAO groupeDAO = new GroupeDAO(connection);
                     Groupe groupe = groupeDAO.findById(result.getInt("groupeId"));
                     enfant.setGroupe(groupe);
                 }
 
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(EnfantDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        return enfant;
+    }
+
+    public Enfant findByDossierInscription(DossierInscription dossier) {
+        Enfant enfant = null;
+        try {
+            //Creation of the PreparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_DOSSIER_ENFANT);
+            preparedStatement.setInt(1, dossier.getIdDossier());
+            ResultSet result = preparedStatement.executeQuery();
+
+            if (result.first()) {
+                enfant = new Enfant();
+                enfant.setIdPersonne(result.getInt("enfantId"));
+
+                PersonneDAO personneDAO = new PersonneDAO(connection);
+                Personne personne = personneDAO.findById(enfant.getIdPersonne());
+
+                enfant.setNom(personne.getNom());
+                enfant.setPrenom(personne.getPrenom());
+                enfant.setSexe(personne.getSexe());
+                enfant.setDateNaissance(personne.getDateNaissance());
+                enfant.setNumSecu(personne.getNumSecu());
             }
         } catch (SQLException e) {
             Logger.getLogger(EnfantDAO.class.getName()).log(Level.SEVERE, null, e);

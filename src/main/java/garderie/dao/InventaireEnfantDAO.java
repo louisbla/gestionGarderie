@@ -45,11 +45,12 @@ public class InventaireEnfantDAO extends CommonDAO<InventaireEnfant> {
             ArticleDAO articleDAO = new ArticleDAO(connection);
 
             for (Article article : obj.getListeArticleEnfant()) {
-                articleDAO.create(article);
+                article.setInventaireEnfant(obj);
+                articleDAO.createArticleEnfant(article);
             }
 
         } catch (SQLException e) {
-            Logger.getLogger(EnfantDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(InventaireEnfantDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return obj;
     }
@@ -59,7 +60,8 @@ public class InventaireEnfantDAO extends CommonDAO<InventaireEnfant> {
         ArticleDAO articleDAO = new ArticleDAO(connection);
 
         for (Article article : obj.getListeArticleEnfant()) {
-            articleDAO.update(article);
+            article.setInventaireEnfant(obj);
+            articleDAO.updateInventaireEnfant(article);
         }
         return obj;
     }
@@ -76,6 +78,13 @@ public class InventaireEnfantDAO extends CommonDAO<InventaireEnfant> {
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
             preparedStatement.close();
+            
+            ArticleDAO articleDAO = new ArticleDAO(connection);
+            for (Article article : obj.getListeArticleEnfant()) {
+                article.setInventaireEnfant(obj);
+                articleDAO.delete(article);
+            }
+            
         } catch (SQLException e) {
             Logger.getLogger(EnfantDAO.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -90,6 +99,7 @@ public class InventaireEnfantDAO extends CommonDAO<InventaireEnfant> {
 
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setInt(1, idInventaire);
+            System.out.println(preparedStatement.toString());
             ResultSet result = preparedStatement.executeQuery();
 
             if (result.first()) {
@@ -135,6 +145,7 @@ public class InventaireEnfantDAO extends CommonDAO<InventaireEnfant> {
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setInt(1, enfantInventaireId);
             ResultSet result = preparedStatement.executeQuery();
+            System.out.println(preparedStatement.toString());
 
             while (result.next()) {
                 ArticleDAO articleDAO = new ArticleDAO(connection);

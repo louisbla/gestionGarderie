@@ -6,28 +6,29 @@ import java.io.Serializable;
  *
  * @author Maryline
  */
-public class Article implements Serializable{
-    
+public class Article implements Serializable {
+
     private int idArticle;
     private String nom;
     private int quantite;
-    private String  photo;
+    private String photo;
     private boolean visible = true;
     private String description;
     private Inventaire inventaire;
+    private InventaireEnfant inventaireEnfant;
     private CategorieArticle categorie;
 
     public Article() {
     }
 
-    public Article(String nom, int quantite, String photo, String description, CategorieArticle c ) {
+    public Article(String nom, int quantite, String photo, String description, CategorieArticle c) {
         this.nom = nom;
         this.quantite = quantite;
         this.photo = photo;
         this.description = description;
         this.categorie = c;
     }
-    
+
     public int getIdArticle() {
         return this.idArticle;
     }
@@ -35,7 +36,6 @@ public class Article implements Serializable{
     public void setIdArticle(int idArticle) {
         this.idArticle = idArticle;
     }
-    
 
     public String getNom() {
         return this.nom;
@@ -84,8 +84,7 @@ public class Article implements Serializable{
     public void setInventaire(Inventaire inventaire) {
         this.inventaire = inventaire;
     }
-    
-    
+
     public CategorieArticle getCategorie() {
         return this.categorie;
     }
@@ -93,5 +92,13 @@ public class Article implements Serializable{
     public void setCategorie(CategorieArticle categorie) {
         this.categorie = categorie;
     }
-    
+
+    public InventaireEnfant getInventaireEnfant() {
+        return inventaireEnfant;
+    }
+
+    public void setInventaireEnfant(InventaireEnfant inventaireEnfant) {
+        this.inventaireEnfant = inventaireEnfant;
+    }
+
 }
