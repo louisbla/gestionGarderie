@@ -12,8 +12,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <s:form action="login">  
+        <div>
+            <img src="images/garderie2.jpg">
+	</div>
+        div>
+            <h1 style="text-align:center;">Connexion</h1>
+	</div>
+        <s:form action="login" method="post">  
             <s:textfield name="name" label="Name"></s:textfield>  
             <s:password name="password" label="Password"></s:password>  
             <s:submit value="login"></s:submit>  
