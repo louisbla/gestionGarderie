@@ -9,7 +9,7 @@ import garderie.db.BDDManagerMySQL;
 import garderie.db.FactoryBDDManagerInstance;
 import garderie.dao.CompteUserDAO;
 import java.sql.Connection;
-import com.opensymphony.xwork2.ActionSupport;
+//import com.opensymphony.xwork2.ActionSupport;
 import java.util.Map;  
 import org.apache.struts2.dispatcher.SessionMap;  
 import org.apache.struts2.interceptor.SessionAware;  
@@ -20,27 +20,28 @@ import org.apache.struts2.interceptor.SessionAware;
 public class LoginAction implements SessionAware{
     
     Connection connection = FactoryBDDManagerInstance.getInstance(new BDDManagerMySQL()).connect();
-    private String username;
-    private String userpass;
+    private String name;
+    private String password;
     CompteUserDAO compteDAO = new CompteUserDAO(connection);  
-    SessionMap<String,String> sessionmap;  
+    SessionMap<String,Object> sessionMap;  
 
-    public String getUsername() {
-        return username;
+    public String getNamme() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String username) {
+        this.name = username;
     }
 
-    public String getUserpass() {
-        return userpass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserpass(String userpass) {
-        this.userpass = userpass;
+    public void setPassword(String userpass) {
+        this.password = userpass;
     }
 
+    /**
     public String execute(){  
         if(compteDAO.validate(username, userpass)){  
             return "success";  
@@ -48,15 +49,34 @@ public class LoginAction implements SessionAware{
         else{  
             return "error";  
         }  
-    }  
+    }  */
   
-    public void setSession(Map map) {  
-        sessionmap = (SessionMap)map;  
-        sessionmap.put("login","true");  
+    public String execute(){  
+        if(password.equals("admin")){  
+            sessionMap.put("login","true");  
+            sessionMap.put("name",name);  
+
+            return "success";  
+        }  
+        else{  
+            return "login";  
+        }  
     }  
+    
+    public void setSession(Map<String, Object> map) {  
+        sessionMap =(SessionMap)map;  
+    } 
 
     public String logout(){  
-        sessionmap.invalidate();  
+        if(sessionMap!=null){  
+            sessionMap.invalidate();  
+        }  
         return "success";  
-    }  
+    } 
+    
+    /**
+    public String logout(){  
+        sessionMap.invalidate();  
+        return "success";  
+    }  **/
 }
