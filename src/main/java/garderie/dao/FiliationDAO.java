@@ -154,14 +154,14 @@ public class FiliationDAO extends CommonDAO<Filiation> {
             ResultSet result = preparedStatement.executeQuery();
 
             while (result.next()) {
-//                ParentDAO parentDAO = new ParentDAO(connection);
-//                Parent parent = new Parent();
-//                parent = parentDAO.findById(result.getInt("parentId"));
+                ParentDAO parentDAO = new ParentDAO(connection);
+                Parent parent = new Parent();
+                parent = parentDAO.findById(result.getInt("parentId"));
 
                 String lienParente = result.getString("lien_parente");
                 Filiation filiation = new Filiation();
 
-//                filiation.setP(parent);
+                filiation.setP(parent);
                 filiation.setLien(lienParente);
 
                 filiations.add(filiation);

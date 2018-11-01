@@ -21,7 +21,7 @@ public class Facture implements Serializable {
     private ArrayList<LigneFacture> lignesFactures = new ArrayList<>();
     private StatutFacture statut;
     private boolean visible = true;
-    private ArrayList<ParentFacture> parent = new ArrayList<>();
+    private ArrayList<ParentFacture> parentsFacture = new ArrayList<>();
 
     public Facture() {
     }
@@ -31,7 +31,7 @@ public class Facture implements Serializable {
         this.montantTTC = montantTTC;
         this.datePaiement = datePaiement;
         this.statut = statut;
-        this.parent = p;
+        this.parentsFacture = p;
     }
 
     public int getIdFacture() {
@@ -101,13 +101,12 @@ public class Facture implements Serializable {
         }
     }
     
-
-    public ArrayList<ParentFacture> getParent() {
-        return parent;
+    public ArrayList<ParentFacture> getParentsFacture() {
+        return parentsFacture;
     }
 
-    public void setParent(ArrayList<ParentFacture> parent) {
-        this.parent = parent;
+    public void setParentsFacture(ArrayList<ParentFacture> parentsFacture) {
+        this.parentsFacture = parentsFacture;
     }
    
     
