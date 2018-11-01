@@ -199,7 +199,7 @@ public class ArticleDAO extends CommonDAO<Article> {
 
     public ArrayList<Article> getArticlesForCategorie(int id) {
         ArrayList<Article> listeArticle = new ArrayList<>();
-        Article article = new Article();
+        
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_CATEGORIE_FOR_ARTICLE);
@@ -209,6 +209,7 @@ public class ArticleDAO extends CommonDAO<Article> {
             ResultSet result = preparedStatement.executeQuery();
 
             while (result.next()) {
+                Article article = new Article();
                 InventaireDAO inventaireDAO = new InventaireDAO(connection);
                 Inventaire inventaire = inventaireDAO.findById(result.getInt("invenatireId"));
 
@@ -237,7 +238,7 @@ public class ArticleDAO extends CommonDAO<Article> {
 
     public ArrayList<Article> getArticlesForEnfants(int idEnfant) {
         ArrayList<Article> listeArticle = new ArrayList<>();
-        Article article = new Article();
+        
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_CATEGORIE_FOR_ARTICLE);
@@ -247,6 +248,7 @@ public class ArticleDAO extends CommonDAO<Article> {
             ResultSet result = preparedStatement.executeQuery();
 
             while (result.next()) {
+                Article article = new Article();
                 InventaireDAO inventaireDAO = new InventaireDAO(connection);
                 Inventaire inventaire  = inventaireDAO.findById(result.getInt("inventaireId"));
                  
@@ -273,17 +275,25 @@ public class ArticleDAO extends CommonDAO<Article> {
 
     }
 
-    public Article findByName(String name){
-        Article article = new Article();
+    public ArrayList<Article> findByMotCle(String motCle){
+        ArrayList<Article> articles = new ArrayList<>();
         
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_ARTICLE_BY_NAME);
-            preparedStatement.setString(1, name);
+        try {
+            PreparedStatement preparedStatement;
+            if (motCle.isEmpty()) {
+                preparedStatement = connection.prepareStatement(SQLConstant.SELECT_ARTICLE);
+            } else {
+                preparedStatement = connection.prepareStatement(SQLConstant.SELECT_ARTICLES_BY_MOTCLE);
+                preparedStatement.setString(1, "%" + motCle + "%");
+                preparedStatement.setString(2, "%" + motCle + "%");
+            }
+            
             System.out.println(preparedStatement.toString());
 
             ResultSet result = preparedStatement.executeQuery();
             
-            if (result.first()){
+            while (result.next()){
+                Article article = new Article();
                 InventaireDAO inventaireDAO = new InventaireDAO(connection);
                 Inventaire inventaire = inventaireDAO.findById(result.getInt("inventaireId"));
 
@@ -291,12 +301,13 @@ public class ArticleDAO extends CommonDAO<Article> {
                 CategorieArticle categorie = categorieArticleDAO.findById(result.getInt("categorieId"));
 
                 article.setIdArticle(result.getInt("articleId"));
-                article.setNom(result.getString(name));
+                article.setNom(result.getString("nom"));
                 article.setQuantite(result.getInt("quantite"));
                 article.setPhoto(result.getString("photo"));
                 article.setDescription(result.getString("description"));
                 article.setInventaire(inventaire);
                 article.setCategorie(categorie);
+                articles.add(article);
             }
 
              preparedStatement.close();
@@ -304,6 +315,6 @@ public class ArticleDAO extends CommonDAO<Article> {
         }catch (SQLException e) {
             Logger.getLogger(ArticleDAO.class.getName()).log(Level.SEVERE, null, e);
         }
-        return article;
+        return articles;
     }
 }

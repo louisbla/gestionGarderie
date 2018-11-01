@@ -217,6 +217,10 @@ html {
 .sidebar-nav .dropdown-menu li a {
     color: #ddd;
 }
+
+.d-none {
+    display: none !important;
+}
 /*-------------------------------*/
 /*       Hamburger-Cross         */
 /*-------------------------------*/

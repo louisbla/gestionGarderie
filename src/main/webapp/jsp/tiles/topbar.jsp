@@ -14,10 +14,10 @@
 
         <div class="collapse navbar-collapse" id="navbar-main">
 
-            <s:form theme="bootstrap" cssClass="navbar-form navbar-right">
-                <s:textfield placeholder="Identifiant" name="identifiant"
+            <s:form action="loginprocess" theme="bootstrap" cssClass="navbar-form navbar-right">
+                <s:textfield placeholder="Identifiant" name="LoginAction.username"
                              cssClass="input-sm" />
-                <s:textfield placeholder="Mot de passe" name="password"
+                <s:textfield placeholder="Mot de passe" name="LoginAction.userpass"
                              cssClass="input-sm" />
                 <button type="submit" class="btn btn-success">Se connecter</button>
             </s:form>

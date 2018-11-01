@@ -137,5 +137,29 @@ public class ArticleDAOTest {
 //        ArrayList<Article> result = instance.getArticlesForCategorie(id);
 //        assertEquals(expResult, result);
     }
+
+    /**
+     * Test of getArticlesForEnfants method, of class ArticleDAO.
+     */
+    @Test
+    public void testGetArticlesForEnfants() {
+//        System.out.println("getArticlesForEnfants");
+//        int idEnfant = 0;
+//        ArticleDAO instance = null;
+//        ArrayList<Article> expResult = null;
+//        ArrayList<Article> result = instance.getArticlesForEnfants(idEnfant);
+//        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of findByName method, of class ArticleDAO.
+     */
+    @Test
+    public void testFindByMotCle() {
+//        System.out.println("findByName");
+//        String name = "bois";
+//        ArrayList<Article> result = articleDAO.findByMotCle(name);
+//        assertEquals(2, result.size());
+    }
     
 }

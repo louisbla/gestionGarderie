@@ -17,7 +17,7 @@
         <action name="welcomeLink" class="garderie.action.LinkAction" method="welcome" >
             <result name="welcome" type="tiles">welcome</result>
 	</action>
-        <action name="inventaireLink" class="garderie.action.ArticleAction" >
+        <action name="afficherarticles" class="garderie.action.ArticleAction" >
             <result name="success" type="tiles">inventaire</result>
 	</action>
         <action name="facturationLink" class="garderie.action.LinkAction" method="facturation" >
@@ -68,6 +68,27 @@
                 <param name="actionName">inventaireLink</param>
             </result>
 	</action>
+        
+        <action name="chercherarticle" class="garderie.action.ChercherArticleAction">
+            <result name="success" type="tiles">inventaire</result>
+	</action>
+        
+        
+        <action name="loginprocess" class="garderie.action.LoginAction">
+            <result name="input">/jsp/tiles/topbar.jsp</result>
+            <result name="sucess" type="redirectionAction">index</result>
+        </action >   
+        
+        
+        <action name="logout" class="garderie.action.LoginAction" >
+            <result type="redirectAction">/jsp/welcomes.jsp</result>
+        </action>
+        
+        
+        <action name="profile" class="com.javatpoint.Profile">  
+            <result name="success" >profilesuccess.jsp</result>  
+            <result name="error" >profileerror.jsp</result>  
+        </action>  
         
     </package>
 

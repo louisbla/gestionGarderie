@@ -211,7 +211,7 @@ public class SQLConstant {
             + NOT_VISIBLE + " WHERE articleId = ?";
 
     protected static final String SELECT_ARTICLE = "SELECT * FROM articles WHERE "
-            + VISIBLE;
+            + VISIBLE + " AND inventaireId IS NOT NULL";
 
     protected static final String SELECT_ARTICLE_BY_ID = "SELECT * FROM articles"
             + " WHERE articleId = ? AND " + VISIBLE;
@@ -219,8 +219,8 @@ public class SQLConstant {
     protected static final String SELECT_CATEGORIE_FOR_ARTICLE = "SELECT * FROM"
             + " articles WHERE catgeorieId = ? AND " + VISIBLE;
     
-    protected static final String SELECT_ARTICLE_BY_NAME = "SELECT * FROM articles"
-            + " WHERE nom = ?";
+    protected static final String SELECT_ARTICLES_BY_MOTCLE = "SELECT * FROM articles"
+            + " WHERE nom LIKE ? OR description LIKE ? AND inventaireId IS NOT NULL AND " + VISIBLE;
 
     // ************* CATEGRORIE ARTICLE *****************
     protected static final String INSERT_CATEGORIE_ARTICLE = "INSERT INTO categories_article"

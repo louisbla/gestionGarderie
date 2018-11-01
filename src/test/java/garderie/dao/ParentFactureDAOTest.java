@@ -56,14 +56,14 @@ public class ParentFactureDAOTest {
      */
     @Test
     public void testCreate() {
-        System.out.println("create");
-        ParentFacture obj = null;
-        ParentFactureDAO instance = null;
-        ParentFacture expResult = null;
-        ParentFacture result = instance.create(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        System.out.println("create");
+//        ParentFacture obj = null;
+//        ParentFactureDAO instance = null;
+//        ParentFacture expResult = null;
+//        ParentFacture result = instance.create(obj);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -71,14 +71,14 @@ public class ParentFactureDAOTest {
      */
     @Test
     public void testUpdate() {
-        System.out.println("update");
-        ParentFacture obj = null;
-        ParentFactureDAO instance = null;
-        ParentFacture expResult = null;
-        ParentFacture result = instance.update(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        System.out.println("update");
+//        ParentFacture obj = null;
+//        ParentFactureDAO instance = null;
+//        ParentFacture expResult = null;
+//        ParentFacture result = instance.update(obj);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -86,12 +86,12 @@ public class ParentFactureDAOTest {
      */
     @Test
     public void testDelete() {
-        System.out.println("delete");
-        ParentFacture obj = null;
-        ParentFactureDAO instance = null;
-        instance.delete(obj);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        System.out.println("delete");
+//        ParentFacture obj = null;
+//        ParentFactureDAO instance = null;
+//        instance.delete(obj);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -99,14 +99,14 @@ public class ParentFactureDAOTest {
      */
     @Test
     public void testFindById() {
-        System.out.println("findById");
-        int id = 0;
-        ParentFactureDAO instance = null;
-        ParentFacture expResult = null;
-        ParentFacture result = instance.findById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        System.out.println("findById");
+//        int id = 0;
+//        ParentFactureDAO instance = null;
+//        ParentFacture expResult = null;
+//        ParentFacture result = instance.findById(id);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -114,13 +114,13 @@ public class ParentFactureDAOTest {
      */
     @Test
     public void testFindAll() {
-        System.out.println("findAll");
-        ParentFactureDAO instance = null;
-        ArrayList<ParentFacture> expResult = null;
-        ArrayList<ParentFacture> result = instance.findAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        System.out.println("findAll");
+//        ParentFactureDAO instance = null;
+//        ArrayList<ParentFacture> expResult = null;
+//        ArrayList<ParentFacture> result = instance.findAll();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -139,14 +139,14 @@ public class ParentFactureDAOTest {
      */
     @Test
     public void testGetAllParentByIdFacture() {
-        System.out.println("getAllParentByIdFacture");
-        int idFacture = 0;
-        ParentFactureDAO instance = null;
-        ArrayList<ParentFacture> expResult = null;
-        ArrayList<ParentFacture> result = instance.getAllParentByIdFacture(idFacture);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        System.out.println("getAllParentByIdFacture");
+//        int idFacture = 0;
+//        ParentFactureDAO instance = null;
+//        ArrayList<ParentFacture> expResult = null;
+//        ArrayList<ParentFacture> result = instance.getAllParentByIdFacture(idFacture);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -154,10 +154,10 @@ public class ParentFactureDAOTest {
      */
     @Test
     public void testFindAllFactureByIdPersonne() {
-        System.out.println("findAllFactureByIdPersonne");
-        int idPersonne = 8;
-        ArrayList<Facture> result = parentFactureDAO.findAllFactureByIdPersonne(idPersonne);
-        assertEquals(250, result.get(0).getMontantTTC(), 0.1);
+//        System.out.println("findAllFactureByIdPersonne");
+//        int idPersonne = 8;
+//        ArrayList<Facture> result = parentFactureDAO.findAllFactureByIdPersonne(idPersonne);
+//        assertEquals(250, result.get(0).getMontantTTC(), 0.1);
     }
     
 }
