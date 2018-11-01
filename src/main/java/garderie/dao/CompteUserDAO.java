@@ -121,12 +121,13 @@ public class CompteUserDAO extends CommonDAO<CompteUser>{
 
             ResultSet result = preparedStatement.executeQuery();  
             
-            PersonneDAO personneDAO = new PersonneDAO(connection);
-            Personne personne = personneDAO.findById(result.getInt("personneId"));
+            
             
             if(result.first()){
+                PersonneDAO personneDAO = new PersonneDAO(connection);
+                Personne personne = personneDAO.findById(result.getInt("personneId"));
                 compte.setIdUser(id);
-                compte.setLogin(result.getString("userId"));
+                compte.setLogin(result.getString("login"));
                 compte.setMdp(result.getString("password"));
                 compte.setPrivilege(result.getBoolean("privilege"));
                 compte.setPersonne(personne);
@@ -158,10 +159,10 @@ public class CompteUserDAO extends CommonDAO<CompteUser>{
                 PersonneDAO personneDAO = new PersonneDAO(connection);
                 Personne personne = personneDAO.findById(result.getInt("personneId"));
                 
-                compte.setIdUser(compte.getIdUser());
-                compte.setLogin(compte.getLogin());
-                compte.setMdp(compte.getMdp());
-                compte.setPrivilege(compte.isPrivilege());
+                compte.setIdUser(result.getInt("userId"));
+                compte.setLogin(result.getString("login"));
+                compte.setMdp(result.getString("password"));
+                compte.setPrivilege(result.getBoolean("privilege"));
                 compte.setPersonne(personne);
                 
                 listecompte.add(compte);
