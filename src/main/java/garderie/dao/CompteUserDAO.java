@@ -173,5 +173,22 @@ public class CompteUserDAO extends CommonDAO<CompteUser>{
     
         return listecompte;
     }
+    
+      public boolean validate(String username,String userpass){  
+        boolean status=false;  
+        try{  
+
+            PreparedStatement ps = connection.prepareStatement(  
+              "select * from comptes_user where login=? and password=?");  
+            ps.setString(1,username);  
+            ps.setString(2,userpass);  
+            ResultSet rs=ps.executeQuery();  
+            status=rs.next(); 
+            
+        }catch(Exception e){
+             e.printStackTrace();
+        }  
+        return status;  
+    }  
 
 }
