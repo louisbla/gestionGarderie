@@ -36,12 +36,12 @@
             }*/
 
             // test
-            Connection connection = FactoryBDDManagerInstance.getInstance(new BDDManagerMySQL()).connect();
+            /*Connection connection = FactoryBDDManagerInstance.getInstance(new BDDManagerMySQL()).connect();
             if (connection == null) {
                 out.println("connection failed");
             } else {
                 out.println("connection succeded");
-            }
+            }*/
 
         %>
     </body>
