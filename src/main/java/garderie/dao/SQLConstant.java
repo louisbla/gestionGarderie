@@ -458,4 +458,22 @@ public class SQLConstant {
     
     protected static final String SELECT_CONGE_BY_ID = "SELECT * FROM conges"
             + " WHERE congeId = ? AND " + VISIBLE;
+    
+    
+    //*********************** TRAITEMENT ********************************
+    
+    protected static final String INSERT_TRAITEMENT = "INSERT INTO traitements ("
+            + " maladieId, enfantId, nom_medicament, specification, type, quantite, frequence) VALUES (?,?,?,?,?,?,?)";    
+    
+    protected static final String UPDATE_TRAITEMENT = "UPDATE traitements SET"
+            + " nom_medicament = ?, specification = ?, type = ?, quantite = ?, frequence = ? WHERE maladieId = ? AND enfantId = ?";    
+
+    protected static final String DELETE_TRAITEMENT = "UPDATE traitements SET "
+            + NOT_VISIBLE + " WHERE maladieId = ? AND enfantId = ?";
+    
+    protected static final String SELECT_TRAITEMENT_BY_ENFANT_ID = "SELECT * FROM traitements"
+            + " WHERE enfantId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_TRAITEMENTS = "SELECT * FROM traitements"
+            + " WHERE " + VISIBLE;    
 }
