@@ -73,6 +73,23 @@
             <result name="success" type="tiles">inventaire</result>
 	</action>
         
+        
+        <action name="loginprocess" class="garderie.action.LoginAction">
+            <result name="input">/jsp/tiles/topbar.jsp</result>
+            <result name="sucess" type="redirectionAction">index</result>
+        </action >   
+        
+        
+        <action name="logout" class="garderie.action.LoginAction" >
+            <result type="redirectAction">/jsp/welcomes.jsp</result>
+        </action>
+        
+        
+        <action name="profile" class="com.javatpoint.Profile">  
+            <result name="success" >profilesuccess.jsp</result>  
+            <result name="error" >profileerror.jsp</result>  
+        </action>  
+        
     </package>
 
     <!-- Add addition packages and configuration here. -->
