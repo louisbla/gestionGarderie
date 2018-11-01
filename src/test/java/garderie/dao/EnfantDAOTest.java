@@ -23,6 +23,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -83,6 +84,20 @@ public class EnfantDAOTest {
         enfant.setNumSecu("JEFFB176362");
         enfant.setSexe("masculin");
         enfant.setPhoto("http://jeff.com");
+        
+
+        // Adresse et PersonneAdresse
+        Adresse adresse = new Adresse();
+        adresse.setCodePostal("467HRU");
+        adresse.setLigne1("Rue Poivre");
+        adresse.setPays("Canada");
+        adresse.setVille("Chicoutimi");
+
+        PersonneAdresse personneAdresse = new PersonneAdresse();
+        personneAdresse.setDomicile(true);
+        personneAdresse.setFacturation(true);
+        personneAdresse.setPersonne(enfant);
+        personneAdresse.setAdresse(adresse);
 
         // Article
         ArrayList<Article> listeArticleEnfant = new ArrayList<>();
@@ -105,7 +120,7 @@ public class EnfantDAOTest {
         enfant.setInventaire(inventaireEnfant); // referencement
 
         InventaireEnfantDAO inventaireEnfantDAO = new InventaireEnfantDAO(connection);
-        inventaireEnfantDAO.create(inventaireEnfant);
+        //inventaireEnfantDAO.create(inventaireEnfant);
 
         // Groupe
         Groupe groupe = new Groupe();
@@ -119,11 +134,19 @@ public class EnfantDAOTest {
         dossierInscription.setNbDemiJourneeInscrit(42);
         dossierInscription.setNbDemiJourneeAbsent(0);
 
-        enfantDAO.create(enfant);
+        //enfantDAO.create(enfant);
         dossierInscription.setEnfant(enfant);
-        
+
         DossierInscriptionDAO dossierInscriptionDAO = new DossierInscriptionDAO(connection);
-        dossierInscriptionDAO.create(dossierInscription);
+        //dossierInscriptionDAO.create(dossierInscription);
         enfant.setDossier(dossierInscription);
+    }
+    
+    @Test
+    public void getEnfantsByGroupe() {
+       GroupeDAO groupeDAO = new GroupeDAO(connection);
+       ArrayList<Enfant> groupes = groupeDAO.getEnfantsForGroupe(2);
+       
+        System.out.println(groupes.size());
     }
 }
