@@ -232,6 +232,9 @@ public class SQLConstant {
 
     protected static final String SELECT_CATEGORIE_FOR_ARTICLE = "SELECT * FROM"
             + " articles WHERE catgeorieId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_ARTICLE_BY_NAME = "SELECT * FROM articles"
+            + " WHERE nom = ?";
 
     // ************* CATEGRORIE ARTICLE *****************
     protected static final String INSERT_CATEGORIE_ARTICLE = "INSERT INTO categories_article"
@@ -461,4 +464,37 @@ public class SQLConstant {
     protected static final String SELECT_MALADIE_BY_ID = "SELECT * FROM maladies"
             + " WHERE maladieId = ? AND " + VISIBLE;
     
+    //*********************** CONGE ********************************
+    protected static final String INSERT_CONGE = "INSERT INTO conges ("
+            + " debut, duree, type_congeId, dossier_employe_id) VALUES (?,?,?,?)";
+    
+    protected static final String UPDATE_CONGE = "UPDATE conges SET"
+            + " debut = ?, duree = ?, type_congeId = ?, dossier_employe_id = ? WHERE congeId = ?";
+    
+    protected static final String DELETE_CONGE = "UPDATE conges SET "
+            + NOT_VISIBLE + " WHERE congeId = ?";
+    
+    protected static final String SELECT_CONGE = "SELECT * FROM conges"
+            + " WHERE " + VISIBLE;
+    
+    protected static final String SELECT_CONGE_BY_ID = "SELECT * FROM conges"
+            + " WHERE congeId = ? AND " + VISIBLE;
+    
+    
+    //*********************** TRAITEMENT ********************************
+    
+    protected static final String INSERT_TRAITEMENT = "INSERT INTO traitements ("
+            + " maladieId, enfantId, nom_medicament, specification, type, quantite, frequence) VALUES (?,?,?,?,?,?,?)";    
+    
+    protected static final String UPDATE_TRAITEMENT = "UPDATE traitements SET"
+            + " nom_medicament = ?, specification = ?, type = ?, quantite = ?, frequence = ? WHERE maladieId = ? AND enfantId = ?";    
+
+    protected static final String DELETE_TRAITEMENT = "UPDATE traitements SET "
+            + NOT_VISIBLE + " WHERE maladieId = ? AND enfantId = ?";
+    
+    protected static final String SELECT_TRAITEMENT_BY_ENFANT_ID = "SELECT * FROM traitements"
+            + " WHERE enfantId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_TRAITEMENTS = "SELECT * FROM traitements"
+            + " WHERE " + VISIBLE;    
 }

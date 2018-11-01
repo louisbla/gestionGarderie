@@ -187,7 +187,6 @@ public class ContactUrgenceDAO extends CommonDAO<ContactUrgence> {
         }
 
         return contacts;
-
     }
 
 }

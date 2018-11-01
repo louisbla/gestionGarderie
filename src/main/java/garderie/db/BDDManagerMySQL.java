@@ -17,9 +17,10 @@ import java.util.logging.Logger;
  */
 public class BDDManagerMySQL implements Manager {
 
-    private static final String HOST = "jdbc:mysql://sql9.freemysqlhosting.net:3306/sql9263695";
-    private static final String USER = "sql9263695";
-    private static final String PASSWORD = "tBpctVTkRE";
+    private static final String HOST = "localhost/sql9262676";
+    private static final String USER = "root";
+    private static final String PASSWORD = "";
+
     private static Connection connection = null;
 
     public Connection connect() {

@@ -19,7 +19,7 @@ public class Traitement implements Serializable {
     private String type;
     private double quantite;
     private int frequence;
-    private boolean visible;
+    private boolean visible = true;
 
     public Traitement() {
     }
