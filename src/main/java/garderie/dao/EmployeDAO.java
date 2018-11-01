@@ -5,7 +5,6 @@
  */
 package garderie.dao;
 
-import com.mysql.jdbc.Statement;
 import garderie.model.Employe;
 import garderie.model.Personne;
 import java.sql.Connection;
