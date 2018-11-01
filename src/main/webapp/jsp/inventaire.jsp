@@ -31,14 +31,18 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <s:textfield placeholder="Rechercher par nom..."
-                                 inputPrependIcon="search" name="motCle" />
+                    <s:textfield placeholder="Rechercher par mot cle..."
+                                 inputPrependIcon="search" name="motCle"
+                                 cssClass="input-xxlarge"/>
                 </div>
+
+
 
             </div>
         </s:form>
 
-        <div class="row">
+        <div class="row justify-content-md-center">
+
             <div class="col-md-6">
                 <button class="btn btn-primary mb-3" data-toggle="modal"
                         data-target="#modalCreateArticle">

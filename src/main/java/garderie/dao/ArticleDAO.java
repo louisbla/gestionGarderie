@@ -275,18 +275,24 @@ public class ArticleDAO extends CommonDAO<Article> {
 
     }
 
-    public ArrayList<Article> findByName(String name){
+    public ArrayList<Article> findByMotCle(String motCle){
         ArrayList<Article> articles = new ArrayList<>();
         
-        
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_ARTICLE_BY_NAME);
-            preparedStatement.setString(1, "%" + name + "%");
+        try {
+            PreparedStatement preparedStatement;
+            if (motCle.isEmpty()) {
+                preparedStatement = connection.prepareStatement(SQLConstant.SELECT_ARTICLE);
+            } else {
+                preparedStatement = connection.prepareStatement(SQLConstant.SELECT_ARTICLES_BY_MOTCLE);
+                preparedStatement.setString(1, "%" + motCle + "%");
+                preparedStatement.setString(2, "%" + motCle + "%");
+            }
+            
             System.out.println(preparedStatement.toString());
 
             ResultSet result = preparedStatement.executeQuery();
             
-            if (result.first()){
+            while (result.next()){
                 Article article = new Article();
                 InventaireDAO inventaireDAO = new InventaireDAO(connection);
                 Inventaire inventaire = inventaireDAO.findById(result.getInt("inventaireId"));

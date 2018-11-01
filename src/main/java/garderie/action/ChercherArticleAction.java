@@ -64,7 +64,8 @@ public class ChercherArticleAction extends ActionSupport {
         Connection connection = FactoryBDDManagerInstance.getInstance(new BDDManagerMySQL()).connect();
         articlesTrouves = new ArrayList<>();
         ArticleDAO articleDAO = new ArticleDAO(connection);
-        articlesTrouves = articleDAO.findByName(motCle);
+        articlesTrouves = articleDAO.findByMotCle(motCle);
+        System.out.println(articlesTrouves.size());
         
         categories = new ArrayList<>();
         CategorieArticleDAO categorieArticleDAO = new CategorieArticleDAO(connection);

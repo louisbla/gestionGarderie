@@ -17,7 +17,7 @@
         <action name="welcomeLink" class="garderie.action.LinkAction" method="welcome" >
             <result name="welcome" type="tiles">welcome</result>
 	</action>
-        <action name="inventaireLink" class="garderie.action.ArticleAction" >
+        <action name="afficherarticles" class="garderie.action.ArticleAction" >
             <result name="success" type="tiles">inventaire</result>
 	</action>
         <action name="facturationLink" class="garderie.action.LinkAction" method="facturation" >

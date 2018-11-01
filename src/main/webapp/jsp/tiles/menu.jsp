@@ -27,7 +27,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventaire <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                 <li class="dropdown-header"></li>
-                <li><a href="<s:url action='inventaireLink'/>">Articles</a></li>
+                <li><a href="<s:url action='afficherarticles'/>">Articles</a></li>
                 <li><a href="<s:url action='afficherCategories'/>">Categories</a></li>
             </ul>
         </li>

@@ -155,11 +155,11 @@ public class ArticleDAOTest {
      * Test of findByName method, of class ArticleDAO.
      */
     @Test
-    public void testFindByName() {
-        System.out.println("findByName");
-        String name = "mar";
-        ArrayList<Article> result = articleDAO.findByName(name);
-        assertEquals(1, result.size());
+    public void testFindByMotCle() {
+//        System.out.println("findByName");
+//        String name = "bois";
+//        ArrayList<Article> result = articleDAO.findByMotCle(name);
+//        assertEquals(2, result.size());
     }
     
 }
