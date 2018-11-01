@@ -38,4 +38,13 @@ public enum TypeConge {
     public int getId(){
         return id;
     }
+    
+    public static TypeConge findById(int id){
+        for(TypeConge type : TypeConge.values()){
+            if(type.getId() == id){
+                return type;
+            }
+        }
+        return null; 
+    }
 }
