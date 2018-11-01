@@ -68,11 +68,11 @@ public class LigneFacture implements Serializable {
         this.facture = facture;
     }
 
-    public ObjetFacturable getObjetsFacturable() {
+    public ObjetFacturable getObjetFacturable() {
         return objetFacturable;
     }
 
-    public void setObjetsFacturable(ObjetFacturable objetFacturable) {
+    public void setObjetFacturable(ObjetFacturable objetFacturable) {
         this.objetFacturable = objetFacturable;
     }
 

@@ -20,8 +20,8 @@
         <action name="afficherarticles" class="garderie.action.ArticleAction" >
             <result name="success" type="tiles">inventaire</result>
 	</action>
-        <action name="facturationLink" class="garderie.action.LinkAction" method="facturation" >
-            <result name="facturation" type="tiles">facturation</result>
+        <action name="afficherfactures" class="garderie.action.ShowFactureAction" >
+            <result name="success" type="tiles">facturation</result>
 	</action>
         <action name="planningLink" class="garderie.action.LinkAction" method="planning" >
             <result name="planning" type="tiles">planning</result>
@@ -73,10 +73,13 @@
             <result name="success" type="tiles">inventaire</result>
 	</action>
         
+        <action name="afficherdetailsfacture" class="garderie.action.ShowLignesFactureAction">
+            <result name="success" type="tiles">facturation</result>
+	</action>
         
         <action name="loginprocess" class="garderie.action.LoginAction">
             <result name="input">/jsp/tiles/topbar.jsp</result>
-            <result name="sucess" type="redirectionAction">index</result>
+            <result name="sucess" type="redirectAction">index</result>
         </action >   
         
         
@@ -84,11 +87,6 @@
             <result type="redirectAction">/jsp/welcomes.jsp</result>
         </action>
         
-        
-        <action name="profile" class="com.javatpoint.Profile">  
-            <result name="success" >profilesuccess.jsp</result>  
-            <result name="error" >profileerror.jsp</result>  
-        </action>  
         
     </package>
 

@@ -35,7 +35,7 @@ public class LigneFactureDAO extends CommonDAO<LigneFacture> {
             preparedStatement.setDouble(2, ligneFacture.getTotalTTC());
             preparedStatement.setInt(3, ligneFacture.getQuantite());
             preparedStatement.setInt(4, ligneFacture.getFacture().getIdFacture());
-            preparedStatement.setInt(5, ligneFacture.getObjetsFacturable().getIdObjetFacturable());
+            preparedStatement.setInt(5, ligneFacture.getObjetFacturable().getIdObjetFacturable());
             
             System.out.println(preparedStatement.toString());
             preparedStatement.executeUpdate();
@@ -62,7 +62,7 @@ public class LigneFactureDAO extends CommonDAO<LigneFacture> {
             preparedStatement.setDouble(2, ligneFacture.getTotalTTC());
             preparedStatement.setInt(3, ligneFacture.getQuantite());
             preparedStatement.setInt(4, ligneFacture.getFacture().getIdFacture());
-            preparedStatement.setInt(5, ligneFacture.getObjetsFacturable().getIdObjetFacturable());
+            preparedStatement.setInt(5, ligneFacture.getObjetFacturable().getIdObjetFacturable());
             preparedStatement.setInt(6, ligneFacture.getIdLigneFacture());
             
             System.out.println(preparedStatement.toString());
@@ -108,7 +108,7 @@ public class LigneFactureDAO extends CommonDAO<LigneFacture> {
                 ligneFacture.setQuantite(result.getInt("quantite"));  
                 ObjetFacturableDAO objetFacturableDAO = new ObjetFacturableDAO(connection);
                 ObjetFacturable objetFacturable = objetFacturableDAO.findById(result.getInt("objet_facturableId"));
-                ligneFacture.setObjetsFacturable(objetFacturable);
+                ligneFacture.setObjetFacturable(objetFacturable);
             }
             
         }catch (SQLException e) {
@@ -140,7 +140,7 @@ public class LigneFactureDAO extends CommonDAO<LigneFacture> {
                 ligneFacture.setQuantite(result.getInt("quantite"));  
                 ObjetFacturableDAO objetFacturableDAO = new ObjetFacturableDAO(connection);
                 ObjetFacturable objetFacturable = objetFacturableDAO.findById(result.getInt("objet_facturableId"));
-                ligneFacture.setObjetsFacturable(objetFacturable);
+                ligneFacture.setObjetFacturable(objetFacturable);
                 lignesFacture.add(ligneFacture);
             }
             
@@ -171,7 +171,7 @@ public class LigneFactureDAO extends CommonDAO<LigneFacture> {
                 ligneFacture.setQuantite(result.getInt("quantite"));  
                 ObjetFacturableDAO objetFacturableDAO = new ObjetFacturableDAO(connection);
                 ObjetFacturable objetFacturable = objetFacturableDAO.findById(result.getInt("objet_facturableId"));
-                ligneFacture.setObjetsFacturable(objetFacturable);
+                ligneFacture.setObjetFacturable(objetFacturable);
                 lignesFacture.add(ligneFacture);
             }
             

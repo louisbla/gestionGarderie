@@ -111,12 +111,17 @@ public class ActiviteDAO extends CommonDAO<Activite>{
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setInt(1, id);
             
+            System.out.println(preparedStatement.toString());
+            
             //Recupere les resultats de la requete
             ResultSet result = preparedStatement.executeQuery();
             if (result.first()) {
-                activite = new Activite(id, result.getString("nom"), 
-                        result.getString("description"),
-                        result.getInt("nb_enfants_max"), result.getString("lieu"));
+                activite = new Activite();
+                activite.setIdActivite(id);
+                activite.setNom(result.getString("nom"));
+                activite.setDescription(result.getString("description"));
+                activite.setNbEnfantMax(result.getInt("nb_enfants_max"));
+                activite.setLieu(result.getString("lieu"));
             }
         } catch (SQLException e) {
             Logger.getLogger(ActiviteDAO.class.getName()).log(Level.SEVERE, null, e);

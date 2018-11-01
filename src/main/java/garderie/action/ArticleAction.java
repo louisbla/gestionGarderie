@@ -23,7 +23,7 @@ import java.util.ArrayList;
  */
 public class ArticleAction extends ActionSupport {
     
-    ArrayList<Article> articles;
+    private ArrayList<Article> articles;
     private ArrayList<CategorieArticle> categories;
     private ArrayList<Inventaire> inventaires;
     

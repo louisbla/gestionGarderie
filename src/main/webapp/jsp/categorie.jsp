@@ -46,9 +46,10 @@
                         </tr>
 
 
-                        <s:iterator value="categories">
+                        <s:iterator value="categories" status="incr">
                             <tr>
-                                <td><s:property value="idCategorie" /></td>
+                                <td class="d-none"><s:property value="idCategorie" /></td>
+                                <td><s:property value="%{#incr.index+1}" /></td>
                                 <td><s:property value="nom" /></td>
                                 <td>
                                     <button class="btn btn-primary"

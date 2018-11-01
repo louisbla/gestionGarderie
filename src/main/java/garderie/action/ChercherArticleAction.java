@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * @author Katsuo
  */
 public class ChercherArticleAction extends ActionSupport {
-    ArrayList<Article> articlesTrouves;
+    private ArrayList<Article> articlesTrouves;
     private ArrayList<CategorieArticle> categories;
     private ArrayList<Inventaire> inventaires;
     String motCle;

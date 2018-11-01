@@ -35,7 +35,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Facturation <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                 <li class="dropdown-header"></li>
-                <li><a href="#">Action</a></li>
+                <li><a href="<s:url action='afficherfactures'/>">Factures</a></li>
                 <li><a href="#">Another action</a></li>
             </ul>
         </li>

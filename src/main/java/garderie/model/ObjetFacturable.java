@@ -37,9 +37,7 @@ public class ObjetFacturable implements Serializable {
     public void setIdObjetFacturable(int idObjetFacturable) {
         this.idObjetFacturable = idObjetFacturable;
     }
-
-
-
+    
     public double getPrixHT() {
         return prixHT;
     }

@@ -26,10 +26,10 @@ public class SQLConstant {
     protected static final String DELETE_ACTIVITE = "UPDATE activites SET "
             + NOT_VISIBLE + " WHERE activiteId = ?";
 
-    protected static final String SELECT_ACTIVITE_BY_ID = "SELECT * FROM activites"
-            + "WHERE activiteId = ? AND" + VISIBLE;
+    protected static final String SELECT_ACTIVITE_BY_ID = "SELECT * FROM activites "
+            + "WHERE activiteId = ? AND " + VISIBLE;
 
-    protected static final String SELECT_ACTIVITES = "SELECT * FROM activites WHERE"
+    protected static final String SELECT_ACTIVITES = "SELECT * FROM activites WHERE "
             + VISIBLE;
 
     // ************* ADRESSE *****************

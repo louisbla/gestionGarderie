@@ -67,10 +67,11 @@
                     </tr>
 
                     <s:if test="%{articles.size()>0}">
-                        <s:iterator value="articles">
+                        <s:iterator value="articles" status="incr">
                             <tr>
-                                <td><s:property value="idArticle" /></td>
+                                <td class="d-none"><s:property value="idArticle" /></td>
                                 <td class="d-none"><s:property value="inventaire.idInventaire" /></td>
+                                <td><s:property value="%{#incr.index+1}" /></td>
                                 <td><s:property value="categorie.nom" /></td>
                                 <td><s:property value="nom" /></td>
                                 <td><s:property value="quantite" /></td>

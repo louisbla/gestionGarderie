@@ -99,10 +99,11 @@ public class FactureDAOTest {
      */
     @Test
     public void testFindById() {
-        System.out.println("findById");
+//        System.out.println("findById");
 //        int id = 1;
 //        Facture result = factureDAO.findById(id);
 //        assertEquals(200, result.getLignesFactures().get(0).getTotalHT(), 0.1);
+//        assertEquals("payee", result.getStatut().toString());
     }
 
     /**

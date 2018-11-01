@@ -13,7 +13,7 @@ import java.util.Map;
  * @author Maryline
  */
 public enum StatutFacture{
-    Payée (1, "paye"),
+    Payée (1, "payee"),
     EnAttenteDePaiement (2, "en attente de paiement"),
     EnRetard (3, "en retard");
     

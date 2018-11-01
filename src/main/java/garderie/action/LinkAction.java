@@ -32,10 +32,5 @@ public class LinkAction extends ActionSupport {
     {
         return "inventaire";
     }
-
-    public String facturation() 
-    {
-        return "facturation";
-    }
     
 }
