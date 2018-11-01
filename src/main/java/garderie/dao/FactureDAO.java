@@ -37,7 +37,7 @@ public class FactureDAO extends CommonDAO<Facture>{
             preparedStatement.setDate(1, facture.getDateEmission());
             preparedStatement.setDate(2, facture.getDatePaiement());
             preparedStatement.setDouble(3, facture.getMontantTTC());
-            preparedStatement.setString(4, facture.getStatut().name());
+            preparedStatement.setInt(4, facture.getStatut().getId());
             
             System.out.println(preparedStatement.toString());
 
@@ -70,7 +70,7 @@ public class FactureDAO extends CommonDAO<Facture>{
             preparedStatement.setDate(1, facture.getDateEmission());
             preparedStatement.setDate(2, facture.getDatePaiement());
             preparedStatement.setDouble(3, facture.getMontantTTC());
-            preparedStatement.setString(4, facture.getStatut().name());
+            preparedStatement.setInt(4, facture.getStatut().getId());
             preparedStatement.setInt(5, facture.getIdFacture());
             
             System.out.println(preparedStatement.toString());
@@ -126,7 +126,7 @@ public class FactureDAO extends CommonDAO<Facture>{
                 facture.setDateEmission(result.getDate("date_emission"));
                 facture.setDatePaiement(result.getDate("date_paiement"));
                 facture.setMontantTTC(result.getDouble("montant_ttc"));
-                facture.setStatut(StatutFacture.valueOf(result.getString("statut")));
+                facture.setStatut(StatutFacture.valueOf(result.getInt("statut")));
                 //facture.setLignesFactures(lignesFactures);
                 
                 ParentFactureDAO parentfactureDAO = new ParentFactureDAO(connection);
@@ -161,7 +161,7 @@ public class FactureDAO extends CommonDAO<Facture>{
                 facture.setDateEmission(result.getDate("date_emission"));
                 facture.setDatePaiement(result.getDate("date_paiement"));
                 facture.setMontantTTC(result.getDouble("montant_ttc"));
-                facture.setStatut(StatutFacture.valueOf(result.getString("statut")));
+                facture.setStatut(StatutFacture.valueOf(result.getInt("statut")));
                 //facture.setLignesFactures(lignesFactures);
                 
                 ParentFactureDAO parentfactureDAO = new ParentFactureDAO(connection);

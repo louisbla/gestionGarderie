@@ -1,5 +1,3 @@
-<%@page import="garderie.db.HibernateTest"%>
-<%@page import="org.hibernate.Hibernate"%>
 <%@page import="garderie.dao.ActiviteDAO"%>
 <%@page import="garderie.db.BDDManagerMySQL"%>
 <%@page import="garderie.db.FactoryBDDManagerInstance"%>
@@ -44,7 +42,7 @@
             } else {
                 out.println("connection succeded");
             }
-            
+
         %>
     </body>
 </html>

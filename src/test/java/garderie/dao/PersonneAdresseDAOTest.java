@@ -39,15 +39,15 @@ public class PersonneAdresseDAOTest {
     //
     @Test
     public void createPersonneAdresseForJoseInRueBegin() {
-        PersonneAdresseDAO paDAO = new PersonneAdresseDAO(connection);
-
-        PersonneDAO personneDAO = new PersonneDAO(connection);
-        Personne jose = personneDAO.findById(21);
-
-        AdresseDAO adresseDAO = new AdresseDAO(connection);
-        Adresse adresse = adresseDAO.findById(1);
-
-        PersonneAdresse pa = new PersonneAdresse(true, true, adresse, jose);
+//        PersonneAdresseDAO paDAO = new PersonneAdresseDAO(connection);
+//
+//        PersonneDAO personneDAO = new PersonneDAO(connection);
+//        Personne jose = personneDAO.findById(21);
+//
+//        AdresseDAO adresseDAO = new AdresseDAO(connection);
+//        Adresse adresse = adresseDAO.findById(1);
+//
+//        PersonneAdresse pa = new PersonneAdresse(true, true, adresse, jose);
         //paDAO.create(pa);
     }
 }

@@ -73,8 +73,6 @@ public class EmployeDAO extends CommonDAO<Employe> {
             preparedStatement.setBoolean(2, employe.isExterne());
             preparedStatement.setString(3, employe.getNumTel());
             preparedStatement.setInt(5, personne.getIdPersonne());
-            
-            System.out.println(preparedStatement.toString());
 
             //Executing the preparedStatement
             preparedStatement.executeUpdate();
@@ -131,6 +129,7 @@ public class EmployeDAO extends CommonDAO<Employe> {
                 employe.setNumTel(result.getString("telephone"));
                 //get DossierEmploye
             }
+            preparedStatement.close();
         } catch (SQLException e) {
             Logger.getLogger(EmployeDAO.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -168,6 +167,7 @@ public class EmployeDAO extends CommonDAO<Employe> {
                 employes.add(employe);
                 
             }
+            preparedStatement.close();
         } catch (SQLException e) {
             Logger.getLogger(EmployeDAO.class.getName()).log(Level.SEVERE, null, e);
         }

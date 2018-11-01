@@ -299,6 +299,7 @@ public class SQLConstant {
             + " WHERE enfantId = ? AND " + VISIBLE;
 
     //**************************** FACTURE ********************************
+    
     protected static final String INSERT_FACTURE = "INSERT INTO factures ("
             + "date_emission, date_paiement, montant_ttc, statut) VALUES (?,?,?,?)";
 

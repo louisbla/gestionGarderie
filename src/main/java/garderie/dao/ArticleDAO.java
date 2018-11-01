@@ -37,7 +37,11 @@ public class ArticleDAO extends CommonDAO<Article> {
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setString(1, article.getNom());
             preparedStatement.setInt(2, article.getQuantite());
-            preparedStatement.setString(3, article.getPhoto());
+            if (article.getPhoto() == null) {
+                preparedStatement.setString(3, "/gestionGarderie/images/articles/icons8-no_camera.png");
+            } else {
+                preparedStatement.setString(3, article.getPhoto());
+            }
             preparedStatement.setString(4, article.getDescription());
             preparedStatement.setInt(5, article.getInventaire().getIdInventaire());
             preparedStatement.setInt(6, article.getCategorie().getIdCategorie());
