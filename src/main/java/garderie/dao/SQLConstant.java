@@ -86,6 +86,12 @@ public class SQLConstant {
             + "(enfantId, photo, groupeId, inventaire_enfantId) VALUES (?,?,?,?)";
 
     protected static final String SELECT_ENFANT = "SELECT * FROM enfants ";
+    
+    protected static final String SELECT_ENFANT_BY_DOSSIER = "SELECT * FROM dossiers_inscription "
+            + "WHERE enfantId = ? AND " + VISIBLE;
+   
+    protected static final String SELECT_DOSSIER_ENFANT = "SELECT * FROM dossiers_inscription "
+            + "WHERE dossierId = ? AND " + VISIBLE;
 
     protected static final String SELECT_ENFANT_BY_ID = "SELECT * FROM enfants "
             + " WHERE enfantId = ?";
@@ -95,23 +101,25 @@ public class SQLConstant {
             + " WHERE enfantId = ?";
 
     // ************* INVENTAIRE ENFANT *****************
-    protected static final String INSERT_INVENTAIRE_ENFANT = "INSERT INTO inventaires_enfants VALUES()";
+    protected static final String INSERT_INVENTAIRE_ENFANT = "INSERT INTO inventaires_enfant VALUES()";
+    
+    protected static final String INSERT_INVENTAIRE_ENFANT_IN_ARTICLE = "INSERT INTO articles VALUES()";
 
     protected static final String SELECT_INVENTAIRE_ENFANT = "SELECT * FROM inventaires_enfant "
             + " WHERE " + VISIBLE;
 
     protected static final String SELECT_INVENTAIRE_ENFANT_BY_ID = "SELECT * FROM inventaires_enfant "
-            + " WHERE inventaireId = ?";
+            + " WHERE inventaireId = ? AND " + VISIBLE;
 
     protected static final String SELECT_ARTICLES_BY_ENFANTID = "SELECT * FROM"
-            + " articles WHERE enfantId = ? AND " + VISIBLE;
+            + " articles WHERE enfant_inventaireId = ? AND " + VISIBLE;
 
     protected static final String UPDATE_INVENTAIRE_ENFANT = "UPDATE inventaires_enfant SET "
             + "photo = ?, groupeId = ?, inventaireEnfantId = ?"
             + " WHERE enfantId = ?";
 
     protected static final String DELETE_INVENTAIRE_ENFANT = "UPDATE inventaires_enfant SET "
-            + NOT_VISIBLE + "WHERE inventaireId = ?";
+            + NOT_VISIBLE + " WHERE inventaireId = ?";
 
     // ************* EMPLOYE *****************
 //    protected static final String INSERT_EMPLOYE = "INSERT INTO employes (employeId, poste, "
@@ -203,9 +211,15 @@ public class SQLConstant {
     protected static final String INSERT_ARTICLE = "INSERT INTO articles (nom, quantite,"
             + " photo, description, inventaireId, categorieId) VALUES"
             + " (?,?,?,?,?,?)";
+    protected static final String INSERT_ARTICLE_ENFANT = "INSERT INTO articles (nom, quantite,"
+            + " photo, description, enfant_inventaireId, categorieId) VALUES"
+            + " (?,?,?,?,?,?)";
 
     protected static final String UPDATE_ARTICLE = "UPDATE articles SET nom = ?, quantite = ?,"
             + " photo = ?, description = ?, inventaireId = ?, categorieId = ? WHERE articleId = ?";
+    
+    protected static final String UPDATE_ARTICLE_INVENTAIRE_ENFANT = "UPDATE articles SET nom = ?, quantite = ?,"
+            + " photo = ?, description = ?, enfant_inventaireId = ?, categorieId = ? WHERE articleId = ?";
 
     protected static final String DELETE_ARTICLE = "UPDATE articles SET "
             + NOT_VISIBLE + " WHERE articleId = ?";
@@ -402,7 +416,10 @@ public class SQLConstant {
             + " contacts_urgence WHERE personneId = contactId AND personneId = ? AND " + VISIBLE;
 
     protected static final String SELECT_CONTACT_URGENCE = "SELECT * FROM personnes, contacts_urgence "
-            + "WHERE personneId = contactId AND " + VISIBLE;    
+            + "WHERE personneId = contactId AND " + VISIBLE;   
+    
+    protected static final String SELECT_CONTACT_URGENCE_BY_DOSSIER_INSCRIPTION = "SELECT * FROM dossier_contact_urgence "
+            + "WHERE dossierContactUrgenceId = ? AND " + VISIBLE; 
     
     //*********************** DOSSIER CONTACT URGENCE ********************************
 
@@ -423,6 +440,10 @@ public class SQLConstant {
 
     protected static final String SELECT_DOSSIER_CONTACT_URGENCE = "SELECT * FROM dossier_contact_urgence WHERE "
             + VISIBLE;     
+    
+    protected static final String SELECT_DOSSIER_CONTACT_URGENCE_BY_INSCRIPTION = "SELECT * FROM dossier_contact_urgence WHERE "
+            + " dossier_inscription_id = ? AND "
+            + VISIBLE; 
     
     
     

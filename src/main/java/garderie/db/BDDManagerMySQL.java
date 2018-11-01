@@ -20,6 +20,7 @@ public class BDDManagerMySQL implements Manager {
     private static final String HOST = "localhost/sql9262676";
     private static final String USER = "root";
     private static final String PASSWORD = "";
+
     private static Connection connection = null;
 
     public Connection connect() {
@@ -28,7 +29,7 @@ public class BDDManagerMySQL implements Manager {
                 Class.forName("com.mysql.jdbc.Driver");
                 connection = DriverManager.getConnection(HOST, USER, PASSWORD);
             } catch (ClassNotFoundException | SQLException ex) {
-                Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(BDDManagerMySQL.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 

@@ -6,9 +6,9 @@
 package garderie.dao;
 
 import com.mysql.jdbc.Statement;
+import garderie.model.DossierContactUrgence;
 import garderie.model.DossierInscription;
 import garderie.model.Enfant;
-import garderie.model.Personne;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -108,24 +108,24 @@ public class DossierInscriptionDAO extends CommonDAO<DossierInscription> {
 
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setInt(1, dossierInscriptionId);
-
-            //Executing the preparedStatement
-            preparedStatement.executeUpdate();
-            preparedStatement.close();
-
             ResultSet result = preparedStatement.executeQuery();
 
             if (result.first()) {
                 dossierInscription = new DossierInscription();
                 dossierInscription.setIdDossier(dossierInscriptionId);
                 dossierInscription.setDateInscription(result.getDate("dateInscription"));
-                dossierInscription.setNbDemiJourneeAbsent(result.getInt("nb_demi_journees_inscrit"));
-                dossierInscription.setDateInscription(result.getDate("nb_demi_journees_absent"));
-                dossierInscription.setDateInscription(result.getDate("medecin_traitant"));
+                dossierInscription.setNbDemiJourneeInscrit(result.getInt("nb_demi_journees_inscrit"));
+                dossierInscription.setNbDemiJourneeAbsent(result.getInt("nb_demi_journees_absent"));
+                dossierInscription.setMedecinTraitant(result.getString("medecin_traitant"));
 
                 EnfantDAO enfantDAO = new EnfantDAO(connection);
-                Enfant enfant = enfantDAO.findById(result.getInt("enfantId"));
+                Enfant enfant = enfantDAO.findByDossierInscription(dossierInscription);
 
+                DossierContactUrgenceDAO dcuDAO = new DossierContactUrgenceDAO(connection);
+                ArrayList<DossierContactUrgence> dossiersContactUrgence = dcuDAO.findAllByDossierInscription(dossierInscription);
+                dossierInscription.setContactsUrgences(dossiersContactUrgence);
+
+                enfant.setDossier(dossierInscription);
                 dossierInscription.setEnfant(enfant);
             }
 
@@ -134,6 +134,27 @@ public class DossierInscriptionDAO extends CommonDAO<DossierInscription> {
         }
 
         return dossierInscription;
+    }
+
+    public DossierInscription findByEnfant(Enfant enfant) {
+        DossierInscription dossier = null;
+
+        try {
+            //Creation of the PreparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_DOSSIER_INSCRIPTION_BY_ENFANTID);
+            preparedStatement.setInt(1, enfant.getIdPersonne());
+            ResultSet result = preparedStatement.executeQuery();
+
+            if (result.first()) {
+                dossier = this.findById(result.getInt("dossierId"));
+                dossier.setEnfant(enfant);
+
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(DossierInscriptionDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        return dossier;
     }
 
     @Override
