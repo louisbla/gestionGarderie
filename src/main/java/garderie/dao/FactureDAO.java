@@ -127,10 +127,14 @@ public class FactureDAO extends CommonDAO<Facture>{
                 facture.setDatePaiement(result.getDate("date_paiement"));
                 facture.setMontantTTC(result.getDouble("montant_ttc"));
                 facture.setStatut(StatutFacture.valueOf(result.getInt("statut")));
-                //facture.setLignesFactures(lignesFactures);
                 
-                ParentFactureDAO parentfactureDAO = new ParentFactureDAO(connection);
-                facture.setParent(parentfactureDAO.getAllParentByIdFacture(id));
+                LigneFactureDAO ligneFactureDAO = new LigneFactureDAO(connection);
+                ArrayList<LigneFacture> lignesFacture = new ArrayList<>();
+                lignesFacture = ligneFactureDAO.findAllLignesForFacture(result.getInt("factureId"));
+                facture.setLignesFactures(lignesFacture);
+                
+//                ParentFactureDAO parentfactureDAO = new ParentFactureDAO(connection);
+//                facture.setParent(parentfactureDAO.getAllParentByIdFacture(id));
             }
             
             preparedStatement.close();
@@ -144,7 +148,7 @@ public class FactureDAO extends CommonDAO<Facture>{
 
     @Override
     public ArrayList<Facture> findAll() {
-        ArrayList<Facture> listefacture = new ArrayList<>();
+        ArrayList<Facture> factures = new ArrayList<>();
         
         try{
             //Creation of the PreparedStatement
@@ -162,12 +166,16 @@ public class FactureDAO extends CommonDAO<Facture>{
                 facture.setDatePaiement(result.getDate("date_paiement"));
                 facture.setMontantTTC(result.getDouble("montant_ttc"));
                 facture.setStatut(StatutFacture.valueOf(result.getInt("statut")));
-                //facture.setLignesFactures(lignesFactures);
                 
-                ParentFactureDAO parentfactureDAO = new ParentFactureDAO(connection);
-                facture.setParent(parentfactureDAO.getAllParentByIdFacture(facture.getIdFacture()));   
+                LigneFactureDAO ligneFactureDAO = new LigneFactureDAO(connection);
+                ArrayList<LigneFacture> lignesFacture = new ArrayList<>();
+                lignesFacture = ligneFactureDAO.findAllLignesForFacture(result.getInt("factureId"));
+                facture.setLignesFactures(lignesFacture);
                 
-                listefacture.add(facture);
+//                ParentFactureDAO parentfactureDAO = new ParentFactureDAO(connection);
+//                facture.setParent(parentfactureDAO.getAllParentByIdFacture(facture.getIdFacture()));   
+                
+                factures.add(facture);
             }
             
         }catch (SQLException e) {
@@ -175,41 +183,7 @@ public class FactureDAO extends CommonDAO<Facture>{
         }
         
         
-        return listefacture;
-    }
-    
-    
-    public ArrayList<LigneFacture> getAllLigneForFacture(int id){
-        ArrayList<LigneFacture> listelignefacture= new ArrayList<>();
- 
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_LIGNE_FOR_FACTURE);
-            preparedStatement.setInt(1, id);
-            System.out.println(preparedStatement.toString());
-            
-            ResultSet result = preparedStatement.executeQuery();
-            
-            while(result.next()){
-                LigneFacture ligne = new LigneFacture();
-                
-                FactureDAO factureDAO = new FactureDAO(connection);
-                Facture facture = factureDAO.findById(id);
-                
-                ligne.setIdLigneFacture(result.getInt("ligneId"));
-                ligne.setTotalHT(result.getDouble("total_ht"));
-                ligne.setTotalTTC(result.getDouble("total_ttc"));
-                ligne.setQuantite(result.getInt("quantite"));
-                ligne.setFacture(facture);
-                //ligne.setObjetsFacturable(objetFacturable);
-                
-                listelignefacture.add(ligne);
-            }
-            
-        }catch (SQLException e) {
-            Logger.getLogger(FactureDAO.class.getName()).log(Level.SEVERE, null, e);
-        }
-        
-        return listelignefacture;
+        return factures;
     }
     
 }

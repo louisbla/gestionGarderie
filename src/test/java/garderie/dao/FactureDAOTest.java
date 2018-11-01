@@ -102,7 +102,7 @@ public class FactureDAOTest {
         System.out.println("findById");
 //        int id = 1;
 //        Facture result = factureDAO.findById(id);
-//        assertEquals(250, result.getMontantTTC(), 0.1);
+//        assertEquals(200, result.getLignesFactures().get(0).getTotalHT(), 0.1);
     }
 
     /**
@@ -113,7 +113,7 @@ public class FactureDAOTest {
         System.out.println("findAll");
 //        ArrayList<Facture> result = factureDAO.findAll();
 //        assertEquals(2, result.size());
-//        assertEquals(250, result.get(0).getMontantTTC(), 0.1);
+//        assertEquals(500, result.get(1).getLignesFactures().get(0).getTotalHT(), 0.1);
     }
 
     /**

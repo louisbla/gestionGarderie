@@ -143,11 +143,11 @@ public class ParentDAO extends CommonDAO<Parent>{
                  
                 // Recuperation de ses filiations
                 FiliationDAO filiationDAO = new FiliationDAO(connection);
-                ArrayList<Filiation> filiations = filiationDAO.getAllByParentId(id);
+                ArrayList<Filiation> filiations = filiationDAO.findAllEnfantsForParent(id);
                 parent.setListeEnfants(filiations);
                 
                 ParentFactureDAO parentfactureDAO = new ParentFactureDAO(connection);             
-                parent.setFactures(parentfactureDAO.getAllFactureByIdParent(id));
+                parent.setFactures(parentfactureDAO.findAllFactureByIdPersonne(id));
                 
                 
              }
@@ -186,14 +186,13 @@ public class ParentDAO extends CommonDAO<Parent>{
                 parent.setNbEnfantsInscrits(result.getInt("nb_enfants_inscrits"));
                 parent.setNumTel(result.getString("telephone"));
                 
-                 // Recuperation de ses filiations
+                // Recuperation de ses filiations
                 FiliationDAO filiationDAO = new FiliationDAO(connection);
-                ArrayList<Filiation> filiations = filiationDAO.getAllByParentId(parent.getIdPersonne());
+                ArrayList<Filiation> filiations = filiationDAO.findAllEnfantsForParent(result.getInt("parentId"));
                 parent.setListeEnfants(filiations);
                 
                 ParentFactureDAO parentfactureDAO = new ParentFactureDAO(connection);             
-                parent.setFactures(parentfactureDAO.getAllFactureByIdParent(parent.getIdPersonne()));
-                
+                parent.setFactures(parentfactureDAO.findAllFactureByIdPersonne(result.getInt("parentId")));
                 
                 listeparent.add(parent);
               }
@@ -207,7 +206,6 @@ public class ParentDAO extends CommonDAO<Parent>{
 
     public ArrayList<Facture> getFactureForParent(int id){
         ArrayList<Facture> listefacture = new ArrayList<>();
-        Facture facture;
         FactureDAO factureDAO = new FactureDAO(connection);
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_FACTURE_FOR_PARENT);
@@ -217,6 +215,7 @@ public class ParentDAO extends CommonDAO<Parent>{
             ResultSet result = preparedStatement.executeQuery();
             
             while(result.next()){
+                Facture facture = new Facture();
                 facture = factureDAO.findById(result.getInt("factureId"));
                 listefacture.add(facture);
             }

@@ -102,81 +102,34 @@ public class ParentFactureDAO extends CommonDAO<ParentFacture>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public ArrayList<ParentFacture> getAllFactureByIdParent(int idParent){
-        ArrayList<ParentFacture> liste = new ArrayList<>();
-        
-        try{
-             //Creation of the PreparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_FACTURE_FOR_PARENT_BY_ID);
-
-            //Insert parameter at the location of the question mark in the SQL Query
-            preparedStatement.setInt(1, idParent);
-            
-             //Recupere les resultats de la requete
-            ResultSet result = preparedStatement.executeQuery();
-
-             while (result.next()) {
-
-                 ParentFacture parentfacture = new ParentFacture();
-                 
-                 FactureDAO factureDAO = new FactureDAO(connection);
-                 Facture facture = factureDAO.findById(result.getInt("facureId"));
-                 
-                 ParentDAO parentDAO = new ParentDAO(connection);
-                 Parent parent = parentDAO.findById(idParent);
-                         
-                 parentfacture.setFacture(facture);
-                 parentfacture.setParent(parent);
-                 
-                 
-                 liste.add(parentfacture);
-             }
-            
-        }catch (SQLException e) {
-            Logger.getLogger(ParentFactureDAO.class.getName()).log(Level.SEVERE, null, e);
-        }
-        
-        return liste;
-        
-    }
-    
-    public ArrayList<ParentFacture> getAllParentByIdFacture(int idFacture){
-        ArrayList<ParentFacture> liste = new ArrayList<>();
+    public ArrayList<Parent> getAllParentByIdFacture(int idFacture){
+        ArrayList<Parent> parents = new ArrayList<>();
         try{
              //Creation of the PreparedStatement
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_PARENT_FOR_FACTURE_BY_ID);
 
             //Insert parameter at the location of the question mark in the SQL Query
             preparedStatement.setInt(1, idFacture);
-            
+            System.out.println(preparedStatement.toString());
              //Recupere les resultats de la requete
             ResultSet result = preparedStatement.executeQuery();
    
             while (result.next()) {
-
-                 ParentFacture parentfacture = new ParentFacture();
-                 
-                 FactureDAO factureDAO = new FactureDAO(connection);
-                 Facture facture = factureDAO.findById(idFacture);
-                 
                  ParentDAO parentDAO = new ParentDAO(connection);
                  Parent parent = parentDAO.findById(result.getInt("personneId"));
-                         
-                 parentfacture.setFacture(facture);
-                 parentfacture.setParent(parent);
                   
-                 liste.add(parentfacture);
+                 parents.add(parent);
              }
  
         }catch (SQLException e) {
             Logger.getLogger(ParentFactureDAO.class.getName()).log(Level.SEVERE, null, e);
         }
-        return liste;
+        return parents;
     }
     
     
-    public ArrayList<Facture> findAllFactureByIdPersonne(int idPersonne){
-        ArrayList listefacture = new ArrayList<>();
+    public ArrayList<ParentFacture> findAllFactureByIdPersonne(int idPersonne){
+        ArrayList<ParentFacture> listefacture = new ArrayList<>();
         
         try{
             //Creation of the PreparedStatement
@@ -189,11 +142,12 @@ public class ParentFactureDAO extends CommonDAO<ParentFacture>{
             ResultSet result = preparedStatement.executeQuery();
 
              while (result.next()) {
-                ParentFacture parentFacture = new ParentFacture();
                 FactureDAO factureDAO = new FactureDAO(connection);
                 Facture facture = factureDAO.findById(result.getInt("factureId"));
-
-                listefacture.add(facture);
+                
+                ParentFacture parentFacture = new ParentFacture();
+                parentFacture.setFacture(facture);
+                listefacture.add(parentFacture);
             }
             
             

@@ -130,7 +130,7 @@ public class EnfantDAO extends CommonDAO<Enfant> {
 
                     // Recuperation de ses filiations
                     FiliationDAO filiationDAO = new FiliationDAO(connection);
-                    ArrayList<Filiation> filiations = filiationDAO.getAllByEnfantId(enfantId);
+                    ArrayList<Filiation> filiations = filiationDAO.findAllParentsForEnfant(enfantId);
                     enfant.setListeParents(filiations);
 
                     // Recuperation de son inventaire
@@ -139,9 +139,9 @@ public class EnfantDAO extends CommonDAO<Enfant> {
                     enfant.setInventaire(inventaireEnfant);
 
                     // Recuperation de son traitement
-                    TraitementDAO traitementDAO = new TraitementDAO(connection);
-                    ArrayList<Traitement> traitements = traitementDAO.findByEnfantId(enfantId);
-                    enfant.setTraitement(traitements);
+//                    TraitementDAO traitementDAO = new TraitementDAO(connection);
+//                    ArrayList<Traitement> traitements = traitementDAO.findByEnfantId(enfantId);
+//                    enfant.setTraitement(traitements);
 
                     // Recuperation de son groupe
                     GroupeDAO groupeDAO = new GroupeDAO(connection);

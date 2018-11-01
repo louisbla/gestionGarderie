@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author Katsuo
  */
 public class ObjetFacturable implements Serializable {
-    private int idObjectFacturable;
+    private int idObjetFacturable;
     private double prixHT;
     private String nom;
     private TVA tva;
@@ -30,12 +30,12 @@ public class ObjetFacturable implements Serializable {
         this.activite = null;
     }
 
-    public int getIdObjectFacturable() {
-        return idObjectFacturable;
+    public int getIdObjetFacturable() {
+        return idObjetFacturable;
     }
 
-    public void setIdObjectFacturable(int idObjectFacturable) {
-        this.idObjectFacturable = idObjectFacturable;
+    public void setIdObjetFacturable(int idObjetFacturable) {
+        this.idObjetFacturable = idObjetFacturable;
     }
 
 

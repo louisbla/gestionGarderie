@@ -256,6 +256,9 @@ public class SQLConstant {
 
     protected static final String SELECT_COMPTE_USER_BY_ID = "SELECT * FROM comptes_user"
             + " WHERE userId = ? AND " + VISIBLE;
+    
+    protected static final String VALIDER_COMPTE_USER = "SELECT * FROM comptes_user"
+            + " WHERE login=? AND password=? AND " + VISIBLE;
 
     //**************************** PARENT ***************************************
     protected static final String INSERT_PARENT = "INSERT INTO parents (parentId,"
@@ -315,11 +318,60 @@ public class SQLConstant {
 
     protected static final String SELECT_FACTURE_BY_ID = "SELECT * FROM factures"
             + " WHERE factureId = ? AND " + VISIBLE;
-
-    protected static final String SELECT_LIGNE_FOR_FACTURE = "SELECT * FROM lignes_factures"
-            + " WHERE factureId = ?";
+    
+    //**************************** LIGNE FACTURE ********************************
+    
+    protected static final String INSERT_LIGNE_FACTURE = "INSERT INTO lignes_factures"
+            + " (total_ht, total_ttc, quantite, factureId, objet_facturableId) VALUES"
+            + " (?,?,?,?,?)";
+    
+    protected static final String UPDATE_LIGNE_FACTURE = "UPDATE lignes_factures SET"
+            + " total_ht = ?, total_ttc = ?, quantite = ?, factureId = ?,"
+            + " objet_facturableId = ? WHERE ligneId = ?";
+    
+    protected static final String DELETE_LIGNE_FACTURE = "UPDATE lignes_factures SET "
+            + NOT_VISIBLE + " WHERE ligneId = ?";
+    
+    protected static final String SELECT_LIGNE_FACTURE_BY_ID = "SELECT * FROM lignes_factures"
+            + " WHERE ligneId = ? AND " + VISIBLE;
+    
+    protected static final String SELECT_LIGNES_FACTURE = "SELECT * FROM lignes_factures WHERE "
+            + VISIBLE;
+    
+     protected static final String SELECT_LIGNE_FOR_FACTURE = "SELECT * FROM lignes_factures"
+            + " WHERE factureId = ? AND " + VISIBLE;
+     
+    //**************************** OBJET FACTURABLE ********************************
+    
+     protected static final String INSERT_OBJET_FACTURABLE = "INSERT INTO objets_facturables"
+             + " (prix_ht, nom, tvaId, activiteId) VALUES (?,?,?,?)";
+     
+     protected static final String UPDATE_OBJET_FACTURABLE = "UPDATE objets_facturables SET"
+             + " prix_ht = ?, nom = ?, tvaId = ?, activiteId = ? WHERE objet_facturableId = ?";
+     
+     protected static final String DELETE_OBJET_FACTURABLE = "UPDATE objets_facturables SET "
+             + NOT_VISIBLE + " WHERE objet_facturableId = ?";
+     
+     protected static final String SELECT_OBJET_FACTURABLE_BY_ID = "SELECT * FROM objets_facturables"
+             + " WHERE objet_facturableId = ? AND " + VISIBLE;
+     
+     protected static final String SELECT_OBJETS_FACTURABLES = "SELECT * FROM objets_facturables WHERE "
+             + VISIBLE;
+     
+    //**************************** TVA ********************************
+     
+     protected static final String INSERT_TVA = "INSERT INTO tva (nom, valeur) VALUES (?,?)";
+     
+     protected static final String UPDATE_TVA = "UPDATE tva SET nom = ?, valeur = ? WHERE tvaId = ?";
+     
+     protected static final String DELETE_TVA = "UPDATE tva SET " + NOT_VISIBLE + " WHERE tvaId = ?";
+     
+     protected static final String SELECT_TVA_BY_ID = "SELECT * FROM tva WHERE tvaId = ? AND " + VISIBLE;
+     
+     protected static final String SELECT_TVAS = "SELECT * FROM tva WHERE " + VISIBLE;
 
     //**************************** PARENT_FACTURE ******************************
+    
     protected static final String INSERT_PARENT_FACTURE = "INSERT INTO parents_factures ("
             + " factureId, personneId ) VALUES (?,?)";
 
@@ -333,7 +385,7 @@ public class SQLConstant {
             + " WHERE " + VISIBLE;
 
     protected static final String SELECT_PARENT_FOR_FACTURE_BY_ID = "SELECT * FROM "
-            + " parents_fatures  WHERE factureId = ?";
+            + " parents_factures WHERE factureId = ?";
 
     protected static final String SELECT_FACTURE_FOR_PARENT_BY_ID = "SELECT * FROM parents_factures"
             + " WHERE personneId = ?";

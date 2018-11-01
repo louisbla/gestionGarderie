@@ -5,16 +5,15 @@
  */
 package garderie.dao;
 
-import com.mysql.jdbc.Statement;
 import garderie.model.Filiation;
 import garderie.model.Parent;
 import garderie.model.Enfant;
+import garderie.model.Facture;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -105,129 +104,71 @@ public class FiliationDAO extends CommonDAO<Filiation> {
 
         return listefiliation;
     }
-
-    public ArrayList<Enfant> getAllEnfantForParent(Parent parent) {
-        ArrayList<Enfant> listenfant = new ArrayList<>();
-
-        try {
-            //Creation of the PreparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_FILIATION_ALL_ENFANT_FOR_PARENT);
-
-            //Insert parameter at the location of the question mark in the SQL Query
-            preparedStatement.setInt(1, parent.getIdPersonne());
-
-            //Recupere les resultats de la requete
-            ResultSet result = preparedStatement.executeQuery();
-
-            while (result.next()) {
-                EnfantDAO enfantDAO = new EnfantDAO(connection);
-
-                Enfant enfant = enfantDAO.findById(result.getInt("enfantId"));
-
-                listenfant.add(enfant);
-            }
-
-        } catch (SQLException e) {
-            Logger.getLogger(FiliationDAO.class.getName()).log(Level.SEVERE, null, e);
-        }
-        return listenfant;
-    }
-
-    public ArrayList<Parent> getAllParentForEnfant(Enfant enfant) {
-        ArrayList<Parent> listeparent = new ArrayList<>();
-
-        try {
-            //Creation of the PreparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_FILIATION_ALL_PARENT_FOR_ENFANT);
-
-            //Insert parameter at the location of the question mark in the SQL Query
-            preparedStatement.setInt(1, enfant.getIdPersonne());
-
-            //Recupere les resultats de la requete
-            ResultSet result = preparedStatement.executeQuery();
-
-            while (result.next()) {
-                ParentDAO parentDAO = new ParentDAO(connection);
-
-                Parent parent = parentDAO.findById(result.getInt("parentId"));
-
-                listeparent.add(parent);
-            }
-
-        } catch (SQLException e) {
-            Logger.getLogger(FiliationDAO.class.getName()).log(Level.SEVERE, null, e);
-        }
-        return listeparent;
-    }
-
-    public ArrayList<Filiation> getAllByEnfantId(int enfantId) {
-        ArrayList<Filiation> filiations = new ArrayList<>();
-
-        try {
-            //Creation of the PreparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_FILIATION_ALL_PARENT_FOR_ENFANT);
-
-            //Insert parameter at the location of the question mark in the SQL Query
-            preparedStatement.setInt(1, enfantId);
-
-            //Recupere les resultats de la requete
-            ResultSet result = preparedStatement.executeQuery();
-
-            while (result.next()) {
-                Filiation filiation = new Filiation();
-
-                EnfantDAO enfantDAO = new EnfantDAO(connection);
-                Enfant enfant = enfantDAO.findById(enfantId);
-
-                ParentDAO parentDAO = new ParentDAO(connection);
-                Parent parent = parentDAO.findById(result.getInt("personneId"));
-
-                filiation.setE(enfant);
-                filiation.setP(parent);
-                filiation.setLien(result.getString("lien_parente"));
-
-                filiations.add(filiation);
-            }
-
-        } catch (SQLException e) {
-            Logger.getLogger(FiliationDAO.class.getName()).log(Level.SEVERE, null, e);
-        }
-
-        return filiations;
-    }
-
     
-    public ArrayList<Filiation> getAllByParentId(int parentId) {
+    public ArrayList<Filiation> findAllEnfantsForParent(int idPersonne){
         ArrayList<Filiation> filiations = new ArrayList<>();
         
-        try {
+        try{
             //Creation of the PreparedStatement
             PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_FILIATION_ALL_ENFANT_FOR_PARENT);
 
             //Insert parameter at the location of the question mark in the SQL Query
-            preparedStatement.setInt(1, parentId);
-            
+            preparedStatement.setInt(1, idPersonne);
+
             //Recupere les resultats de la requete
             ResultSet result = preparedStatement.executeQuery();
 
-            while (result.next()) {
-                Filiation filiation = new Filiation();
-
+             while (result.next()) {
                 EnfantDAO enfantDAO = new EnfantDAO(connection);
-                Enfant enfant = enfantDAO.findById(result.getInt("enfantId"));
-
-                ParentDAO parentDAO = new ParentDAO(connection);
-                Parent parent = parentDAO.findById(parentId);
-
+                Enfant enfant = new Enfant();
+                enfant = enfantDAO.findById(result.getInt("enfantId"));
+                
+                String lienParente = result.getString("lien_parente");
+                Filiation filiation = new Filiation();
+                
                 filiation.setE(enfant);
-                filiation.setP(parent);
-                filiation.setLien(result.getString("lien_parente"));
+                filiation.setLien(lienParente);
 
                 filiations.add(filiation);
             }
             
             
-        } catch (SQLException e) {
+        }catch (SQLException e) {
+            Logger.getLogger(FiliationDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
+        return filiations;
+    }
+    
+    public ArrayList<Filiation> findAllParentsForEnfant(int idEnfant){
+        ArrayList<Filiation> filiations = new ArrayList<>();
+        
+        try{
+            //Creation of the PreparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_FILIATION_ALL_PARENT_FOR_ENFANT);
+
+            //Insert parameter at the location of the question mark in the SQL Query
+            preparedStatement.setInt(1, idEnfant);
+            System.out.println(preparedStatement.toString());
+            //Recupere les resultats de la requete
+            ResultSet result = preparedStatement.executeQuery();
+
+            while (result.next()) {
+//                ParentDAO parentDAO = new ParentDAO(connection);
+//                Parent parent = new Parent();
+//                parent = parentDAO.findById(result.getInt("parentId"));
+
+                String lienParente = result.getString("lien_parente");
+                Filiation filiation = new Filiation();
+
+//                filiation.setP(parent);
+                filiation.setLien(lienParente);
+
+                filiations.add(filiation);
+            }
+            
+            
+        }catch (SQLException e) {
             Logger.getLogger(FiliationDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         
