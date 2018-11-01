@@ -106,7 +106,7 @@ public class DossierEmploye implements Serializable{
     }
         
     public void ajouterConge(Date dateDebut, int duree, TypeConge typeConge){
-        Conge c = new Conge(duree,dateDebut,typeConge, employe);
+        Conge c = new Conge(duree,dateDebut,typeConge, this.employe);
         this.listeConge.add(c);
     }
 

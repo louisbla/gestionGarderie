@@ -6,6 +6,7 @@
 package garderie.dao;
 
 import garderie.model.Conge;
+import garderie.model.TypeConge;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -70,6 +71,7 @@ public class CongeDAO extends CommonDAO<Conge>{
             preparedStatement.setInt(2, conge.getDureeCongeJour());
             preparedStatement.setInt(3, conge.getTypeConge().getId());
             preparedStatement.setInt(4, conge.getIdEmploye());
+            preparedStatement.setInt(4, conge.getTypeConge().getId());
             
             System.out.println(preparedStatement.toString());
 
@@ -121,8 +123,8 @@ try{
                 conge.setDebutConge(result.getDate("debut"));
                 conge.setDureeCongeJour(result.getInt("duree"));
                 
-                //int typeCongeId = result.getInt("type_congeId");
-                //conge.setTypeConge(TypeCongeDAO.findById(typeCongeId));
+                int typeCongeId = result.getInt("type_congeId");
+                conge.setTypeConge(TypeConge.findById(typeCongeId));
                 
             }
             
