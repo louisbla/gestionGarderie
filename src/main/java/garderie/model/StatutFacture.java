@@ -9,9 +9,9 @@ package garderie.model;
  * @author Maryline
  */
 public enum StatutFacture{
-    Payée ("payée"),
-    EnAttenteDePaiement ("en attente de paiement"),
-    EnRetard ("en retard");
+    Payee ("payee"),
+    EnAttenteDePaiement ("attente"),
+    EnRetard ("retard");
     
     private String libelle = "";
 
