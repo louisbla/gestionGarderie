@@ -15,7 +15,7 @@
 <body>
 <h3>Welcome User, please login below</h3>
 <s:form action="login">
-	<s:textfield name="user" label="User Name"></s:textfield>
+	<s:textfield name="login" label="User Name"></s:textfield>
 	<s:textfield name="password" label="Password" type="password"></s:textfield>
 	<s:submit value="Login"></s:submit>
 </s:form>

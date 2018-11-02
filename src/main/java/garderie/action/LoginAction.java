@@ -19,16 +19,22 @@ import org.apache.struts2.interceptor.SessionAware;
 public class LoginAction extends ActionSupport implements SessionAware{
     
     private Map<String, Object> session;
+    private String login = "";
+    private String password = "";
     
     public void getAttributes(){
         HttpServletRequest request = getRequest();
         
+      
+        
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         
-        session.put("login", login);
+        System.out.println("fonction getAttr + " + login + " - " + password );
+
+        
     }
-    
+    /*
     public String tryConnect(String login, String password){
         if(login.equals("admin") && password.equals("")){
             session.put("login", login);
@@ -36,10 +42,30 @@ public class LoginAction extends ActionSupport implements SessionAware{
         }else{
             return INPUT;
         }
+    }*/
+    
+    @Override
+    public String execute(){
+        
+        HttpServletRequest request = getRequest();
+        
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
+        
+        System.out.println("fonction execute + " + login + " - " + password );
+                
+        if(login.equals("admin") && password.equals("d")){
+            session.put("login", login);
+            
+            return SUCCESS;
+        }
+        
+        return ERROR;
     }
 
     @Override
     public void setSession(Map<String, Object> session) {
         this.session = ActionContext.getContext().getSession();
     }
+
 }
