@@ -30,15 +30,11 @@
             <result name="inscription" type="tiles">inscription</result>
 	</action>
         
-        <!--
-        <action name="loginLink" class="garderie.action.LinkAction" method="login" >
-            <result name="login" type="tiles">inscription</result>
-	</action> -->
         <action name="loginForm">
                 <result name="success" type="tiles">login</result>
         </action>
         
-        <action name="loginTest" class="garderie.action.LoginAction">
+        <action name="login" class="garderie.action.LoginAction">
                 <!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
                 <result name="success" type="tiles">inventaire</result>
                 <result name="error" type="tiles">login</result>
