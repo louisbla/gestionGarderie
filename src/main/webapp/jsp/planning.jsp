@@ -71,6 +71,45 @@
                     </s:iterator>
                 </table>
             </s:if>
+            <s:elseif test="%{employesTrouves.size()>0}">
+
+
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>#</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Poste</th>
+                        <th>Telephone</th>
+                        <th>Editer</th>
+                    </tr>
+                    <s:iterator value="employesTrouves" status="incr">
+                        <tr>
+                            <td><s:property value="%{#incr.index+1}"/></td>
+                            <td><s:property value="nom" /></td>
+                            <td><s:property value="prenom" /></td>
+                            <td><s:property value="poste" /></td>
+                            <td>
+                                <s:property value="numTel" />
+                            </td>
+                            <td>
+                                <s:form action="afficherdetailsfacture" method="post">
+                                    <s:textfield name="idFacture"
+                                                 cssClass="d-none"/>
+
+                                    <button class="btn btn-primary"
+                                            type="submit">
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                    </button>
+                                </s:form>
+                            </td>
+                        </tr>
+                    </s:iterator>
+                </table>
+            </s:elseif>
+            <s:else>
+                Aucun employé trouvé.
+            </s:else>
         </div>
         <hr class="hr-primary hr-big">
 

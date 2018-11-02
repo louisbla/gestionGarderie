@@ -18,15 +18,15 @@ import java.util.ArrayList;
  * @author Katsuo
  */
 public class ChercherEmployeAction extends ActionSupport {
-    private ArrayList<Employe> employes;
+    private ArrayList<Employe> employesTrouves;
     private String motCle;
 
-    public ArrayList<Employe> getEmployes() {
-        return employes;
+    public ArrayList<Employe> getEmployesTrouves() {
+        return employesTrouves;
     }
 
-    public void setEmployes(ArrayList<Employe> employes) {
-        this.employes = employes;
+    public void setEmployesTrouves(ArrayList<Employe> employesTrouves) {
+        this.employesTrouves = employesTrouves;
     }
 
     public String getMotCle() {
@@ -40,10 +40,10 @@ public class ChercherEmployeAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
         Connection connection = FactoryBDDManagerInstance.getInstance(new BDDManagerMySQL()).connect();
-        employes = new ArrayList<>();
+        employesTrouves = new ArrayList<>();
         
         EmployeDAO employeDAO = new EmployeDAO(connection);
-        employes = employeDAO.findByName(motCle);
+        employesTrouves = employeDAO.findByName(motCle);
         
         return SUCCESS;
     }

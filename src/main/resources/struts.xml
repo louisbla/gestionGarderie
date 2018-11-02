@@ -53,19 +53,19 @@
         
         <action name="updatearticle" class="garderie.action.UpdateArticleAction">
             <result type="redirectAction">
-                <param name="actionName">inventaireLink</param>
+                <param name="actionName">afficherarticles</param>
             </result>
 	</action>
         
         <action name="createarticle" class="garderie.action.CreateArticleAction">
             <result type="redirectAction">
-                <param name="actionName">inventaireLink</param>
+                <param name="actionName">afficherarticles</param>
             </result>
 	</action>
         
         <action name="deletearticle" class="garderie.action.DeleteArticleAction">
             <result type="redirectAction">
-                <param name="actionName">inventaireLink</param>
+                <param name="actionName">afficherarticles</param>
             </result>
 	</action>
         

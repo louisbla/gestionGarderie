@@ -179,11 +179,17 @@ public class EmployeDAO extends CommonDAO<Employe> {
         ArrayList<Employe> employes = new ArrayList<>();
         
         try {
+            PreparedStatement preparedStatement;
             //Creation of the PreparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_EMPLOYES_BY_NAME);
+            if (true) {
+                preparedStatement = connection.prepareStatement(SQLConstant.SELECT_EMPLOYES);
+            } else {
+                preparedStatement = connection.prepareStatement(SQLConstant.SELECT_EMPLOYES_BY_NAME);
 
-            preparedStatement.setString(1, "%" + name + "%");
-            preparedStatement.setString(2, "%" + name + "%");
+                preparedStatement.setString(1, "%" + name + "%");
+                preparedStatement.setString(2, "%" + name + "%");
+            }
+            
 
             ResultSet result = preparedStatement.executeQuery();
 
