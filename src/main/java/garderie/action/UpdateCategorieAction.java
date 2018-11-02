@@ -33,6 +33,7 @@ public class UpdateCategorieAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
         categorieArticle = categorieArticleDAO.update(categorieArticle);
+        addActionMessage("Catégorie modifiée!");
         return SUCCESS;
     }
 

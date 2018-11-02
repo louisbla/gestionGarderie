@@ -35,6 +35,7 @@ public class DeleteCategorieAction extends ActionSupport {
     public String execute() throws Exception {
         System.out.println(categorieArticle.getIdCategorie());
         categorieArticleDAO.delete(categorieArticle);
+        addActionMessage("Catégorie supprimée!");
         return SUCCESS;
     }
     

@@ -13,6 +13,16 @@
         <sb:head includeScripts="true" includeScriptsValidation="false"/>
     </head>
     <body>
+        <s:if test="hasActionErrors()">
+            <div class="errors">
+                <s:actionerror theme="bootstrap"/>
+            </div>
+        </s:if>
+        <s:if test="hasActionMessages()">
+            <div class="welcome">
+                <s:actionmessage theme="bootstrap"/>
+            </div>
+        </s:if>
         <s:if test="#session.user">
             <s:if test="#session.user.privilege==true">
                 <h1 class="text-center">Planning</h1>
@@ -59,8 +69,8 @@
                                         <s:property value="numTel" />
                                     </td>
                                     <td>
-                                        <s:form action="afficherdetailsfacture" method="post">
-                                            <s:textfield name="idFacture"
+                                        <s:form>
+                                            <s:textfield name="idEmploye"
                                                          cssClass="d-none"/>
 
                                             <button class="btn btn-primary"
@@ -95,7 +105,7 @@
                                         <s:property value="numTel" />
                                     </td>
                                     <td>
-                                        <s:form action="" method="post">
+                                        <s:form>
                                             <s:textfield name="idEmploye"
                                                          cssClass="d-none"/>
 

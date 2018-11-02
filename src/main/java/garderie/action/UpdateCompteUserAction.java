@@ -97,7 +97,7 @@ public class UpdateCompteUserAction extends ActionSupport {
         personne.setNom(nom);
         personne.setSexe(sexe);
         personne = personneDAO.update(personne);
-        addActionMessage("Modification effectuee!");
+        addActionMessage("Modification effectuée!");
         return SUCCESS;
     }
 

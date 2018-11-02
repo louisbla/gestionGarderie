@@ -33,7 +33,18 @@ public class CreateArticleAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
         article = articleDAO.create(article);
+        addActionMessage("Article ajouté!");
         return SUCCESS;
+    }
+    
+    @Override
+    public void validate() {
+        if (article.getNom().length() == 0) {
+            addFieldError("categorieArticle.nom", "Veuillez remplir le champs");
+        }
+        if (article.getDescription().length() == 0) {
+            addFieldError("categorieArticle.description", "Veuillez remplir le champs");
+        }
     }
     
 }

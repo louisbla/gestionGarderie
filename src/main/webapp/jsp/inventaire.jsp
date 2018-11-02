@@ -16,7 +16,16 @@
         <s:if test="#session.user">
             <s:if test="#session.user.privilege==true">
                 <h1 class="text-center mb-5">Inventaire</h1>
-
+                <s:if test="hasActionErrors()">
+                    <div class="errors">
+                        <s:actionerror theme="bootstrap"/>
+                    </div>
+                </s:if>
+                <s:if test="hasActionMessages()">
+                    <div class="welcome">
+                        <s:actionmessage theme="bootstrap"/>
+                    </div>
+                </s:if>
                 <s:form theme="bootstrap" cssClass="form-horizontal" action="chercherarticle" method="post">
                     <div class="row">
                         <div class="col-md-6">

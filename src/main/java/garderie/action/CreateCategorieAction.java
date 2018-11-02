@@ -34,7 +34,14 @@ public class CreateCategorieAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
         categorieArticle = categorieArticleDAO.create(categorieArticle);
+        addActionMessage("Catégorie créée!");
         return SUCCESS;
     }
     
+    @Override
+    public void validate() {
+        if (categorieArticle.getNom().length() == 0) {
+            addFieldError("categorieArticle.nom", "Veuillez remplir le champs");
+        }
+    }
 }

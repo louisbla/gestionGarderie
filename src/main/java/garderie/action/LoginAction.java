@@ -66,7 +66,7 @@ public class LoginAction extends ActionSupport implements SessionAware, Paramete
             compteUser = compteUserDAO.validate(login, mdp);
             if (compteUser != null) {
                 this.userSession.put("user", compteUser);
-                addActionMessage("You are valid user!");
+                addActionMessage("Vous êtes bien connecté(e)!");
                 result = SUCCESS;
             }
         } else {

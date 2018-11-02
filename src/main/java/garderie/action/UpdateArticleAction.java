@@ -38,5 +38,15 @@ public class UpdateArticleAction extends ActionSupport {
         
     }
     
+    @Override
+    public void validate() {
+        if (article.getNom().length() == 0) {
+            addFieldError("categorieArticle.nom", "Veuillez remplir le champs");
+        }
+        if (article.getDescription().length() == 0) {
+            addFieldError("categorieArticle.description", "Veuillez remplir le champs");
+        }
+    }
+    
     
 }

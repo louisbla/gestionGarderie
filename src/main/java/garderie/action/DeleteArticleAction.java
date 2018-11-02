@@ -32,6 +32,7 @@ public class DeleteArticleAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
         articleDAO.delete(article);
+        addActionMessage("Article supprimé!");
         return SUCCESS;
     }
 }
