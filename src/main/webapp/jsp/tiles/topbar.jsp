@@ -15,9 +15,9 @@
         <div class="collapse navbar-collapse" id="navbar-main">
 
             <s:form action="loginprocess" theme="bootstrap" cssClass="navbar-form navbar-right">
-                <s:textfield placeholder="Identifiant" name="LoginAction.username"
+                <s:textfield placeholder="Identifiant" name="compteUser.login"
                              cssClass="input-sm" />
-                <s:textfield placeholder="Mot de passe" name="LoginAction.userpass"
+                <s:textfield placeholder="Mot de passe" name="compteUser.mdp"
                              cssClass="input-sm" />
                 <button type="submit" class="btn btn-success">Se connecter</button>
             </s:form>

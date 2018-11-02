@@ -27,6 +27,7 @@
                             <th>Date d'emission</th>
                             <th>Date de paiement</th>
                             <th>Montant TTC</th>
+                            <th>Destinataires</th>
                             <th>Statut</th>
                             <th>Voir</th>
                         </tr>
@@ -36,6 +37,9 @@
                                 <td><s:property value="dateEmission" /></td>
                                 <td><s:property value="datePaiement" /></td>
                                 <td><s:property value="montantTTC" /></td>
+                                <td>
+                                    <s:property value="parentsFacture.parent.nom" />
+                                </td>
                                 <td>
                                     <s:property value="statut.toString()" /></td>
                                 <td>

@@ -23,8 +23,8 @@
         <action name="afficherfactures" class="garderie.action.ShowFactureAction" >
             <result name="success" type="tiles">facturation</result>
 	</action>
-        <action name="planningLink" class="garderie.action.LinkAction" method="planning" >
-            <result name="planning" type="tiles">planning</result>
+        <action name="afficheremployes" class="garderie.action.ShowEmployeAction" >
+            <result name="success" type="tiles">planning</result>
 	</action>
         <action name="inscriptionLink" class="garderie.action.LinkAction" method="inscription" >
             <result name="inscription" type="tiles">inscription</result>
@@ -71,6 +71,10 @@
         
         <action name="chercherarticle" class="garderie.action.ChercherArticleAction">
             <result name="success" type="tiles">inventaire</result>
+	</action>
+        
+        <action name="chercheremploye" class="garderie.action.ChercherEmployeAction">
+            <result name="success" type="tiles">planning</result>
 	</action>
         
         <action name="afficherdetailsfacture" class="garderie.action.ShowLignesFactureAction">

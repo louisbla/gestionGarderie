@@ -21,7 +21,7 @@
             </ul>
         </li>
         <li>
-            <a href="<s:url action='planningLink'/>">Planning</a>
+            <a href="<s:url action='afficheremployes'/>">Planning</a>
         </li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventaire <span class="caret"></span></a>

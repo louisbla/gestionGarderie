@@ -7,9 +7,12 @@ package garderie.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import garderie.dao.FactureDAO;
+import garderie.dao.ParentFactureDAO;
 import garderie.db.BDDManagerMySQL;
 import garderie.db.FactoryBDDManagerInstance;
 import garderie.model.Facture;
+import garderie.model.Parent;
+import garderie.model.ParentFacture;
 import java.sql.Connection;
 import java.util.ArrayList;
 
@@ -19,6 +22,7 @@ import java.util.ArrayList;
  */
 public class ShowFactureAction extends ActionSupport {
     private ArrayList<Facture> factures;
+    private ArrayList<Parent> parents;
 
     public ArrayList<Facture> getFactures() {
         return factures;
@@ -28,6 +32,14 @@ public class ShowFactureAction extends ActionSupport {
         this.factures = factures;
     }
 
+    public ArrayList<Parent> getParents() {
+        return parents;
+    }
+
+    public void setParents(ArrayList<Parent> parents) {
+        this.parents = parents;
+    }
+
     @Override
     public String execute() throws Exception {
         Connection connection = FactoryBDDManagerInstance.getInstance(new BDDManagerMySQL()).connect();
@@ -35,6 +47,10 @@ public class ShowFactureAction extends ActionSupport {
         FactureDAO factureDAO = new FactureDAO(connection);
         factures = factureDAO.findAll();
         
+        parents = new ArrayList<>();
+        ParentFactureDAO parentFactureDAO = new ParentFactureDAO(connection);
+        parents = parentFactureDAO.getAllParentByIdFacture(factures.get(0).getIdFacture());
+        System.out.println(parents.get(0).getNom());
         return SUCCESS;
     }
     

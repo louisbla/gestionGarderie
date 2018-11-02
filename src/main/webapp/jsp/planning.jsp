@@ -14,80 +14,63 @@
     </head>
     <body>
         <h1 class="text-center">Planning</h1>
-        <div class="row">
+        <s:form theme="bootstrap" cssClass="form-horizontal" action="chercheremploye" method="post">
+            <div class="row">
+                <div class="col-md-9">
+                    <s:textfield placeholder="Rechercher par Nom ou prenom..."
+                                 inputPrependIcon="search" name="motCle"
+                                 cssClass="input-xxlarge"/>
+                </div>
+            </div>
+        </s:form>
+
+        <div class="row justify-content-md-center">
+
             <div class="col-md-6">
-                <s:form theme="bootstrap" cssClass="form-horizontal">
-                    <s:textfield name="search"
-                                 cssClass="input-sm"
-                                 placeholder="Rechercher..."/>
-                </s:form>
+                <button class="btn btn-primary mb-3" data-toggle="modal"
+                        data-target="#modalCreateEmploye">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Ajouter
+                </button>
             </div>
         </div>
         <div class="table-responsive">
-            <table class="table table-striped table-bordered">
-                <tr>
-                    <th>#</th>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Groupe</th>
-                    <th>Editer</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Laurence</td>
-                    <td>Emma</td>
-                    <td>2</td>
-                    <td>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Petrulli</td>
-                    <td>Amber</td>
-                    <td>1</td>
-                    <td>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Washington</td>
-                    <td>Jessica</td>
-                    <td>3</td>
-                    <td>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>McDonald</td>
-                    <td>Adelaide</td>
-                    <td>1</td>
-                    <td>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>McBride</td>
-                    <td>Julian</td>
-                    <td>2</td>
-                    <td>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </button>
-                    </td>
-                </tr>
-            </table>
+            <s:if test="%{employes.size()>0}">
+
+
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>#</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Poste</th>
+                        <th>Telephone</th>
+                        <th>Editer</th>
+                    </tr>
+                    <s:iterator value="employes" status="incr">
+                        <tr>
+                            <td><s:property value="%{#incr.index+1}"/></td>
+                            <td><s:property value="nom" /></td>
+                            <td><s:property value="prenom" /></td>
+                            <td><s:property value="poste" /></td>
+                            <td>
+                                <s:property value="numTel" />
+                            </td>
+                            <td>
+                                <s:form action="afficherdetailsfacture" method="post">
+                                    <s:textfield name="idFacture"
+                                                 cssClass="d-none"/>
+
+                                    <button class="btn btn-primary"
+                                            type="submit">
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                    </button>
+                                </s:form>
+                            </td>
+                        </tr>
+                    </s:iterator>
+                </table>
+            </s:if>
         </div>
         <hr class="hr-primary hr-big">
 

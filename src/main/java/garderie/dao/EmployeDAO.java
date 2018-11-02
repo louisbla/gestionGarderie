@@ -175,6 +175,43 @@ public class EmployeDAO extends CommonDAO<Employe> {
         return employes; 
     }
     
+    public ArrayList<Employe> findByName(String name) {
+        ArrayList<Employe> employes = new ArrayList<>();
+        
+        try {
+            //Creation of the PreparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLConstant.SELECT_EMPLOYES_BY_NAME);
+
+            preparedStatement.setString(1, "%" + name + "%");
+            preparedStatement.setString(2, "%" + name + "%");
+
+            ResultSet result = preparedStatement.executeQuery();
+
+            while (result.next()) {
+                Employe employe = new Employe();
+                PersonneDAO personneDAO = new PersonneDAO(connection);
+                Personne personne = personneDAO.findById(result.getInt("employeId"));
+                employe.setIdPersonne(personne.getIdPersonne());
+                employe.setNom(personne.getNom());
+                employe.setPrenom(personne.getPrenom());
+                employe.setSexe(personne.getSexe());
+                employe.setDateNaissance(personne.getDateNaissance());
+                employe.setNumSecu(personne.getNumSecu());
+                
+                employe.setPoste(result.getString("poste"));
+                employe.setExterne(result.getBoolean("externe"));
+                employe.setNumTel(result.getString("telephone"));
+                
+                employes.add(employe);
+                
+            }
+            preparedStatement.close();
+        } catch (SQLException e) {
+            Logger.getLogger(EmployeDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        return employes; 
+    }
     
     
     
