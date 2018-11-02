@@ -44,4 +44,9 @@
       <put-attribute name="body"   value="/jsp/categorie.jsp"/>      
   </definition>
   
+  <definition name="compte" extends="baseLayout">
+      <put-attribute name="title"  value="Compte"/>
+      <put-attribute name="body"   value="/jsp/compte.jsp"/>      
+  </definition>
+  
 </tiles-definitions>

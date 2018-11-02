@@ -44,6 +44,7 @@ public class ChercherEmployeAction extends ActionSupport {
         
         EmployeDAO employeDAO = new EmployeDAO(connection);
         employesTrouves = employeDAO.findByName(motCle);
+        System.out.println(employesTrouves.size());
         
         return SUCCESS;
     }

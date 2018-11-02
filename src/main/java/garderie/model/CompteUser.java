@@ -75,14 +75,4 @@ public class CompteUser implements Serializable {
     public void setPersonne(Personne personne) {
         this.personne = personne;
     }
-    
-    /*
-    
-    public void seConnecter(){
-    }
-    
-    public void seDeconnecter(){
-    }
-    */
-  
 }

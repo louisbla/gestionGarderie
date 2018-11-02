@@ -110,5 +110,17 @@ public class CompteUserDAOTest {
 //        ArrayList<CompteUser> result = compteUserDAO.findAll();
 //        assertEquals(9, result.size());
     }
+
+    /**
+     * Test of validate method, of class CompteUserDAO.
+     */
+    @Test
+    public void testValidate() {
+//        System.out.println("validate");
+//        String username = "jdoe";
+//        String userpass = "doeJohn95";
+//        CompteUser result = compteUserDAO.validate(username, userpass);
+//        assertEquals(username, result.getLogin());
+    }
     
 }

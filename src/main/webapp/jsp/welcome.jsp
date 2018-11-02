@@ -20,29 +20,26 @@
         <sb:head includeScripts="true" includeScriptsValidation="false"/>
     </head>
     <body>
+
+        <s:if test="hasActionErrors()">
+            <div class="errors">
+                <s:actionerror theme="bootstrap"/>
+            </div>
+        </s:if>
+        <s:if test="hasActionMessages()">
+            <div class="welcome">
+                <s:actionmessage theme="bootstrap"/>
+            </div>
+        </s:if>
         <div class="jumbotron">
             <h1 class="text-center">Bienvenue !</h1>
             <img alt="garderie" class="img-responsive" src="<s:url value='/images/garderie.jpg' />">
-            <p class="lead text-center p-5">Veuillez-vous connecter pour accéder aux fonctionnalités de l'application.</p>
+            <s:if test="#session.user">
+
+            </s:if>
+            <s:else>
+                <p class="lead text-center p-5">Veuillez-vous connecter pour accéder aux fonctionnalités de l'application.</p>
+            </s:else>
         </div>
-
-        <%
-            /*Connection connection = DBManager.getInstance();
-
-            if (connection == null) {
-                out.println("connection failed");
-            } else {
-                out.println("connection succeded");
-            }*/
-
-            // test
-            Connection connection = FactoryBDDManagerInstance.getInstance(new BDDManagerMySQL()).connect();
-            if (connection == null) {
-                out.println("connection failed");
-            } else {
-                out.println("connection succeded");
-            }
-
-        %>
     </body>
 </html>

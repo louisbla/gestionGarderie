@@ -181,7 +181,7 @@ public class EmployeDAO extends CommonDAO<Employe> {
         try {
             PreparedStatement preparedStatement;
             //Creation of the PreparedStatement
-            if (true) {
+            if (name.isEmpty()) {
                 preparedStatement = connection.prepareStatement(SQLConstant.SELECT_EMPLOYES);
             } else {
                 preparedStatement = connection.prepareStatement(SQLConstant.SELECT_EMPLOYES_BY_NAME);

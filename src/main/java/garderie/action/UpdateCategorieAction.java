@@ -19,8 +19,8 @@ import java.sql.Connection;
 public class UpdateCategorieAction extends ActionSupport {
     private CategorieArticle categorieArticle;
     
-    Connection connection = FactoryBDDManagerInstance.getInstance(new BDDManagerMySQL()).connect();
-    CategorieArticleDAO categorieArticleDAO = new CategorieArticleDAO(connection);
+    private Connection connection = FactoryBDDManagerInstance.getInstance(new BDDManagerMySQL()).connect();
+    private CategorieArticleDAO categorieArticleDAO = new CategorieArticleDAO(connection);
 
     public CategorieArticle getCategorieArticle() {
         return categorieArticle;
@@ -35,6 +35,14 @@ public class UpdateCategorieAction extends ActionSupport {
         categorieArticle = categorieArticleDAO.update(categorieArticle);
         return SUCCESS;
     }
+
+    @Override
+    public void validate() {
+        if (categorieArticle.getNom().length() == 0) {
+            addFieldError("categorieArticle.nom", "Veuillez remplir le champs");
+        }
+    }
+    
     
     
     

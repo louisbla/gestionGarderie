@@ -14,80 +14,95 @@
         <sb:head includeScripts="true" includeScriptsValidation="false"/>
     </head>
     <body>
-        <h1 class="text-center mb-5">Facturation</h1>
+        <s:if test="#session.user">
+            <s:if test="#session.user.privilege==true">
+                <h1 class="text-center mb-5">Facturation</h1>
 
-        <div class="row">
-            <div class="table-responsive">
+                <div class="row">
+                    <div class="table-responsive">
 
 
-                <s:if test="%{factures.size()>0}">
-                    <table class="table table-striped table-bordered">
-                        <tr>
-                            <th>#</th>
-                            <th>Date d'emission</th>
-                            <th>Date de paiement</th>
-                            <th>Montant TTC</th>
-                            <th>Destinataires</th>
-                            <th>Statut</th>
-                            <th>Voir</th>
-                        </tr>
-                        <s:iterator value="factures" status="incr">
-                            <tr>
-                                <td><s:property value="%{#incr.index+1}"/></td>
-                                <td><s:property value="dateEmission" /></td>
-                                <td><s:property value="datePaiement" /></td>
-                                <td><s:property value="montantTTC" /></td>
-                                <td>
-                                    <s:property value="parentsFacture.parent.nom" />
-                                </td>
-                                <td>
-                                    <s:property value="statut.toString()" /></td>
-                                <td>
-                                    <s:form action="afficherdetailsfacture" method="post">
-                                        <s:textfield name="idFacture"
-                                                     cssClass="d-none"/>
+                        <s:if test="%{factures.size()>0}">
+                            <table class="table table-striped table-bordered">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Date d'emission</th>
+                                    <th>Date de paiement</th>
+                                    <th>Montant TTC</th>
+                                    <th>Destinataires</th>
+                                    <th>Statut</th>
+                                    <th>Voir</th>
+                                </tr>
+                                <s:iterator value="factures" status="incr">
+                                    <tr>
+                                        <td><s:property value="%{#incr.index+1}"/></td>
+                                        <td><s:property value="dateEmission" /></td>
+                                        <td><s:property value="datePaiement" /></td>
+                                        <td><s:property value="montantTTC" /></td>
+                                        <td>
+                                            <s:property value="parentsFacture.parent.nom" />
+                                        </td>
+                                        <td>
+                                            <s:property value="statut.toString()" /></td>
+                                        <td>
+                                            <s:form action="afficherdetailsfacture" method="post">
+                                                <s:textfield name="idFacture"
+                                                             cssClass="d-none"/>
 
-                                        <button class="btn btn-primary"
-                                                type="submit">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </button>
-                                    </s:form>
-                                </td>
-                            </tr>
-                        </s:iterator>
-                    </table>
-                </s:if>
+                                                <button class="btn btn-primary"
+                                                        type="submit">
+                                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                                </button>
+                                            </s:form>
+                                        </td>
+                                    </tr>
+                                </s:iterator>
+                            </table>
+                        </s:if>
 
-                <s:elseif test="%{lignesFacture.size()>0}">
-                    <table class="table table-striped table-bordered">
-                        <tr>
-                            <th>#</th>
-                            <th>Objet</th>
-                            <th>Quantite</th>
-                            <th>Total HT</th>
-                            <th>TVA</th>
-                            <th>Total TTC</th>
-                        </tr>
-                        <s:iterator value="lignesFacture" status="incr">
-                            <tr>
-                                <td><s:property value="%{#incr.index+1}"/></td>
-                                <td><s:property value="objetFacturable.nom" /></td>
-                                <td><s:property value="quantite" /></td>
-                                <td><s:property value="totalHT" /> $CA</td>
-                                <td><s:property value="objetFacturable.tva.montant" />%</td>
-                                <td><s:property value="totalTTC" /> $CA</td>
-                            </tr>
-                        </s:iterator>
-                    </table>
+                        <s:elseif test="%{lignesFacture.size()>0}">
+                            <table class="table table-striped table-bordered">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Objet</th>
+                                    <th>Quantite</th>
+                                    <th>Total HT</th>
+                                    <th>TVA</th>
+                                    <th>Total TTC</th>
+                                </tr>
+                                <s:iterator value="lignesFacture" status="incr">
+                                    <tr>
+                                        <td><s:property value="%{#incr.index+1}"/></td>
+                                        <td><s:property value="objetFacturable.nom" /></td>
+                                        <td><s:property value="quantite" /></td>
+                                        <td><s:property value="totalHT" /> $CA</td>
+                                        <td><s:property value="objetFacturable.tva.montant" />%</td>
+                                        <td><s:property value="totalTTC" /> $CA</td>
+                                    </tr>
+                                </s:iterator>
+                            </table>
 
-                </s:elseif>
+                        </s:elseif>
 
-                <s:else>
-                    Aucune facture dans la liste.
-                </s:else>
+                        <s:else>
+                            Aucune facture dans la liste.
+                        </s:else>
 
+                    </div>
+                </div>
+            </s:if>
+            <s:else>
+                <div class="alert alert-danger text-center">
+                    <strong>Oops!</strong> Vous n'avez pas les droits pour accéder à cette page.
+                </div>
+            </s:else>
+
+        </s:if>
+        <s:else>
+            <div class="alert alert-danger text-center">
+                <strong>Oops!</strong> Vous n'avez pas les droits pour accéder à cette page.
             </div>
-        </div>
+        </s:else>
 
 
     </body>

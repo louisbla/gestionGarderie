@@ -81,14 +81,23 @@
             <result name="success" type="tiles">facturation</result>
 	</action>
         
-        <action name="loginprocess" class="garderie.action.LoginAction">
-            <result name="input">/jsp/tiles/topbar.jsp</result>
-            <result name="sucess" type="redirectAction">index</result>
+        <action name="loginprocess" class="garderie.action.LoginAction" method="doLogin">
+            <result name="input" type="tiles">welcome</result>
+            <result name="success" type="tiles">welcome</result>
         </action >   
         
+        <action name="logout" class="garderie.action.LoginAction" method="doLogout">
+            <result name="success" type="tiles">welcome</result>
+        </action>
         
-        <action name="logout" class="garderie.action.LoginAction" >
-            <result type="redirectAction">/jsp/welcomes.jsp</result>
+        <action name="affichercompte" class="garderie.action.LinkAction" method="compte">
+            <result name="compte" type="tiles">compte</result>
+        </action>
+        
+        <action name="editercompte" class="garderie.action.UpdateCompteUserAction">
+            <result name="success" type="tiles">compte</result>
+            <result name="input" type="tiles">compte</result>
+
         </action>
         
         

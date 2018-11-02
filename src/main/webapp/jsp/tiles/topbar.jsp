@@ -13,14 +13,25 @@
         </div>
 
         <div class="collapse navbar-collapse" id="navbar-main">
+            <s:if test="#session.user">
+                <div class="navbar-form navbar-right">
+                    <span class="glyphicon glyphicon-user"></span> 
+                    <strong><s:property value="#session.user.personne.prenom" /> <s:property value="#session.user.personne.nom"  /></strong>
+                    <s:a action="logout" type="submit" class="btn btn-success">Se déconnecter</s:a>
+                    </div>
 
-            <s:form action="loginprocess" theme="bootstrap" cssClass="navbar-form navbar-right">
-                <s:textfield placeholder="Identifiant" name="compteUser.login"
-                             cssClass="input-sm" />
-                <s:textfield placeholder="Mot de passe" name="compteUser.mdp"
-                             cssClass="input-sm" />
-                <button type="submit" class="btn btn-success">Se connecter</button>
-            </s:form>
+            </s:if>
+            <s:else>
+                <s:form action="loginprocess" theme="bootstrap" cssClass="navbar-form navbar-right">
+                    <s:textfield placeholder="Identifiant" name="login"
+                                 cssClass="input-sm" />
+                    <s:password placeholder="Mot de passe" name="mdp"
+                                cssClass="input-sm" />
+
+                    <button type="submit" class="btn btn-success">Se connecter</button>
+                </s:form>
+            </s:else>
+
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>

@@ -72,6 +72,7 @@ public class CompteUserDAO extends CommonDAO<CompteUser>{
             preparedStatement.setString(2, compte.getMdp());
             preparedStatement.setBoolean(3, compte.isPrivilege());
             preparedStatement.setInt(4, compte.getPersonne().getIdPersonne());
+            preparedStatement.setInt(5, compte.getIdUser());
             
             System.out.println(preparedStatement.toString());
 
@@ -176,21 +177,31 @@ public class CompteUserDAO extends CommonDAO<CompteUser>{
     }
 
     
-        public boolean validate(String username,String userpass){  
-        boolean status=false;  
-        try{  
-
-            PreparedStatement ps = connection.prepareStatement(  
-              "select * from comptes_user where login=? and password=?");  
-            ps.setString(1,username);  
-            ps.setString(2,userpass);  
-            ResultSet rs=ps.executeQuery();  
-            status=rs.next(); 
+    public CompteUser validate (String login, String mdp) {  
+        CompteUser compteUser = null;
+        try {  
+            PreparedStatement preparedStatement = connection.prepareStatement(  
+              "SELECT * FROM comptes_user WHERE login = ? AND password = ?");  
+            preparedStatement.setString(1, login);  
+            preparedStatement.setString(2, mdp);  
             
-        }catch(Exception e){
-             e.printStackTrace();
+            ResultSet result = preparedStatement.executeQuery();  
+            
+            while (result.next()) {
+                compteUser = new CompteUser();
+                compteUser.setIdUser(result.getInt("userId"));
+                compteUser.setLogin(result.getString("login"));
+                compteUser.setMdp(result.getString("password"));
+                compteUser.setPrivilege(result.getBoolean("privilege"));
+                PersonneDAO personneDAO = new PersonneDAO(connection);
+                Personne personne = personneDAO.findById(result.getInt("personneId"));
+                compteUser.setPersonne(personne);
+            }
+            
+        } catch(SQLException e){
+             Logger.getLogger(CompteUserDAO.class.getName()).log(Level.SEVERE, null, e);
         }  
-        return status;  
+        return compteUser;  
     }  
     
     

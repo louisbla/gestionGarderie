@@ -33,4 +33,8 @@ public class LinkAction extends ActionSupport {
         return "inventaire";
     }
     
+    public String compte() {
+        return "compte";
+    }
+    
 }

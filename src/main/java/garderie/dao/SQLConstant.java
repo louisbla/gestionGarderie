@@ -123,7 +123,7 @@ public class SQLConstant {
             + "WHERE personneId = employeId AND " + VISIBLE;
     
     protected static final String SELECT_EMPLOYES_BY_NAME = "SELECT * FROM personnes, employes "
-            + "WHERE personneId = employeId AND nom LIKE ? OR prenom LIKE ? AND " + VISIBLE;
+            + "WHERE personneId = employeId AND ( nom LIKE ? OR prenom LIKE ? ) AND " + VISIBLE;
 
     protected static final String SELECT_EMPLOYE_BY_ID = "SELECT * FROM personnes,"
             + " employes WHERE personneId = employeId AND personneId = ? AND " + VISIBLE;
